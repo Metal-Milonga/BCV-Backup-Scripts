@@ -1,0 +1,887 @@
+Script started with the following Options and Arguements: -FMSserver16
+SERVER is set to: server16
+CONFIG_FILE: Default config file will be used.
+Establish Type is set to: FULL
+RUN_BACKUP is set to: NO
+Manual Monitoring is set to: YES
+Wait to Split the BCV is set to: NO
+
+START BCV Establish and Split Script for server16 on Fri Oct 11 16:17:55 EDT 2002
+
+Start Declare_General_Variables Function. Fri Oct 11 16:17:55 EDT 2002.
+Script started with the following Options and Arguements: -FMSserver16
+Working on BCVs for SERVER: server16
+SERVER server16 is a valid BCV Server. Continuing.
+Configuration file is: /usr/local/bin/bcvscripts/etc/bcv_scripts.conf
+Establish Type is: FULL
+Run Backup is set to: NO
+Manual Monitoring is set to: YES
+Wait to Split the BCVs is set to NO
+End Declare_General_Variables Function. Fri Oct 11 16:17:56 EDT 2002
+
+Start Declare_VolumeGroup_Variables Function. Fri Oct 11 16:17:56 EDT 2002
+#
+Grabbing VGS for normal BCV Establish.
+SRVR_VG Array element 3 is: vgpsfiles1
+SRVR_VG Array element 2 is: vgpsfssystem1
+SRVR_VG Array element 1 is: vgpsfsprod2
+SRVR_VG Array element 0 is: vgpsfsprod1
+#
+Grabbing VGS for exact mode BCV Establish.
+VG_ARRAY_START_XACT (-1) has a negative value. No need to proceed. Skipping.
+#
+End Declare_VolumeGroup_Variables Function. Fri Oct 11 16:17:56 EDT 2002
+
+Start Declare_DeviceGroup_Variables Function. Fri Oct 11 16:17:56 EDT 2002
+#
+Grabbing DGs for normal BCV Establish.
+SRVR_DG Array element 3 is: psfiles
+SRVR_DG Array element 2 is: psfssys
+SRVR_DG Array element 1 is: psfsprd2
+SRVR_DG Array element 0 is: psfsprod
+#
+Grabbing DGs for exact mode BCV Establish.
+DG_ARRAY_START_XACT (-1) has a negative value. No data here. Skipping.
+#
+End Declare_DeviceGroup_Variables Function. Fri Oct 11 16:17:56 EDT 2002
+
+Start Declare_OmniBack_Variables Function. Fri Oct 11 16:17:56 EDT 2002.
+#
+Run Backup at end of script: NO
+Not Running Backup. Variables build skipped.
+#
+End Declare_OmniBack_Variables Function. Fri Oct 11 16:17:56 EDT 2002
+
+Start OOP Loading Function. Fri Oct 11 16:17:56 EDT 2002
+#
+#
+End OOP Loading Function. Fri Oct 11 16:17:56 EDT 2002
+
+Start Unmount Filesystem function. Fri Oct 11 16:17:56 EDT 2002
+FileSystems to UNmount: 4
+#
+
+	VOLGROUP is vgpsfsprod1
+	FSTAB_EXTRACT is /dev/vgpsfsprod1/lvol1:/psoft75_bcv/u01
+	VG is /dev/vgpsfsprod1
+	VG_LVOL is /dev/vgpsfsprod1/lvol1
+	VG_RLVOL is /dev/vgpsfsprod1/rlvol1
+	FILESYSTEM is /psoft75_bcv/u01
+	#FILESYSTEM is 16 characters long
+
+VG /dev/vgpsfsprod1 is mounted on /psoft75_bcv/u01. I will unmount it for you.
+VG /dev/vgpsfsprod1 was successfully UNmounted from /psoft75_bcv/u01.
+#
+
+	VOLGROUP is vgpsfsprod2
+	FSTAB_EXTRACT is /dev/vgpsfsprod2/lvol1:/psoft75_bcv/u02_srvr16
+	VG is /dev/vgpsfsprod2
+	VG_LVOL is /dev/vgpsfsprod2/lvol1
+	VG_RLVOL is /dev/vgpsfsprod2/rlvol1
+	FILESYSTEM is /psoft75_bcv/u02_srvr16
+	#FILESYSTEM is 21 characters long
+
+VG /dev/vgpsfsprod2 is mounted on /psoft75_bcv/u02_srvr16. I will unmount it for you.
+VG /dev/vgpsfsprod2 was successfully UNmounted from /psoft75_bcv/u02_srvr16.
+#
+
+	VOLGROUP is vgpsfssystem1
+	FSTAB_EXTRACT is /dev/vgpsfssystem1/lvol1:/psoft75_bcv/u03
+	VG is /dev/vgpsfssystem1
+	VG_LVOL is /dev/vgpsfssystem1/lvol1
+	VG_RLVOL is /dev/vgpsfssystem1/rlvol1
+	FILESYSTEM is /psoft75_bcv/u03
+	#FILESYSTEM is 16 characters long
+
+VG /dev/vgpsfssystem1 is mounted on /psoft75_bcv/u03. I will unmount it for you.
+VG /dev/vgpsfssystem1 was successfully UNmounted from /psoft75_bcv/u03.
+#
+
+	VOLGROUP is vgpsfiles1
+	FSTAB_EXTRACT is /dev/vgpsfiles1/lvol1:/psoft75_bcv/u05
+	VG is /dev/vgpsfiles1
+	VG_LVOL is /dev/vgpsfiles1/lvol1
+	VG_RLVOL is /dev/vgpsfiles1/rlvol1
+	FILESYSTEM is /psoft75_bcv/u05
+	#FILESYSTEM is 16 characters long
+
+VG /dev/vgpsfiles1 is mounted on /psoft75_bcv/u05. I will unmount it for you.
+VG /dev/vgpsfiles1 was successfully UNmounted from /psoft75_bcv/u05.
+#
+/psoft75_bcv/u01:0
+/psoft75_bcv/u02_srvr16:0
+/psoft75_bcv/u03:0
+/psoft75_bcv/u05:0
+Un-mounting successful for all filesystems.
+0 out of 4 filesystems still mounted.
+End Unmount Filesystem function. Fri Oct 11 16:17:59 EDT 2002
+
+Start Deactivate VolumeGroups function. Fri Oct 11 16:17:59 EDT 2002
+Volume Groups to be Deactivated: 4
+#
+
+	FSTAB_EXTRACT is /dev/vgpsfsprod1/lvol1:/psoft75_bcv/u01
+	VG is /dev/vgpsfsprod1
+	VG_LVOL is /dev/vgpsfsprod1/lvol1
+	VG_RLVOL is /dev/vgpsfsprod1/rlvol1
+	FILESYSTEM is /psoft75_bcv/u01
+	#FILESYSTEM is 16 characters long
+
+The filesystem /psoft75_bcv/u01 is not mounted. VG /dev/vgpsfsprod1 will be deactivated.
+Volume group "/dev/vgpsfsprod1" has been successfully changed.
+VG /dev/vgpsfsprod1 was successfully deactivated.
+#
+
+	FSTAB_EXTRACT is /dev/vgpsfsprod2/lvol1:/psoft75_bcv/u02_srvr16
+	VG is /dev/vgpsfsprod2
+	VG_LVOL is /dev/vgpsfsprod2/lvol1
+	VG_RLVOL is /dev/vgpsfsprod2/rlvol1
+	FILESYSTEM is /psoft75_bcv/u02_srvr16
+	#FILESYSTEM is 21 characters long
+
+The filesystem /psoft75_bcv/u02_srvr16 is not mounted. VG /dev/vgpsfsprod2 will be deactivated.
+Volume group "/dev/vgpsfsprod2" has been successfully changed.
+VG /dev/vgpsfsprod2 was successfully deactivated.
+#
+
+	FSTAB_EXTRACT is /dev/vgpsfssystem1/lvol1:/psoft75_bcv/u03
+	VG is /dev/vgpsfssystem1
+	VG_LVOL is /dev/vgpsfssystem1/lvol1
+	VG_RLVOL is /dev/vgpsfssystem1/rlvol1
+	FILESYSTEM is /psoft75_bcv/u03
+	#FILESYSTEM is 16 characters long
+
+The filesystem /psoft75_bcv/u03 is not mounted. VG /dev/vgpsfssystem1 will be deactivated.
+Volume group "/dev/vgpsfssystem1" has been successfully changed.
+VG /dev/vgpsfssystem1 was successfully deactivated.
+#
+
+	FSTAB_EXTRACT is /dev/vgpsfiles1/lvol1:/psoft75_bcv/u05
+	VG is /dev/vgpsfiles1
+	VG_LVOL is /dev/vgpsfiles1/lvol1
+	VG_RLVOL is /dev/vgpsfiles1/rlvol1
+	FILESYSTEM is /psoft75_bcv/u05
+	#FILESYSTEM is 16 characters long
+
+The filesystem /psoft75_bcv/u05 is not mounted. VG /dev/vgpsfiles1 will be deactivated.
+Volume group "/dev/vgpsfiles1" has been successfully changed.
+VG /dev/vgpsfiles1 was successfully deactivated.
+#
+(0/4) out of 4 Volume Groups DEActivated.
+#
+End Deactivate VolumeGroups function. Fri Oct 11 16:18:04 EDT 2002
+
+Start Export Volume Groups function. Fri Oct 11 16:18:04 EDT 2002
+Volume Groups to be Exported: 0
+#
+End Export Volume Groups function. Fri Oct 11 16:18:04 EDT 2002
+
+Start Establish BCVs function. Fri Oct 11 16:18:04 EDT 2002
+#
+Device Groups are: psfsprod psfsprd2 psfssys psfiles
+#
+psfsprod is a Normal DG.
+Running Command: /usr/symcli/bin/symir -g psfsprod -full -noprompt est
+BCV Est for psfsprod Initiated
+#
+psfsprd2 is a Normal DG.
+Running Command: /usr/symcli/bin/symir -g psfsprd2 -full -noprompt est
+BCV Est for psfsprd2 Initiated
+#
+psfssys is a Normal DG.
+Running Command: /usr/symcli/bin/symir -g psfssys -full -noprompt est
+BCV Est for psfssys Initiated
+#
+psfiles is a Normal DG.
+Running Command: /usr/symcli/bin/symir -g psfiles -full -noprompt est
+BCV Est for psfiles Initiated
+#
+End Establish BCVs function. Fri Oct 11 16:18:47 EDT 2002
+
+Start Verify BCV Sync Started function. Fri Oct 11 16:18:47 EDT 2002
+#
+DEVGRP is psfsprod
+	Line is psfsprod=0, Group is psfsprod, Value is 0
+ALL_GROUPS_START Count is 1
+#
+DEVGRP is psfsprd2
+	Line is psfsprd2=0, Group is psfsprd2, Value is 0
+ALL_GROUPS_START Count is 2
+#
+DEVGRP is psfssys
+	Line is psfssys=0, Group is psfssys, Value is 0
+ALL_GROUPS_START Count is 3
+#
+DEVGRP is psfiles
+	Line is psfiles=0, Group is psfiles, Value is 0
+ALL_GROUPS_START Count is 4
+#
+4 out of 4 Device Groups Sync Started.
+#
+End Verify BCV Sync Started function. Fri Oct 11 16:18:47 EDT 2002
+
+Start Monitor BCV Establish function. Fri Oct 11 16:18:47 EDT 2002
+#
+Device Groups are: psfsprod psfsprd2 psfssys psfiles.
+psfsprod status: Synch stat is 11. Syncinprog stat is 0. MEG left 63552.8.
+psfsprd2 status: Synch stat is 11. Syncinprog stat is 0. MEG left 25679.0.
+psfssys status: Synch stat is 11. Syncinprog stat is 0. MEG left 59808.4.
+psfiles status: Synch stat is 11. Syncinprog stat is 0. MEG left 8399.0.
+Group Count is: 0
+The Device Groups for server16 are NOT YET established.
+Resetting Group Count to 0.
+Time_Counter Starting at: Fri Oct 11 16:19:13 EDT 2002
+Sleeping 60 Seconds. Total: 0 hour(s) 1 minute(s) 0 second(s)
+		0 hrs 1 min 0 sec  		0 hrs 0 min 59 sec  		0 hrs 0 min 58 sec  		0 hrs 0 min 57 sec  		0 hrs 0 min 56 sec  		0 hrs 0 min 55 sec  		0 hrs 0 min 54 sec  		0 hrs 0 min 53 sec  		0 hrs 0 min 52 sec  		0 hrs 0 min 51 sec  		0 hrs 0 min 50 sec  		0 hrs 0 min 49 sec  		0 hrs 0 min 48 sec  		0 hrs 0 min 47 sec  		0 hrs 0 min 46 sec  		0 hrs 0 min 45 sec  		0 hrs 0 min 44 sec  		0 hrs 0 min 43 sec  		0 hrs 0 min 42 sec  		0 hrs 0 min 41 sec  		0 hrs 0 min 40 sec  		0 hrs 0 min 39 sec  		0 hrs 0 min 38 sec  		0 hrs 0 min 37 sec  		0 hrs 0 min 36 sec  		0 hrs 0 min 35 sec  		0 hrs 0 min 34 sec  		0 hrs 0 min 33 sec  		0 hrs 0 min 32 sec  		0 hrs 0 min 31 sec  		0 hrs 0 min 30 sec  		0 hrs 0 min 29 sec  		0 hrs 0 min 28 sec  		0 hrs 0 min 27 sec  		0 hrs 0 min 26 sec  		0 hrs 0 min 25 sec  		0 hrs 0 min 24 sec  		0 hrs 0 min 23 sec  		0 hrs 0 min 22 sec  		0 hrs 0 min 21 sec  		0 hrs 0 min 20 sec  		0 hrs 0 min 19 sec  		0 hrs 0 min 18 sec  		0 hrs 0 min 17 sec  		0 hrs 0 min 16 sec  		0 hrs 0 min 15 sec  		0 hrs 0 min 14 sec  		0 hrs 0 min 13 sec  		0 hrs 0 min 12 sec  		0 hrs 0 min 11 sec  		0 hrs 0 min 10 sec  		0 hrs 0 min 9 sec  		0 hrs 0 min 8 sec  		0 hrs 0 min 7 sec  		0 hrs 0 min 6 sec  		0 hrs 0 min 5 sec  		0 hrs 0 min 4 sec  		0 hrs 0 min 3 sec  		0 hrs 0 min 2 sec  		0 hrs 0 min 1 sec  		0 hrs 0 min 0 sec  
+
+psfsprod status: Synch stat is 11. Syncinprog stat is 0. MEG left 59662.2.
+psfsprd2 status: Synch stat is 11. Syncinprog stat is 0. MEG left 25017.5.
+psfssys status: Synch stat is 11. Syncinprog stat is 0. MEG left 58248.0.
+psfiles status: Synch stat is 11. Syncinprog stat is 0. MEG left 7839.4.
+Group Count is: 0
+The Device Groups for server16 are NOT YET established.
+Resetting Group Count to 0.
+Time_Counter Starting at: Fri Oct 11 16:20:47 EDT 2002
+Sleeping 60 Seconds. Total: 0 hour(s) 1 minute(s) 0 second(s)
+		0 hrs 1 min 0 sec  		0 hrs 0 min 59 sec  		0 hrs 0 min 58 sec  		0 hrs 0 min 57 sec  		0 hrs 0 min 56 sec  		0 hrs 0 min 55 sec  		0 hrs 0 min 54 sec  		0 hrs 0 min 53 sec  		0 hrs 0 min 52 sec  		0 hrs 0 min 51 sec  		0 hrs 0 min 50 sec  		0 hrs 0 min 49 sec  		0 hrs 0 min 48 sec  		0 hrs 0 min 47 sec  		0 hrs 0 min 46 sec  		0 hrs 0 min 45 sec  		0 hrs 0 min 44 sec  		0 hrs 0 min 43 sec  		0 hrs 0 min 42 sec  		0 hrs 0 min 41 sec  		0 hrs 0 min 40 sec  		0 hrs 0 min 39 sec  		0 hrs 0 min 38 sec  		0 hrs 0 min 37 sec  		0 hrs 0 min 36 sec  		0 hrs 0 min 35 sec  		0 hrs 0 min 34 sec  		0 hrs 0 min 33 sec  		0 hrs 0 min 32 sec  		0 hrs 0 min 31 sec  		0 hrs 0 min 30 sec  		0 hrs 0 min 29 sec  		0 hrs 0 min 28 sec  		0 hrs 0 min 27 sec  		0 hrs 0 min 26 sec  		0 hrs 0 min 25 sec  		0 hrs 0 min 24 sec  		0 hrs 0 min 23 sec  		0 hrs 0 min 22 sec  		0 hrs 0 min 21 sec  		0 hrs 0 min 20 sec  		0 hrs 0 min 19 sec  		0 hrs 0 min 18 sec  		0 hrs 0 min 17 sec  		0 hrs 0 min 16 sec  		0 hrs 0 min 15 sec  		0 hrs 0 min 14 sec  		0 hrs 0 min 13 sec  		0 hrs 0 min 12 sec  		0 hrs 0 min 11 sec  		0 hrs 0 min 10 sec  		0 hrs 0 min 9 sec  		0 hrs 0 min 8 sec  		0 hrs 0 min 7 sec  		0 hrs 0 min 6 sec  		0 hrs 0 min 5 sec  		0 hrs 0 min 4 sec  		0 hrs 0 min 3 sec  		0 hrs 0 min 2 sec  		0 hrs 0 min 1 sec  		0 hrs 0 min 0 sec  
+
+psfsprod status: Synch stat is 11. Syncinprog stat is 0. MEG left 56228.8.
+psfsprd2 status: Synch stat is 11. Syncinprog stat is 0. MEG left 24130.8.
+psfssys status: Synch stat is 11. Syncinprog stat is 0. MEG left 56417.2.
+psfiles status: Synch stat is 11. Syncinprog stat is 0. MEG left 7296.3.
+Group Count is: 0
+The Device Groups for server16 are NOT YET established.
+Resetting Group Count to 0.
+Time_Counter Starting at: Fri Oct 11 16:22:15 EDT 2002
+Sleeping 60 Seconds. Total: 0 hour(s) 1 minute(s) 0 second(s)
+		0 hrs 1 min 0 sec  		0 hrs 0 min 59 sec  		0 hrs 0 min 58 sec  		0 hrs 0 min 57 sec  		0 hrs 0 min 56 sec  		0 hrs 0 min 55 sec  		0 hrs 0 min 54 sec  		0 hrs 0 min 53 sec  		0 hrs 0 min 52 sec  		0 hrs 0 min 51 sec  		0 hrs 0 min 50 sec  		0 hrs 0 min 49 sec  		0 hrs 0 min 48 sec  		0 hrs 0 min 47 sec  		0 hrs 0 min 46 sec  		0 hrs 0 min 45 sec  		0 hrs 0 min 44 sec  		0 hrs 0 min 43 sec  		0 hrs 0 min 42 sec  		0 hrs 0 min 41 sec  		0 hrs 0 min 40 sec  		0 hrs 0 min 39 sec  		0 hrs 0 min 38 sec  		0 hrs 0 min 37 sec  		0 hrs 0 min 36 sec  		0 hrs 0 min 35 sec  		0 hrs 0 min 34 sec  		0 hrs 0 min 33 sec  		0 hrs 0 min 32 sec  		0 hrs 0 min 31 sec  		0 hrs 0 min 30 sec  		0 hrs 0 min 29 sec  		0 hrs 0 min 28 sec  		0 hrs 0 min 27 sec  		0 hrs 0 min 26 sec  		0 hrs 0 min 25 sec  		0 hrs 0 min 24 sec  		0 hrs 0 min 23 sec  		0 hrs 0 min 22 sec  		0 hrs 0 min 21 sec  		0 hrs 0 min 20 sec  		0 hrs 0 min 19 sec  		0 hrs 0 min 18 sec  		0 hrs 0 min 17 sec  		0 hrs 0 min 16 sec  		0 hrs 0 min 15 sec  		0 hrs 0 min 14 sec  		0 hrs 0 min 13 sec  		0 hrs 0 min 12 sec  		0 hrs 0 min 11 sec  		0 hrs 0 min 10 sec  		0 hrs 0 min 9 sec  		0 hrs 0 min 8 sec  		0 hrs 0 min 7 sec  		0 hrs 0 min 6 sec  		0 hrs 0 min 5 sec  		0 hrs 0 min 4 sec  		0 hrs 0 min 3 sec  		0 hrs 0 min 2 sec  		0 hrs 0 min 1 sec  		0 hrs 0 min 0 sec  
+
+psfsprod status: Synch stat is 11. Syncinprog stat is 0. MEG left 52996.7.
+psfsprd2 status: Synch stat is 11. Syncinprog stat is 0. MEG left 22967.5.
+psfssys status: Synch stat is 11. Syncinprog stat is 0. MEG left 55004.1.
+psfiles status: Synch stat is 11. Syncinprog stat is 0. MEG left 6809.4.
+Group Count is: 0
+The Device Groups for server16 are NOT YET established.
+Resetting Group Count to 0.
+Time_Counter Starting at: Fri Oct 11 16:23:42 EDT 2002
+Sleeping 60 Seconds. Total: 0 hour(s) 1 minute(s) 0 second(s)
+		0 hrs 1 min 0 sec  		0 hrs 0 min 59 sec  		0 hrs 0 min 58 sec  		0 hrs 0 min 57 sec  		0 hrs 0 min 56 sec  		0 hrs 0 min 55 sec  		0 hrs 0 min 54 sec  		0 hrs 0 min 53 sec  		0 hrs 0 min 52 sec  		0 hrs 0 min 51 sec  		0 hrs 0 min 50 sec  		0 hrs 0 min 49 sec  		0 hrs 0 min 48 sec  		0 hrs 0 min 47 sec  		0 hrs 0 min 46 sec  		0 hrs 0 min 45 sec  		0 hrs 0 min 44 sec  		0 hrs 0 min 43 sec  		0 hrs 0 min 42 sec  		0 hrs 0 min 41 sec  		0 hrs 0 min 40 sec  		0 hrs 0 min 39 sec  		0 hrs 0 min 38 sec  		0 hrs 0 min 37 sec  		0 hrs 0 min 36 sec  		0 hrs 0 min 35 sec  		0 hrs 0 min 34 sec  		0 hrs 0 min 33 sec  		0 hrs 0 min 32 sec  		0 hrs 0 min 31 sec  		0 hrs 0 min 30 sec  		0 hrs 0 min 29 sec  		0 hrs 0 min 28 sec  		0 hrs 0 min 27 sec  		0 hrs 0 min 26 sec  		0 hrs 0 min 25 sec  		0 hrs 0 min 24 sec  		0 hrs 0 min 23 sec  		0 hrs 0 min 22 sec  		0 hrs 0 min 21 sec  		0 hrs 0 min 20 sec  		0 hrs 0 min 19 sec  		0 hrs 0 min 18 sec  		0 hrs 0 min 17 sec  		0 hrs 0 min 16 sec  		0 hrs 0 min 15 sec  		0 hrs 0 min 14 sec  		0 hrs 0 min 13 sec  		0 hrs 0 min 12 sec  		0 hrs 0 min 11 sec  		0 hrs 0 min 10 sec  		0 hrs 0 min 9 sec  		0 hrs 0 min 8 sec  		0 hrs 0 min 7 sec  		0 hrs 0 min 6 sec  		0 hrs 0 min 5 sec  		0 hrs 0 min 4 sec  		0 hrs 0 min 3 sec  		0 hrs 0 min 2 sec  		0 hrs 0 min 1 sec  		0 hrs 0 min 0 sec  
+
+psfsprod status: Synch stat is 11. Syncinprog stat is 0. MEG left 50378.1.
+psfsprd2 status: Synch stat is 11. Syncinprog stat is 0. MEG left 21533.5.
+psfssys status: Synch stat is 11. Syncinprog stat is 0. MEG left 54139.2.
+psfiles status: Synch stat is 11. Syncinprog stat is 0. MEG left 6154.4.
+Group Count is: 0
+The Device Groups for server16 are NOT YET established.
+Resetting Group Count to 0.
+Time_Counter Starting at: Fri Oct 11 16:25:17 EDT 2002
+Sleeping 60 Seconds. Total: 0 hour(s) 1 minute(s) 0 second(s)
+		0 hrs 1 min 0 sec  		0 hrs 0 min 59 sec  		0 hrs 0 min 58 sec  		0 hrs 0 min 57 sec  		0 hrs 0 min 56 sec  		0 hrs 0 min 55 sec  		0 hrs 0 min 54 sec  		0 hrs 0 min 53 sec  		0 hrs 0 min 52 sec  		0 hrs 0 min 51 sec  		0 hrs 0 min 50 sec  		0 hrs 0 min 49 sec  		0 hrs 0 min 48 sec  		0 hrs 0 min 47 sec  		0 hrs 0 min 46 sec  		0 hrs 0 min 45 sec  		0 hrs 0 min 44 sec  		0 hrs 0 min 43 sec  		0 hrs 0 min 42 sec  		0 hrs 0 min 41 sec  		0 hrs 0 min 40 sec  		0 hrs 0 min 39 sec  		0 hrs 0 min 38 sec  		0 hrs 0 min 37 sec  		0 hrs 0 min 36 sec  		0 hrs 0 min 35 sec  		0 hrs 0 min 34 sec  		0 hrs 0 min 33 sec  		0 hrs 0 min 32 sec  		0 hrs 0 min 31 sec  		0 hrs 0 min 30 sec  		0 hrs 0 min 29 sec  		0 hrs 0 min 28 sec  		0 hrs 0 min 27 sec  		0 hrs 0 min 26 sec  		0 hrs 0 min 25 sec  		0 hrs 0 min 24 sec  		0 hrs 0 min 23 sec  		0 hrs 0 min 22 sec  		0 hrs 0 min 21 sec  		0 hrs 0 min 20 sec  		0 hrs 0 min 19 sec  		0 hrs 0 min 18 sec  		0 hrs 0 min 17 sec  		0 hrs 0 min 16 sec  		0 hrs 0 min 15 sec  		0 hrs 0 min 14 sec  		0 hrs 0 min 13 sec  		0 hrs 0 min 12 sec  		0 hrs 0 min 11 sec  		0 hrs 0 min 10 sec  		0 hrs 0 min 9 sec  		0 hrs 0 min 8 sec  		0 hrs 0 min 7 sec  		0 hrs 0 min 6 sec  		0 hrs 0 min 5 sec  		0 hrs 0 min 4 sec  		0 hrs 0 min 3 sec  		0 hrs 0 min 2 sec  		0 hrs 0 min 1 sec  		0 hrs 0 min 0 sec  
+
+psfsprod status: Synch stat is 11. Syncinprog stat is 0. MEG left 47522.4.
+psfsprd2 status: Synch stat is 11. Syncinprog stat is 0. MEG left 19919.7.
+psfssys status: Synch stat is 11. Syncinprog stat is 0. MEG left 53176.8.
+psfiles status: Synch stat is 11. Syncinprog stat is 0. MEG left 5562.9.
+Group Count is: 0
+The Device Groups for server16 are NOT YET established.
+Resetting Group Count to 0.
+Time_Counter Starting at: Fri Oct 11 16:26:45 EDT 2002
+Sleeping 60 Seconds. Total: 0 hour(s) 1 minute(s) 0 second(s)
+		0 hrs 1 min 0 sec  		0 hrs 0 min 59 sec  		0 hrs 0 min 58 sec  		0 hrs 0 min 57 sec  		0 hrs 0 min 56 sec  		0 hrs 0 min 55 sec  		0 hrs 0 min 54 sec  		0 hrs 0 min 53 sec  		0 hrs 0 min 52 sec  		0 hrs 0 min 51 sec  		0 hrs 0 min 50 sec  		0 hrs 0 min 49 sec  		0 hrs 0 min 48 sec  		0 hrs 0 min 47 sec  		0 hrs 0 min 46 sec  		0 hrs 0 min 45 sec  		0 hrs 0 min 44 sec  		0 hrs 0 min 43 sec  		0 hrs 0 min 42 sec  		0 hrs 0 min 41 sec  		0 hrs 0 min 40 sec  		0 hrs 0 min 39 sec  		0 hrs 0 min 38 sec  		0 hrs 0 min 37 sec  		0 hrs 0 min 36 sec  		0 hrs 0 min 35 sec  		0 hrs 0 min 34 sec  		0 hrs 0 min 33 sec  		0 hrs 0 min 32 sec  		0 hrs 0 min 31 sec  		0 hrs 0 min 30 sec  		0 hrs 0 min 29 sec  		0 hrs 0 min 28 sec  		0 hrs 0 min 27 sec  		0 hrs 0 min 26 sec  		0 hrs 0 min 25 sec  		0 hrs 0 min 24 sec  		0 hrs 0 min 23 sec  		0 hrs 0 min 22 sec  		0 hrs 0 min 21 sec  		0 hrs 0 min 20 sec  		0 hrs 0 min 19 sec  		0 hrs 0 min 18 sec  		0 hrs 0 min 17 sec  		0 hrs 0 min 16 sec  		0 hrs 0 min 15 sec  		0 hrs 0 min 14 sec  		0 hrs 0 min 13 sec  		0 hrs 0 min 12 sec  		0 hrs 0 min 11 sec  		0 hrs 0 min 10 sec  		0 hrs 0 min 9 sec  		0 hrs 0 min 8 sec  		0 hrs 0 min 7 sec  		0 hrs 0 min 6 sec  		0 hrs 0 min 5 sec  		0 hrs 0 min 4 sec  		0 hrs 0 min 3 sec  		0 hrs 0 min 2 sec  		0 hrs 0 min 1 sec  		0 hrs 0 min 0 sec  
+
+psfsprod status: Synch stat is 11. Syncinprog stat is 0. MEG left 44752.0.
+psfsprd2 status: Synch stat is 11. Syncinprog stat is 0. MEG left 18543.4.
+psfssys status: Synch stat is 11. Syncinprog stat is 0. MEG left 52140.0.
+psfiles status: Synch stat is 11. Syncinprog stat is 0. MEG left 4968.8.
+Group Count is: 0
+The Device Groups for server16 are NOT YET established.
+Resetting Group Count to 0.
+Time_Counter Starting at: Fri Oct 11 16:28:12 EDT 2002
+Sleeping 60 Seconds. Total: 0 hour(s) 1 minute(s) 0 second(s)
+		0 hrs 1 min 0 sec  		0 hrs 0 min 59 sec  		0 hrs 0 min 58 sec  		0 hrs 0 min 57 sec  		0 hrs 0 min 56 sec  		0 hrs 0 min 55 sec  		0 hrs 0 min 54 sec  		0 hrs 0 min 53 sec  		0 hrs 0 min 52 sec  		0 hrs 0 min 51 sec  		0 hrs 0 min 50 sec  		0 hrs 0 min 49 sec  		0 hrs 0 min 48 sec  		0 hrs 0 min 47 sec  		0 hrs 0 min 46 sec  		0 hrs 0 min 45 sec  		0 hrs 0 min 44 sec  		0 hrs 0 min 43 sec  		0 hrs 0 min 42 sec  		0 hrs 0 min 41 sec  		0 hrs 0 min 40 sec  		0 hrs 0 min 39 sec  		0 hrs 0 min 38 sec  		0 hrs 0 min 37 sec  		0 hrs 0 min 36 sec  		0 hrs 0 min 35 sec  		0 hrs 0 min 34 sec  		0 hrs 0 min 33 sec  		0 hrs 0 min 32 sec  		0 hrs 0 min 31 sec  		0 hrs 0 min 30 sec  		0 hrs 0 min 29 sec  		0 hrs 0 min 28 sec  		0 hrs 0 min 27 sec  		0 hrs 0 min 26 sec  		0 hrs 0 min 25 sec  		0 hrs 0 min 24 sec  		0 hrs 0 min 23 sec  		0 hrs 0 min 22 sec  		0 hrs 0 min 21 sec  		0 hrs 0 min 20 sec  		0 hrs 0 min 19 sec  		0 hrs 0 min 18 sec  		0 hrs 0 min 17 sec  		0 hrs 0 min 16 sec  		0 hrs 0 min 15 sec  		0 hrs 0 min 14 sec  		0 hrs 0 min 13 sec  		0 hrs 0 min 12 sec  		0 hrs 0 min 11 sec  		0 hrs 0 min 10 sec  		0 hrs 0 min 9 sec  		0 hrs 0 min 8 sec  		0 hrs 0 min 7 sec  		0 hrs 0 min 6 sec  		0 hrs 0 min 5 sec  		0 hrs 0 min 4 sec  		0 hrs 0 min 3 sec  		0 hrs 0 min 2 sec  		0 hrs 0 min 1 sec  		0 hrs 0 min 0 sec  
+
+psfsprod status: Synch stat is 10. Syncinprog stat is 27. MEG left 43389.4.
+psfsprd2 status: Synch stat is 10. Syncinprog stat is 27. MEG left 17488.3.
+psfssys status: Synch stat is 11. Syncinprog stat is 0. MEG left 50423.8.
+psfiles status: Synch stat is 11. Syncinprog stat is 0. MEG left 4283.5.
+Group Count is: 0
+The Device Groups for server16 are NOT YET established.
+Resetting Group Count to 0.
+Time_Counter Starting at: Fri Oct 11 16:29:40 EDT 2002
+Sleeping 60 Seconds. Total: 0 hour(s) 1 minute(s) 0 second(s)
+		0 hrs 1 min 0 sec  		0 hrs 0 min 59 sec  		0 hrs 0 min 58 sec  		0 hrs 0 min 57 sec  		0 hrs 0 min 56 sec  		0 hrs 0 min 55 sec  		0 hrs 0 min 54 sec  		0 hrs 0 min 53 sec  		0 hrs 0 min 52 sec  		0 hrs 0 min 51 sec  		0 hrs 0 min 50 sec  		0 hrs 0 min 49 sec  		0 hrs 0 min 48 sec  		0 hrs 0 min 47 sec  		0 hrs 0 min 46 sec  		0 hrs 0 min 45 sec  		0 hrs 0 min 44 sec  		0 hrs 0 min 43 sec  		0 hrs 0 min 42 sec  		0 hrs 0 min 41 sec  		0 hrs 0 min 40 sec  		0 hrs 0 min 39 sec  		0 hrs 0 min 38 sec  		0 hrs 0 min 37 sec  		0 hrs 0 min 36 sec  		0 hrs 0 min 35 sec  		0 hrs 0 min 34 sec  		0 hrs 0 min 33 sec  		0 hrs 0 min 32 sec  		0 hrs 0 min 31 sec  		0 hrs 0 min 30 sec  		0 hrs 0 min 29 sec  		0 hrs 0 min 28 sec  		0 hrs 0 min 27 sec  		0 hrs 0 min 26 sec  		0 hrs 0 min 25 sec  		0 hrs 0 min 24 sec  		0 hrs 0 min 23 sec  		0 hrs 0 min 22 sec  		0 hrs 0 min 21 sec  		0 hrs 0 min 20 sec  		0 hrs 0 min 19 sec  		0 hrs 0 min 18 sec  		0 hrs 0 min 17 sec  		0 hrs 0 min 16 sec  		0 hrs 0 min 15 sec  		0 hrs 0 min 14 sec  		0 hrs 0 min 13 sec  		0 hrs 0 min 12 sec  		0 hrs 0 min 11 sec  		0 hrs 0 min 10 sec  		0 hrs 0 min 9 sec  		0 hrs 0 min 8 sec  		0 hrs 0 min 7 sec  		0 hrs 0 min 6 sec  		0 hrs 0 min 5 sec  		0 hrs 0 min 4 sec  		0 hrs 0 min 3 sec  		0 hrs 0 min 2 sec  		0 hrs 0 min 1 sec  		0 hrs 0 min 0 sec  
+
+psfsprod status: Synch stat is 10. Syncinprog stat is 27. MEG left 42444.9.
+psfsprd2 status: Synch stat is 10. Syncinprog stat is 27. MEG left 17261.2.
+psfssys status: Synch stat is 11. Syncinprog stat is 0. MEG left 48486.8.
+psfiles status: Synch stat is 11. Syncinprog stat is 0. MEG left 3509.5.
+Group Count is: 0
+The Device Groups for server16 are NOT YET established.
+Resetting Group Count to 0.
+Time_Counter Starting at: Fri Oct 11 16:31:07 EDT 2002
+Sleeping 60 Seconds. Total: 0 hour(s) 1 minute(s) 0 second(s)
+		0 hrs 1 min 0 sec  		0 hrs 0 min 59 sec  		0 hrs 0 min 58 sec  		0 hrs 0 min 57 sec  		0 hrs 0 min 56 sec  		0 hrs 0 min 55 sec  		0 hrs 0 min 54 sec  		0 hrs 0 min 53 sec  		0 hrs 0 min 52 sec  		0 hrs 0 min 51 sec  		0 hrs 0 min 50 sec  		0 hrs 0 min 49 sec  		0 hrs 0 min 48 sec  		0 hrs 0 min 47 sec  		0 hrs 0 min 46 sec  		0 hrs 0 min 45 sec  		0 hrs 0 min 44 sec  		0 hrs 0 min 43 sec  		0 hrs 0 min 42 sec  		0 hrs 0 min 41 sec  		0 hrs 0 min 40 sec  		0 hrs 0 min 39 sec  		0 hrs 0 min 38 sec  		0 hrs 0 min 37 sec  		0 hrs 0 min 36 sec  		0 hrs 0 min 35 sec  		0 hrs 0 min 34 sec  		0 hrs 0 min 33 sec  		0 hrs 0 min 32 sec  		0 hrs 0 min 31 sec  		0 hrs 0 min 30 sec  		0 hrs 0 min 29 sec  		0 hrs 0 min 28 sec  		0 hrs 0 min 27 sec  		0 hrs 0 min 26 sec  		0 hrs 0 min 25 sec  		0 hrs 0 min 24 sec  		0 hrs 0 min 23 sec  		0 hrs 0 min 22 sec  		0 hrs 0 min 21 sec  		0 hrs 0 min 20 sec  		0 hrs 0 min 19 sec  		0 hrs 0 min 18 sec  		0 hrs 0 min 17 sec  		0 hrs 0 min 16 sec  		0 hrs 0 min 15 sec  		0 hrs 0 min 14 sec  		0 hrs 0 min 13 sec  		0 hrs 0 min 12 sec  		0 hrs 0 min 11 sec  		0 hrs 0 min 10 sec  		0 hrs 0 min 9 sec  		0 hrs 0 min 8 sec  		0 hrs 0 min 7 sec  		0 hrs 0 min 6 sec  		0 hrs 0 min 5 sec  		0 hrs 0 min 4 sec  		0 hrs 0 min 3 sec  		0 hrs 0 min 2 sec  		0 hrs 0 min 1 sec  		0 hrs 0 min 0 sec  
+
+psfsprod status: Synch stat is 10. Syncinprog stat is 27. MEG left 41433.8.
+psfsprd2 status: Synch stat is 10. Syncinprog stat is 27. MEG left 17261.2.
+psfssys status: Synch stat is 10. Syncinprog stat is 27. MEG left 47139.4.
+psfiles status: Synch stat is 10. Syncinprog stat is 27. MEG left 3296.4.
+Group Count is: 0
+The Device Groups for server16 are NOT YET established.
+Resetting Group Count to 0.
+Time_Counter Starting at: Fri Oct 11 16:32:34 EDT 2002
+Sleeping 60 Seconds. Total: 0 hour(s) 1 minute(s) 0 second(s)
+		0 hrs 1 min 0 sec  		0 hrs 0 min 59 sec  		0 hrs 0 min 58 sec  		0 hrs 0 min 57 sec  		0 hrs 0 min 56 sec  		0 hrs 0 min 55 sec  		0 hrs 0 min 54 sec  		0 hrs 0 min 53 sec  		0 hrs 0 min 52 sec  		0 hrs 0 min 51 sec  		0 hrs 0 min 50 sec  		0 hrs 0 min 49 sec  		0 hrs 0 min 48 sec  		0 hrs 0 min 47 sec  		0 hrs 0 min 46 sec  		0 hrs 0 min 45 sec  		0 hrs 0 min 44 sec  		0 hrs 0 min 43 sec  		0 hrs 0 min 42 sec  		0 hrs 0 min 41 sec  		0 hrs 0 min 40 sec  		0 hrs 0 min 39 sec  		0 hrs 0 min 38 sec  		0 hrs 0 min 37 sec  		0 hrs 0 min 36 sec  		0 hrs 0 min 35 sec  		0 hrs 0 min 34 sec  		0 hrs 0 min 33 sec  		0 hrs 0 min 32 sec  		0 hrs 0 min 31 sec  		0 hrs 0 min 30 sec  		0 hrs 0 min 29 sec  		0 hrs 0 min 28 sec  		0 hrs 0 min 27 sec  		0 hrs 0 min 26 sec  		0 hrs 0 min 25 sec  		0 hrs 0 min 24 sec  		0 hrs 0 min 23 sec  		0 hrs 0 min 22 sec  		0 hrs 0 min 21 sec  		0 hrs 0 min 20 sec  		0 hrs 0 min 19 sec  		0 hrs 0 min 18 sec  		0 hrs 0 min 17 sec  		0 hrs 0 min 16 sec  		0 hrs 0 min 15 sec  		0 hrs 0 min 14 sec  		0 hrs 0 min 13 sec  		0 hrs 0 min 12 sec  		0 hrs 0 min 11 sec  		0 hrs 0 min 10 sec  		0 hrs 0 min 9 sec  		0 hrs 0 min 8 sec  		0 hrs 0 min 7 sec  		0 hrs 0 min 6 sec  		0 hrs 0 min 5 sec  		0 hrs 0 min 4 sec  		0 hrs 0 min 3 sec  		0 hrs 0 min 2 sec  		0 hrs 0 min 1 sec  		0 hrs 0 min 0 sec  
+
+psfsprod status: Synch stat is 10. Syncinprog stat is 27. MEG left 40439.9.
+psfsprd2 status: Synch stat is 10. Syncinprog stat is 27. MEG left 17261.2.
+psfssys status: Synch stat is 10. Syncinprog stat is 27. MEG left 45983.2.
+psfiles status: Synch stat is 10. Syncinprog stat is 27. MEG left 3210.6.
+Group Count is: 0
+The Device Groups for server16 are NOT YET established.
+Resetting Group Count to 0.
+Time_Counter Starting at: Fri Oct 11 16:34:01 EDT 2002
+Sleeping 60 Seconds. Total: 0 hour(s) 1 minute(s) 0 second(s)
+		0 hrs 1 min 0 sec  		0 hrs 0 min 59 sec  		0 hrs 0 min 58 sec  		0 hrs 0 min 57 sec  		0 hrs 0 min 56 sec  		0 hrs 0 min 55 sec  		0 hrs 0 min 54 sec  		0 hrs 0 min 53 sec  		0 hrs 0 min 52 sec  		0 hrs 0 min 51 sec  		0 hrs 0 min 50 sec  		0 hrs 0 min 49 sec  		0 hrs 0 min 48 sec  		0 hrs 0 min 47 sec  		0 hrs 0 min 46 sec  		0 hrs 0 min 45 sec  		0 hrs 0 min 44 sec  		0 hrs 0 min 43 sec  		0 hrs 0 min 42 sec  		0 hrs 0 min 41 sec  		0 hrs 0 min 40 sec  		0 hrs 0 min 39 sec  		0 hrs 0 min 38 sec  		0 hrs 0 min 37 sec  		0 hrs 0 min 36 sec  		0 hrs 0 min 35 sec  		0 hrs 0 min 34 sec  		0 hrs 0 min 33 sec  		0 hrs 0 min 32 sec  		0 hrs 0 min 31 sec  		0 hrs 0 min 30 sec  		0 hrs 0 min 29 sec  		0 hrs 0 min 28 sec  		0 hrs 0 min 27 sec  		0 hrs 0 min 26 sec  		0 hrs 0 min 25 sec  		0 hrs 0 min 24 sec  		0 hrs 0 min 23 sec  		0 hrs 0 min 22 sec  		0 hrs 0 min 21 sec  		0 hrs 0 min 20 sec  		0 hrs 0 min 19 sec  		0 hrs 0 min 18 sec  		0 hrs 0 min 17 sec  		0 hrs 0 min 16 sec  		0 hrs 0 min 15 sec  		0 hrs 0 min 14 sec  		0 hrs 0 min 13 sec  		0 hrs 0 min 12 sec  		0 hrs 0 min 11 sec  		0 hrs 0 min 10 sec  		0 hrs 0 min 9 sec  		0 hrs 0 min 8 sec  		0 hrs 0 min 7 sec  		0 hrs 0 min 6 sec  		0 hrs 0 min 5 sec  		0 hrs 0 min 4 sec  		0 hrs 0 min 3 sec  		0 hrs 0 min 2 sec  		0 hrs 0 min 1 sec  		0 hrs 0 min 0 sec  
+
+psfsprod status: Synch stat is 10. Syncinprog stat is 27. MEG left 39373.3.
+psfsprd2 status: Synch stat is 10. Syncinprog stat is 27. MEG left 17261.2.
+psfssys status: Synch stat is 10. Syncinprog stat is 27. MEG left 44278.6.
+psfiles status: Synch stat is 10. Syncinprog stat is 27. MEG left 3110.7.
+Group Count is: 0
+The Device Groups for server16 are NOT YET established.
+Resetting Group Count to 0.
+Time_Counter Starting at: Fri Oct 11 16:35:45 EDT 2002
+Sleeping 60 Seconds. Total: 0 hour(s) 1 minute(s) 0 second(s)
+		0 hrs 1 min 0 sec  		0 hrs 0 min 59 sec  		0 hrs 0 min 58 sec  		0 hrs 0 min 57 sec  		0 hrs 0 min 56 sec  		0 hrs 0 min 55 sec  		0 hrs 0 min 54 sec  		0 hrs 0 min 53 sec  		0 hrs 0 min 52 sec  		0 hrs 0 min 51 sec  		0 hrs 0 min 50 sec  		0 hrs 0 min 49 sec  		0 hrs 0 min 48 sec  		0 hrs 0 min 47 sec  		0 hrs 0 min 46 sec  		0 hrs 0 min 45 sec  		0 hrs 0 min 44 sec  		0 hrs 0 min 43 sec  		0 hrs 0 min 42 sec  		0 hrs 0 min 41 sec  		0 hrs 0 min 40 sec  		0 hrs 0 min 39 sec  		0 hrs 0 min 38 sec  		0 hrs 0 min 37 sec  		0 hrs 0 min 36 sec  		0 hrs 0 min 35 sec  		0 hrs 0 min 34 sec  		0 hrs 0 min 33 sec  		0 hrs 0 min 32 sec  		0 hrs 0 min 31 sec  		0 hrs 0 min 30 sec  		0 hrs 0 min 29 sec  		0 hrs 0 min 28 sec  		0 hrs 0 min 27 sec  		0 hrs 0 min 26 sec  		0 hrs 0 min 25 sec  		0 hrs 0 min 24 sec  		0 hrs 0 min 23 sec  		0 hrs 0 min 22 sec  		0 hrs 0 min 21 sec  		0 hrs 0 min 20 sec  		0 hrs 0 min 19 sec  		0 hrs 0 min 18 sec  		0 hrs 0 min 17 sec  		0 hrs 0 min 16 sec  		0 hrs 0 min 15 sec  		0 hrs 0 min 14 sec  		0 hrs 0 min 13 sec  		0 hrs 0 min 12 sec  		0 hrs 0 min 11 sec  		0 hrs 0 min 10 sec  		0 hrs 0 min 9 sec  		0 hrs 0 min 8 sec  		0 hrs 0 min 7 sec  		0 hrs 0 min 6 sec  		0 hrs 0 min 5 sec  		0 hrs 0 min 4 sec  		0 hrs 0 min 3 sec  		0 hrs 0 min 2 sec  		0 hrs 0 min 1 sec  		0 hrs 0 min 0 sec  
+
+psfsprod status: Synch stat is 10. Syncinprog stat is 27. MEG left 38253.1.
+psfsprd2 status: Synch stat is 10. Syncinprog stat is 27. MEG left 17261.2.
+psfssys status: Synch stat is 10. Syncinprog stat is 27. MEG left 43542.2.
+psfiles status: Synch stat is 10. Syncinprog stat is 27. MEG left 3029.7.
+Group Count is: 0
+The Device Groups for server16 are NOT YET established.
+Resetting Group Count to 0.
+Time_Counter Starting at: Fri Oct 11 16:37:12 EDT 2002
+Sleeping 60 Seconds. Total: 0 hour(s) 1 minute(s) 0 second(s)
+		0 hrs 1 min 0 sec  		0 hrs 0 min 59 sec  		0 hrs 0 min 58 sec  		0 hrs 0 min 57 sec  		0 hrs 0 min 56 sec  		0 hrs 0 min 55 sec  		0 hrs 0 min 54 sec  		0 hrs 0 min 53 sec  		0 hrs 0 min 52 sec  		0 hrs 0 min 51 sec  		0 hrs 0 min 50 sec  		0 hrs 0 min 49 sec  		0 hrs 0 min 48 sec  		0 hrs 0 min 47 sec  		0 hrs 0 min 46 sec  		0 hrs 0 min 45 sec  		0 hrs 0 min 44 sec  		0 hrs 0 min 43 sec  		0 hrs 0 min 42 sec  		0 hrs 0 min 41 sec  		0 hrs 0 min 40 sec  		0 hrs 0 min 39 sec  		0 hrs 0 min 38 sec  		0 hrs 0 min 37 sec  		0 hrs 0 min 36 sec  		0 hrs 0 min 35 sec  		0 hrs 0 min 34 sec  		0 hrs 0 min 33 sec  		0 hrs 0 min 32 sec  		0 hrs 0 min 31 sec  		0 hrs 0 min 30 sec  		0 hrs 0 min 29 sec  		0 hrs 0 min 28 sec  		0 hrs 0 min 27 sec  		0 hrs 0 min 26 sec  		0 hrs 0 min 25 sec  		0 hrs 0 min 24 sec  		0 hrs 0 min 23 sec  		0 hrs 0 min 22 sec  		0 hrs 0 min 21 sec  		0 hrs 0 min 20 sec  		0 hrs 0 min 19 sec  		0 hrs 0 min 18 sec  		0 hrs 0 min 17 sec  		0 hrs 0 min 16 sec  		0 hrs 0 min 15 sec  		0 hrs 0 min 14 sec  		0 hrs 0 min 13 sec  		0 hrs 0 min 12 sec  		0 hrs 0 min 11 sec  		0 hrs 0 min 10 sec  		0 hrs 0 min 9 sec  		0 hrs 0 min 8 sec  		0 hrs 0 min 7 sec  		0 hrs 0 min 6 sec  		0 hrs 0 min 5 sec  		0 hrs 0 min 4 sec  		0 hrs 0 min 3 sec  		0 hrs 0 min 2 sec  		0 hrs 0 min 1 sec  		0 hrs 0 min 0 sec  
+
+psfsprod status: Synch stat is 10. Syncinprog stat is 27. MEG left 37274.3.
+psfsprd2 status: Synch stat is 10. Syncinprog stat is 27. MEG left 17261.2.
+psfssys status: Synch stat is 10. Syncinprog stat is 27. MEG left 43048.0.
+psfiles status: Synch stat is 10. Syncinprog stat is 27. MEG left 2945.6.
+Group Count is: 0
+The Device Groups for server16 are NOT YET established.
+Resetting Group Count to 0.
+Time_Counter Starting at: Fri Oct 11 16:38:39 EDT 2002
+Sleeping 60 Seconds. Total: 0 hour(s) 1 minute(s) 0 second(s)
+		0 hrs 1 min 0 sec  		0 hrs 0 min 59 sec  		0 hrs 0 min 58 sec  		0 hrs 0 min 57 sec  		0 hrs 0 min 56 sec  		0 hrs 0 min 55 sec  		0 hrs 0 min 54 sec  		0 hrs 0 min 53 sec  		0 hrs 0 min 52 sec  		0 hrs 0 min 51 sec  		0 hrs 0 min 50 sec  		0 hrs 0 min 49 sec  		0 hrs 0 min 48 sec  		0 hrs 0 min 47 sec  		0 hrs 0 min 46 sec  		0 hrs 0 min 45 sec  		0 hrs 0 min 44 sec  		0 hrs 0 min 43 sec  		0 hrs 0 min 42 sec  		0 hrs 0 min 41 sec  		0 hrs 0 min 40 sec  		0 hrs 0 min 39 sec  		0 hrs 0 min 38 sec  		0 hrs 0 min 37 sec  		0 hrs 0 min 36 sec  		0 hrs 0 min 35 sec  		0 hrs 0 min 34 sec  		0 hrs 0 min 33 sec  		0 hrs 0 min 32 sec  		0 hrs 0 min 31 sec  		0 hrs 0 min 30 sec  		0 hrs 0 min 29 sec  		0 hrs 0 min 28 sec  		0 hrs 0 min 27 sec  		0 hrs 0 min 26 sec  		0 hrs 0 min 25 sec  		0 hrs 0 min 24 sec  		0 hrs 0 min 23 sec  		0 hrs 0 min 22 sec  		0 hrs 0 min 21 sec  		0 hrs 0 min 20 sec  		0 hrs 0 min 19 sec  		0 hrs 0 min 18 sec  		0 hrs 0 min 17 sec  		0 hrs 0 min 16 sec  		0 hrs 0 min 15 sec  		0 hrs 0 min 14 sec  		0 hrs 0 min 13 sec  		0 hrs 0 min 12 sec  		0 hrs 0 min 11 sec  		0 hrs 0 min 10 sec  		0 hrs 0 min 9 sec  		0 hrs 0 min 8 sec  		0 hrs 0 min 7 sec  		0 hrs 0 min 6 sec  		0 hrs 0 min 5 sec  		0 hrs 0 min 4 sec  		0 hrs 0 min 3 sec  		0 hrs 0 min 2 sec  		0 hrs 0 min 1 sec  		0 hrs 0 min 0 sec  
+
+psfsprod status: Synch stat is 10. Syncinprog stat is 27. MEG left 36300.1.
+psfsprd2 status: Synch stat is 10. Syncinprog stat is 27. MEG left 17261.2.
+psfssys status: Synch stat is 10. Syncinprog stat is 27. MEG left 42542.6.
+psfiles status: Synch stat is 10. Syncinprog stat is 27. MEG left 2857.7.
+Group Count is: 0
+The Device Groups for server16 are NOT YET established.
+Resetting Group Count to 0.
+Time_Counter Starting at: Fri Oct 11 16:40:10 EDT 2002
+Sleeping 60 Seconds. Total: 0 hour(s) 1 minute(s) 0 second(s)
+		0 hrs 1 min 0 sec  		0 hrs 0 min 59 sec  		0 hrs 0 min 58 sec  		0 hrs 0 min 57 sec  		0 hrs 0 min 56 sec  		0 hrs 0 min 55 sec  		0 hrs 0 min 54 sec  		0 hrs 0 min 53 sec  		0 hrs 0 min 52 sec  		0 hrs 0 min 51 sec  		0 hrs 0 min 50 sec  		0 hrs 0 min 49 sec  		0 hrs 0 min 48 sec  		0 hrs 0 min 47 sec  		0 hrs 0 min 46 sec  		0 hrs 0 min 45 sec  		0 hrs 0 min 44 sec  		0 hrs 0 min 43 sec  		0 hrs 0 min 42 sec  		0 hrs 0 min 41 sec  		0 hrs 0 min 40 sec  		0 hrs 0 min 39 sec  		0 hrs 0 min 38 sec  		0 hrs 0 min 37 sec  		0 hrs 0 min 36 sec  		0 hrs 0 min 35 sec  		0 hrs 0 min 34 sec  		0 hrs 0 min 33 sec  		0 hrs 0 min 32 sec  		0 hrs 0 min 31 sec  		0 hrs 0 min 30 sec  		0 hrs 0 min 29 sec  		0 hrs 0 min 28 sec  		0 hrs 0 min 27 sec  		0 hrs 0 min 26 sec  		0 hrs 0 min 25 sec  		0 hrs 0 min 24 sec  		0 hrs 0 min 23 sec  		0 hrs 0 min 22 sec  		0 hrs 0 min 21 sec  		0 hrs 0 min 20 sec  		0 hrs 0 min 19 sec  		0 hrs 0 min 18 sec  		0 hrs 0 min 17 sec  		0 hrs 0 min 16 sec  		0 hrs 0 min 15 sec  		0 hrs 0 min 14 sec  		0 hrs 0 min 13 sec  		0 hrs 0 min 12 sec  		0 hrs 0 min 11 sec  		0 hrs 0 min 10 sec  		0 hrs 0 min 9 sec  		0 hrs 0 min 8 sec  		0 hrs 0 min 7 sec  		0 hrs 0 min 6 sec  		0 hrs 0 min 5 sec  		0 hrs 0 min 4 sec  		0 hrs 0 min 3 sec  		0 hrs 0 min 2 sec  		0 hrs 0 min 1 sec  		0 hrs 0 min 0 sec  
+
+psfsprod status: Synch stat is 10. Syncinprog stat is 27. MEG left 35246.2.
+psfsprd2 status: Synch stat is 10. Syncinprog stat is 27. MEG left 17261.2.
+psfssys status: Synch stat is 10. Syncinprog stat is 27. MEG left 42016.0.
+psfiles status: Synch stat is 10. Syncinprog stat is 27. MEG left 2775.4.
+Group Count is: 0
+The Device Groups for server16 are NOT YET established.
+Resetting Group Count to 0.
+Time_Counter Starting at: Fri Oct 11 16:41:37 EDT 2002
+Sleeping 60 Seconds. Total: 0 hour(s) 1 minute(s) 0 second(s)
+		0 hrs 1 min 0 sec  		0 hrs 0 min 59 sec  		0 hrs 0 min 58 sec  		0 hrs 0 min 57 sec  		0 hrs 0 min 56 sec  		0 hrs 0 min 55 sec  		0 hrs 0 min 54 sec  		0 hrs 0 min 53 sec  		0 hrs 0 min 52 sec  		0 hrs 0 min 51 sec  		0 hrs 0 min 50 sec  		0 hrs 0 min 49 sec  		0 hrs 0 min 48 sec  		0 hrs 0 min 47 sec  		0 hrs 0 min 46 sec  		0 hrs 0 min 45 sec  		0 hrs 0 min 44 sec  		0 hrs 0 min 43 sec  		0 hrs 0 min 42 sec  		0 hrs 0 min 41 sec  		0 hrs 0 min 40 sec  		0 hrs 0 min 39 sec  		0 hrs 0 min 38 sec  		0 hrs 0 min 37 sec  		0 hrs 0 min 36 sec  		0 hrs 0 min 35 sec  		0 hrs 0 min 34 sec  		0 hrs 0 min 33 sec  		0 hrs 0 min 32 sec  		0 hrs 0 min 31 sec  		0 hrs 0 min 30 sec  		0 hrs 0 min 29 sec  		0 hrs 0 min 28 sec  		0 hrs 0 min 27 sec  		0 hrs 0 min 26 sec  		0 hrs 0 min 25 sec  		0 hrs 0 min 24 sec  		0 hrs 0 min 23 sec  		0 hrs 0 min 22 sec  		0 hrs 0 min 21 sec  		0 hrs 0 min 20 sec  		0 hrs 0 min 19 sec  		0 hrs 0 min 18 sec  		0 hrs 0 min 17 sec  		0 hrs 0 min 16 sec  		0 hrs 0 min 15 sec  		0 hrs 0 min 14 sec  		0 hrs 0 min 13 sec  		0 hrs 0 min 12 sec  		0 hrs 0 min 11 sec  		0 hrs 0 min 10 sec  		0 hrs 0 min 9 sec  		0 hrs 0 min 8 sec  		0 hrs 0 min 7 sec  		0 hrs 0 min 6 sec  		0 hrs 0 min 5 sec  		0 hrs 0 min 4 sec  		0 hrs 0 min 3 sec  		0 hrs 0 min 2 sec  		0 hrs 0 min 1 sec  		0 hrs 0 min 0 sec  
+
+psfsprod status: Synch stat is 10. Syncinprog stat is 27. MEG left 34297.8.
+psfsprd2 status: Synch stat is 10. Syncinprog stat is 27. MEG left 17261.2.
+psfssys status: Synch stat is 10. Syncinprog stat is 27. MEG left 41529.8.
+psfiles status: Synch stat is 10. Syncinprog stat is 27. MEG left 2684.8.
+Group Count is: 0
+The Device Groups for server16 are NOT YET established.
+Resetting Group Count to 0.
+Time_Counter Starting at: Fri Oct 11 16:43:03 EDT 2002
+Sleeping 60 Seconds. Total: 0 hour(s) 1 minute(s) 0 second(s)
+		0 hrs 1 min 0 sec  		0 hrs 0 min 59 sec  		0 hrs 0 min 58 sec  		0 hrs 0 min 57 sec  		0 hrs 0 min 56 sec  		0 hrs 0 min 55 sec  		0 hrs 0 min 54 sec  		0 hrs 0 min 53 sec  		0 hrs 0 min 52 sec  		0 hrs 0 min 51 sec  		0 hrs 0 min 50 sec  		0 hrs 0 min 49 sec  		0 hrs 0 min 48 sec  		0 hrs 0 min 47 sec  		0 hrs 0 min 46 sec  		0 hrs 0 min 45 sec  		0 hrs 0 min 44 sec  		0 hrs 0 min 43 sec  		0 hrs 0 min 42 sec  		0 hrs 0 min 41 sec  		0 hrs 0 min 40 sec  		0 hrs 0 min 39 sec  		0 hrs 0 min 38 sec  		0 hrs 0 min 37 sec  		0 hrs 0 min 36 sec  		0 hrs 0 min 35 sec  		0 hrs 0 min 34 sec  		0 hrs 0 min 33 sec  		0 hrs 0 min 32 sec  		0 hrs 0 min 31 sec  		0 hrs 0 min 30 sec  		0 hrs 0 min 29 sec  		0 hrs 0 min 28 sec  		0 hrs 0 min 27 sec  		0 hrs 0 min 26 sec  		0 hrs 0 min 25 sec  		0 hrs 0 min 24 sec  		0 hrs 0 min 23 sec  		0 hrs 0 min 22 sec  		0 hrs 0 min 21 sec  		0 hrs 0 min 20 sec  		0 hrs 0 min 19 sec  		0 hrs 0 min 18 sec  		0 hrs 0 min 17 sec  		0 hrs 0 min 16 sec  		0 hrs 0 min 15 sec  		0 hrs 0 min 14 sec  		0 hrs 0 min 13 sec  		0 hrs 0 min 12 sec  		0 hrs 0 min 11 sec  		0 hrs 0 min 10 sec  		0 hrs 0 min 9 sec  		0 hrs 0 min 8 sec  		0 hrs 0 min 7 sec  		0 hrs 0 min 6 sec  		0 hrs 0 min 5 sec  		0 hrs 0 min 4 sec  		0 hrs 0 min 3 sec  		0 hrs 0 min 2 sec  		0 hrs 0 min 1 sec  		0 hrs 0 min 0 sec  
+
+psfsprod status: Synch stat is 10. Syncinprog stat is 27. MEG left 33299.4.
+psfsprd2 status: Synch stat is 10. Syncinprog stat is 27. MEG left 17261.2.
+psfssys status: Synch stat is 10. Syncinprog stat is 27. MEG left 41063.6.
+psfiles status: Synch stat is 10. Syncinprog stat is 27. MEG left 2594.9.
+Group Count is: 0
+The Device Groups for server16 are NOT YET established.
+Resetting Group Count to 0.
+Time_Counter Starting at: Fri Oct 11 16:44:30 EDT 2002
+Sleeping 60 Seconds. Total: 0 hour(s) 1 minute(s) 0 second(s)
+		0 hrs 1 min 0 sec  		0 hrs 0 min 59 sec  		0 hrs 0 min 58 sec  		0 hrs 0 min 57 sec  		0 hrs 0 min 56 sec  		0 hrs 0 min 55 sec  		0 hrs 0 min 54 sec  		0 hrs 0 min 53 sec  		0 hrs 0 min 52 sec  		0 hrs 0 min 51 sec  		0 hrs 0 min 50 sec  		0 hrs 0 min 49 sec  		0 hrs 0 min 48 sec  		0 hrs 0 min 47 sec  		0 hrs 0 min 46 sec  		0 hrs 0 min 45 sec  		0 hrs 0 min 44 sec  		0 hrs 0 min 43 sec  		0 hrs 0 min 42 sec  		0 hrs 0 min 41 sec  		0 hrs 0 min 40 sec  		0 hrs 0 min 39 sec  		0 hrs 0 min 38 sec  		0 hrs 0 min 37 sec  		0 hrs 0 min 36 sec  		0 hrs 0 min 35 sec  		0 hrs 0 min 34 sec  		0 hrs 0 min 33 sec  		0 hrs 0 min 32 sec  		0 hrs 0 min 31 sec  		0 hrs 0 min 30 sec  		0 hrs 0 min 29 sec  		0 hrs 0 min 28 sec  		0 hrs 0 min 27 sec  		0 hrs 0 min 26 sec  		0 hrs 0 min 25 sec  		0 hrs 0 min 24 sec  		0 hrs 0 min 23 sec  		0 hrs 0 min 22 sec  		0 hrs 0 min 21 sec  		0 hrs 0 min 20 sec  		0 hrs 0 min 19 sec  		0 hrs 0 min 18 sec  		0 hrs 0 min 17 sec  		0 hrs 0 min 16 sec  		0 hrs 0 min 15 sec  		0 hrs 0 min 14 sec  		0 hrs 0 min 13 sec  		0 hrs 0 min 12 sec  		0 hrs 0 min 11 sec  		0 hrs 0 min 10 sec  		0 hrs 0 min 9 sec  		0 hrs 0 min 8 sec  		0 hrs 0 min 7 sec  		0 hrs 0 min 6 sec  		0 hrs 0 min 5 sec  		0 hrs 0 min 4 sec  		0 hrs 0 min 3 sec  		0 hrs 0 min 2 sec  		0 hrs 0 min 1 sec  		0 hrs 0 min 0 sec  
+
+psfsprod status: Synch stat is 10. Syncinprog stat is 27. MEG left 32301.9.
+psfsprd2 status: Synch stat is 10. Syncinprog stat is 27. MEG left 17261.2.
+psfssys status: Synch stat is 10. Syncinprog stat is 27. MEG left 40593.1.
+psfiles status: Synch stat is 10. Syncinprog stat is 27. MEG left 2505.8.
+Group Count is: 0
+The Device Groups for server16 are NOT YET established.
+Resetting Group Count to 0.
+Time_Counter Starting at: Fri Oct 11 16:45:57 EDT 2002
+Sleeping 60 Seconds. Total: 0 hour(s) 1 minute(s) 0 second(s)
+		0 hrs 1 min 0 sec  		0 hrs 0 min 59 sec  		0 hrs 0 min 58 sec  		0 hrs 0 min 57 sec  		0 hrs 0 min 56 sec  		0 hrs 0 min 55 sec  		0 hrs 0 min 54 sec  		0 hrs 0 min 53 sec  		0 hrs 0 min 52 sec  		0 hrs 0 min 51 sec  		0 hrs 0 min 50 sec  		0 hrs 0 min 49 sec  		0 hrs 0 min 48 sec  		0 hrs 0 min 47 sec  		0 hrs 0 min 46 sec  		0 hrs 0 min 45 sec  		0 hrs 0 min 44 sec  		0 hrs 0 min 43 sec  		0 hrs 0 min 42 sec  		0 hrs 0 min 41 sec  		0 hrs 0 min 40 sec  		0 hrs 0 min 39 sec  		0 hrs 0 min 38 sec  		0 hrs 0 min 37 sec  		0 hrs 0 min 36 sec  		0 hrs 0 min 35 sec  		0 hrs 0 min 34 sec  		0 hrs 0 min 33 sec  		0 hrs 0 min 32 sec  		0 hrs 0 min 31 sec  		0 hrs 0 min 30 sec  		0 hrs 0 min 29 sec  		0 hrs 0 min 28 sec  		0 hrs 0 min 27 sec  		0 hrs 0 min 26 sec  		0 hrs 0 min 25 sec  		0 hrs 0 min 24 sec  		0 hrs 0 min 23 sec  		0 hrs 0 min 22 sec  		0 hrs 0 min 21 sec  		0 hrs 0 min 20 sec  		0 hrs 0 min 19 sec  		0 hrs 0 min 18 sec  		0 hrs 0 min 17 sec  		0 hrs 0 min 16 sec  		0 hrs 0 min 15 sec  		0 hrs 0 min 14 sec  		0 hrs 0 min 13 sec  		0 hrs 0 min 12 sec  		0 hrs 0 min 11 sec  		0 hrs 0 min 10 sec  		0 hrs 0 min 9 sec  		0 hrs 0 min 8 sec  		0 hrs 0 min 7 sec  		0 hrs 0 min 6 sec  		0 hrs 0 min 5 sec  		0 hrs 0 min 4 sec  		0 hrs 0 min 3 sec  		0 hrs 0 min 2 sec  		0 hrs 0 min 1 sec  		0 hrs 0 min 0 sec  
+
+psfsprod status: Synch stat is 10. Syncinprog stat is 27. MEG left 31298.5.
+psfsprd2 status: Synch stat is 10. Syncinprog stat is 27. MEG left 17261.2.
+psfssys status: Synch stat is 10. Syncinprog stat is 27. MEG left 40069.9.
+psfiles status: Synch stat is 10. Syncinprog stat is 27. MEG left 2418.9.
+Group Count is: 0
+The Device Groups for server16 are NOT YET established.
+Resetting Group Count to 0.
+Time_Counter Starting at: Fri Oct 11 16:47:24 EDT 2002
+Sleeping 60 Seconds. Total: 0 hour(s) 1 minute(s) 0 second(s)
+		0 hrs 1 min 0 sec  		0 hrs 0 min 59 sec  		0 hrs 0 min 58 sec  		0 hrs 0 min 57 sec  		0 hrs 0 min 56 sec  		0 hrs 0 min 55 sec  		0 hrs 0 min 54 sec  		0 hrs 0 min 53 sec  		0 hrs 0 min 52 sec  		0 hrs 0 min 51 sec  		0 hrs 0 min 50 sec  		0 hrs 0 min 49 sec  		0 hrs 0 min 48 sec  		0 hrs 0 min 47 sec  		0 hrs 0 min 46 sec  		0 hrs 0 min 45 sec  		0 hrs 0 min 44 sec  		0 hrs 0 min 43 sec  		0 hrs 0 min 42 sec  		0 hrs 0 min 41 sec  		0 hrs 0 min 40 sec  		0 hrs 0 min 39 sec  		0 hrs 0 min 38 sec  		0 hrs 0 min 37 sec  		0 hrs 0 min 36 sec  		0 hrs 0 min 35 sec  		0 hrs 0 min 34 sec  		0 hrs 0 min 33 sec  		0 hrs 0 min 32 sec  		0 hrs 0 min 31 sec  		0 hrs 0 min 30 sec  		0 hrs 0 min 29 sec  		0 hrs 0 min 28 sec  		0 hrs 0 min 27 sec  		0 hrs 0 min 26 sec  		0 hrs 0 min 25 sec  		0 hrs 0 min 24 sec  		0 hrs 0 min 23 sec  		0 hrs 0 min 22 sec  		0 hrs 0 min 21 sec  		0 hrs 0 min 20 sec  		0 hrs 0 min 19 sec  		0 hrs 0 min 18 sec  		0 hrs 0 min 17 sec  		0 hrs 0 min 16 sec  		0 hrs 0 min 15 sec  		0 hrs 0 min 14 sec  		0 hrs 0 min 13 sec  		0 hrs 0 min 12 sec  		0 hrs 0 min 11 sec  		0 hrs 0 min 10 sec  		0 hrs 0 min 9 sec  		0 hrs 0 min 8 sec  		0 hrs 0 min 7 sec  		0 hrs 0 min 6 sec  		0 hrs 0 min 5 sec  		0 hrs 0 min 4 sec  		0 hrs 0 min 3 sec  		0 hrs 0 min 2 sec  		0 hrs 0 min 1 sec  		0 hrs 0 min 0 sec  
+
+psfsprod status: Synch stat is 10. Syncinprog stat is 27. MEG left 30504.2.
+psfsprd2 status: Synch stat is 10. Syncinprog stat is 27. MEG left 17261.2.
+psfssys status: Synch stat is 10. Syncinprog stat is 27. MEG left 39044.1.
+psfiles status: Synch stat is 10. Syncinprog stat is 27. MEG left 2315.4.
+Group Count is: 0
+The Device Groups for server16 are NOT YET established.
+Resetting Group Count to 0.
+Time_Counter Starting at: Fri Oct 11 16:48:51 EDT 2002
+Sleeping 60 Seconds. Total: 0 hour(s) 1 minute(s) 0 second(s)
+		0 hrs 1 min 0 sec  		0 hrs 0 min 59 sec  		0 hrs 0 min 58 sec  		0 hrs 0 min 57 sec  		0 hrs 0 min 56 sec  		0 hrs 0 min 55 sec  		0 hrs 0 min 54 sec  		0 hrs 0 min 53 sec  		0 hrs 0 min 52 sec  		0 hrs 0 min 51 sec  		0 hrs 0 min 50 sec  		0 hrs 0 min 49 sec  		0 hrs 0 min 48 sec  		0 hrs 0 min 47 sec  		0 hrs 0 min 46 sec  		0 hrs 0 min 45 sec  		0 hrs 0 min 44 sec  		0 hrs 0 min 43 sec  		0 hrs 0 min 42 sec  		0 hrs 0 min 41 sec  		0 hrs 0 min 40 sec  		0 hrs 0 min 39 sec  		0 hrs 0 min 38 sec  		0 hrs 0 min 37 sec  		0 hrs 0 min 36 sec  		0 hrs 0 min 35 sec  		0 hrs 0 min 34 sec  		0 hrs 0 min 33 sec  		0 hrs 0 min 32 sec  		0 hrs 0 min 31 sec  		0 hrs 0 min 30 sec  		0 hrs 0 min 29 sec  		0 hrs 0 min 28 sec  		0 hrs 0 min 27 sec  		0 hrs 0 min 26 sec  		0 hrs 0 min 25 sec  		0 hrs 0 min 24 sec  		0 hrs 0 min 23 sec  		0 hrs 0 min 22 sec  		0 hrs 0 min 21 sec  		0 hrs 0 min 20 sec  		0 hrs 0 min 19 sec  		0 hrs 0 min 18 sec  		0 hrs 0 min 17 sec  		0 hrs 0 min 16 sec  		0 hrs 0 min 15 sec  		0 hrs 0 min 14 sec  		0 hrs 0 min 13 sec  		0 hrs 0 min 12 sec  		0 hrs 0 min 11 sec  		0 hrs 0 min 10 sec  		0 hrs 0 min 9 sec  		0 hrs 0 min 8 sec  		0 hrs 0 min 7 sec  		0 hrs 0 min 6 sec  		0 hrs 0 min 5 sec  		0 hrs 0 min 4 sec  		0 hrs 0 min 3 sec  		0 hrs 0 min 2 sec  		0 hrs 0 min 1 sec  		0 hrs 0 min 0 sec  
+
+psfsprod status: Synch stat is 10. Syncinprog stat is 27. MEG left 29885.2.
+psfsprd2 status: Synch stat is 10. Syncinprog stat is 27. MEG left 17261.2.
+psfssys status: Synch stat is 10. Syncinprog stat is 27. MEG left 37615.9.
+psfiles status: Synch stat is 10. Syncinprog stat is 27. MEG left 2199.1.
+Group Count is: 0
+The Device Groups for server16 are NOT YET established.
+Resetting Group Count to 0.
+Time_Counter Starting at: Fri Oct 11 16:50:33 EDT 2002
+Sleeping 60 Seconds. Total: 0 hour(s) 1 minute(s) 0 second(s)
+		0 hrs 1 min 0 sec  		0 hrs 0 min 59 sec  		0 hrs 0 min 58 sec  		0 hrs 0 min 57 sec  		0 hrs 0 min 56 sec  		0 hrs 0 min 55 sec  		0 hrs 0 min 54 sec  		0 hrs 0 min 53 sec  		0 hrs 0 min 52 sec  		0 hrs 0 min 51 sec  		0 hrs 0 min 50 sec  		0 hrs 0 min 49 sec  		0 hrs 0 min 48 sec  		0 hrs 0 min 47 sec  		0 hrs 0 min 46 sec  		0 hrs 0 min 45 sec  		0 hrs 0 min 44 sec  		0 hrs 0 min 43 sec  		0 hrs 0 min 42 sec  		0 hrs 0 min 41 sec  		0 hrs 0 min 40 sec  		0 hrs 0 min 39 sec  		0 hrs 0 min 38 sec  		0 hrs 0 min 37 sec  		0 hrs 0 min 36 sec  		0 hrs 0 min 35 sec  		0 hrs 0 min 34 sec  		0 hrs 0 min 33 sec  		0 hrs 0 min 32 sec  		0 hrs 0 min 31 sec  		0 hrs 0 min 30 sec  		0 hrs 0 min 29 sec  		0 hrs 0 min 28 sec  		0 hrs 0 min 27 sec  		0 hrs 0 min 26 sec  		0 hrs 0 min 25 sec  		0 hrs 0 min 24 sec  		0 hrs 0 min 23 sec  		0 hrs 0 min 22 sec  		0 hrs 0 min 21 sec  		0 hrs 0 min 20 sec  		0 hrs 0 min 19 sec  		0 hrs 0 min 18 sec  		0 hrs 0 min 17 sec  		0 hrs 0 min 16 sec  		0 hrs 0 min 15 sec  		0 hrs 0 min 14 sec  		0 hrs 0 min 13 sec  		0 hrs 0 min 12 sec  		0 hrs 0 min 11 sec  		0 hrs 0 min 10 sec  		0 hrs 0 min 9 sec  		0 hrs 0 min 8 sec  		0 hrs 0 min 7 sec  		0 hrs 0 min 6 sec  		0 hrs 0 min 5 sec  		0 hrs 0 min 4 sec  		0 hrs 0 min 3 sec  		0 hrs 0 min 2 sec  		0 hrs 0 min 1 sec  		0 hrs 0 min 0 sec  
+
+psfsprod status: Synch stat is 10. Syncinprog stat is 27. MEG left 28796.3.
+psfsprd2 status: Synch stat is 10. Syncinprog stat is 27. MEG left 17261.2.
+psfssys status: Synch stat is 10. Syncinprog stat is 27. MEG left 36700.1.
+psfiles status: Synch stat is 10. Syncinprog stat is 27. MEG left 2110.7.
+Group Count is: 0
+The Device Groups for server16 are NOT YET established.
+Resetting Group Count to 0.
+Time_Counter Starting at: Fri Oct 11 16:52:00 EDT 2002
+Sleeping 60 Seconds. Total: 0 hour(s) 1 minute(s) 0 second(s)
+		0 hrs 1 min 0 sec  		0 hrs 0 min 59 sec  		0 hrs 0 min 58 sec  		0 hrs 0 min 57 sec  		0 hrs 0 min 56 sec  		0 hrs 0 min 55 sec  		0 hrs 0 min 54 sec  		0 hrs 0 min 53 sec  		0 hrs 0 min 52 sec  		0 hrs 0 min 51 sec  		0 hrs 0 min 50 sec  		0 hrs 0 min 49 sec  		0 hrs 0 min 48 sec  		0 hrs 0 min 47 sec  		0 hrs 0 min 46 sec  		0 hrs 0 min 45 sec  		0 hrs 0 min 44 sec  		0 hrs 0 min 43 sec  		0 hrs 0 min 42 sec  		0 hrs 0 min 41 sec  		0 hrs 0 min 40 sec  		0 hrs 0 min 39 sec  		0 hrs 0 min 38 sec  		0 hrs 0 min 37 sec  		0 hrs 0 min 36 sec  		0 hrs 0 min 35 sec  		0 hrs 0 min 34 sec  		0 hrs 0 min 33 sec  		0 hrs 0 min 32 sec  		0 hrs 0 min 31 sec  		0 hrs 0 min 30 sec  		0 hrs 0 min 29 sec  		0 hrs 0 min 28 sec  		0 hrs 0 min 27 sec  		0 hrs 0 min 26 sec  		0 hrs 0 min 25 sec  		0 hrs 0 min 24 sec  		0 hrs 0 min 23 sec  		0 hrs 0 min 22 sec  		0 hrs 0 min 21 sec  		0 hrs 0 min 20 sec  		0 hrs 0 min 19 sec  		0 hrs 0 min 18 sec  		0 hrs 0 min 17 sec  		0 hrs 0 min 16 sec  		0 hrs 0 min 15 sec  		0 hrs 0 min 14 sec  		0 hrs 0 min 13 sec  		0 hrs 0 min 12 sec  		0 hrs 0 min 11 sec  		0 hrs 0 min 10 sec  		0 hrs 0 min 9 sec  		0 hrs 0 min 8 sec  		0 hrs 0 min 7 sec  		0 hrs 0 min 6 sec  		0 hrs 0 min 5 sec  		0 hrs 0 min 4 sec  		0 hrs 0 min 3 sec  		0 hrs 0 min 2 sec  		0 hrs 0 min 1 sec  		0 hrs 0 min 0 sec  
+
+psfsprod status: Synch stat is 10. Syncinprog stat is 27. MEG left 27354.9.
+psfsprd2 status: Synch stat is 10. Syncinprog stat is 27. MEG left 17261.2.
+psfssys status: Synch stat is 10. Syncinprog stat is 27. MEG left 35121.9.
+psfiles status: Synch stat is 10. Syncinprog stat is 27. MEG left 2019.0.
+Group Count is: 0
+The Device Groups for server16 are NOT YET established.
+Resetting Group Count to 0.
+Time_Counter Starting at: Fri Oct 11 16:53:27 EDT 2002
+Sleeping 60 Seconds. Total: 0 hour(s) 1 minute(s) 0 second(s)
+		0 hrs 1 min 0 sec  		0 hrs 0 min 59 sec  		0 hrs 0 min 58 sec  		0 hrs 0 min 57 sec  		0 hrs 0 min 56 sec  		0 hrs 0 min 55 sec  		0 hrs 0 min 54 sec  		0 hrs 0 min 53 sec  		0 hrs 0 min 52 sec  		0 hrs 0 min 51 sec  		0 hrs 0 min 50 sec  		0 hrs 0 min 49 sec  		0 hrs 0 min 48 sec  		0 hrs 0 min 47 sec  		0 hrs 0 min 46 sec  		0 hrs 0 min 45 sec  		0 hrs 0 min 44 sec  		0 hrs 0 min 43 sec  		0 hrs 0 min 42 sec  		0 hrs 0 min 41 sec  		0 hrs 0 min 40 sec  		0 hrs 0 min 39 sec  		0 hrs 0 min 38 sec  		0 hrs 0 min 37 sec  		0 hrs 0 min 36 sec  		0 hrs 0 min 35 sec  		0 hrs 0 min 34 sec  		0 hrs 0 min 33 sec  		0 hrs 0 min 32 sec  		0 hrs 0 min 31 sec  		0 hrs 0 min 30 sec  		0 hrs 0 min 29 sec  		0 hrs 0 min 28 sec  		0 hrs 0 min 27 sec  		0 hrs 0 min 26 sec  		0 hrs 0 min 25 sec  		0 hrs 0 min 24 sec  		0 hrs 0 min 23 sec  		0 hrs 0 min 22 sec  		0 hrs 0 min 21 sec  		0 hrs 0 min 20 sec  		0 hrs 0 min 19 sec  		0 hrs 0 min 18 sec  		0 hrs 0 min 17 sec  		0 hrs 0 min 16 sec  		0 hrs 0 min 15 sec  		0 hrs 0 min 14 sec  		0 hrs 0 min 13 sec  		0 hrs 0 min 12 sec  		0 hrs 0 min 11 sec  		0 hrs 0 min 10 sec  		0 hrs 0 min 9 sec  		0 hrs 0 min 8 sec  		0 hrs 0 min 7 sec  		0 hrs 0 min 6 sec  		0 hrs 0 min 5 sec  		0 hrs 0 min 4 sec  		0 hrs 0 min 3 sec  		0 hrs 0 min 2 sec  		0 hrs 0 min 1 sec  		0 hrs 0 min 0 sec  
+
+psfsprod status: Synch stat is 10. Syncinprog stat is 27. MEG left 26028.3.
+psfsprd2 status: Synch stat is 10. Syncinprog stat is 27. MEG left 16436.5.
+psfssys status: Synch stat is 10. Syncinprog stat is 27. MEG left 33271.2.
+psfiles status: Synch stat is 10. Syncinprog stat is 27. MEG left 1927.6.
+Group Count is: 0
+The Device Groups for server16 are NOT YET established.
+Resetting Group Count to 0.
+Time_Counter Starting at: Fri Oct 11 16:54:54 EDT 2002
+Sleeping 60 Seconds. Total: 0 hour(s) 1 minute(s) 0 second(s)
+		0 hrs 1 min 0 sec  		0 hrs 0 min 59 sec  		0 hrs 0 min 58 sec  		0 hrs 0 min 57 sec  		0 hrs 0 min 56 sec  		0 hrs 0 min 55 sec  		0 hrs 0 min 54 sec  		0 hrs 0 min 53 sec  		0 hrs 0 min 52 sec  		0 hrs 0 min 51 sec  		0 hrs 0 min 50 sec  		0 hrs 0 min 49 sec  		0 hrs 0 min 48 sec  		0 hrs 0 min 47 sec  		0 hrs 0 min 46 sec  		0 hrs 0 min 45 sec  		0 hrs 0 min 44 sec  		0 hrs 0 min 43 sec  		0 hrs 0 min 42 sec  		0 hrs 0 min 41 sec  		0 hrs 0 min 40 sec  		0 hrs 0 min 39 sec  		0 hrs 0 min 38 sec  		0 hrs 0 min 37 sec  		0 hrs 0 min 36 sec  		0 hrs 0 min 35 sec  		0 hrs 0 min 34 sec  		0 hrs 0 min 33 sec  		0 hrs 0 min 32 sec  		0 hrs 0 min 31 sec  		0 hrs 0 min 30 sec  		0 hrs 0 min 29 sec  		0 hrs 0 min 28 sec  		0 hrs 0 min 27 sec  		0 hrs 0 min 26 sec  		0 hrs 0 min 25 sec  		0 hrs 0 min 24 sec  		0 hrs 0 min 23 sec  		0 hrs 0 min 22 sec  		0 hrs 0 min 21 sec  		0 hrs 0 min 20 sec  		0 hrs 0 min 19 sec  		0 hrs 0 min 18 sec  		0 hrs 0 min 17 sec  		0 hrs 0 min 16 sec  		0 hrs 0 min 15 sec  		0 hrs 0 min 14 sec  		0 hrs 0 min 13 sec  		0 hrs 0 min 12 sec  		0 hrs 0 min 11 sec  		0 hrs 0 min 10 sec  		0 hrs 0 min 9 sec  		0 hrs 0 min 8 sec  		0 hrs 0 min 7 sec  		0 hrs 0 min 6 sec  		0 hrs 0 min 5 sec  		0 hrs 0 min 4 sec  		0 hrs 0 min 3 sec  		0 hrs 0 min 2 sec  		0 hrs 0 min 1 sec  		0 hrs 0 min 0 sec  
+
+psfsprod status: Synch stat is 10. Syncinprog stat is 27. MEG left 24912.2.
+psfsprd2 status: Synch stat is 10. Syncinprog stat is 27. MEG left 15601.4.
+psfssys status: Synch stat is 10. Syncinprog stat is 27. MEG left 31378.6.
+psfiles status: Synch stat is 10. Syncinprog stat is 27. MEG left 1837.1.
+Group Count is: 0
+The Device Groups for server16 are NOT YET established.
+Resetting Group Count to 0.
+Time_Counter Starting at: Fri Oct 11 16:56:21 EDT 2002
+Sleeping 60 Seconds. Total: 0 hour(s) 1 minute(s) 0 second(s)
+		0 hrs 1 min 0 sec  		0 hrs 0 min 59 sec  		0 hrs 0 min 58 sec  		0 hrs 0 min 57 sec  		0 hrs 0 min 56 sec  		0 hrs 0 min 55 sec  		0 hrs 0 min 54 sec  		0 hrs 0 min 53 sec  		0 hrs 0 min 52 sec  		0 hrs 0 min 51 sec  		0 hrs 0 min 50 sec  		0 hrs 0 min 49 sec  		0 hrs 0 min 48 sec  		0 hrs 0 min 47 sec  		0 hrs 0 min 46 sec  		0 hrs 0 min 45 sec  		0 hrs 0 min 44 sec  		0 hrs 0 min 43 sec  		0 hrs 0 min 42 sec  		0 hrs 0 min 41 sec  		0 hrs 0 min 40 sec  		0 hrs 0 min 39 sec  		0 hrs 0 min 38 sec  		0 hrs 0 min 37 sec  		0 hrs 0 min 36 sec  		0 hrs 0 min 35 sec  		0 hrs 0 min 34 sec  		0 hrs 0 min 33 sec  		0 hrs 0 min 32 sec  		0 hrs 0 min 31 sec  		0 hrs 0 min 30 sec  		0 hrs 0 min 29 sec  		0 hrs 0 min 28 sec  		0 hrs 0 min 27 sec  		0 hrs 0 min 26 sec  		0 hrs 0 min 25 sec  		0 hrs 0 min 24 sec  		0 hrs 0 min 23 sec  		0 hrs 0 min 22 sec  		0 hrs 0 min 21 sec  		0 hrs 0 min 20 sec  		0 hrs 0 min 19 sec  		0 hrs 0 min 18 sec  		0 hrs 0 min 17 sec  		0 hrs 0 min 16 sec  		0 hrs 0 min 15 sec  		0 hrs 0 min 14 sec  		0 hrs 0 min 13 sec  		0 hrs 0 min 12 sec  		0 hrs 0 min 11 sec  		0 hrs 0 min 10 sec  		0 hrs 0 min 9 sec  		0 hrs 0 min 8 sec  		0 hrs 0 min 7 sec  		0 hrs 0 min 6 sec  		0 hrs 0 min 5 sec  		0 hrs 0 min 4 sec  		0 hrs 0 min 3 sec  		0 hrs 0 min 2 sec  		0 hrs 0 min 1 sec  		0 hrs 0 min 0 sec  
+
+psfsprod status: Synch stat is 10. Syncinprog stat is 27. MEG left 23660.4.
+psfsprd2 status: Synch stat is 10. Syncinprog stat is 27. MEG left 14819.5.
+psfssys status: Synch stat is 10. Syncinprog stat is 27. MEG left 29843.5.
+psfiles status: Synch stat is 10. Syncinprog stat is 27. MEG left 1747.2.
+Group Count is: 0
+The Device Groups for server16 are NOT YET established.
+Resetting Group Count to 0.
+Time_Counter Starting at: Fri Oct 11 16:57:48 EDT 2002
+Sleeping 60 Seconds. Total: 0 hour(s) 1 minute(s) 0 second(s)
+		0 hrs 1 min 0 sec  		0 hrs 0 min 59 sec  		0 hrs 0 min 58 sec  		0 hrs 0 min 57 sec  		0 hrs 0 min 56 sec  		0 hrs 0 min 55 sec  		0 hrs 0 min 54 sec  		0 hrs 0 min 53 sec  		0 hrs 0 min 52 sec  		0 hrs 0 min 51 sec  		0 hrs 0 min 50 sec  		0 hrs 0 min 49 sec  		0 hrs 0 min 48 sec  		0 hrs 0 min 47 sec  		0 hrs 0 min 46 sec  		0 hrs 0 min 45 sec  		0 hrs 0 min 44 sec  		0 hrs 0 min 43 sec  		0 hrs 0 min 42 sec  		0 hrs 0 min 41 sec  		0 hrs 0 min 40 sec  		0 hrs 0 min 39 sec  		0 hrs 0 min 38 sec  		0 hrs 0 min 37 sec  		0 hrs 0 min 36 sec  		0 hrs 0 min 35 sec  		0 hrs 0 min 34 sec  		0 hrs 0 min 33 sec  		0 hrs 0 min 32 sec  		0 hrs 0 min 31 sec  		0 hrs 0 min 30 sec  		0 hrs 0 min 29 sec  		0 hrs 0 min 28 sec  		0 hrs 0 min 27 sec  		0 hrs 0 min 26 sec  		0 hrs 0 min 25 sec  		0 hrs 0 min 24 sec  		0 hrs 0 min 23 sec  		0 hrs 0 min 22 sec  		0 hrs 0 min 21 sec  		0 hrs 0 min 20 sec  		0 hrs 0 min 19 sec  		0 hrs 0 min 18 sec  		0 hrs 0 min 17 sec  		0 hrs 0 min 16 sec  		0 hrs 0 min 15 sec  		0 hrs 0 min 14 sec  		0 hrs 0 min 13 sec  		0 hrs 0 min 12 sec  		0 hrs 0 min 11 sec  		0 hrs 0 min 10 sec  		0 hrs 0 min 9 sec  		0 hrs 0 min 8 sec  		0 hrs 0 min 7 sec  		0 hrs 0 min 6 sec  		0 hrs 0 min 5 sec  		0 hrs 0 min 4 sec  		0 hrs 0 min 3 sec  		0 hrs 0 min 2 sec  		0 hrs 0 min 1 sec  		0 hrs 0 min 0 sec  
+
+psfsprod status: Synch stat is 10. Syncinprog stat is 27. MEG left 22247.2.
+psfsprd2 status: Synch stat is 10. Syncinprog stat is 27. MEG left 14070.9.
+psfssys status: Synch stat is 10. Syncinprog stat is 27. MEG left 28480.7.
+psfiles status: Synch stat is 10. Syncinprog stat is 27. MEG left 1651.2.
+Group Count is: 0
+The Device Groups for server16 are NOT YET established.
+Resetting Group Count to 0.
+Time_Counter Starting at: Fri Oct 11 16:59:15 EDT 2002
+Sleeping 60 Seconds. Total: 0 hour(s) 1 minute(s) 0 second(s)
+		0 hrs 1 min 0 sec  		0 hrs 0 min 59 sec  		0 hrs 0 min 58 sec  		0 hrs 0 min 57 sec  		0 hrs 0 min 56 sec  		0 hrs 0 min 55 sec  		0 hrs 0 min 54 sec  		0 hrs 0 min 53 sec  		0 hrs 0 min 52 sec  		0 hrs 0 min 51 sec  		0 hrs 0 min 50 sec  		0 hrs 0 min 49 sec  		0 hrs 0 min 48 sec  		0 hrs 0 min 47 sec  		0 hrs 0 min 46 sec  		0 hrs 0 min 45 sec  		0 hrs 0 min 44 sec  		0 hrs 0 min 43 sec  		0 hrs 0 min 42 sec  		0 hrs 0 min 41 sec  		0 hrs 0 min 40 sec  		0 hrs 0 min 39 sec  		0 hrs 0 min 38 sec  		0 hrs 0 min 37 sec  		0 hrs 0 min 36 sec  		0 hrs 0 min 35 sec  		0 hrs 0 min 34 sec  		0 hrs 0 min 33 sec  		0 hrs 0 min 32 sec  		0 hrs 0 min 31 sec  		0 hrs 0 min 30 sec  		0 hrs 0 min 29 sec  		0 hrs 0 min 28 sec  		0 hrs 0 min 27 sec  		0 hrs 0 min 26 sec  		0 hrs 0 min 25 sec  		0 hrs 0 min 24 sec  		0 hrs 0 min 23 sec  		0 hrs 0 min 22 sec  		0 hrs 0 min 21 sec  		0 hrs 0 min 20 sec  		0 hrs 0 min 19 sec  		0 hrs 0 min 18 sec  		0 hrs 0 min 17 sec  		0 hrs 0 min 16 sec  		0 hrs 0 min 15 sec  		0 hrs 0 min 14 sec  		0 hrs 0 min 13 sec  		0 hrs 0 min 12 sec  		0 hrs 0 min 11 sec  		0 hrs 0 min 10 sec  		0 hrs 0 min 9 sec  		0 hrs 0 min 8 sec  		0 hrs 0 min 7 sec  		0 hrs 0 min 6 sec  		0 hrs 0 min 5 sec  		0 hrs 0 min 4 sec  		0 hrs 0 min 3 sec  		0 hrs 0 min 2 sec  		0 hrs 0 min 1 sec  		0 hrs 0 min 0 sec  
+
+psfsprod status: Synch stat is 10. Syncinprog stat is 27. MEG left 20880.8.
+psfsprd2 status: Synch stat is 10. Syncinprog stat is 27. MEG left 13293.5.
+psfssys status: Synch stat is 10. Syncinprog stat is 27. MEG left 27045.8.
+psfiles status: Synch stat is 10. Syncinprog stat is 27. MEG left 1555.3.
+Group Count is: 0
+The Device Groups for server16 are NOT YET established.
+Resetting Group Count to 0.
+Time_Counter Starting at: Fri Oct 11 17:00:46 EDT 2002
+Sleeping 60 Seconds. Total: 0 hour(s) 1 minute(s) 0 second(s)
+		0 hrs 1 min 0 sec  		0 hrs 0 min 59 sec  		0 hrs 0 min 58 sec  		0 hrs 0 min 57 sec  		0 hrs 0 min 56 sec  		0 hrs 0 min 55 sec  		0 hrs 0 min 54 sec  		0 hrs 0 min 53 sec  		0 hrs 0 min 52 sec  		0 hrs 0 min 51 sec  		0 hrs 0 min 50 sec  		0 hrs 0 min 49 sec  		0 hrs 0 min 48 sec  		0 hrs 0 min 47 sec  		0 hrs 0 min 46 sec  		0 hrs 0 min 45 sec  		0 hrs 0 min 44 sec  		0 hrs 0 min 43 sec  		0 hrs 0 min 42 sec  		0 hrs 0 min 41 sec  		0 hrs 0 min 40 sec  		0 hrs 0 min 39 sec  		0 hrs 0 min 38 sec  		0 hrs 0 min 37 sec  		0 hrs 0 min 36 sec  		0 hrs 0 min 35 sec  		0 hrs 0 min 34 sec  		0 hrs 0 min 33 sec  		0 hrs 0 min 32 sec  		0 hrs 0 min 31 sec  		0 hrs 0 min 30 sec  		0 hrs 0 min 29 sec  		0 hrs 0 min 28 sec  		0 hrs 0 min 27 sec  		0 hrs 0 min 26 sec  		0 hrs 0 min 25 sec  		0 hrs 0 min 24 sec  		0 hrs 0 min 23 sec  		0 hrs 0 min 22 sec  		0 hrs 0 min 21 sec  		0 hrs 0 min 20 sec  		0 hrs 0 min 19 sec  		0 hrs 0 min 18 sec  		0 hrs 0 min 17 sec  		0 hrs 0 min 16 sec  		0 hrs 0 min 15 sec  		0 hrs 0 min 14 sec  		0 hrs 0 min 13 sec  		0 hrs 0 min 12 sec  		0 hrs 0 min 11 sec  		0 hrs 0 min 10 sec  		0 hrs 0 min 9 sec  		0 hrs 0 min 8 sec  		0 hrs 0 min 7 sec  		0 hrs 0 min 6 sec  		0 hrs 0 min 5 sec  		0 hrs 0 min 4 sec  		0 hrs 0 min 3 sec  		0 hrs 0 min 2 sec  		0 hrs 0 min 1 sec  		0 hrs 0 min 0 sec  
+
+psfsprod status: Synch stat is 10. Syncinprog stat is 27. MEG left 19678.0.
+psfsprd2 status: Synch stat is 10. Syncinprog stat is 27. MEG left 12945.9.
+psfssys status: Synch stat is 10. Syncinprog stat is 27. MEG left 24970.2.
+psfiles status: Synch stat is 10. Syncinprog stat is 27. MEG left 1464.3.
+Group Count is: 0
+The Device Groups for server16 are NOT YET established.
+Resetting Group Count to 0.
+Time_Counter Starting at: Fri Oct 11 17:02:13 EDT 2002
+Sleeping 60 Seconds. Total: 0 hour(s) 1 minute(s) 0 second(s)
+		0 hrs 1 min 0 sec  		0 hrs 0 min 59 sec  		0 hrs 0 min 58 sec  		0 hrs 0 min 57 sec  		0 hrs 0 min 56 sec  		0 hrs 0 min 55 sec  		0 hrs 0 min 54 sec  		0 hrs 0 min 53 sec  		0 hrs 0 min 52 sec  		0 hrs 0 min 51 sec  		0 hrs 0 min 50 sec  		0 hrs 0 min 49 sec  		0 hrs 0 min 48 sec  		0 hrs 0 min 47 sec  		0 hrs 0 min 46 sec  		0 hrs 0 min 45 sec  		0 hrs 0 min 44 sec  		0 hrs 0 min 43 sec  		0 hrs 0 min 42 sec  		0 hrs 0 min 41 sec  		0 hrs 0 min 40 sec  		0 hrs 0 min 39 sec  		0 hrs 0 min 38 sec  		0 hrs 0 min 37 sec  		0 hrs 0 min 36 sec  		0 hrs 0 min 35 sec  		0 hrs 0 min 34 sec  		0 hrs 0 min 33 sec  		0 hrs 0 min 32 sec  		0 hrs 0 min 31 sec  		0 hrs 0 min 30 sec  		0 hrs 0 min 29 sec  		0 hrs 0 min 28 sec  		0 hrs 0 min 27 sec  		0 hrs 0 min 26 sec  		0 hrs 0 min 25 sec  		0 hrs 0 min 24 sec  		0 hrs 0 min 23 sec  		0 hrs 0 min 22 sec  		0 hrs 0 min 21 sec  		0 hrs 0 min 20 sec  		0 hrs 0 min 19 sec  		0 hrs 0 min 18 sec  		0 hrs 0 min 17 sec  		0 hrs 0 min 16 sec  		0 hrs 0 min 15 sec  		0 hrs 0 min 14 sec  		0 hrs 0 min 13 sec  		0 hrs 0 min 12 sec  		0 hrs 0 min 11 sec  		0 hrs 0 min 10 sec  		0 hrs 0 min 9 sec  		0 hrs 0 min 8 sec  		0 hrs 0 min 7 sec  		0 hrs 0 min 6 sec  		0 hrs 0 min 5 sec  		0 hrs 0 min 4 sec  		0 hrs 0 min 3 sec  		0 hrs 0 min 2 sec  		0 hrs 0 min 1 sec  		0 hrs 0 min 0 sec  
+
+psfsprod status: Synch stat is 10. Syncinprog stat is 27. MEG left 18548.8.
+psfsprd2 status: Synch stat is 10. Syncinprog stat is 27. MEG left 12945.9.
+psfssys status: Synch stat is 10. Syncinprog stat is 27. MEG left 23210.0.
+psfiles status: Synch stat is 10. Syncinprog stat is 27. MEG left 1371.4.
+Group Count is: 0
+The Device Groups for server16 are NOT YET established.
+Resetting Group Count to 0.
+Time_Counter Starting at: Fri Oct 11 17:03:40 EDT 2002
+Sleeping 60 Seconds. Total: 0 hour(s) 1 minute(s) 0 second(s)
+		0 hrs 1 min 0 sec  		0 hrs 0 min 59 sec  		0 hrs 0 min 58 sec  		0 hrs 0 min 57 sec  		0 hrs 0 min 56 sec  		0 hrs 0 min 55 sec  		0 hrs 0 min 54 sec  		0 hrs 0 min 53 sec  		0 hrs 0 min 52 sec  		0 hrs 0 min 51 sec  		0 hrs 0 min 50 sec  		0 hrs 0 min 49 sec  		0 hrs 0 min 48 sec  		0 hrs 0 min 47 sec  		0 hrs 0 min 46 sec  		0 hrs 0 min 45 sec  		0 hrs 0 min 44 sec  		0 hrs 0 min 43 sec  		0 hrs 0 min 42 sec  		0 hrs 0 min 41 sec  		0 hrs 0 min 40 sec  		0 hrs 0 min 39 sec  		0 hrs 0 min 38 sec  		0 hrs 0 min 37 sec  		0 hrs 0 min 36 sec  		0 hrs 0 min 35 sec  		0 hrs 0 min 34 sec  		0 hrs 0 min 33 sec  		0 hrs 0 min 32 sec  		0 hrs 0 min 31 sec  		0 hrs 0 min 30 sec  		0 hrs 0 min 29 sec  		0 hrs 0 min 28 sec  		0 hrs 0 min 27 sec  		0 hrs 0 min 26 sec  		0 hrs 0 min 25 sec  		0 hrs 0 min 24 sec  		0 hrs 0 min 23 sec  		0 hrs 0 min 22 sec  		0 hrs 0 min 21 sec  		0 hrs 0 min 20 sec  		0 hrs 0 min 19 sec  		0 hrs 0 min 18 sec  		0 hrs 0 min 17 sec  		0 hrs 0 min 16 sec  		0 hrs 0 min 15 sec  		0 hrs 0 min 14 sec  		0 hrs 0 min 13 sec  		0 hrs 0 min 12 sec  		0 hrs 0 min 11 sec  		0 hrs 0 min 10 sec  		0 hrs 0 min 9 sec  		0 hrs 0 min 8 sec  		0 hrs 0 min 7 sec  		0 hrs 0 min 6 sec  		0 hrs 0 min 5 sec  		0 hrs 0 min 4 sec  		0 hrs 0 min 3 sec  		0 hrs 0 min 2 sec  		0 hrs 0 min 1 sec  		0 hrs 0 min 0 sec  
+
+psfsprod status: Synch stat is 10. Syncinprog stat is 27. MEG left 17404.5.
+psfsprd2 status: Synch stat is 10. Syncinprog stat is 27. MEG left 12945.9.
+psfssys status: Synch stat is 10. Syncinprog stat is 27. MEG left 21205.9.
+psfiles status: Synch stat is 10. Syncinprog stat is 27. MEG left 1281.2.
+Group Count is: 0
+The Device Groups for server16 are NOT YET established.
+Resetting Group Count to 0.
+Time_Counter Starting at: Fri Oct 11 17:05:13 EDT 2002
+Sleeping 60 Seconds. Total: 0 hour(s) 1 minute(s) 0 second(s)
+		0 hrs 1 min 0 sec  		0 hrs 0 min 59 sec  		0 hrs 0 min 58 sec  		0 hrs 0 min 57 sec  		0 hrs 0 min 56 sec  		0 hrs 0 min 55 sec  		0 hrs 0 min 54 sec  		0 hrs 0 min 53 sec  		0 hrs 0 min 52 sec  		0 hrs 0 min 51 sec  		0 hrs 0 min 50 sec  		0 hrs 0 min 49 sec  		0 hrs 0 min 48 sec  		0 hrs 0 min 47 sec  		0 hrs 0 min 46 sec  		0 hrs 0 min 45 sec  		0 hrs 0 min 44 sec  		0 hrs 0 min 43 sec  		0 hrs 0 min 42 sec  		0 hrs 0 min 41 sec  		0 hrs 0 min 40 sec  		0 hrs 0 min 39 sec  		0 hrs 0 min 38 sec  		0 hrs 0 min 37 sec  		0 hrs 0 min 36 sec  		0 hrs 0 min 35 sec  		0 hrs 0 min 34 sec  		0 hrs 0 min 33 sec  		0 hrs 0 min 32 sec  		0 hrs 0 min 31 sec  		0 hrs 0 min 30 sec  		0 hrs 0 min 29 sec  		0 hrs 0 min 28 sec  		0 hrs 0 min 27 sec  		0 hrs 0 min 26 sec  		0 hrs 0 min 25 sec  		0 hrs 0 min 24 sec  		0 hrs 0 min 23 sec  		0 hrs 0 min 22 sec  		0 hrs 0 min 21 sec  		0 hrs 0 min 20 sec  		0 hrs 0 min 19 sec  		0 hrs 0 min 18 sec  		0 hrs 0 min 17 sec  		0 hrs 0 min 16 sec  		0 hrs 0 min 15 sec  		0 hrs 0 min 14 sec  		0 hrs 0 min 13 sec  		0 hrs 0 min 12 sec  		0 hrs 0 min 11 sec  		0 hrs 0 min 10 sec  		0 hrs 0 min 9 sec  		0 hrs 0 min 8 sec  		0 hrs 0 min 7 sec  		0 hrs 0 min 6 sec  		0 hrs 0 min 5 sec  		0 hrs 0 min 4 sec  		0 hrs 0 min 3 sec  		0 hrs 0 min 2 sec  		0 hrs 0 min 1 sec  		0 hrs 0 min 0 sec  
+
+psfsprod status: Synch stat is 10. Syncinprog stat is 27. MEG left 16281.3.
+psfsprd2 status: Synch stat is 10. Syncinprog stat is 27. MEG left 12945.9.
+psfssys status: Synch stat is 10. Syncinprog stat is 27. MEG left 19748.5.
+psfiles status: Synch stat is 10. Syncinprog stat is 27. MEG left 1192.1.
+Group Count is: 0
+The Device Groups for server16 are NOT YET established.
+Resetting Group Count to 0.
+Time_Counter Starting at: Fri Oct 11 17:06:40 EDT 2002
+Sleeping 60 Seconds. Total: 0 hour(s) 1 minute(s) 0 second(s)
+		0 hrs 1 min 0 sec  		0 hrs 0 min 59 sec  		0 hrs 0 min 58 sec  		0 hrs 0 min 57 sec  		0 hrs 0 min 56 sec  		0 hrs 0 min 55 sec  		0 hrs 0 min 54 sec  		0 hrs 0 min 53 sec  		0 hrs 0 min 52 sec  		0 hrs 0 min 51 sec  		0 hrs 0 min 50 sec  		0 hrs 0 min 49 sec  		0 hrs 0 min 48 sec  		0 hrs 0 min 47 sec  		0 hrs 0 min 46 sec  		0 hrs 0 min 45 sec  		0 hrs 0 min 44 sec  		0 hrs 0 min 43 sec  		0 hrs 0 min 42 sec  		0 hrs 0 min 41 sec  		0 hrs 0 min 40 sec  		0 hrs 0 min 39 sec  		0 hrs 0 min 38 sec  		0 hrs 0 min 37 sec  		0 hrs 0 min 36 sec  		0 hrs 0 min 35 sec  		0 hrs 0 min 34 sec  		0 hrs 0 min 33 sec  		0 hrs 0 min 32 sec  		0 hrs 0 min 31 sec  		0 hrs 0 min 30 sec  		0 hrs 0 min 29 sec  		0 hrs 0 min 28 sec  		0 hrs 0 min 27 sec  		0 hrs 0 min 26 sec  		0 hrs 0 min 25 sec  		0 hrs 0 min 24 sec  		0 hrs 0 min 23 sec  		0 hrs 0 min 22 sec  		0 hrs 0 min 21 sec  		0 hrs 0 min 20 sec  		0 hrs 0 min 19 sec  		0 hrs 0 min 18 sec  		0 hrs 0 min 17 sec  		0 hrs 0 min 16 sec  		0 hrs 0 min 15 sec  		0 hrs 0 min 14 sec  		0 hrs 0 min 13 sec  		0 hrs 0 min 12 sec  		0 hrs 0 min 11 sec  		0 hrs 0 min 10 sec  		0 hrs 0 min 9 sec  		0 hrs 0 min 8 sec  		0 hrs 0 min 7 sec  		0 hrs 0 min 6 sec  		0 hrs 0 min 5 sec  		0 hrs 0 min 4 sec  		0 hrs 0 min 3 sec  		0 hrs 0 min 2 sec  		0 hrs 0 min 1 sec  		0 hrs 0 min 0 sec  
+
+psfsprod status: Synch stat is 10. Syncinprog stat is 27. MEG left 14930.5.
+psfsprd2 status: Synch stat is 10. Syncinprog stat is 27. MEG left 12945.9.
+psfssys status: Synch stat is 10. Syncinprog stat is 27. MEG left 18928.3.
+psfiles status: Synch stat is 10. Syncinprog stat is 27. MEG left 1099.3.
+Group Count is: 0
+The Device Groups for server16 are NOT YET established.
+Resetting Group Count to 0.
+Time_Counter Starting at: Fri Oct 11 17:08:07 EDT 2002
+Sleeping 60 Seconds. Total: 0 hour(s) 1 minute(s) 0 second(s)
+		0 hrs 1 min 0 sec  		0 hrs 0 min 59 sec  		0 hrs 0 min 58 sec  		0 hrs 0 min 57 sec  		0 hrs 0 min 56 sec  		0 hrs 0 min 55 sec  		0 hrs 0 min 54 sec  		0 hrs 0 min 53 sec  		0 hrs 0 min 52 sec  		0 hrs 0 min 51 sec  		0 hrs 0 min 50 sec  		0 hrs 0 min 49 sec  		0 hrs 0 min 48 sec  		0 hrs 0 min 47 sec  		0 hrs 0 min 46 sec  		0 hrs 0 min 45 sec  		0 hrs 0 min 44 sec  		0 hrs 0 min 43 sec  		0 hrs 0 min 42 sec  		0 hrs 0 min 41 sec  		0 hrs 0 min 40 sec  		0 hrs 0 min 39 sec  		0 hrs 0 min 38 sec  		0 hrs 0 min 37 sec  		0 hrs 0 min 36 sec  		0 hrs 0 min 35 sec  		0 hrs 0 min 34 sec  		0 hrs 0 min 33 sec  		0 hrs 0 min 32 sec  		0 hrs 0 min 31 sec  		0 hrs 0 min 30 sec  		0 hrs 0 min 29 sec  		0 hrs 0 min 28 sec  		0 hrs 0 min 27 sec  		0 hrs 0 min 26 sec  		0 hrs 0 min 25 sec  		0 hrs 0 min 24 sec  		0 hrs 0 min 23 sec  		0 hrs 0 min 22 sec  		0 hrs 0 min 21 sec  		0 hrs 0 min 20 sec  		0 hrs 0 min 19 sec  		0 hrs 0 min 18 sec  		0 hrs 0 min 17 sec  		0 hrs 0 min 16 sec  		0 hrs 0 min 15 sec  		0 hrs 0 min 14 sec  		0 hrs 0 min 13 sec  		0 hrs 0 min 12 sec  		0 hrs 0 min 11 sec  		0 hrs 0 min 10 sec  		0 hrs 0 min 9 sec  		0 hrs 0 min 8 sec  		0 hrs 0 min 7 sec  		0 hrs 0 min 6 sec  		0 hrs 0 min 5 sec  		0 hrs 0 min 4 sec  		0 hrs 0 min 3 sec  		0 hrs 0 min 2 sec  		0 hrs 0 min 1 sec  		0 hrs 0 min 0 sec  
+
+psfsprod status: Synch stat is 10. Syncinprog stat is 27. MEG left 13651.1.
+psfsprd2 status: Synch stat is 10. Syncinprog stat is 27. MEG left 12850.9.
+psfssys status: Synch stat is 10. Syncinprog stat is 27. MEG left 18841.5.
+psfiles status: Synch stat is 10. Syncinprog stat is 27. MEG left 1010.4.
+Group Count is: 0
+The Device Groups for server16 are NOT YET established.
+Resetting Group Count to 0.
+Time_Counter Starting at: Fri Oct 11 17:09:34 EDT 2002
+Sleeping 60 Seconds. Total: 0 hour(s) 1 minute(s) 0 second(s)
+		0 hrs 1 min 0 sec  		0 hrs 0 min 59 sec  		0 hrs 0 min 58 sec  		0 hrs 0 min 57 sec  		0 hrs 0 min 56 sec  		0 hrs 0 min 55 sec  		0 hrs 0 min 54 sec  		0 hrs 0 min 53 sec  		0 hrs 0 min 52 sec  		0 hrs 0 min 51 sec  		0 hrs 0 min 50 sec  		0 hrs 0 min 49 sec  		0 hrs 0 min 48 sec  		0 hrs 0 min 47 sec  		0 hrs 0 min 46 sec  		0 hrs 0 min 45 sec  		0 hrs 0 min 44 sec  		0 hrs 0 min 43 sec  		0 hrs 0 min 42 sec  		0 hrs 0 min 41 sec  		0 hrs 0 min 40 sec  		0 hrs 0 min 39 sec  		0 hrs 0 min 38 sec  		0 hrs 0 min 37 sec  		0 hrs 0 min 36 sec  		0 hrs 0 min 35 sec  		0 hrs 0 min 34 sec  		0 hrs 0 min 33 sec  		0 hrs 0 min 32 sec  		0 hrs 0 min 31 sec  		0 hrs 0 min 30 sec  		0 hrs 0 min 29 sec  		0 hrs 0 min 28 sec  		0 hrs 0 min 27 sec  		0 hrs 0 min 26 sec  		0 hrs 0 min 25 sec  		0 hrs 0 min 24 sec  		0 hrs 0 min 23 sec  		0 hrs 0 min 22 sec  		0 hrs 0 min 21 sec  		0 hrs 0 min 20 sec  		0 hrs 0 min 19 sec  		0 hrs 0 min 18 sec  		0 hrs 0 min 17 sec  		0 hrs 0 min 16 sec  		0 hrs 0 min 15 sec  		0 hrs 0 min 14 sec  		0 hrs 0 min 13 sec  		0 hrs 0 min 12 sec  		0 hrs 0 min 11 sec  		0 hrs 0 min 10 sec  		0 hrs 0 min 9 sec  		0 hrs 0 min 8 sec  		0 hrs 0 min 7 sec  		0 hrs 0 min 6 sec  		0 hrs 0 min 5 sec  		0 hrs 0 min 4 sec  		0 hrs 0 min 3 sec  		0 hrs 0 min 2 sec  		0 hrs 0 min 1 sec  		0 hrs 0 min 0 sec  
+
+psfsprod status: Synch stat is 10. Syncinprog stat is 27. MEG left 13064.9.
+psfsprd2 status: Synch stat is 10. Syncinprog stat is 27. MEG left 12153.1.
+psfssys status: Synch stat is 10. Syncinprog stat is 27. MEG left 18753.8.
+psfiles status: Synch stat is 10. Syncinprog stat is 27. MEG left 917.8.
+Group Count is: 0
+The Device Groups for server16 are NOT YET established.
+Resetting Group Count to 0.
+Time_Counter Starting at: Fri Oct 11 17:11:01 EDT 2002
+Sleeping 60 Seconds. Total: 0 hour(s) 1 minute(s) 0 second(s)
+		0 hrs 1 min 0 sec  		0 hrs 0 min 59 sec  		0 hrs 0 min 58 sec  		0 hrs 0 min 57 sec  		0 hrs 0 min 56 sec  		0 hrs 0 min 55 sec  		0 hrs 0 min 54 sec  		0 hrs 0 min 53 sec  		0 hrs 0 min 52 sec  		0 hrs 0 min 51 sec  		0 hrs 0 min 50 sec  		0 hrs 0 min 49 sec  		0 hrs 0 min 48 sec  		0 hrs 0 min 47 sec  		0 hrs 0 min 46 sec  		0 hrs 0 min 45 sec  		0 hrs 0 min 44 sec  		0 hrs 0 min 43 sec  		0 hrs 0 min 42 sec  		0 hrs 0 min 41 sec  		0 hrs 0 min 40 sec  		0 hrs 0 min 39 sec  		0 hrs 0 min 38 sec  		0 hrs 0 min 37 sec  		0 hrs 0 min 36 sec  		0 hrs 0 min 35 sec  		0 hrs 0 min 34 sec  		0 hrs 0 min 33 sec  		0 hrs 0 min 32 sec  		0 hrs 0 min 31 sec  		0 hrs 0 min 30 sec  		0 hrs 0 min 29 sec  		0 hrs 0 min 28 sec  		0 hrs 0 min 27 sec  		0 hrs 0 min 26 sec  		0 hrs 0 min 25 sec  		0 hrs 0 min 24 sec  		0 hrs 0 min 23 sec  		0 hrs 0 min 22 sec  		0 hrs 0 min 21 sec  		0 hrs 0 min 20 sec  		0 hrs 0 min 19 sec  		0 hrs 0 min 18 sec  		0 hrs 0 min 17 sec  		0 hrs 0 min 16 sec  		0 hrs 0 min 15 sec  		0 hrs 0 min 14 sec  		0 hrs 0 min 13 sec  		0 hrs 0 min 12 sec  		0 hrs 0 min 11 sec  		0 hrs 0 min 10 sec  		0 hrs 0 min 9 sec  		0 hrs 0 min 8 sec  		0 hrs 0 min 7 sec  		0 hrs 0 min 6 sec  		0 hrs 0 min 5 sec  		0 hrs 0 min 4 sec  		0 hrs 0 min 3 sec  		0 hrs 0 min 2 sec  		0 hrs 0 min 1 sec  		0 hrs 0 min 0 sec  
+
+psfsprod status: Synch stat is 10. Syncinprog stat is 27. MEG left 12482.3.
+psfsprd2 status: Synch stat is 10. Syncinprog stat is 27. MEG left 11515.5.
+psfssys status: Synch stat is 10. Syncinprog stat is 27. MEG left 18660.3.
+psfiles status: Synch stat is 10. Syncinprog stat is 27. MEG left 830.1.
+Group Count is: 0
+The Device Groups for server16 are NOT YET established.
+Resetting Group Count to 0.
+Time_Counter Starting at: Fri Oct 11 17:12:28 EDT 2002
+Sleeping 60 Seconds. Total: 0 hour(s) 1 minute(s) 0 second(s)
+		0 hrs 1 min 0 sec  		0 hrs 0 min 59 sec  		0 hrs 0 min 58 sec  		0 hrs 0 min 57 sec  		0 hrs 0 min 56 sec  		0 hrs 0 min 55 sec  		0 hrs 0 min 54 sec  		0 hrs 0 min 53 sec  		0 hrs 0 min 52 sec  		0 hrs 0 min 51 sec  		0 hrs 0 min 50 sec  		0 hrs 0 min 49 sec  		0 hrs 0 min 48 sec  		0 hrs 0 min 47 sec  		0 hrs 0 min 46 sec  		0 hrs 0 min 45 sec  		0 hrs 0 min 44 sec  		0 hrs 0 min 43 sec  		0 hrs 0 min 42 sec  		0 hrs 0 min 41 sec  		0 hrs 0 min 40 sec  		0 hrs 0 min 39 sec  		0 hrs 0 min 38 sec  		0 hrs 0 min 37 sec  		0 hrs 0 min 36 sec  		0 hrs 0 min 35 sec  		0 hrs 0 min 34 sec  		0 hrs 0 min 33 sec  		0 hrs 0 min 32 sec  		0 hrs 0 min 31 sec  		0 hrs 0 min 30 sec  		0 hrs 0 min 29 sec  		0 hrs 0 min 28 sec  		0 hrs 0 min 27 sec  		0 hrs 0 min 26 sec  		0 hrs 0 min 25 sec  		0 hrs 0 min 24 sec  		0 hrs 0 min 23 sec  		0 hrs 0 min 22 sec  		0 hrs 0 min 21 sec  		0 hrs 0 min 20 sec  		0 hrs 0 min 19 sec  		0 hrs 0 min 18 sec  		0 hrs 0 min 17 sec  		0 hrs 0 min 16 sec  		0 hrs 0 min 15 sec  		0 hrs 0 min 14 sec  		0 hrs 0 min 13 sec  		0 hrs 0 min 12 sec  		0 hrs 0 min 11 sec  		0 hrs 0 min 10 sec  		0 hrs 0 min 9 sec  		0 hrs 0 min 8 sec  		0 hrs 0 min 7 sec  		0 hrs 0 min 6 sec  		0 hrs 0 min 5 sec  		0 hrs 0 min 4 sec  		0 hrs 0 min 3 sec  		0 hrs 0 min 2 sec  		0 hrs 0 min 1 sec  		0 hrs 0 min 0 sec  
+
+psfsprod status: Synch stat is 10. Syncinprog stat is 27. MEG left 11882.6.
+psfsprd2 status: Synch stat is 10. Syncinprog stat is 27. MEG left 10655.7.
+psfssys status: Synch stat is 10. Syncinprog stat is 27. MEG left 18572.8.
+psfiles status: Synch stat is 10. Syncinprog stat is 27. MEG left 741.8.
+Group Count is: 0
+The Device Groups for server16 are NOT YET established.
+Resetting Group Count to 0.
+Time_Counter Starting at: Fri Oct 11 17:13:55 EDT 2002
+Sleeping 60 Seconds. Total: 0 hour(s) 1 minute(s) 0 second(s)
+		0 hrs 1 min 0 sec  		0 hrs 0 min 59 sec  		0 hrs 0 min 58 sec  		0 hrs 0 min 57 sec  		0 hrs 0 min 56 sec  		0 hrs 0 min 55 sec  		0 hrs 0 min 54 sec  		0 hrs 0 min 53 sec  		0 hrs 0 min 52 sec  		0 hrs 0 min 51 sec  		0 hrs 0 min 50 sec  		0 hrs 0 min 49 sec  		0 hrs 0 min 48 sec  		0 hrs 0 min 47 sec  		0 hrs 0 min 46 sec  		0 hrs 0 min 45 sec  		0 hrs 0 min 44 sec  		0 hrs 0 min 43 sec  		0 hrs 0 min 42 sec  		0 hrs 0 min 41 sec  		0 hrs 0 min 40 sec  		0 hrs 0 min 39 sec  		0 hrs 0 min 38 sec  		0 hrs 0 min 37 sec  		0 hrs 0 min 36 sec  		0 hrs 0 min 35 sec  		0 hrs 0 min 34 sec  		0 hrs 0 min 33 sec  		0 hrs 0 min 32 sec  		0 hrs 0 min 31 sec  		0 hrs 0 min 30 sec  		0 hrs 0 min 29 sec  		0 hrs 0 min 28 sec  		0 hrs 0 min 27 sec  		0 hrs 0 min 26 sec  		0 hrs 0 min 25 sec  		0 hrs 0 min 24 sec  		0 hrs 0 min 23 sec  		0 hrs 0 min 22 sec  		0 hrs 0 min 21 sec  		0 hrs 0 min 20 sec  		0 hrs 0 min 19 sec  		0 hrs 0 min 18 sec  		0 hrs 0 min 17 sec  		0 hrs 0 min 16 sec  		0 hrs 0 min 15 sec  		0 hrs 0 min 14 sec  		0 hrs 0 min 13 sec  		0 hrs 0 min 12 sec  		0 hrs 0 min 11 sec  		0 hrs 0 min 10 sec  		0 hrs 0 min 9 sec  		0 hrs 0 min 8 sec  		0 hrs 0 min 7 sec  		0 hrs 0 min 6 sec  		0 hrs 0 min 5 sec  		0 hrs 0 min 4 sec  		0 hrs 0 min 3 sec  		0 hrs 0 min 2 sec  		0 hrs 0 min 1 sec  		0 hrs 0 min 0 sec  
+
+psfsprod status: Synch stat is 10. Syncinprog stat is 27. MEG left 10455.9.
+psfsprd2 status: Synch stat is 10. Syncinprog stat is 27. MEG left 9764.8.
+psfssys status: Synch stat is 10. Syncinprog stat is 27. MEG left 18446.7.
+psfiles status: Synch stat is 10. Syncinprog stat is 27. MEG left 633.3.
+Group Count is: 0
+The Device Groups for server16 are NOT YET established.
+Resetting Group Count to 0.
+Time_Counter Starting at: Fri Oct 11 17:15:40 EDT 2002
+Sleeping 60 Seconds. Total: 0 hour(s) 1 minute(s) 0 second(s)
+		0 hrs 1 min 0 sec  		0 hrs 0 min 59 sec  		0 hrs 0 min 58 sec  		0 hrs 0 min 57 sec  		0 hrs 0 min 56 sec  		0 hrs 0 min 55 sec  		0 hrs 0 min 54 sec  		0 hrs 0 min 53 sec  		0 hrs 0 min 52 sec  		0 hrs 0 min 51 sec  		0 hrs 0 min 50 sec  		0 hrs 0 min 49 sec  		0 hrs 0 min 48 sec  		0 hrs 0 min 47 sec  		0 hrs 0 min 46 sec  		0 hrs 0 min 45 sec  		0 hrs 0 min 44 sec  		0 hrs 0 min 43 sec  		0 hrs 0 min 42 sec  		0 hrs 0 min 41 sec  		0 hrs 0 min 40 sec  		0 hrs 0 min 39 sec  		0 hrs 0 min 38 sec  		0 hrs 0 min 37 sec  		0 hrs 0 min 36 sec  		0 hrs 0 min 35 sec  		0 hrs 0 min 34 sec  		0 hrs 0 min 33 sec  		0 hrs 0 min 32 sec  		0 hrs 0 min 31 sec  		0 hrs 0 min 30 sec  		0 hrs 0 min 29 sec  		0 hrs 0 min 28 sec  		0 hrs 0 min 27 sec  		0 hrs 0 min 26 sec  		0 hrs 0 min 25 sec  		0 hrs 0 min 24 sec  		0 hrs 0 min 23 sec  		0 hrs 0 min 22 sec  		0 hrs 0 min 21 sec  		0 hrs 0 min 20 sec  		0 hrs 0 min 19 sec  		0 hrs 0 min 18 sec  		0 hrs 0 min 17 sec  		0 hrs 0 min 16 sec  		0 hrs 0 min 15 sec  		0 hrs 0 min 14 sec  		0 hrs 0 min 13 sec  		0 hrs 0 min 12 sec  		0 hrs 0 min 11 sec  		0 hrs 0 min 10 sec  		0 hrs 0 min 9 sec  		0 hrs 0 min 8 sec  		0 hrs 0 min 7 sec  		0 hrs 0 min 6 sec  		0 hrs 0 min 5 sec  		0 hrs 0 min 4 sec  		0 hrs 0 min 3 sec  		0 hrs 0 min 2 sec  		0 hrs 0 min 1 sec  		0 hrs 0 min 0 sec  
+
+psfsprod status: Synch stat is 10. Syncinprog stat is 27. MEG left 8563.4.
+psfsprd2 status: Synch stat is 10. Syncinprog stat is 27. MEG left 8844.6.
+psfssys status: Synch stat is 10. Syncinprog stat is 27. MEG left 18310.0.
+psfiles status: Synch stat is 10. Syncinprog stat is 27. MEG left 547.2.
+Group Count is: 0
+The Device Groups for server16 are NOT YET established.
+Resetting Group Count to 0.
+Time_Counter Starting at: Fri Oct 11 17:17:07 EDT 2002
+Sleeping 60 Seconds. Total: 0 hour(s) 1 minute(s) 0 second(s)
+		0 hrs 1 min 0 sec  		0 hrs 0 min 59 sec  		0 hrs 0 min 58 sec  		0 hrs 0 min 57 sec  		0 hrs 0 min 56 sec  		0 hrs 0 min 55 sec  		0 hrs 0 min 54 sec  		0 hrs 0 min 53 sec  		0 hrs 0 min 52 sec  		0 hrs 0 min 51 sec  		0 hrs 0 min 50 sec  		0 hrs 0 min 49 sec  		0 hrs 0 min 48 sec  		0 hrs 0 min 47 sec  		0 hrs 0 min 46 sec  		0 hrs 0 min 45 sec  		0 hrs 0 min 44 sec  		0 hrs 0 min 43 sec  		0 hrs 0 min 42 sec  		0 hrs 0 min 41 sec  		0 hrs 0 min 40 sec  		0 hrs 0 min 39 sec  		0 hrs 0 min 38 sec  		0 hrs 0 min 37 sec  		0 hrs 0 min 36 sec  		0 hrs 0 min 35 sec  		0 hrs 0 min 34 sec  		0 hrs 0 min 33 sec  		0 hrs 0 min 32 sec  		0 hrs 0 min 31 sec  		0 hrs 0 min 30 sec  		0 hrs 0 min 29 sec  		0 hrs 0 min 28 sec  		0 hrs 0 min 27 sec  		0 hrs 0 min 26 sec  		0 hrs 0 min 25 sec  		0 hrs 0 min 24 sec  		0 hrs 0 min 23 sec  		0 hrs 0 min 22 sec  		0 hrs 0 min 21 sec  		0 hrs 0 min 20 sec  		0 hrs 0 min 19 sec  		0 hrs 0 min 18 sec  		0 hrs 0 min 17 sec  		0 hrs 0 min 16 sec  		0 hrs 0 min 15 sec  		0 hrs 0 min 14 sec  		0 hrs 0 min 13 sec  		0 hrs 0 min 12 sec  		0 hrs 0 min 11 sec  		0 hrs 0 min 10 sec  		0 hrs 0 min 9 sec  		0 hrs 0 min 8 sec  		0 hrs 0 min 7 sec  		0 hrs 0 min 6 sec  		0 hrs 0 min 5 sec  		0 hrs 0 min 4 sec  		0 hrs 0 min 3 sec  		0 hrs 0 min 2 sec  		0 hrs 0 min 1 sec  		0 hrs 0 min 0 sec  
+
+psfsprod status: Synch stat is 10. Syncinprog stat is 27. MEG left 6986.3.
+psfsprd2 status: Synch stat is 10. Syncinprog stat is 27. MEG left 8630.6.
+psfssys status: Synch stat is 10. Syncinprog stat is 27. MEG left 18174.8.
+psfiles status: Synch stat is 10. Syncinprog stat is 27. MEG left 460.2.
+Group Count is: 0
+The Device Groups for server16 are NOT YET established.
+Resetting Group Count to 0.
+Time_Counter Starting at: Fri Oct 11 17:18:34 EDT 2002
+Sleeping 60 Seconds. Total: 0 hour(s) 1 minute(s) 0 second(s)
+		0 hrs 1 min 0 sec  		0 hrs 0 min 59 sec  		0 hrs 0 min 58 sec  		0 hrs 0 min 57 sec  		0 hrs 0 min 56 sec  		0 hrs 0 min 55 sec  		0 hrs 0 min 54 sec  		0 hrs 0 min 53 sec  		0 hrs 0 min 52 sec  		0 hrs 0 min 51 sec  		0 hrs 0 min 50 sec  		0 hrs 0 min 49 sec  		0 hrs 0 min 48 sec  		0 hrs 0 min 47 sec  		0 hrs 0 min 46 sec  		0 hrs 0 min 45 sec  		0 hrs 0 min 44 sec  		0 hrs 0 min 43 sec  		0 hrs 0 min 42 sec  		0 hrs 0 min 41 sec  		0 hrs 0 min 40 sec  		0 hrs 0 min 39 sec  		0 hrs 0 min 38 sec  		0 hrs 0 min 37 sec  		0 hrs 0 min 36 sec  		0 hrs 0 min 35 sec  		0 hrs 0 min 34 sec  		0 hrs 0 min 33 sec  		0 hrs 0 min 32 sec  		0 hrs 0 min 31 sec  		0 hrs 0 min 30 sec  		0 hrs 0 min 29 sec  		0 hrs 0 min 28 sec  		0 hrs 0 min 27 sec  		0 hrs 0 min 26 sec  		0 hrs 0 min 25 sec  		0 hrs 0 min 24 sec  		0 hrs 0 min 23 sec  		0 hrs 0 min 22 sec  		0 hrs 0 min 21 sec  		0 hrs 0 min 20 sec  		0 hrs 0 min 19 sec  		0 hrs 0 min 18 sec  		0 hrs 0 min 17 sec  		0 hrs 0 min 16 sec  		0 hrs 0 min 15 sec  		0 hrs 0 min 14 sec  		0 hrs 0 min 13 sec  		0 hrs 0 min 12 sec  		0 hrs 0 min 11 sec  		0 hrs 0 min 10 sec  		0 hrs 0 min 9 sec  		0 hrs 0 min 8 sec  		0 hrs 0 min 7 sec  		0 hrs 0 min 6 sec  		0 hrs 0 min 5 sec  		0 hrs 0 min 4 sec  		0 hrs 0 min 3 sec  		0 hrs 0 min 2 sec  		0 hrs 0 min 1 sec  		0 hrs 0 min 0 sec  
+
+psfsprod status: Synch stat is 10. Syncinprog stat is 27. MEG left 5910.0.
+psfsprd2 status: Synch stat is 10. Syncinprog stat is 27. MEG left 8630.6.
+psfssys status: Synch stat is 10. Syncinprog stat is 27. MEG left 18036.6.
+psfiles status: Synch stat is 10. Syncinprog stat is 27. MEG left 371.2.
+Group Count is: 0
+The Device Groups for server16 are NOT YET established.
+Resetting Group Count to 0.
+Time_Counter Starting at: Fri Oct 11 17:20:01 EDT 2002
+Sleeping 60 Seconds. Total: 0 hour(s) 1 minute(s) 0 second(s)
+		0 hrs 1 min 0 sec  		0 hrs 0 min 59 sec  		0 hrs 0 min 58 sec  		0 hrs 0 min 57 sec  		0 hrs 0 min 56 sec  		0 hrs 0 min 55 sec  		0 hrs 0 min 54 sec  		0 hrs 0 min 53 sec  		0 hrs 0 min 52 sec  		0 hrs 0 min 51 sec  		0 hrs 0 min 50 sec  		0 hrs 0 min 49 sec  		0 hrs 0 min 48 sec  		0 hrs 0 min 47 sec  		0 hrs 0 min 46 sec  		0 hrs 0 min 45 sec  		0 hrs 0 min 44 sec  		0 hrs 0 min 43 sec  		0 hrs 0 min 42 sec  		0 hrs 0 min 41 sec  		0 hrs 0 min 40 sec  		0 hrs 0 min 39 sec  		0 hrs 0 min 38 sec  		0 hrs 0 min 37 sec  		0 hrs 0 min 36 sec  		0 hrs 0 min 35 sec  		0 hrs 0 min 34 sec  		0 hrs 0 min 33 sec  		0 hrs 0 min 32 sec  		0 hrs 0 min 31 sec  		0 hrs 0 min 30 sec  		0 hrs 0 min 29 sec  		0 hrs 0 min 28 sec  		0 hrs 0 min 27 sec  		0 hrs 0 min 26 sec  		0 hrs 0 min 25 sec  		0 hrs 0 min 24 sec  		0 hrs 0 min 23 sec  		0 hrs 0 min 22 sec  		0 hrs 0 min 21 sec  		0 hrs 0 min 20 sec  		0 hrs 0 min 19 sec  		0 hrs 0 min 18 sec  		0 hrs 0 min 17 sec  		0 hrs 0 min 16 sec  		0 hrs 0 min 15 sec  		0 hrs 0 min 14 sec  		0 hrs 0 min 13 sec  		0 hrs 0 min 12 sec  		0 hrs 0 min 11 sec  		0 hrs 0 min 10 sec  		0 hrs 0 min 9 sec  		0 hrs 0 min 8 sec  		0 hrs 0 min 7 sec  		0 hrs 0 min 6 sec  		0 hrs 0 min 5 sec  		0 hrs 0 min 4 sec  		0 hrs 0 min 3 sec  		0 hrs 0 min 2 sec  		0 hrs 0 min 1 sec  		0 hrs 0 min 0 sec  
+
+psfsprod status: Synch stat is 10. Syncinprog stat is 27. MEG left 5059.5.
+psfsprd2 status: Synch stat is 10. Syncinprog stat is 27. MEG left 8630.6.
+psfssys status: Synch stat is 10. Syncinprog stat is 27. MEG left 16211.5.
+psfiles status: Synch stat is 10. Syncinprog stat is 27. MEG left 252.2.
+Group Count is: 0
+The Device Groups for server16 are NOT YET established.
+Resetting Group Count to 0.
+Time_Counter Starting at: Fri Oct 11 17:21:29 EDT 2002
+Sleeping 60 Seconds. Total: 0 hour(s) 1 minute(s) 0 second(s)
+		0 hrs 1 min 0 sec  		0 hrs 0 min 59 sec  		0 hrs 0 min 58 sec  		0 hrs 0 min 57 sec  		0 hrs 0 min 56 sec  		0 hrs 0 min 55 sec  		0 hrs 0 min 54 sec  		0 hrs 0 min 53 sec  		0 hrs 0 min 52 sec  		0 hrs 0 min 51 sec  		0 hrs 0 min 50 sec  		0 hrs 0 min 49 sec  		0 hrs 0 min 48 sec  		0 hrs 0 min 47 sec  		0 hrs 0 min 46 sec  		0 hrs 0 min 45 sec  		0 hrs 0 min 44 sec  		0 hrs 0 min 43 sec  		0 hrs 0 min 42 sec  		0 hrs 0 min 41 sec  		0 hrs 0 min 40 sec  		0 hrs 0 min 39 sec  		0 hrs 0 min 38 sec  		0 hrs 0 min 37 sec  		0 hrs 0 min 36 sec  		0 hrs 0 min 35 sec  		0 hrs 0 min 34 sec  		0 hrs 0 min 33 sec  		0 hrs 0 min 32 sec  		0 hrs 0 min 31 sec  		0 hrs 0 min 30 sec  		0 hrs 0 min 29 sec  		0 hrs 0 min 28 sec  		0 hrs 0 min 27 sec  		0 hrs 0 min 26 sec  		0 hrs 0 min 25 sec  		0 hrs 0 min 24 sec  		0 hrs 0 min 23 sec  		0 hrs 0 min 22 sec  		0 hrs 0 min 21 sec  		0 hrs 0 min 20 sec  		0 hrs 0 min 19 sec  		0 hrs 0 min 18 sec  		0 hrs 0 min 17 sec  		0 hrs 0 min 16 sec  		0 hrs 0 min 15 sec  		0 hrs 0 min 14 sec  		0 hrs 0 min 13 sec  		0 hrs 0 min 12 sec  		0 hrs 0 min 11 sec  		0 hrs 0 min 10 sec  		0 hrs 0 min 9 sec  		0 hrs 0 min 8 sec  		0 hrs 0 min 7 sec  		0 hrs 0 min 6 sec  		0 hrs 0 min 5 sec  		0 hrs 0 min 4 sec  		0 hrs 0 min 3 sec  		0 hrs 0 min 2 sec  		0 hrs 0 min 1 sec  		0 hrs 0 min 0 sec  
+
+psfsprod status: Synch stat is 10. Syncinprog stat is 27. MEG left 4316.3.
+psfsprd2 status: Synch stat is 10. Syncinprog stat is 27. MEG left 8214.3.
+psfssys status: Synch stat is 10. Syncinprog stat is 27. MEG left 14064.6.
+psfiles status: Synch stat is 10. Syncinprog stat is 27. MEG left 94.1.
+Group Count is: 0
+The Device Groups for server16 are NOT YET established.
+Resetting Group Count to 0.
+Time_Counter Starting at: Fri Oct 11 17:22:56 EDT 2002
+Sleeping 60 Seconds. Total: 0 hour(s) 1 minute(s) 0 second(s)
+		0 hrs 1 min 0 sec  		0 hrs 0 min 59 sec  		0 hrs 0 min 58 sec  		0 hrs 0 min 57 sec  		0 hrs 0 min 56 sec  		0 hrs 0 min 55 sec  		0 hrs 0 min 54 sec  		0 hrs 0 min 53 sec  		0 hrs 0 min 52 sec  		0 hrs 0 min 51 sec  		0 hrs 0 min 50 sec  		0 hrs 0 min 49 sec  		0 hrs 0 min 48 sec  		0 hrs 0 min 47 sec  		0 hrs 0 min 46 sec  		0 hrs 0 min 45 sec  		0 hrs 0 min 44 sec  		0 hrs 0 min 43 sec  		0 hrs 0 min 42 sec  		0 hrs 0 min 41 sec  		0 hrs 0 min 40 sec  		0 hrs 0 min 39 sec  		0 hrs 0 min 38 sec  		0 hrs 0 min 37 sec  		0 hrs 0 min 36 sec  		0 hrs 0 min 35 sec  		0 hrs 0 min 34 sec  		0 hrs 0 min 33 sec  		0 hrs 0 min 32 sec  		0 hrs 0 min 31 sec  		0 hrs 0 min 30 sec  		0 hrs 0 min 29 sec  		0 hrs 0 min 28 sec  		0 hrs 0 min 27 sec  		0 hrs 0 min 26 sec  		0 hrs 0 min 25 sec  		0 hrs 0 min 24 sec  		0 hrs 0 min 23 sec  		0 hrs 0 min 22 sec  		0 hrs 0 min 21 sec  		0 hrs 0 min 20 sec  		0 hrs 0 min 19 sec  		0 hrs 0 min 18 sec  		0 hrs 0 min 17 sec  		0 hrs 0 min 16 sec  		0 hrs 0 min 15 sec  		0 hrs 0 min 14 sec  		0 hrs 0 min 13 sec  		0 hrs 0 min 12 sec  		0 hrs 0 min 11 sec  		0 hrs 0 min 10 sec  		0 hrs 0 min 9 sec  		0 hrs 0 min 8 sec  		0 hrs 0 min 7 sec  		0 hrs 0 min 6 sec  		0 hrs 0 min 5 sec  		0 hrs 0 min 4 sec  		0 hrs 0 min 3 sec  		0 hrs 0 min 2 sec  		0 hrs 0 min 1 sec  		0 hrs 0 min 0 sec  
+
+psfsprod status: Synch stat is 10. Syncinprog stat is 27. MEG left 4315.3.
+psfsprd2 status: Synch stat is 10. Syncinprog stat is 27. MEG left 7673.2.
+psfssys status: Synch stat is 10. Syncinprog stat is 27. MEG left 11343.2.
+psfiles status: Synch stat is 0. Syncinprog stat is 28. MEG left 0.0.
+Group Count is: 1
+The Device Groups for server16 are NOT YET established.
+Resetting Group Count to 0.
+Time_Counter Starting at: Fri Oct 11 17:24:23 EDT 2002
+Sleeping 60 Seconds. Total: 0 hour(s) 1 minute(s) 0 second(s)
+		0 hrs 1 min 0 sec  		0 hrs 0 min 59 sec  		0 hrs 0 min 58 sec  		0 hrs 0 min 57 sec  		0 hrs 0 min 56 sec  		0 hrs 0 min 55 sec  		0 hrs 0 min 54 sec  		0 hrs 0 min 53 sec  		0 hrs 0 min 52 sec  		0 hrs 0 min 51 sec  		0 hrs 0 min 50 sec  		0 hrs 0 min 49 sec  		0 hrs 0 min 48 sec  		0 hrs 0 min 47 sec  		0 hrs 0 min 46 sec  		0 hrs 0 min 45 sec  		0 hrs 0 min 44 sec  		0 hrs 0 min 43 sec  		0 hrs 0 min 42 sec  		0 hrs 0 min 41 sec  		0 hrs 0 min 40 sec  		0 hrs 0 min 39 sec  		0 hrs 0 min 38 sec  		0 hrs 0 min 37 sec  		0 hrs 0 min 36 sec  		0 hrs 0 min 35 sec  		0 hrs 0 min 34 sec  		0 hrs 0 min 33 sec  		0 hrs 0 min 32 sec  		0 hrs 0 min 31 sec  		0 hrs 0 min 30 sec  		0 hrs 0 min 29 sec  		0 hrs 0 min 28 sec  		0 hrs 0 min 27 sec  		0 hrs 0 min 26 sec  		0 hrs 0 min 25 sec  		0 hrs 0 min 24 sec  		0 hrs 0 min 23 sec  		0 hrs 0 min 22 sec  		0 hrs 0 min 21 sec  		0 hrs 0 min 20 sec  		0 hrs 0 min 19 sec  		0 hrs 0 min 18 sec  		0 hrs 0 min 17 sec  		0 hrs 0 min 16 sec  		0 hrs 0 min 15 sec  		0 hrs 0 min 14 sec  		0 hrs 0 min 13 sec  		0 hrs 0 min 12 sec  		0 hrs 0 min 11 sec  		0 hrs 0 min 10 sec  		0 hrs 0 min 9 sec  		0 hrs 0 min 8 sec  		0 hrs 0 min 7 sec  		0 hrs 0 min 6 sec  		0 hrs 0 min 5 sec  		0 hrs 0 min 4 sec  		0 hrs 0 min 3 sec  		0 hrs 0 min 2 sec  		0 hrs 0 min 1 sec  		0 hrs 0 min 0 sec  
+
+psfsprod status: Synch stat is 10. Syncinprog stat is 27. MEG left 4315.3.
+psfsprd2 status: Synch stat is 10. Syncinprog stat is 27. MEG left 7061.1.
+psfssys status: Synch stat is 10. Syncinprog stat is 27. MEG left 8371.2.
+psfiles status: Synch stat is 0. Syncinprog stat is 28. MEG left 0.0.
+Group Count is: 1
+The Device Groups for server16 are NOT YET established.
+Resetting Group Count to 0.
+Time_Counter Starting at: Fri Oct 11 17:25:50 EDT 2002
+Sleeping 60 Seconds. Total: 0 hour(s) 1 minute(s) 0 second(s)
+		0 hrs 1 min 0 sec  		0 hrs 0 min 59 sec  		0 hrs 0 min 58 sec  		0 hrs 0 min 57 sec  		0 hrs 0 min 56 sec  		0 hrs 0 min 55 sec  		0 hrs 0 min 54 sec  		0 hrs 0 min 53 sec  		0 hrs 0 min 52 sec  		0 hrs 0 min 51 sec  		0 hrs 0 min 50 sec  		0 hrs 0 min 49 sec  		0 hrs 0 min 48 sec  		0 hrs 0 min 47 sec  		0 hrs 0 min 46 sec  		0 hrs 0 min 45 sec  		0 hrs 0 min 44 sec  		0 hrs 0 min 43 sec  		0 hrs 0 min 42 sec  		0 hrs 0 min 41 sec  		0 hrs 0 min 40 sec  		0 hrs 0 min 39 sec  		0 hrs 0 min 38 sec  		0 hrs 0 min 37 sec  		0 hrs 0 min 36 sec  		0 hrs 0 min 35 sec  		0 hrs 0 min 34 sec  		0 hrs 0 min 33 sec  		0 hrs 0 min 32 sec  		0 hrs 0 min 31 sec  		0 hrs 0 min 30 sec  		0 hrs 0 min 29 sec  		0 hrs 0 min 28 sec  		0 hrs 0 min 27 sec  		0 hrs 0 min 26 sec  		0 hrs 0 min 25 sec  		0 hrs 0 min 24 sec  		0 hrs 0 min 23 sec  		0 hrs 0 min 22 sec  		0 hrs 0 min 21 sec  		0 hrs 0 min 20 sec  		0 hrs 0 min 19 sec  		0 hrs 0 min 18 sec  		0 hrs 0 min 17 sec  		0 hrs 0 min 16 sec  		0 hrs 0 min 15 sec  		0 hrs 0 min 14 sec  		0 hrs 0 min 13 sec  		0 hrs 0 min 12 sec  		0 hrs 0 min 11 sec  		0 hrs 0 min 10 sec  		0 hrs 0 min 9 sec  		0 hrs 0 min 8 sec  		0 hrs 0 min 7 sec  		0 hrs 0 min 6 sec  		0 hrs 0 min 5 sec  		0 hrs 0 min 4 sec  		0 hrs 0 min 3 sec  		0 hrs 0 min 2 sec  		0 hrs 0 min 1 sec  		0 hrs 0 min 0 sec  
+
+psfsprod status: Synch stat is 10. Syncinprog stat is 27. MEG left 4100.7.
+psfsprd2 status: Synch stat is 10. Syncinprog stat is 27. MEG left 6442.2.
+psfssys status: Synch stat is 10. Syncinprog stat is 27. MEG left 6074.7.
+psfiles status: Synch stat is 0. Syncinprog stat is 28. MEG left 0.0.
+Group Count is: 1
+The Device Groups for server16 are NOT YET established.
+Resetting Group Count to 0.
+Time_Counter Starting at: Fri Oct 11 17:27:17 EDT 2002
+Sleeping 60 Seconds. Total: 0 hour(s) 1 minute(s) 0 second(s)
+		0 hrs 1 min 0 sec  		0 hrs 0 min 59 sec  		0 hrs 0 min 58 sec  		0 hrs 0 min 57 sec  		0 hrs 0 min 56 sec  		0 hrs 0 min 55 sec  		0 hrs 0 min 54 sec  		0 hrs 0 min 53 sec  		0 hrs 0 min 52 sec  		0 hrs 0 min 51 sec  		0 hrs 0 min 50 sec  		0 hrs 0 min 49 sec  		0 hrs 0 min 48 sec  		0 hrs 0 min 47 sec  		0 hrs 0 min 46 sec  		0 hrs 0 min 45 sec  		0 hrs 0 min 44 sec  		0 hrs 0 min 43 sec  		0 hrs 0 min 42 sec  		0 hrs 0 min 41 sec  		0 hrs 0 min 40 sec  		0 hrs 0 min 39 sec  		0 hrs 0 min 38 sec  		0 hrs 0 min 37 sec  		0 hrs 0 min 36 sec  		0 hrs 0 min 35 sec  		0 hrs 0 min 34 sec  		0 hrs 0 min 33 sec  		0 hrs 0 min 32 sec  		0 hrs 0 min 31 sec  		0 hrs 0 min 30 sec  		0 hrs 0 min 29 sec  		0 hrs 0 min 28 sec  		0 hrs 0 min 27 sec  		0 hrs 0 min 26 sec  		0 hrs 0 min 25 sec  		0 hrs 0 min 24 sec  		0 hrs 0 min 23 sec  		0 hrs 0 min 22 sec  		0 hrs 0 min 21 sec  		0 hrs 0 min 20 sec  		0 hrs 0 min 19 sec  		0 hrs 0 min 18 sec  		0 hrs 0 min 17 sec  		0 hrs 0 min 16 sec  		0 hrs 0 min 15 sec  		0 hrs 0 min 14 sec  		0 hrs 0 min 13 sec  		0 hrs 0 min 12 sec  		0 hrs 0 min 11 sec  		0 hrs 0 min 10 sec  		0 hrs 0 min 9 sec  		0 hrs 0 min 8 sec  		0 hrs 0 min 7 sec  		0 hrs 0 min 6 sec  		0 hrs 0 min 5 sec  		0 hrs 0 min 4 sec  		0 hrs 0 min 3 sec  		0 hrs 0 min 2 sec  		0 hrs 0 min 1 sec  		0 hrs 0 min 0 sec  
+
+psfsprod status: Synch stat is 10. Syncinprog stat is 27. MEG left 3364.3.
+psfsprd2 status: Synch stat is 10. Syncinprog stat is 27. MEG left 5901.6.
+psfssys status: Synch stat is 10. Syncinprog stat is 27. MEG left 4155.1.
+psfiles status: Synch stat is 0. Syncinprog stat is 28. MEG left 0.0.
+Group Count is: 1
+The Device Groups for server16 are NOT YET established.
+Resetting Group Count to 0.
+Time_Counter Starting at: Fri Oct 11 17:28:44 EDT 2002
+Sleeping 60 Seconds. Total: 0 hour(s) 1 minute(s) 0 second(s)
+		0 hrs 1 min 0 sec  		0 hrs 0 min 59 sec  		0 hrs 0 min 58 sec  		0 hrs 0 min 57 sec  		0 hrs 0 min 56 sec  		0 hrs 0 min 55 sec  		0 hrs 0 min 54 sec  		0 hrs 0 min 53 sec  		0 hrs 0 min 52 sec  		0 hrs 0 min 51 sec  		0 hrs 0 min 50 sec  		0 hrs 0 min 49 sec  		0 hrs 0 min 48 sec  		0 hrs 0 min 47 sec  		0 hrs 0 min 46 sec  		0 hrs 0 min 45 sec  		0 hrs 0 min 44 sec  		0 hrs 0 min 43 sec  		0 hrs 0 min 42 sec  		0 hrs 0 min 41 sec  		0 hrs 0 min 40 sec  		0 hrs 0 min 39 sec  		0 hrs 0 min 38 sec  		0 hrs 0 min 37 sec  		0 hrs 0 min 36 sec  		0 hrs 0 min 35 sec  		0 hrs 0 min 34 sec  		0 hrs 0 min 33 sec  		0 hrs 0 min 32 sec  		0 hrs 0 min 31 sec  		0 hrs 0 min 30 sec  		0 hrs 0 min 29 sec  		0 hrs 0 min 28 sec  		0 hrs 0 min 27 sec  		0 hrs 0 min 26 sec  		0 hrs 0 min 25 sec  		0 hrs 0 min 24 sec  		0 hrs 0 min 23 sec  		0 hrs 0 min 22 sec  		0 hrs 0 min 21 sec  		0 hrs 0 min 20 sec  		0 hrs 0 min 19 sec  		0 hrs 0 min 18 sec  		0 hrs 0 min 17 sec  		0 hrs 0 min 16 sec  		0 hrs 0 min 15 sec  		0 hrs 0 min 14 sec  		0 hrs 0 min 13 sec  		0 hrs 0 min 12 sec  		0 hrs 0 min 11 sec  		0 hrs 0 min 10 sec  		0 hrs 0 min 9 sec  		0 hrs 0 min 8 sec  		0 hrs 0 min 7 sec  		0 hrs 0 min 6 sec  		0 hrs 0 min 5 sec  		0 hrs 0 min 4 sec  		0 hrs 0 min 3 sec  		0 hrs 0 min 2 sec  		0 hrs 0 min 1 sec  		0 hrs 0 min 0 sec  
+
+psfsprod status: Synch stat is 10. Syncinprog stat is 27. MEG left 2636.3.
+psfsprd2 status: Synch stat is 10. Syncinprog stat is 27. MEG left 5395.0.
+psfssys status: Synch stat is 10. Syncinprog stat is 27. MEG left 2523.6.
+psfiles status: Synch stat is 0. Syncinprog stat is 28. MEG left 0.0.
+Group Count is: 1
+The Device Groups for server16 are NOT YET established.
+Resetting Group Count to 0.
+Time_Counter Starting at: Fri Oct 11 17:30:20 EDT 2002
+Sleeping 60 Seconds. Total: 0 hour(s) 1 minute(s) 0 second(s)
+		0 hrs 1 min 0 sec  		0 hrs 0 min 59 sec  		0 hrs 0 min 58 sec  		0 hrs 0 min 57 sec  		0 hrs 0 min 56 sec  		0 hrs 0 min 55 sec  		0 hrs 0 min 54 sec  		0 hrs 0 min 53 sec  		0 hrs 0 min 52 sec  		0 hrs 0 min 51 sec  		0 hrs 0 min 50 sec  		0 hrs 0 min 49 sec  		0 hrs 0 min 48 sec  		0 hrs 0 min 47 sec  		0 hrs 0 min 46 sec  		0 hrs 0 min 45 sec  		0 hrs 0 min 44 sec  		0 hrs 0 min 43 sec  		0 hrs 0 min 42 sec  		0 hrs 0 min 41 sec  		0 hrs 0 min 40 sec  		0 hrs 0 min 39 sec  		0 hrs 0 min 38 sec  		0 hrs 0 min 37 sec  		0 hrs 0 min 36 sec  		0 hrs 0 min 35 sec  		0 hrs 0 min 34 sec  		0 hrs 0 min 33 sec  		0 hrs 0 min 32 sec  		0 hrs 0 min 31 sec  		0 hrs 0 min 30 sec  		0 hrs 0 min 29 sec  		0 hrs 0 min 28 sec  		0 hrs 0 min 27 sec  		0 hrs 0 min 26 sec  		0 hrs 0 min 25 sec  		0 hrs 0 min 24 sec  		0 hrs 0 min 23 sec  		0 hrs 0 min 22 sec  		0 hrs 0 min 21 sec  		0 hrs 0 min 20 sec  		0 hrs 0 min 19 sec  		0 hrs 0 min 18 sec  		0 hrs 0 min 17 sec  		0 hrs 0 min 16 sec  		0 hrs 0 min 15 sec  		0 hrs 0 min 14 sec  		0 hrs 0 min 13 sec  		0 hrs 0 min 12 sec  		0 hrs 0 min 11 sec  		0 hrs 0 min 10 sec  		0 hrs 0 min 9 sec  		0 hrs 0 min 8 sec  		0 hrs 0 min 7 sec  		0 hrs 0 min 6 sec  		0 hrs 0 min 5 sec  		0 hrs 0 min 4 sec  		0 hrs 0 min 3 sec  		0 hrs 0 min 2 sec  		0 hrs 0 min 1 sec  		0 hrs 0 min 0 sec  
+
+psfsprod status: Synch stat is 10. Syncinprog stat is 27. MEG left 1809.4.
+psfsprd2 status: Synch stat is 10. Syncinprog stat is 27. MEG left 4894.2.
+psfssys status: Synch stat is 10. Syncinprog stat is 27. MEG left 1214.3.
+psfiles status: Synch stat is 0. Syncinprog stat is 28. MEG left 0.0.
+Group Count is: 1
+The Device Groups for server16 are NOT YET established.
+Resetting Group Count to 0.
+Time_Counter Starting at: Fri Oct 11 17:31:47 EDT 2002
+Sleeping 60 Seconds. Total: 0 hour(s) 1 minute(s) 0 second(s)
+		0 hrs 1 min 0 sec  		0 hrs 0 min 59 sec  		0 hrs 0 min 58 sec  		0 hrs 0 min 57 sec  		0 hrs 0 min 56 sec  		0 hrs 0 min 55 sec  		0 hrs 0 min 54 sec  		0 hrs 0 min 53 sec  		0 hrs 0 min 52 sec  		0 hrs 0 min 51 sec  		0 hrs 0 min 50 sec  		0 hrs 0 min 49 sec  		0 hrs 0 min 48 sec  		0 hrs 0 min 47 sec  		0 hrs 0 min 46 sec  		0 hrs 0 min 45 sec  		0 hrs 0 min 44 sec  		0 hrs 0 min 43 sec  		0 hrs 0 min 42 sec  		0 hrs 0 min 41 sec  		0 hrs 0 min 40 sec  		0 hrs 0 min 39 sec  		0 hrs 0 min 38 sec  		0 hrs 0 min 37 sec  		0 hrs 0 min 36 sec  		0 hrs 0 min 35 sec  		0 hrs 0 min 34 sec  		0 hrs 0 min 33 sec  		0 hrs 0 min 32 sec  		0 hrs 0 min 31 sec  		0 hrs 0 min 30 sec  		0 hrs 0 min 29 sec  		0 hrs 0 min 28 sec  		0 hrs 0 min 27 sec  		0 hrs 0 min 26 sec  		0 hrs 0 min 25 sec  		0 hrs 0 min 24 sec  		0 hrs 0 min 23 sec  		0 hrs 0 min 22 sec  		0 hrs 0 min 21 sec  		0 hrs 0 min 20 sec  		0 hrs 0 min 19 sec  		0 hrs 0 min 18 sec  		0 hrs 0 min 17 sec  		0 hrs 0 min 16 sec  		0 hrs 0 min 15 sec  		0 hrs 0 min 14 sec  		0 hrs 0 min 13 sec  		0 hrs 0 min 12 sec  		0 hrs 0 min 11 sec  		0 hrs 0 min 10 sec  		0 hrs 0 min 9 sec  		0 hrs 0 min 8 sec  		0 hrs 0 min 7 sec  		0 hrs 0 min 6 sec  		0 hrs 0 min 5 sec  		0 hrs 0 min 4 sec  		0 hrs 0 min 3 sec  		0 hrs 0 min 2 sec  		0 hrs 0 min 1 sec  		0 hrs 0 min 0 sec  
+
+psfsprod status: Synch stat is 10. Syncinprog stat is 27. MEG left 1001.6.
+psfsprd2 status: Synch stat is 10. Syncinprog stat is 27. MEG left 4373.0.
+psfssys status: Synch stat is 10. Syncinprog stat is 27. MEG left 623.9.
+psfiles status: Synch stat is 0. Syncinprog stat is 28. MEG left 0.0.
+Group Count is: 1
+The Device Groups for server16 are NOT YET established.
+Resetting Group Count to 0.
+Time_Counter Starting at: Fri Oct 11 17:33:14 EDT 2002
+Sleeping 60 Seconds. Total: 0 hour(s) 1 minute(s) 0 second(s)
+		0 hrs 1 min 0 sec  		0 hrs 0 min 59 sec  		0 hrs 0 min 58 sec  		0 hrs 0 min 57 sec  		0 hrs 0 min 56 sec  		0 hrs 0 min 55 sec  		0 hrs 0 min 54 sec  		0 hrs 0 min 53 sec  		0 hrs 0 min 52 sec  		0 hrs 0 min 51 sec  		0 hrs 0 min 50 sec  		0 hrs 0 min 49 sec  		0 hrs 0 min 48 sec  		0 hrs 0 min 47 sec  		0 hrs 0 min 46 sec  		0 hrs 0 min 45 sec  		0 hrs 0 min 44 sec  		0 hrs 0 min 43 sec  		0 hrs 0 min 42 sec  		0 hrs 0 min 41 sec  		0 hrs 0 min 40 sec  		0 hrs 0 min 39 sec  		0 hrs 0 min 38 sec  		0 hrs 0 min 37 sec  		0 hrs 0 min 36 sec  		0 hrs 0 min 35 sec  		0 hrs 0 min 34 sec  		0 hrs 0 min 33 sec  		0 hrs 0 min 32 sec  		0 hrs 0 min 31 sec  		0 hrs 0 min 30 sec  		0 hrs 0 min 29 sec  		0 hrs 0 min 28 sec  		0 hrs 0 min 27 sec  		0 hrs 0 min 26 sec  		0 hrs 0 min 25 sec  		0 hrs 0 min 24 sec  		0 hrs 0 min 23 sec  		0 hrs 0 min 22 sec  		0 hrs 0 min 21 sec  		0 hrs 0 min 20 sec  		0 hrs 0 min 19 sec  		0 hrs 0 min 18 sec  		0 hrs 0 min 17 sec  		0 hrs 0 min 16 sec  		0 hrs 0 min 15 sec  		0 hrs 0 min 14 sec  		0 hrs 0 min 13 sec  		0 hrs 0 min 12 sec  		0 hrs 0 min 11 sec  		0 hrs 0 min 10 sec  		0 hrs 0 min 9 sec  		0 hrs 0 min 8 sec  		0 hrs 0 min 7 sec  		0 hrs 0 min 6 sec  		0 hrs 0 min 5 sec  		0 hrs 0 min 4 sec  		0 hrs 0 min 3 sec  		0 hrs 0 min 2 sec  		0 hrs 0 min 1 sec  		0 hrs 0 min 0 sec  
+
+psfsprod status: Synch stat is 10. Syncinprog stat is 27. MEG left 93.0.
+psfsprd2 status: Synch stat is 10. Syncinprog stat is 27. MEG left 4315.3.
+psfssys status: Synch stat is 10. Syncinprog stat is 27. MEG left 153.2.
+psfiles status: Synch stat is 0. Syncinprog stat is 28. MEG left 0.0.
+Group Count is: 1
+The Device Groups for server16 are NOT YET established.
+Resetting Group Count to 0.
+Time_Counter Starting at: Fri Oct 11 17:34:41 EDT 2002
+Sleeping 60 Seconds. Total: 0 hour(s) 1 minute(s) 0 second(s)
+		0 hrs 1 min 0 sec  		0 hrs 0 min 59 sec  		0 hrs 0 min 58 sec  		0 hrs 0 min 57 sec  		0 hrs 0 min 56 sec  		0 hrs 0 min 55 sec  		0 hrs 0 min 54 sec  		0 hrs 0 min 53 sec  		0 hrs 0 min 52 sec  		0 hrs 0 min 51 sec  		0 hrs 0 min 50 sec  		0 hrs 0 min 49 sec  		0 hrs 0 min 48 sec  		0 hrs 0 min 47 sec  		0 hrs 0 min 46 sec  		0 hrs 0 min 45 sec  		0 hrs 0 min 44 sec  		0 hrs 0 min 43 sec  		0 hrs 0 min 42 sec  		0 hrs 0 min 41 sec  		0 hrs 0 min 40 sec  		0 hrs 0 min 39 sec  		0 hrs 0 min 38 sec  		0 hrs 0 min 37 sec  		0 hrs 0 min 36 sec  		0 hrs 0 min 35 sec  		0 hrs 0 min 34 sec  		0 hrs 0 min 33 sec  		0 hrs 0 min 32 sec  		0 hrs 0 min 31 sec  		0 hrs 0 min 30 sec  		0 hrs 0 min 29 sec  		0 hrs 0 min 28 sec  		0 hrs 0 min 27 sec  		0 hrs 0 min 26 sec  		0 hrs 0 min 25 sec  		0 hrs 0 min 24 sec  		0 hrs 0 min 23 sec  		0 hrs 0 min 22 sec  		0 hrs 0 min 21 sec  		0 hrs 0 min 20 sec  		0 hrs 0 min 19 sec  		0 hrs 0 min 18 sec  		0 hrs 0 min 17 sec  		0 hrs 0 min 16 sec  		0 hrs 0 min 15 sec  		0 hrs 0 min 14 sec  		0 hrs 0 min 13 sec  		0 hrs 0 min 12 sec  		0 hrs 0 min 11 sec  		0 hrs 0 min 10 sec  		0 hrs 0 min 9 sec  		0 hrs 0 min 8 sec  		0 hrs 0 min 7 sec  		0 hrs 0 min 6 sec  		0 hrs 0 min 5 sec  		0 hrs 0 min 4 sec  		0 hrs 0 min 3 sec  		0 hrs 0 min 2 sec  		0 hrs 0 min 1 sec  		0 hrs 0 min 0 sec  
+
+psfsprod status: Synch stat is 0. Syncinprog stat is 28. MEG left 0.0.
+psfsprd2 status: Synch stat is 10. Syncinprog stat is 27. MEG left 4083.9.
+psfssys status: Synch stat is 0. Syncinprog stat is 28. MEG left 0.0.
+psfiles status: Synch stat is 0. Syncinprog stat is 28. MEG left 0.0.
+Group Count is: 3
+The Device Groups for server16 are NOT YET established.
+Resetting Group Count to 0.
+Time_Counter Starting at: Fri Oct 11 17:36:08 EDT 2002
+Sleeping 60 Seconds. Total: 0 hour(s) 1 minute(s) 0 second(s)
+		0 hrs 1 min 0 sec  		0 hrs 0 min 59 sec  		0 hrs 0 min 58 sec  		0 hrs 0 min 57 sec  		0 hrs 0 min 56 sec  		0 hrs 0 min 55 sec  		0 hrs 0 min 54 sec  		0 hrs 0 min 53 sec  		0 hrs 0 min 52 sec  		0 hrs 0 min 51 sec  		0 hrs 0 min 50 sec  		0 hrs 0 min 49 sec  		0 hrs 0 min 48 sec  		0 hrs 0 min 47 sec  		0 hrs 0 min 46 sec  		0 hrs 0 min 45 sec  		0 hrs 0 min 44 sec  		0 hrs 0 min 43 sec  		0 hrs 0 min 42 sec  		0 hrs 0 min 41 sec  		0 hrs 0 min 40 sec  		0 hrs 0 min 39 sec  		0 hrs 0 min 38 sec  		0 hrs 0 min 37 sec  		0 hrs 0 min 36 sec  		0 hrs 0 min 35 sec  		0 hrs 0 min 34 sec  		0 hrs 0 min 33 sec  		0 hrs 0 min 32 sec  		0 hrs 0 min 31 sec  		0 hrs 0 min 30 sec  		0 hrs 0 min 29 sec  		0 hrs 0 min 28 sec  		0 hrs 0 min 27 sec  		0 hrs 0 min 26 sec  		0 hrs 0 min 25 sec  		0 hrs 0 min 24 sec  		0 hrs 0 min 23 sec  		0 hrs 0 min 22 sec  		0 hrs 0 min 21 sec  		0 hrs 0 min 20 sec  		0 hrs 0 min 19 sec  		0 hrs 0 min 18 sec  		0 hrs 0 min 17 sec  		0 hrs 0 min 16 sec  		0 hrs 0 min 15 sec  		0 hrs 0 min 14 sec  		0 hrs 0 min 13 sec  		0 hrs 0 min 12 sec  		0 hrs 0 min 11 sec  		0 hrs 0 min 10 sec  		0 hrs 0 min 9 sec  		0 hrs 0 min 8 sec  		0 hrs 0 min 7 sec  		0 hrs 0 min 6 sec  		0 hrs 0 min 5 sec  		0 hrs 0 min 4 sec  		0 hrs 0 min 3 sec  		0 hrs 0 min 2 sec  		0 hrs 0 min 1 sec  		0 hrs 0 min 0 sec  
+
+psfsprod status: Synch stat is 0. Syncinprog stat is 28. MEG left 0.0.
+psfsprd2 status: Synch stat is 10. Syncinprog stat is 27. MEG left 3521.4.
+psfssys status: Synch stat is 0. Syncinprog stat is 28. MEG left 0.0.
+psfiles status: Synch stat is 0. Syncinprog stat is 28. MEG left 0.0.
+Group Count is: 3
+The Device Groups for server16 are NOT YET established.
+Resetting Group Count to 0.
+Time_Counter Starting at: Fri Oct 11 17:37:35 EDT 2002
+Sleeping 60 Seconds. Total: 0 hour(s) 1 minute(s) 0 second(s)
+		0 hrs 1 min 0 sec  		0 hrs 0 min 59 sec  		0 hrs 0 min 58 sec  		0 hrs 0 min 57 sec  		0 hrs 0 min 56 sec  		0 hrs 0 min 55 sec  		0 hrs 0 min 54 sec  		0 hrs 0 min 53 sec  		0 hrs 0 min 52 sec  		0 hrs 0 min 51 sec  		0 hrs 0 min 50 sec  		0 hrs 0 min 49 sec  		0 hrs 0 min 48 sec  		0 hrs 0 min 47 sec  		0 hrs 0 min 46 sec  		0 hrs 0 min 45 sec  		0 hrs 0 min 44 sec  		0 hrs 0 min 43 sec  		0 hrs 0 min 42 sec  		0 hrs 0 min 41 sec  		0 hrs 0 min 40 sec  		0 hrs 0 min 39 sec  		0 hrs 0 min 38 sec  		0 hrs 0 min 37 sec  		0 hrs 0 min 36 sec  		0 hrs 0 min 35 sec  		0 hrs 0 min 34 sec  		0 hrs 0 min 33 sec  		0 hrs 0 min 32 sec  		0 hrs 0 min 31 sec  		0 hrs 0 min 30 sec  		0 hrs 0 min 29 sec  		0 hrs 0 min 28 sec  		0 hrs 0 min 27 sec  		0 hrs 0 min 26 sec  		0 hrs 0 min 25 sec  		0 hrs 0 min 24 sec  		0 hrs 0 min 23 sec  		0 hrs 0 min 22 sec  		0 hrs 0 min 21 sec  		0 hrs 0 min 20 sec  		0 hrs 0 min 19 sec  		0 hrs 0 min 18 sec  		0 hrs 0 min 17 sec  		0 hrs 0 min 16 sec  		0 hrs 0 min 15 sec  		0 hrs 0 min 14 sec  		0 hrs 0 min 13 sec  		0 hrs 0 min 12 sec  		0 hrs 0 min 11 sec  		0 hrs 0 min 10 sec  		0 hrs 0 min 9 sec  		0 hrs 0 min 8 sec  		0 hrs 0 min 7 sec  		0 hrs 0 min 6 sec  		0 hrs 0 min 5 sec  		0 hrs 0 min 4 sec  		0 hrs 0 min 3 sec  		0 hrs 0 min 2 sec  		0 hrs 0 min 1 sec  		0 hrs 0 min 0 sec  
+
+psfsprod status: Synch stat is 0. Syncinprog stat is 28. MEG left 0.0.
+psfsprd2 status: Synch stat is 10. Syncinprog stat is 27. MEG left 3006.8.
+psfssys status: Synch stat is 0. Syncinprog stat is 28. MEG left 0.0.
+psfiles status: Synch stat is 0. Syncinprog stat is 28. MEG left 0.0.
+Group Count is: 3
+The Device Groups for server16 are NOT YET established.
+Resetting Group Count to 0.
+Time_Counter Starting at: Fri Oct 11 17:39:02 EDT 2002
+Sleeping 60 Seconds. Total: 0 hour(s) 1 minute(s) 0 second(s)
+		0 hrs 1 min 0 sec  		0 hrs 0 min 59 sec  		0 hrs 0 min 58 sec  		0 hrs 0 min 57 sec  		0 hrs 0 min 56 sec  		0 hrs 0 min 55 sec  		0 hrs 0 min 54 sec  		0 hrs 0 min 53 sec  		0 hrs 0 min 52 sec  		0 hrs 0 min 51 sec  		0 hrs 0 min 50 sec  		0 hrs 0 min 49 sec  		0 hrs 0 min 48 sec  		0 hrs 0 min 47 sec  		0 hrs 0 min 46 sec  		0 hrs 0 min 45 sec  		0 hrs 0 min 44 sec  		0 hrs 0 min 43 sec  		0 hrs 0 min 42 sec  		0 hrs 0 min 41 sec  		0 hrs 0 min 40 sec  		0 hrs 0 min 39 sec  		0 hrs 0 min 38 sec  		0 hrs 0 min 37 sec  		0 hrs 0 min 36 sec  		0 hrs 0 min 35 sec  		0 hrs 0 min 34 sec  		0 hrs 0 min 33 sec  		0 hrs 0 min 32 sec  		0 hrs 0 min 31 sec  		0 hrs 0 min 30 sec  		0 hrs 0 min 29 sec  		0 hrs 0 min 28 sec  		0 hrs 0 min 27 sec  		0 hrs 0 min 26 sec  		0 hrs 0 min 25 sec  		0 hrs 0 min 24 sec  		0 hrs 0 min 23 sec  		0 hrs 0 min 22 sec  		0 hrs 0 min 21 sec  		0 hrs 0 min 20 sec  		0 hrs 0 min 19 sec  		0 hrs 0 min 18 sec  		0 hrs 0 min 17 sec  		0 hrs 0 min 16 sec  		0 hrs 0 min 15 sec  		0 hrs 0 min 14 sec  		0 hrs 0 min 13 sec  		0 hrs 0 min 12 sec  		0 hrs 0 min 11 sec  		0 hrs 0 min 10 sec  		0 hrs 0 min 9 sec  		0 hrs 0 min 8 sec  		0 hrs 0 min 7 sec  		0 hrs 0 min 6 sec  		0 hrs 0 min 5 sec  		0 hrs 0 min 4 sec  		0 hrs 0 min 3 sec  		0 hrs 0 min 2 sec  		0 hrs 0 min 1 sec  		0 hrs 0 min 0 sec  
+
+psfsprod status: Synch stat is 0. Syncinprog stat is 28. MEG left 0.0.
+psfsprd2 status: Synch stat is 10. Syncinprog stat is 27. MEG left 2355.9.
+psfssys status: Synch stat is 0. Syncinprog stat is 28. MEG left 0.0.
+psfiles status: Synch stat is 0. Syncinprog stat is 28. MEG left 0.0.
+Group Count is: 3
+The Device Groups for server16 are NOT YET established.
+Resetting Group Count to 0.
+Time_Counter Starting at: Fri Oct 11 17:40:44 EDT 2002
+Sleeping 60 Seconds. Total: 0 hour(s) 1 minute(s) 0 second(s)
+		0 hrs 1 min 0 sec  		0 hrs 0 min 59 sec  		0 hrs 0 min 58 sec  		0 hrs 0 min 57 sec  		0 hrs 0 min 56 sec  		0 hrs 0 min 55 sec  		0 hrs 0 min 54 sec  		0 hrs 0 min 53 sec  		0 hrs 0 min 52 sec  		0 hrs 0 min 51 sec  		0 hrs 0 min 50 sec  		0 hrs 0 min 49 sec  		0 hrs 0 min 48 sec  		0 hrs 0 min 47 sec  		0 hrs 0 min 46 sec  		0 hrs 0 min 45 sec  		0 hrs 0 min 44 sec  		0 hrs 0 min 43 sec  		0 hrs 0 min 42 sec  		0 hrs 0 min 41 sec  		0 hrs 0 min 40 sec  		0 hrs 0 min 39 sec  		0 hrs 0 min 38 sec  		0 hrs 0 min 37 sec  		0 hrs 0 min 36 sec  		0 hrs 0 min 35 sec  		0 hrs 0 min 34 sec  		0 hrs 0 min 33 sec  		0 hrs 0 min 32 sec  		0 hrs 0 min 31 sec  		0 hrs 0 min 30 sec  		0 hrs 0 min 29 sec  		0 hrs 0 min 28 sec  		0 hrs 0 min 27 sec  		0 hrs 0 min 26 sec  		0 hrs 0 min 25 sec  		0 hrs 0 min 24 sec  		0 hrs 0 min 23 sec  		0 hrs 0 min 22 sec  		0 hrs 0 min 21 sec  		0 hrs 0 min 20 sec  		0 hrs 0 min 19 sec  		0 hrs 0 min 18 sec  		0 hrs 0 min 17 sec  		0 hrs 0 min 16 sec  		0 hrs 0 min 15 sec  		0 hrs 0 min 14 sec  		0 hrs 0 min 13 sec  		0 hrs 0 min 12 sec  		0 hrs 0 min 11 sec  		0 hrs 0 min 10 sec  		0 hrs 0 min 9 sec  		0 hrs 0 min 8 sec  		0 hrs 0 min 7 sec  		0 hrs 0 min 6 sec  		0 hrs 0 min 5 sec  		0 hrs 0 min 4 sec  		0 hrs 0 min 3 sec  		0 hrs 0 min 2 sec  		0 hrs 0 min 1 sec  		0 hrs 0 min 0 sec  
+
+psfsprod status: Synch stat is 0. Syncinprog stat is 28. MEG left 0.0.
+psfsprd2 status: Synch stat is 10. Syncinprog stat is 27. MEG left 1583.3.
+psfssys status: Synch stat is 0. Syncinprog stat is 28. MEG left 0.0.
+psfiles status: Synch stat is 0. Syncinprog stat is 28. MEG left 0.0.
+Group Count is: 3
+The Device Groups for server16 are NOT YET established.
+Resetting Group Count to 0.
+Time_Counter Starting at: Fri Oct 11 17:42:11 EDT 2002
+Sleeping 60 Seconds. Total: 0 hour(s) 1 minute(s) 0 second(s)
+		0 hrs 1 min 0 sec  		0 hrs 0 min 59 sec  		0 hrs 0 min 58 sec  		0 hrs 0 min 57 sec  		0 hrs 0 min 56 sec  		0 hrs 0 min 55 sec  		0 hrs 0 min 54 sec  		0 hrs 0 min 53 sec  		0 hrs 0 min 52 sec  		0 hrs 0 min 51 sec  		0 hrs 0 min 50 sec  		0 hrs 0 min 49 sec  		0 hrs 0 min 48 sec  		0 hrs 0 min 47 sec  		0 hrs 0 min 46 sec  		0 hrs 0 min 45 sec  		0 hrs 0 min 44 sec  		0 hrs 0 min 43 sec  		0 hrs 0 min 42 sec  		0 hrs 0 min 41 sec  		0 hrs 0 min 40 sec  		0 hrs 0 min 39 sec  		0 hrs 0 min 38 sec  		0 hrs 0 min 37 sec  		0 hrs 0 min 36 sec  		0 hrs 0 min 35 sec  		0 hrs 0 min 34 sec  		0 hrs 0 min 33 sec  		0 hrs 0 min 32 sec  		0 hrs 0 min 31 sec  		0 hrs 0 min 30 sec  		0 hrs 0 min 29 sec  		0 hrs 0 min 28 sec  		0 hrs 0 min 27 sec  		0 hrs 0 min 26 sec  		0 hrs 0 min 25 sec  		0 hrs 0 min 24 sec  		0 hrs 0 min 23 sec  		0 hrs 0 min 22 sec  		0 hrs 0 min 21 sec  		0 hrs 0 min 20 sec  		0 hrs 0 min 19 sec  		0 hrs 0 min 18 sec  		0 hrs 0 min 17 sec  		0 hrs 0 min 16 sec  		0 hrs 0 min 15 sec  		0 hrs 0 min 14 sec  		0 hrs 0 min 13 sec  		0 hrs 0 min 12 sec  		0 hrs 0 min 11 sec  		0 hrs 0 min 10 sec  		0 hrs 0 min 9 sec  		0 hrs 0 min 8 sec  		0 hrs 0 min 7 sec  		0 hrs 0 min 6 sec  		0 hrs 0 min 5 sec  		0 hrs 0 min 4 sec  		0 hrs 0 min 3 sec  		0 hrs 0 min 2 sec  		0 hrs 0 min 1 sec  		0 hrs 0 min 0 sec  
+
+psfsprod status: Synch stat is 0. Syncinprog stat is 28. MEG left 0.0.
+psfsprd2 status: Synch stat is 10. Syncinprog stat is 27. MEG left 925.1.
+psfssys status: Synch stat is 0. Syncinprog stat is 28. MEG left 0.0.
+psfiles status: Synch stat is 0. Syncinprog stat is 28. MEG left 0.0.
+Group Count is: 3
+The Device Groups for server16 are NOT YET established.
+Resetting Group Count to 0.
+Time_Counter Starting at: Fri Oct 11 17:43:38 EDT 2002
+Sleeping 60 Seconds. Total: 0 hour(s) 1 minute(s) 0 second(s)
+		0 hrs 1 min 0 sec  		0 hrs 0 min 59 sec  		0 hrs 0 min 58 sec  		0 hrs 0 min 57 sec  		0 hrs 0 min 56 sec  		0 hrs 0 min 55 sec  		0 hrs 0 min 54 sec  		0 hrs 0 min 53 sec  		0 hrs 0 min 52 sec  		0 hrs 0 min 51 sec  		0 hrs 0 min 50 sec  		0 hrs 0 min 49 sec  		0 hrs 0 min 48 sec  		0 hrs 0 min 47 sec  		0 hrs 0 min 46 sec  		0 hrs 0 min 45 sec  		0 hrs 0 min 44 sec  		0 hrs 0 min 43 sec  		0 hrs 0 min 42 sec  		0 hrs 0 min 41 sec  		0 hrs 0 min 40 sec  		0 hrs 0 min 39 sec  		0 hrs 0 min 38 sec  		0 hrs 0 min 37 sec  		0 hrs 0 min 36 sec  		0 hrs 0 min 35 sec  		0 hrs 0 min 34 sec  		0 hrs 0 min 33 sec  		0 hrs 0 min 32 sec  		0 hrs 0 min 31 sec  		0 hrs 0 min 30 sec  		0 hrs 0 min 29 sec  		0 hrs 0 min 28 sec  		0 hrs 0 min 27 sec  		0 hrs 0 min 26 sec  		0 hrs 0 min 25 sec  		0 hrs 0 min 24 sec  		0 hrs 0 min 23 sec  		0 hrs 0 min 22 sec  		0 hrs 0 min 21 sec  		0 hrs 0 min 20 sec  		0 hrs 0 min 19 sec  		0 hrs 0 min 18 sec  		0 hrs 0 min 17 sec  		0 hrs 0 min 16 sec  		0 hrs 0 min 15 sec  		0 hrs 0 min 14 sec  		0 hrs 0 min 13 sec  		0 hrs 0 min 12 sec  		0 hrs 0 min 11 sec  		0 hrs 0 min 10 sec  		0 hrs 0 min 9 sec  		0 hrs 0 min 8 sec  		0 hrs 0 min 7 sec  		0 hrs 0 min 6 sec  		0 hrs 0 min 5 sec  		0 hrs 0 min 4 sec  		0 hrs 0 min 3 sec  		0 hrs 0 min 2 sec  		0 hrs 0 min 1 sec  		0 hrs 0 min 0 sec  
+
+psfsprod status: Synch stat is 0. Syncinprog stat is 28. MEG left 0.0.
+psfsprd2 status: Synch stat is 10. Syncinprog stat is 27. MEG left 285.8.
+psfssys status: Synch stat is 0. Syncinprog stat is 28. MEG left 0.0.
+psfiles status: Synch stat is 0. Syncinprog stat is 28. MEG left 0.0.
+Group Count is: 3
+The Device Groups for server16 are NOT YET established.
+Resetting Group Count to 0.
+Time_Counter Starting at: Fri Oct 11 17:45:08 EDT 2002
+Sleeping 60 Seconds. Total: 0 hour(s) 1 minute(s) 0 second(s)
+		0 hrs 1 min 0 sec  		0 hrs 0 min 59 sec  		0 hrs 0 min 58 sec  		0 hrs 0 min 57 sec  		0 hrs 0 min 56 sec  		0 hrs 0 min 55 sec  		0 hrs 0 min 54 sec  		0 hrs 0 min 53 sec  		0 hrs 0 min 52 sec  		0 hrs 0 min 51 sec  		0 hrs 0 min 50 sec  		0 hrs 0 min 49 sec  		0 hrs 0 min 48 sec  		0 hrs 0 min 47 sec  		0 hrs 0 min 46 sec  		0 hrs 0 min 45 sec  		0 hrs 0 min 44 sec  		0 hrs 0 min 43 sec  		0 hrs 0 min 42 sec  		0 hrs 0 min 41 sec  		0 hrs 0 min 40 sec  		0 hrs 0 min 39 sec  		0 hrs 0 min 38 sec  		0 hrs 0 min 37 sec  		0 hrs 0 min 36 sec  		0 hrs 0 min 35 sec  		0 hrs 0 min 34 sec  		0 hrs 0 min 33 sec  		0 hrs 0 min 32 sec  		0 hrs 0 min 31 sec  		0 hrs 0 min 30 sec  		0 hrs 0 min 29 sec  		0 hrs 0 min 28 sec  		0 hrs 0 min 27 sec  		0 hrs 0 min 26 sec  		0 hrs 0 min 25 sec  		0 hrs 0 min 24 sec  		0 hrs 0 min 23 sec  		0 hrs 0 min 22 sec  		0 hrs 0 min 21 sec  		0 hrs 0 min 20 sec  		0 hrs 0 min 19 sec  		0 hrs 0 min 18 sec  		0 hrs 0 min 17 sec  		0 hrs 0 min 16 sec  		0 hrs 0 min 15 sec  		0 hrs 0 min 14 sec  		0 hrs 0 min 13 sec  		0 hrs 0 min 12 sec  		0 hrs 0 min 11 sec  		0 hrs 0 min 10 sec  		0 hrs 0 min 9 sec  		0 hrs 0 min 8 sec  		0 hrs 0 min 7 sec  		0 hrs 0 min 6 sec  		0 hrs 0 min 5 sec  		0 hrs 0 min 4 sec  		0 hrs 0 min 3 sec  		0 hrs 0 min 2 sec  		0 hrs 0 min 1 sec  		0 hrs 0 min 0 sec  
+
+psfsprod status: Synch stat is 0. Syncinprog stat is 28. MEG left 0.0.
+psfsprd2 status: Synch stat is 0. Syncinprog stat is 28. MEG left 0.0.
+psfssys status: Synch stat is 0. Syncinprog stat is 28. MEG left 0.0.
+psfiles status: Synch stat is 0. Syncinprog stat is 28. MEG left 0.0.
+Group Count is: 4
+The Device Groups for server16 are fully established.
+#
+End Monitor BCV Establish function. Fri Oct 11 17:46:35 EDT 2002
+
+Start Verify Variables Function. Fri Oct 11 17:46:35 EDT 2002
+#
+End Verify Variables Function. Fri Oct 11 17:46:36 EDT 2002
+

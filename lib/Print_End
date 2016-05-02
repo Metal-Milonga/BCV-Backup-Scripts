@@ -1,0 +1,22 @@
+Print_End() {
+#
+# Function - 
+# Version - 
+# Author - David Holton
+# Date - April 19, 2002
+#
+# Description - 
+#
+###############################################################################
+# Modification history
+# Date     Who          What was modified.
+# -------- ------------ ------------------
+#
+###############################################################################
+
+print END BCV Establish and Split Script for ${SERVER} on $(date); print
+
+print >> ${EMAIL_RPT}
+print END BCV Establish and Split Script for ${SERVER} on $(date) >> ${EMAIL_RPT}
+
+}

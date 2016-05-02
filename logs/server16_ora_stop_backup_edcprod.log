@@ -1,0 +1,55 @@
+Hot backup BEGIN process for  STARTED at Mon May 23 06:45:34 EDT 2005
+Making backup copy of CONTROL FILE
+
+SQL*Plus: Release 9.2.0.2.0 - Production on Mon May 23 06:45:34 2005
+
+Copyright (c) 1982, 2002, Oracle Corporation.  All rights reserved.
+
+
+Connected to:
+Oracle9i Enterprise Edition Release 9.2.0.2.0 - 64bit Production
+With the Partitioning, OLAP and Oracle Data Mining options
+JServer Release 9.2.0.2.0 - Production
+
+SQL> 
+Database altered.
+
+SQL> Database log mode	       Archive Mode
+Automatic archival	       Enabled
+Archive destination	       /ora_archive_dumps/archive_edcprod/
+Oldest online log sequence     226
+Next log sequence to archive   233
+Current log sequence	       233
+SQL> Disconnected from Oracle9i Enterprise Edition Release 9.2.0.2.0 - 64bit Production
+With the Partitioning, OLAP and Oracle Data Mining options
+JServer Release 9.2.0.2.0 - Production
+Creating a list of tablespaces.
+
+SQL*Plus: Release 9.2.0.2.0 - Production on Mon May 23 06:45:35 2005
+
+Copyright (c) 1982, 2002, Oracle Corporation.  All rights reserved.
+
+
+Connected to:
+Oracle9i Enterprise Edition Release 9.2.0.2.0 - 64bit Production
+With the Partitioning, OLAP and Oracle Data Mining options
+JServer Release 9.2.0.2.0 - Production
+
+SQL> SQL> SQL> SQL> SQL> SQL> SQL> SQL>   2    3    4    5    6  alter tablespace EDC end backup;
+alter tablespace EDCARCHIVE end backup;
+alter tablespace EDCINDEX end backup;
+alter tablespace KFORCE end backup;
+alter tablespace FOOBAR end backup;
+alter tablespace HUMANSOFT end backup;
+alter tablespace PSINDEX end backup;
+alter tablespace RECRUITMAX end backup;
+alter tablespace SYSTEM end backup;
+alter tablespace UNDOTBS1 end backup;
+alter tablespace USERS end backup;
+SQL> SQL> SP2-0734: unknown command beginning "SQL> selec..." - rest of line ignored.
+  6*
+SP2-0734: unknown command beginning "SQL> spool..." - rest of line ignored.
+SQL> Disconnected from Oracle9i Enterprise Edition Release 9.2.0.2.0 - 64bit Production
+With the Partitioning, OLAP and Oracle Data Mining options
+JServer Release 9.2.0.2.0 - Production
+Hot backup BEGIN process for edcprod COMPLETED at Mon May 23 06:45:35 EDT 2005

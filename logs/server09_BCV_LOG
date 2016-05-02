@@ -1,0 +1,1371 @@
+Split Mode is set to: WAIT
+Script started with the following Options and Arguements: -BS server09 -s wait
+SERVER is set to: server09
+CONFIG_FILE: Default config file will be used.
+Establish Type is set to: incr
+RUN_BACKUP is set to: YES
+Manual Monitoring is set to: NO
+Split Mode is set to: WAIT
+Debug Mode is set to: OFF
+
+START BCV Establish and Split Script for server09 on Mon May 23 01:40:00 EDT 2005
+
+Start Declare_General_Variables Function. Mon May 23 01:40:00 EDT 2005.
+Script started with the following Options and Arguements: -BS server09 -s wait
+Working on BCVs for SERVER: server09
+SERVER server09 is a valid BCV Server. Continuing.
+Configuration file is: /usr/local/bin/bcvscripts/etc/bcv_scripts.conf
+Establish Type is: incr
+Run Backup is set to: YES
+Manual Monitoring is set to: NO
+Split Mode is set to WAIT
+Split Time is: 06:30:00
+End Declare_General_Variables Function. Mon May 23 01:40:00 EDT 2005
+
+Start Declare_VolumeGroup_Variables Function. Mon May 23 01:40:00 EDT 2005
+#
+Grabbing VGS for normal BCV Establish.
+SRVR_VG Array element 7 is: vghrprod1
+SRVR_VG Array element 6 is: vghrsystem1
+SRVR_VG Array element 5 is: vgpsfiles2
+SRVR_VG Array element 4 is: vgpshr01
+SRVR_VG Array element 3 is: vgapps09
+SRVR_VG Array element 2 is: vgfoobar3
+SRVR_VG Array element 1 is: vgfoobar2
+SRVR_VG Array element 0 is: vgfoobar1
+#
+Grabbing VGS for exact mode BCV Establish.
+VG_ARRAY_START_XACT (-1) has a negative value. No need to proceed. Skipping.
+#
+End Declare_VolumeGroup_Variables Function. Mon May 23 01:40:00 EDT 2005
+
+Start Declare_DeviceGroup_Variables Function. Mon May 23 01:40:00 EDT 2005
+#
+Grabbing DGs for normal BCV Establish.
+SRVR_DG Array element 7 is: pshrprod1
+SRVR_DG Array element 6 is: pshrsystem1
+SRVR_DG Array element 5 is: psfiles2
+SRVR_DG Array element 4 is: pshr01
+SRVR_DG Array element 3 is: apps09
+SRVR_DG Array element 2 is: foobar3
+SRVR_DG Array element 1 is: foobar2
+SRVR_DG Array element 0 is: foobar1
+#
+Grabbing DGs for exact mode BCV Establish.
+DG_ARRAY_START_XACT (-1) has a negative value. No data here. Skipping.
+#
+End Declare_DeviceGroup_Variables Function. Mon May 23 01:40:00 EDT 2005
+
+Start Declare_OmniBack_Variables Function. Mon May 23 01:40:01 EDT 2005.
+#
+Run Backup at end of script: YES
+grep: can't open /etc/opt/omni/datalists/BCVs-SERVER09
+OMNIBACK_OBJ is: SERVER09
+OMNI_LIST contains 0 objects
+OMNI_LIST contents:
+OMNI_DRV is:
+#
+Instance file exists
+Total Instances are: 3
+Current Instance is: 3
+#
+End Declare_OmniBack_Variables Function. Mon May 23 01:40:01 EDT 2005
+
+Start OOP Loading Function. Mon May 23 01:40:01 EDT 2005
+#
+#
+End OOP Loading Function. Mon May 23 01:40:01 EDT 2005
+
+Start Unmount Filesystem function. Mon May 23 01:40:01 EDT 2005
+FileSystems to UNmount: 8
+#
+
+	VOLGROUP is vgfoobar1
+	FSTAB_EXTRACT is /dev/vgfoobar1/lvol1:/BCV/srvr09/u08
+	VG is /dev/vgfoobar1
+	VGNAME is vgfoobar1
+	VG_LVOL is /dev/vgfoobar1/lvol1
+	VG_RLVOL is /dev/vgfoobar1/rlvol1
+	FILESYSTEM is /BCV/srvr09/u08
+	FILESYSTEM is 13 characters long
+	MAPDIR is /root/disks/vgfoobar1
+	MAPFILE is /root/disks/vgfoobar1/vgfoobar1.map
+	PVPATHFILE is /root/disks/vgfoobar1/vgfoobar1.pvpath
+	GROUPFILE is /dev/vgfoobar1/group
+
+VG /dev/vgfoobar1 is mounted on /BCV/srvr09/u08. I will unmount it for you.
+/BCV/srvr09/u08: 
+
+VG /dev/vgfoobar1 was successfully UNmounted from /BCV/srvr09/u08.
+#
+
+	VOLGROUP is vgfoobar2
+	FSTAB_EXTRACT is /dev/vgfoobar2/lvol1:/BCV/srvr09/u06
+	VG is /dev/vgfoobar2
+	VGNAME is vgfoobar2
+	VG_LVOL is /dev/vgfoobar2/lvol1
+	VG_RLVOL is /dev/vgfoobar2/rlvol1
+	FILESYSTEM is /BCV/srvr09/u06
+	FILESYSTEM is 13 characters long
+	MAPDIR is /root/disks/vgfoobar2
+	MAPFILE is /root/disks/vgfoobar2/vgfoobar2.map
+	PVPATHFILE is /root/disks/vgfoobar2/vgfoobar2.pvpath
+	GROUPFILE is /dev/vgfoobar2/group
+
+VG /dev/vgfoobar2 is mounted on /BCV/srvr09/u06. I will unmount it for you.
+/BCV/srvr09/u06: 
+
+VG /dev/vgfoobar2 was successfully UNmounted from /BCV/srvr09/u06.
+#
+
+	VOLGROUP is vgfoobar3
+	FSTAB_EXTRACT is /dev/vgfoobar3/lvol1:/BCV/srvr09/u07
+	VG is /dev/vgfoobar3
+	VGNAME is vgfoobar3
+	VG_LVOL is /dev/vgfoobar3/lvol1
+	VG_RLVOL is /dev/vgfoobar3/rlvol1
+	FILESYSTEM is /BCV/srvr09/u07
+	FILESYSTEM is 13 characters long
+	MAPDIR is /root/disks/vgfoobar3
+	MAPFILE is /root/disks/vgfoobar3/vgfoobar3.map
+	PVPATHFILE is /root/disks/vgfoobar3/vgfoobar3.pvpath
+	GROUPFILE is /dev/vgfoobar3/group
+
+VG /dev/vgfoobar3 is mounted on /BCV/srvr09/u07. I will unmount it for you.
+/BCV/srvr09/u07: 
+
+VG /dev/vgfoobar3 was successfully UNmounted from /BCV/srvr09/u07.
+#
+
+	VOLGROUP is vgapps09
+	FSTAB_EXTRACT is /dev/vgapps09/lvol1:/BCV/srvr09/apps
+	VG is /dev/vgapps09
+	VGNAME is vgapps09
+	VG_LVOL is /dev/vgapps09/lvol1
+	VG_RLVOL is /dev/vgapps09/rlvol1
+	FILESYSTEM is /BCV/srvr09/apps
+	FILESYSTEM is 14 characters long
+	MAPDIR is /root/disks/vgapps09
+	MAPFILE is /root/disks/vgapps09/vgapps09.map
+	PVPATHFILE is /root/disks/vgapps09/vgapps09.pvpath
+	GROUPFILE is /dev/vgapps09/group
+
+VG /dev/vgapps09 is mounted on /BCV/srvr09/apps. I will unmount it for you.
+/BCV/srvr09/apps: 
+
+VG /dev/vgapps09 was successfully UNmounted from /BCV/srvr09/apps.
+#
+
+	VOLGROUP is vgpshr01
+	FSTAB_EXTRACT is /dev/vgpshr01/lvol1:/BCV/srvr09/u01
+	VG is /dev/vgpshr01
+	VGNAME is vgpshr01
+	VG_LVOL is /dev/vgpshr01/lvol1
+	VG_RLVOL is /dev/vgpshr01/rlvol1
+	FILESYSTEM is /BCV/srvr09/u01
+	FILESYSTEM is 13 characters long
+	MAPDIR is /root/disks/vgpshr01
+	MAPFILE is /root/disks/vgpshr01/vgpshr01.map
+	PVPATHFILE is /root/disks/vgpshr01/vgpshr01.pvpath
+	GROUPFILE is /dev/vgpshr01/group
+
+VG /dev/vgpshr01 is mounted on /BCV/srvr09/u01. I will unmount it for you.
+/BCV/srvr09/u01: 
+
+VG /dev/vgpshr01 was successfully UNmounted from /BCV/srvr09/u01.
+#
+
+	VOLGROUP is vgpsfiles2
+	FSTAB_EXTRACT is /dev/vgpsfiles2/lvol1:/BCV/srvr09/u05
+	VG is /dev/vgpsfiles2
+	VGNAME is vgpsfiles2
+	VG_LVOL is /dev/vgpsfiles2/lvol1
+	VG_RLVOL is /dev/vgpsfiles2/rlvol1
+	FILESYSTEM is /BCV/srvr09/u05
+	FILESYSTEM is 13 characters long
+	MAPDIR is /root/disks/vgpsfiles2
+	MAPFILE is /root/disks/vgpsfiles2/vgpsfiles2.map
+	PVPATHFILE is /root/disks/vgpsfiles2/vgpsfiles2.pvpath
+	GROUPFILE is /dev/vgpsfiles2/group
+
+VG /dev/vgpsfiles2 is mounted on /BCV/srvr09/u05. I will unmount it for you.
+/BCV/srvr09/u05: 
+
+VG /dev/vgpsfiles2 was successfully UNmounted from /BCV/srvr09/u05.
+#
+
+	VOLGROUP is vghrsystem1
+	FSTAB_EXTRACT is /dev/vghrsystem1/lvol1:/BCV/srvr09/u04
+	VG is /dev/vghrsystem1
+	VGNAME is vghrsystem1
+	VG_LVOL is /dev/vghrsystem1/lvol1
+	VG_RLVOL is /dev/vghrsystem1/rlvol1
+	FILESYSTEM is /BCV/srvr09/u04
+	FILESYSTEM is 13 characters long
+	MAPDIR is /root/disks/vghrsystem1
+	MAPFILE is /root/disks/vghrsystem1/vghrsystem1.map
+	PVPATHFILE is /root/disks/vghrsystem1/vghrsystem1.pvpath
+	GROUPFILE is /dev/vghrsystem1/group
+
+VG /dev/vghrsystem1 is mounted on /BCV/srvr09/u04. I will unmount it for you.
+/BCV/srvr09/u04: 
+
+VG /dev/vghrsystem1 was successfully UNmounted from /BCV/srvr09/u04.
+#
+
+	VOLGROUP is vghrprod1
+	FSTAB_EXTRACT is /dev/vghrprod1/lvol1:/BCV/srvr09/u02
+	VG is /dev/vghrprod1
+	VGNAME is vghrprod1
+	VG_LVOL is /dev/vghrprod1/lvol1
+	VG_RLVOL is /dev/vghrprod1/rlvol1
+	FILESYSTEM is /BCV/srvr09/u02
+	FILESYSTEM is 13 characters long
+	MAPDIR is /root/disks/vghrprod1
+	MAPFILE is /root/disks/vghrprod1/vghrprod1.map
+	PVPATHFILE is /root/disks/vghrprod1/vghrprod1.pvpath
+	GROUPFILE is /dev/vghrprod1/group
+
+VG /dev/vghrprod1 is mounted on /BCV/srvr09/u02. I will unmount it for you.
+/BCV/srvr09/u02: 
+
+VG /dev/vghrprod1 was successfully UNmounted from /BCV/srvr09/u02.
+#
+/BCV/srvr09/u08:0
+/BCV/srvr09/u06:0
+/BCV/srvr09/u07:0
+/BCV/srvr09/apps:0
+/BCV/srvr09/u01:0
+/BCV/srvr09/u05:0
+/BCV/srvr09/u04:0
+/BCV/srvr09/u02:0
+U_STATUS equals 0
+U_STATUS equals 0
+U_STATUS equals 0
+U_STATUS equals 0
+U_STATUS equals 0
+U_STATUS equals 0
+U_STATUS equals 0
+U_STATUS equals 0
+U_STATUS_2 is 0
+Un-mounting successful for all filesystems.
+8 of 8 filesystems UNmounted.
+End Unmount Filesystem function. Mon May 23 01:40:08 EDT 2005
+
+Start Deactivate VolumeGroups function. Mon May 23 01:40:08 EDT 2005
+Volume Groups to be Deactivated: 8
+#
+
+	VOLGROUP is vgfoobar1
+	FSTAB_EXTRACT is /dev/vgfoobar1/lvol1:/BCV/srvr09/u08
+	VG is /dev/vgfoobar1
+	VGNAME is vgfoobar1
+	VG_LVOL is /dev/vgfoobar1/lvol1
+	VG_RLVOL is /dev/vgfoobar1/rlvol1
+	FILESYSTEM is /BCV/srvr09/u08
+	FILESYSTEM is 13 characters long
+	MAPDIR is /root/disks/vgfoobar1
+	MAPFILE is /root/disks/vgfoobar1/vgfoobar1.map
+	PVPATHFILE is /root/disks/vgfoobar1/vgfoobar1.pvpath
+	GROUPFILE is /dev/vgfoobar1/group
+
+The filesystem /BCV/srvr09/u08 is not mounted. VG /dev/vgfoobar1 will be deactivated.
+Volume group "/dev/vgfoobar1" has been successfully changed.
+VG /dev/vgfoobar1 was successfully deactivated.
+#
+
+	VOLGROUP is vgfoobar2
+	FSTAB_EXTRACT is /dev/vgfoobar2/lvol1:/BCV/srvr09/u06
+	VG is /dev/vgfoobar2
+	VGNAME is vgfoobar2
+	VG_LVOL is /dev/vgfoobar2/lvol1
+	VG_RLVOL is /dev/vgfoobar2/rlvol1
+	FILESYSTEM is /BCV/srvr09/u06
+	FILESYSTEM is 13 characters long
+	MAPDIR is /root/disks/vgfoobar2
+	MAPFILE is /root/disks/vgfoobar2/vgfoobar2.map
+	PVPATHFILE is /root/disks/vgfoobar2/vgfoobar2.pvpath
+	GROUPFILE is /dev/vgfoobar2/group
+
+The filesystem /BCV/srvr09/u06 is not mounted. VG /dev/vgfoobar2 will be deactivated.
+Volume group "/dev/vgfoobar2" has been successfully changed.
+VG /dev/vgfoobar2 was successfully deactivated.
+#
+
+	VOLGROUP is vgfoobar3
+	FSTAB_EXTRACT is /dev/vgfoobar3/lvol1:/BCV/srvr09/u07
+	VG is /dev/vgfoobar3
+	VGNAME is vgfoobar3
+	VG_LVOL is /dev/vgfoobar3/lvol1
+	VG_RLVOL is /dev/vgfoobar3/rlvol1
+	FILESYSTEM is /BCV/srvr09/u07
+	FILESYSTEM is 13 characters long
+	MAPDIR is /root/disks/vgfoobar3
+	MAPFILE is /root/disks/vgfoobar3/vgfoobar3.map
+	PVPATHFILE is /root/disks/vgfoobar3/vgfoobar3.pvpath
+	GROUPFILE is /dev/vgfoobar3/group
+
+The filesystem /BCV/srvr09/u07 is not mounted. VG /dev/vgfoobar3 will be deactivated.
+Volume group "/dev/vgfoobar3" has been successfully changed.
+VG /dev/vgfoobar3 was successfully deactivated.
+#
+
+	VOLGROUP is vgapps09
+	FSTAB_EXTRACT is /dev/vgapps09/lvol1:/BCV/srvr09/apps
+	VG is /dev/vgapps09
+	VGNAME is vgapps09
+	VG_LVOL is /dev/vgapps09/lvol1
+	VG_RLVOL is /dev/vgapps09/rlvol1
+	FILESYSTEM is /BCV/srvr09/apps
+	FILESYSTEM is 14 characters long
+	MAPDIR is /root/disks/vgapps09
+	MAPFILE is /root/disks/vgapps09/vgapps09.map
+	PVPATHFILE is /root/disks/vgapps09/vgapps09.pvpath
+	GROUPFILE is /dev/vgapps09/group
+
+The filesystem /BCV/srvr09/apps is not mounted. VG /dev/vgapps09 will be deactivated.
+Volume group "/dev/vgapps09" has been successfully changed.
+VG /dev/vgapps09 was successfully deactivated.
+#
+
+	VOLGROUP is vgpshr01
+	FSTAB_EXTRACT is /dev/vgpshr01/lvol1:/BCV/srvr09/u01
+	VG is /dev/vgpshr01
+	VGNAME is vgpshr01
+	VG_LVOL is /dev/vgpshr01/lvol1
+	VG_RLVOL is /dev/vgpshr01/rlvol1
+	FILESYSTEM is /BCV/srvr09/u01
+	FILESYSTEM is 13 characters long
+	MAPDIR is /root/disks/vgpshr01
+	MAPFILE is /root/disks/vgpshr01/vgpshr01.map
+	PVPATHFILE is /root/disks/vgpshr01/vgpshr01.pvpath
+	GROUPFILE is /dev/vgpshr01/group
+
+The filesystem /BCV/srvr09/u01 is not mounted. VG /dev/vgpshr01 will be deactivated.
+Volume group "/dev/vgpshr01" has been successfully changed.
+VG /dev/vgpshr01 was successfully deactivated.
+#
+
+	VOLGROUP is vgpsfiles2
+	FSTAB_EXTRACT is /dev/vgpsfiles2/lvol1:/BCV/srvr09/u05
+	VG is /dev/vgpsfiles2
+	VGNAME is vgpsfiles2
+	VG_LVOL is /dev/vgpsfiles2/lvol1
+	VG_RLVOL is /dev/vgpsfiles2/rlvol1
+	FILESYSTEM is /BCV/srvr09/u05
+	FILESYSTEM is 13 characters long
+	MAPDIR is /root/disks/vgpsfiles2
+	MAPFILE is /root/disks/vgpsfiles2/vgpsfiles2.map
+	PVPATHFILE is /root/disks/vgpsfiles2/vgpsfiles2.pvpath
+	GROUPFILE is /dev/vgpsfiles2/group
+
+The filesystem /BCV/srvr09/u05 is not mounted. VG /dev/vgpsfiles2 will be deactivated.
+Volume group "/dev/vgpsfiles2" has been successfully changed.
+VG /dev/vgpsfiles2 was successfully deactivated.
+#
+
+	VOLGROUP is vghrsystem1
+	FSTAB_EXTRACT is /dev/vghrsystem1/lvol1:/BCV/srvr09/u04
+	VG is /dev/vghrsystem1
+	VGNAME is vghrsystem1
+	VG_LVOL is /dev/vghrsystem1/lvol1
+	VG_RLVOL is /dev/vghrsystem1/rlvol1
+	FILESYSTEM is /BCV/srvr09/u04
+	FILESYSTEM is 13 characters long
+	MAPDIR is /root/disks/vghrsystem1
+	MAPFILE is /root/disks/vghrsystem1/vghrsystem1.map
+	PVPATHFILE is /root/disks/vghrsystem1/vghrsystem1.pvpath
+	GROUPFILE is /dev/vghrsystem1/group
+
+The filesystem /BCV/srvr09/u04 is not mounted. VG /dev/vghrsystem1 will be deactivated.
+Volume group "/dev/vghrsystem1" has been successfully changed.
+VG /dev/vghrsystem1 was successfully deactivated.
+#
+
+	VOLGROUP is vghrprod1
+	FSTAB_EXTRACT is /dev/vghrprod1/lvol1:/BCV/srvr09/u02
+	VG is /dev/vghrprod1
+	VGNAME is vghrprod1
+	VG_LVOL is /dev/vghrprod1/lvol1
+	VG_RLVOL is /dev/vghrprod1/rlvol1
+	FILESYSTEM is /BCV/srvr09/u02
+	FILESYSTEM is 13 characters long
+	MAPDIR is /root/disks/vghrprod1
+	MAPFILE is /root/disks/vghrprod1/vghrprod1.map
+	PVPATHFILE is /root/disks/vghrprod1/vghrprod1.pvpath
+	GROUPFILE is /dev/vghrprod1/group
+
+The filesystem /BCV/srvr09/u02 is not mounted. VG /dev/vghrprod1 will be deactivated.
+Volume group "/dev/vghrprod1" has been successfully changed.
+VG /dev/vghrprod1 was successfully deactivated.
+#
+(0/8) of 8 Volume Groups DEActivated.
+#
+End Deactivate VolumeGroups function. Mon May 23 01:40:35 EDT 2005
+
+Start Export Volume Groups function. Mon May 23 01:40:35 EDT 2005
+Volume Groups to be Exported: 0
+#
+End Export Volume Groups function. Mon May 23 01:40:35 EDT 2005
+
+Start Establish BCVs function. Mon May 23 01:40:35 EDT 2005
+#
+Device Groups are: foobar1 foobar2 foobar3 apps09 pshr01 psfiles2 pshrsystem1 pshrprod1
+#
+foobar1 is a Normal DG.
+Running Command: /usr/symcli/bin/symir -g foobar1 -noprompt est
+
+'Incremental Establish' operation execution is in progress for
+device group 'foobar1'. Please wait...
+
+'Incremental Establish' operation successfully initiated for device group
+'foobar1'.
+
+BCV Est for foobar1 Initiated
+#
+foobar2 is a Normal DG.
+Running Command: /usr/symcli/bin/symir -g foobar2 -noprompt est
+
+'Incremental Establish' operation execution is in progress for
+device group 'foobar2'. Please wait...
+
+'Incremental Establish' operation successfully initiated for device group
+'foobar2'.
+
+BCV Est for foobar2 Initiated
+#
+foobar3 is a Normal DG.
+Running Command: /usr/symcli/bin/symir -g foobar3 -noprompt est
+
+'Incremental Establish' operation execution is in progress for
+device group 'foobar3'. Please wait...
+
+'Incremental Establish' operation successfully initiated for device group
+'foobar3'.
+
+BCV Est for foobar3 Initiated
+#
+apps09 is a Normal DG.
+Running Command: /usr/symcli/bin/symir -g apps09 -noprompt est
+
+'Incremental Establish' operation execution is in progress for
+device group 'apps09'. Please wait...
+
+'Incremental Establish' operation successfully initiated for device group
+'apps09'.
+
+BCV Est for apps09 Initiated
+#
+pshr01 is a Normal DG.
+Running Command: /usr/symcli/bin/symir -g pshr01 -noprompt est
+
+'Incremental Establish' operation execution is in progress for
+device group 'pshr01'. Please wait...
+
+'Incremental Establish' operation successfully initiated for device group
+'pshr01'.
+
+BCV Est for pshr01 Initiated
+#
+psfiles2 is a Normal DG.
+Running Command: /usr/symcli/bin/symir -g psfiles2 -noprompt est
+
+'Incremental Establish' operation execution is in progress for
+device group 'psfiles2'. Please wait...
+
+'Incremental Establish' operation successfully initiated for device group
+'psfiles2'.
+
+BCV Est for psfiles2 Initiated
+#
+pshrsystem1 is a Normal DG.
+Running Command: /usr/symcli/bin/symir -g pshrsystem1 -noprompt est
+
+'Incremental Establish' operation execution is in progress for
+device group 'pshrsystem1'. Please wait...
+
+'Incremental Establish' operation successfully initiated for device group
+'pshrsystem1'.
+
+BCV Est for pshrsystem1 Initiated
+#
+pshrprod1 is a Normal DG.
+Running Command: /usr/symcli/bin/symir -g pshrprod1 -noprompt est
+
+'Incremental Establish' operation execution is in progress for
+device group 'pshrprod1'. Please wait...
+
+'Incremental Establish' operation successfully initiated for device group
+'pshrprod1'.
+
+BCV Est for pshrprod1 Initiated
+#
+End Establish BCVs function. Mon May 23 01:45:11 EDT 2005
+
+Start Verify BCV Sync Started function. Mon May 23 01:45:11 EDT 2005
+#
+DEVGRP is foobar1
+	Line is foobar1=0, Group is foobar1, Value is 0
+ALL_GROUPS_START Count is 1
+#
+DEVGRP is foobar2
+	Line is foobar2=0, Group is foobar2, Value is 0
+ALL_GROUPS_START Count is 2
+#
+DEVGRP is foobar3
+	Line is foobar3=0, Group is foobar3, Value is 0
+ALL_GROUPS_START Count is 3
+#
+DEVGRP is apps09
+	Line is apps09=0, Group is apps09, Value is 0
+ALL_GROUPS_START Count is 4
+#
+DEVGRP is pshr01
+	Line is pshr01=0, Group is pshr01, Value is 0
+ALL_GROUPS_START Count is 5
+#
+DEVGRP is psfiles2
+	Line is psfiles2=0, Group is psfiles2, Value is 0
+ALL_GROUPS_START Count is 6
+#
+DEVGRP is pshrsystem1
+	Line is pshrsystem1=0, Group is pshrsystem1, Value is 0
+ALL_GROUPS_START Count is 7
+#
+DEVGRP is pshrprod1
+	Line is pshrprod1=0, Group is pshrprod1, Value is 0
+ALL_GROUPS_START Count is 8
+#
+8 of 8 Device Groups Sync Started.
+#
+End Verify BCV Sync Started function. Mon May 23 01:45:11 EDT 2005
+
+Start Monitor BCV Establish function. Mon May 23 01:45:11 EDT 2005
+#
+Device Groups are: foobar1 foobar2 foobar3 apps09 pshr01 psfiles2 pshrsystem1 pshrprod1.
+foobar1 status: Synch stat is 10. Syncinprog stat is 27. MEG left 2.7.
+foobar2 status: Synch stat is 10. Syncinprog stat is 27. MEG left 94.6.
+foobar3 status: Synch stat is 10. Syncinprog stat is 27. MEG left 3.1.
+apps09 status: Synch stat is 10. Syncinprog stat is 27. MEG left 7.4.
+pshr01 status: Synch stat is 11. Syncinprog stat is 0. MEG left 13.8.
+psfiles2 status: Synch stat is 10. Syncinprog stat is 27. MEG left 106.4.
+pshrsystem1 status: Synch stat is 10. Syncinprog stat is 27. MEG left 5240.0.
+pshrprod1 status: Synch stat is 11. Syncinprog stat is 27. MEG left 627.4.
+Group Count is: 0
+The Device Groups for server09 are NOT YET established.
+Resetting Group Count to 0.
+Time_Counter Starting at: Mon May 23 01:45:19 EDT 2005
+Sleeping 900 Seconds. Total: 0 hour(s) 15 minute(s) 0 second(s)
+#
+
+foobar1 status: Synch stat is 0. Syncinprog stat is 28. MEG left 0.0.
+foobar2 status: Synch stat is 0. Syncinprog stat is 28. MEG left 0.0.
+foobar3 status: Synch stat is 0. Syncinprog stat is 28. MEG left 0.0.
+apps09 status: Synch stat is 0. Syncinprog stat is 28. MEG left 0.0.
+pshr01 status: Synch stat is 0. Syncinprog stat is 28. MEG left 0.0.
+psfiles2 status: Synch stat is 0. Syncinprog stat is 28. MEG left 0.0.
+pshrsystem1 status: Synch stat is 0. Syncinprog stat is 28. MEG left 0.0.
+pshrprod1 status: Synch stat is 0. Syncinprog stat is 28. MEG left 0.0.
+Group Count is: 8
+The Device Groups for server09 are fully established.
+#
+End Monitor BCV Establish function. Mon May 23 02:00:27 EDT 2005
+
+Start Verify BCV Sync Finished function. Mon May 23 02:00:27 EDT 2005
+#
+ALL_GROUPS_SYNCED Count is 0
+#
+Number of DG elements are: 8
+Device Groups are: foobar1 foobar2 foobar3 apps09 pshr01 psfiles2 pshrsystem1 pshrprod1
+foobar1_synched=0
+foobar2_synched=0
+foobar3_synched=0
+apps09_synched=0
+pshr01_synched=0
+psfiles2_synched=0
+pshrsystem1_synched=0
+pshrprod1_synched=0
+#
+DVGRP is foobar1
+	LINE is foobar1_synched=0, Group is foobar1_synched, Value is 0
+ALL_GROUPS_SYNCED Count is 1
+#
+DVGRP is foobar2
+	LINE is foobar2_synched=0, Group is foobar2_synched, Value is 0
+ALL_GROUPS_SYNCED Count is 2
+#
+DVGRP is foobar3
+	LINE is foobar3_synched=0, Group is foobar3_synched, Value is 0
+ALL_GROUPS_SYNCED Count is 3
+#
+DVGRP is apps09
+	LINE is apps09_synched=0, Group is apps09_synched, Value is 0
+ALL_GROUPS_SYNCED Count is 4
+#
+DVGRP is pshr01
+	LINE is pshr01_synched=0, Group is pshr01_synched, Value is 0
+ALL_GROUPS_SYNCED Count is 5
+#
+DVGRP is psfiles2
+	LINE is psfiles2_synched=0, Group is psfiles2_synched, Value is 0
+ALL_GROUPS_SYNCED Count is 6
+#
+DVGRP is pshrsystem1
+	LINE is pshrsystem1_synched=0, Group is pshrsystem1_synched, Value is 0
+ALL_GROUPS_SYNCED Count is 7
+#
+DVGRP is pshrprod1
+	LINE is pshrprod1_synched=0, Group is pshrprod1_synched, Value is 0
+ALL_GROUPS_SYNCED Count is 8
+#
+8 of 8 Device Groups Synched.
+#
+End Verify BCV Sync Finished function. Mon May 23 02:00:27 EDT 2005
+
+Start Split BCVs function. Mon May 23 02:00:27 EDT 2005
+Split Mode is set to: WAIT
+I must wait until 06:30:00 to split the BCVs.
+#
+CURRENT_TIME is: 020027
+SPLIT_TIME is: 063000
+#
+SPLIT_TIME is: 06:30:00 	SPLIT_TIME_2 is: 063000
+SPLIT_HR is: 06 		SPLIT_MIN is: 30 	SPLIT_SEC is: 00
+#
+CURRENT_TIME is: 02:00:27 	CURRENT_TIME_2 is: 020027
+CURRENT_HR is: 02 		CURRENT_MIN is: 00 	CURRENT_SEC is: 27
+HR_SECONDS are: 7200 	HR_MINUTES are: 0
+#
+SPLIT_TOT_SEC is: 23400 	CURRENT_TOT_SEC are: 7227
+#
+DIFF_TIME is: 16173 	ADJ_HRS are: 	ADJ_TIME is: seconds
+COUNT_TIME is set to: 16173
+It is NOT time to Split the BCVs YET!
+Time_Counter Starting at: Mon May 23 02:00:27 EDT 2005
+Sleeping 16173 Seconds. Total: 4 hour(s) 29 minute(s) 33 second(s)
+#
+CURRENT_TIME is: 063000
+SPLIT_TIME is: 063000
+#
+It is now okay to Split the BCVs
+#
+Number of Device Groups is: 8
+Device Groups are: foobar1 foobar2 foobar3 apps09 pshr01 psfiles2 pshrsystem1 pshrprod1
+#
+Another instance is currently splitting. Sleeping 15 minutes.
+Time_Counter Starting at: Mon May 23 06:30:00 EDT 2005
+Sleeping 300 Seconds. Total: 0 hour(s) 5 minute(s) 0 second(s)
+#
+Another instance is currently splitting. Sleeping 15 minutes.
+Time_Counter Starting at: Mon May 23 06:35:00 EDT 2005
+Sleeping 300 Seconds. Total: 0 hour(s) 5 minute(s) 0 second(s)
+#
+Another instance is currently splitting. Sleeping 15 minutes.
+Time_Counter Starting at: Mon May 23 06:40:00 EDT 2005
+Sleeping 300 Seconds. Total: 0 hour(s) 5 minute(s) 0 second(s)
+#
+Starting the Start Hot Backup Mode Function. Mon May 23 06:45:00 EDT 2005
+server09
+
+
+End Start Hot Backup Mode Function. Mon May 23 06:45:15 EDT 2005
+
+Time_Counter Starting at: Mon May 23 06:45:15 EDT 2005
+Sleeping 120 Seconds. Total: 0 hour(s) 2 minute(s) 0 second(s)
+#
+BCV Split started at Mon May 23 06:47:16 EDT 2005
+#
+Working on foobar1
+Running Command: /usr/symcli/bin/symir -g foobar1 -noprompt split
+
+'Split' operation execution is in progress for
+device group 'foobar1'. Please wait...
+
+'Split' operation successfully executed for device group
+'foobar1'.
+
+Device Group foobar1 was split successfully.
+#
+BCV Split started at Mon May 23 06:47:30 EDT 2005
+#
+Working on foobar2
+Running Command: /usr/symcli/bin/symir -g foobar2 -noprompt split
+
+'Split' operation execution is in progress for
+device group 'foobar2'. Please wait...
+
+'Split' operation successfully executed for device group
+'foobar2'.
+
+Device Group foobar2 was split successfully.
+#
+BCV Split started at Mon May 23 06:47:50 EDT 2005
+#
+Working on foobar3
+Running Command: /usr/symcli/bin/symir -g foobar3 -noprompt split
+
+'Split' operation execution is in progress for
+device group 'foobar3'. Please wait...
+
+'Split' operation successfully executed for device group
+'foobar3'.
+
+Device Group foobar3 was split successfully.
+#
+BCV Split started at Mon May 23 06:48:18 EDT 2005
+#
+Working on apps09
+Running Command: /usr/symcli/bin/symir -g apps09 -noprompt split
+
+'Split' operation execution is in progress for
+device group 'apps09'. Please wait...
+
+'Split' operation successfully executed for device group
+'apps09'.
+
+Device Group apps09 was split successfully.
+#
+BCV Split started at Mon May 23 06:48:25 EDT 2005
+#
+Working on pshr01
+Running Command: /usr/symcli/bin/symir -g pshr01 -noprompt split
+
+'Split' operation execution is in progress for
+device group 'pshr01'. Please wait...
+
+'Split' operation successfully executed for device group
+'pshr01'.
+
+Device Group pshr01 was split successfully.
+#
+BCV Split started at Mon May 23 06:48:48 EDT 2005
+#
+Working on psfiles2
+Running Command: /usr/symcli/bin/symir -g psfiles2 -noprompt split
+
+'Split' operation execution is in progress for
+device group 'psfiles2'. Please wait...
+
+'Split' operation successfully executed for device group
+'psfiles2'.
+
+Device Group psfiles2 was split successfully.
+#
+BCV Split started at Mon May 23 06:49:02 EDT 2005
+#
+Working on pshrsystem1
+Running Command: /usr/symcli/bin/symir -g pshrsystem1 -noprompt split
+
+'Split' operation execution is in progress for
+device group 'pshrsystem1'. Please wait...
+
+'Split' operation successfully executed for device group
+'pshrsystem1'.
+
+Device Group pshrsystem1 was split successfully.
+#
+BCV Split started at Mon May 23 06:50:05 EDT 2005
+#
+Working on pshrprod1
+Running Command: /usr/symcli/bin/symir -g pshrprod1 -noprompt split
+
+'Split' operation execution is in progress for
+device group 'pshrprod1'. Please wait...
+
+'Split' operation successfully executed for device group
+'pshrprod1'.
+
+Device Group pshrprod1 was split successfully.
+#
+Starting the Stop Hot Backup Mode Function. Mon May 23 06:50:21 EDT 2005
+server09
+End Stop Hot Backup Mode Function. Mon May 23 06:50:26 EDT 2005
+
+Time_Counter Starting at: Mon May 23 06:50:26 EDT 2005
+Sleeping 120 Seconds. Total: 0 hour(s) 2 minute(s) 0 second(s)
+#
+#
+End Split BCVs function. Mon May 23 06:52:26 EDT 2005
+
+Start Verify BCV Split function. Mon May 23 06:52:26 EDT 2005
+Number of DG elements are: 8
+Device Groups are: foobar1 foobar2 foobar3 apps09 pshr01 psfiles2 pshrsystem1 pshrprod1
+foobar1=0
+foobar2=0
+foobar3=0
+apps09=0
+pshr01=0
+psfiles2=0
+pshrsystem1=0
+pshrprod1=0
+#
+Checking foobar1
+	LINE is foobar1=0, Group is foobar1, Value is 0
+ALL_GROUPS_SPLIT is 1
+#
+Checking foobar2
+	LINE is foobar2=0, Group is foobar2, Value is 0
+ALL_GROUPS_SPLIT is 2
+#
+Checking foobar3
+	LINE is foobar3=0, Group is foobar3, Value is 0
+ALL_GROUPS_SPLIT is 3
+#
+Checking apps09
+	LINE is apps09=0, Group is apps09, Value is 0
+ALL_GROUPS_SPLIT is 4
+#
+Checking pshr01
+	LINE is pshr01=0, Group is pshr01, Value is 0
+ALL_GROUPS_SPLIT is 5
+#
+Checking psfiles2
+	LINE is psfiles2=0, Group is psfiles2, Value is 0
+ALL_GROUPS_SPLIT is 6
+#
+Checking pshrsystem1
+	LINE is pshrsystem1=0, Group is pshrsystem1, Value is 0
+ALL_GROUPS_SPLIT is 7
+#
+Checking pshrprod1
+	LINE is pshrprod1=0, Group is pshrprod1, Value is 0
+ALL_GROUPS_SPLIT is 8
+#
+8 of 8 Device Groups Split.
+End Verify BCV Split function. Mon May 23 06:52:26 EDT 2005
+
+Start Import Volume Groups function. Mon May 23 06:52:26 EDT 2005
+Volume Groups to be Imported: 0
+#
+End Export Import VG function. Mon May 23 06:52:26 EDT 2005
+
+Start Activate VolumeGroups function. Mon May 23 06:52:26 EDT 2005
+Volume Groups to ACTivate: 8
+#
+
+	VOLGROUP is vgfoobar1
+	FSTAB_EXTRACT is /dev/vgfoobar1/lvol1:/BCV/srvr09/u08
+	VG is /dev/vgfoobar1
+	VGNAME is vgfoobar1
+	VG_LVOL is /dev/vgfoobar1/lvol1
+	VG_RLVOL is /dev/vgfoobar1/rlvol1
+	FILESYSTEM is /BCV/srvr09/u08
+	FILESYSTEM is 13 characters long
+	MAPDIR is /root/disks/vgfoobar1
+	MAPFILE is /root/disks/vgfoobar1/vgfoobar1.map
+	PVPATHFILE is /root/disks/vgfoobar1/vgfoobar1.pvpath
+	GROUPFILE is /dev/vgfoobar1/group
+
+Working on VG: /dev/vgfoobar1
+Activating /dev/vgfoobar1.
+VG /dev/vgfoobar1 was successfully activated.
+#
+
+	VOLGROUP is vgfoobar2
+	FSTAB_EXTRACT is /dev/vgfoobar2/lvol1:/BCV/srvr09/u06
+	VG is /dev/vgfoobar2
+	VGNAME is vgfoobar2
+	VG_LVOL is /dev/vgfoobar2/lvol1
+	VG_RLVOL is /dev/vgfoobar2/rlvol1
+	FILESYSTEM is /BCV/srvr09/u06
+	FILESYSTEM is 13 characters long
+	MAPDIR is /root/disks/vgfoobar2
+	MAPFILE is /root/disks/vgfoobar2/vgfoobar2.map
+	PVPATHFILE is /root/disks/vgfoobar2/vgfoobar2.pvpath
+	GROUPFILE is /dev/vgfoobar2/group
+
+Working on VG: /dev/vgfoobar2
+Activating /dev/vgfoobar2.
+VG /dev/vgfoobar2 was successfully activated.
+#
+
+	VOLGROUP is vgfoobar3
+	FSTAB_EXTRACT is /dev/vgfoobar3/lvol1:/BCV/srvr09/u07
+	VG is /dev/vgfoobar3
+	VGNAME is vgfoobar3
+	VG_LVOL is /dev/vgfoobar3/lvol1
+	VG_RLVOL is /dev/vgfoobar3/rlvol1
+	FILESYSTEM is /BCV/srvr09/u07
+	FILESYSTEM is 13 characters long
+	MAPDIR is /root/disks/vgfoobar3
+	MAPFILE is /root/disks/vgfoobar3/vgfoobar3.map
+	PVPATHFILE is /root/disks/vgfoobar3/vgfoobar3.pvpath
+	GROUPFILE is /dev/vgfoobar3/group
+
+Working on VG: /dev/vgfoobar3
+Activating /dev/vgfoobar3.
+VG /dev/vgfoobar3 was successfully activated.
+#
+
+	VOLGROUP is vgapps09
+	FSTAB_EXTRACT is /dev/vgapps09/lvol1:/BCV/srvr09/apps
+	VG is /dev/vgapps09
+	VGNAME is vgapps09
+	VG_LVOL is /dev/vgapps09/lvol1
+	VG_RLVOL is /dev/vgapps09/rlvol1
+	FILESYSTEM is /BCV/srvr09/apps
+	FILESYSTEM is 14 characters long
+	MAPDIR is /root/disks/vgapps09
+	MAPFILE is /root/disks/vgapps09/vgapps09.map
+	PVPATHFILE is /root/disks/vgapps09/vgapps09.pvpath
+	GROUPFILE is /dev/vgapps09/group
+
+Working on VG: /dev/vgapps09
+Activating /dev/vgapps09.
+VG /dev/vgapps09 was successfully activated.
+#
+
+	VOLGROUP is vgpshr01
+	FSTAB_EXTRACT is /dev/vgpshr01/lvol1:/BCV/srvr09/u01
+	VG is /dev/vgpshr01
+	VGNAME is vgpshr01
+	VG_LVOL is /dev/vgpshr01/lvol1
+	VG_RLVOL is /dev/vgpshr01/rlvol1
+	FILESYSTEM is /BCV/srvr09/u01
+	FILESYSTEM is 13 characters long
+	MAPDIR is /root/disks/vgpshr01
+	MAPFILE is /root/disks/vgpshr01/vgpshr01.map
+	PVPATHFILE is /root/disks/vgpshr01/vgpshr01.pvpath
+	GROUPFILE is /dev/vgpshr01/group
+
+Working on VG: /dev/vgpshr01
+Activating /dev/vgpshr01.
+VG /dev/vgpshr01 was successfully activated.
+#
+
+	VOLGROUP is vgpsfiles2
+	FSTAB_EXTRACT is /dev/vgpsfiles2/lvol1:/BCV/srvr09/u05
+	VG is /dev/vgpsfiles2
+	VGNAME is vgpsfiles2
+	VG_LVOL is /dev/vgpsfiles2/lvol1
+	VG_RLVOL is /dev/vgpsfiles2/rlvol1
+	FILESYSTEM is /BCV/srvr09/u05
+	FILESYSTEM is 13 characters long
+	MAPDIR is /root/disks/vgpsfiles2
+	MAPFILE is /root/disks/vgpsfiles2/vgpsfiles2.map
+	PVPATHFILE is /root/disks/vgpsfiles2/vgpsfiles2.pvpath
+	GROUPFILE is /dev/vgpsfiles2/group
+
+Working on VG: /dev/vgpsfiles2
+Activating /dev/vgpsfiles2.
+VG /dev/vgpsfiles2 was successfully activated.
+#
+
+	VOLGROUP is vghrsystem1
+	FSTAB_EXTRACT is /dev/vghrsystem1/lvol1:/BCV/srvr09/u04
+	VG is /dev/vghrsystem1
+	VGNAME is vghrsystem1
+	VG_LVOL is /dev/vghrsystem1/lvol1
+	VG_RLVOL is /dev/vghrsystem1/rlvol1
+	FILESYSTEM is /BCV/srvr09/u04
+	FILESYSTEM is 13 characters long
+	MAPDIR is /root/disks/vghrsystem1
+	MAPFILE is /root/disks/vghrsystem1/vghrsystem1.map
+	PVPATHFILE is /root/disks/vghrsystem1/vghrsystem1.pvpath
+	GROUPFILE is /dev/vghrsystem1/group
+
+Working on VG: /dev/vghrsystem1
+Activating /dev/vghrsystem1.
+VG /dev/vghrsystem1 was successfully activated.
+#
+
+	VOLGROUP is vghrprod1
+	FSTAB_EXTRACT is /dev/vghrprod1/lvol1:/BCV/srvr09/u02
+	VG is /dev/vghrprod1
+	VGNAME is vghrprod1
+	VG_LVOL is /dev/vghrprod1/lvol1
+	VG_RLVOL is /dev/vghrprod1/rlvol1
+	FILESYSTEM is /BCV/srvr09/u02
+	FILESYSTEM is 13 characters long
+	MAPDIR is /root/disks/vghrprod1
+	MAPFILE is /root/disks/vghrprod1/vghrprod1.map
+	PVPATHFILE is /root/disks/vghrprod1/vghrprod1.pvpath
+	GROUPFILE is /dev/vghrprod1/group
+
+Working on VG: /dev/vghrprod1
+Activating /dev/vghrprod1.
+VG /dev/vghrprod1 was successfully activated.
+#
+#
+8 of 8 VGs Activated.
+End Activate VolumeGroups function. Mon May 23 06:52:53 EDT 2005
+
+Start FSCK & Mount Filesystems function. Mon May 23 06:52:53 EDT 2005
+FileSystems to Check and Mount: 8
+#
+VG from OOP Function is: vgfoobar1
+VG from OOP Function is: vgfoobar2
+VG from OOP Function is: vgfoobar3
+VG from OOP Function is: vgapps09
+VG from OOP Function is: vgpshr01
+VG from OOP Function is: vgpsfiles2
+VG from OOP Function is: vghrsystem1
+VG from OOP Function is: vghrprod1
+#
+
+	VOLGROUP is vgfoobar1
+	FSTAB_EXTRACT is /dev/vgfoobar1/lvol1:/BCV/srvr09/u08
+	VG is /dev/vgfoobar1
+	VGNAME is vgfoobar1
+	VG_LVOL is /dev/vgfoobar1/lvol1
+	VG_RLVOL is /dev/vgfoobar1/rlvol1
+	FILESYSTEM is /BCV/srvr09/u08
+	FILESYSTEM is 13 characters long
+	MAPDIR is /root/disks/vgfoobar1
+	MAPFILE is /root/disks/vgfoobar1/vgfoobar1.map
+	PVPATHFILE is /root/disks/vgfoobar1/vgfoobar1.pvpath
+	GROUPFILE is /dev/vgfoobar1/group
+
+/dev/vgfoobar1 passed FSCK. Mount stat 0
+/dev/vgfoobar1 marking super-block as CLEAN
+/dev/vgfoobar1/lvol1 /BCV/srvr09/u08 vxfs delaylog,nodatainlog 0 0
+#
+/BCV/srvr09/u08:0
+
+	VOLGROUP is vgfoobar2
+	FSTAB_EXTRACT is /dev/vgfoobar2/lvol1:/BCV/srvr09/u06
+	VG is /dev/vgfoobar2
+	VGNAME is vgfoobar2
+	VG_LVOL is /dev/vgfoobar2/lvol1
+	VG_RLVOL is /dev/vgfoobar2/rlvol1
+	FILESYSTEM is /BCV/srvr09/u06
+	FILESYSTEM is 13 characters long
+	MAPDIR is /root/disks/vgfoobar2
+	MAPFILE is /root/disks/vgfoobar2/vgfoobar2.map
+	PVPATHFILE is /root/disks/vgfoobar2/vgfoobar2.pvpath
+	GROUPFILE is /dev/vgfoobar2/group
+
+/dev/vgfoobar2 passed FSCK. Mount stat 0
+/dev/vgfoobar2 marking super-block as CLEAN
+/dev/vgfoobar2/lvol1 /BCV/srvr09/u06 vxfs delaylog,nodatainlog 0 0
+#
+/BCV/srvr09/u06:0
+
+	VOLGROUP is vgfoobar3
+	FSTAB_EXTRACT is /dev/vgfoobar3/lvol1:/BCV/srvr09/u07
+	VG is /dev/vgfoobar3
+	VGNAME is vgfoobar3
+	VG_LVOL is /dev/vgfoobar3/lvol1
+	VG_RLVOL is /dev/vgfoobar3/rlvol1
+	FILESYSTEM is /BCV/srvr09/u07
+	FILESYSTEM is 13 characters long
+	MAPDIR is /root/disks/vgfoobar3
+	MAPFILE is /root/disks/vgfoobar3/vgfoobar3.map
+	PVPATHFILE is /root/disks/vgfoobar3/vgfoobar3.pvpath
+	GROUPFILE is /dev/vgfoobar3/group
+
+/dev/vgfoobar3 passed FSCK. Mount stat 0
+/dev/vgfoobar3 marking super-block as CLEAN
+/dev/vgfoobar3/lvol1 /BCV/srvr09/u07 vxfs delaylog,nodatainlog 0 0
+#
+/BCV/srvr09/u07:0
+
+	VOLGROUP is vgapps09
+	FSTAB_EXTRACT is /dev/vgapps09/lvol1:/BCV/srvr09/apps
+	VG is /dev/vgapps09
+	VGNAME is vgapps09
+	VG_LVOL is /dev/vgapps09/lvol1
+	VG_RLVOL is /dev/vgapps09/rlvol1
+	FILESYSTEM is /BCV/srvr09/apps
+	FILESYSTEM is 14 characters long
+	MAPDIR is /root/disks/vgapps09
+	MAPFILE is /root/disks/vgapps09/vgapps09.map
+	PVPATHFILE is /root/disks/vgapps09/vgapps09.pvpath
+	GROUPFILE is /dev/vgapps09/group
+
+/dev/vgapps09 passed FSCK. Mount stat 0
+/dev/vgapps09 marking super-block as CLEAN
+/dev/vgapps09/lvol1 /BCV/srvr09/apps vxfs delaylog,nodatainlog 0 0
+#
+/BCV/srvr09/apps:0
+
+	VOLGROUP is vgpshr01
+	FSTAB_EXTRACT is /dev/vgpshr01/lvol1:/BCV/srvr09/u01
+	VG is /dev/vgpshr01
+	VGNAME is vgpshr01
+	VG_LVOL is /dev/vgpshr01/lvol1
+	VG_RLVOL is /dev/vgpshr01/rlvol1
+	FILESYSTEM is /BCV/srvr09/u01
+	FILESYSTEM is 13 characters long
+	MAPDIR is /root/disks/vgpshr01
+	MAPFILE is /root/disks/vgpshr01/vgpshr01.map
+	PVPATHFILE is /root/disks/vgpshr01/vgpshr01.pvpath
+	GROUPFILE is /dev/vgpshr01/group
+
+/dev/vgpshr01 passed FSCK. Mount stat 0
+/dev/vgpshr01 marking super-block as CLEAN
+/dev/vgpshr01/lvol1 /BCV/srvr09/u01 vxfs delaylog,nodatainlog 0 0
+#
+/BCV/srvr09/u01:0
+
+	VOLGROUP is vgpsfiles2
+	FSTAB_EXTRACT is /dev/vgpsfiles2/lvol1:/BCV/srvr09/u05
+	VG is /dev/vgpsfiles2
+	VGNAME is vgpsfiles2
+	VG_LVOL is /dev/vgpsfiles2/lvol1
+	VG_RLVOL is /dev/vgpsfiles2/rlvol1
+	FILESYSTEM is /BCV/srvr09/u05
+	FILESYSTEM is 13 characters long
+	MAPDIR is /root/disks/vgpsfiles2
+	MAPFILE is /root/disks/vgpsfiles2/vgpsfiles2.map
+	PVPATHFILE is /root/disks/vgpsfiles2/vgpsfiles2.pvpath
+	GROUPFILE is /dev/vgpsfiles2/group
+
+/dev/vgpsfiles2 passed FSCK. Mount stat 0
+/dev/vgpsfiles2 marking super-block as CLEAN
+/dev/vgpsfiles2/lvol1 /BCV/srvr09/u05 vxfs delaylog,nodatainlog 0 0
+#
+/BCV/srvr09/u05:0
+
+	VOLGROUP is vghrsystem1
+	FSTAB_EXTRACT is /dev/vghrsystem1/lvol1:/BCV/srvr09/u04
+	VG is /dev/vghrsystem1
+	VGNAME is vghrsystem1
+	VG_LVOL is /dev/vghrsystem1/lvol1
+	VG_RLVOL is /dev/vghrsystem1/rlvol1
+	FILESYSTEM is /BCV/srvr09/u04
+	FILESYSTEM is 13 characters long
+	MAPDIR is /root/disks/vghrsystem1
+	MAPFILE is /root/disks/vghrsystem1/vghrsystem1.map
+	PVPATHFILE is /root/disks/vghrsystem1/vghrsystem1.pvpath
+	GROUPFILE is /dev/vghrsystem1/group
+
+/dev/vghrsystem1 passed FSCK. Mount stat 0
+/dev/vghrsystem1 marking super-block as CLEAN
+/dev/vghrsystem1/lvol1 /BCV/srvr09/u04 vxfs delaylog,nodatainlog 0 0
+#
+/BCV/srvr09/u04:0
+
+	VOLGROUP is vghrprod1
+	FSTAB_EXTRACT is /dev/vghrprod1/lvol1:/BCV/srvr09/u02
+	VG is /dev/vghrprod1
+	VGNAME is vghrprod1
+	VG_LVOL is /dev/vghrprod1/lvol1
+	VG_RLVOL is /dev/vghrprod1/rlvol1
+	FILESYSTEM is /BCV/srvr09/u02
+	FILESYSTEM is 13 characters long
+	MAPDIR is /root/disks/vghrprod1
+	MAPFILE is /root/disks/vghrprod1/vghrprod1.map
+	PVPATHFILE is /root/disks/vghrprod1/vghrprod1.pvpath
+	GROUPFILE is /dev/vghrprod1/group
+
+/dev/vghrprod1 passed FSCK. Mount stat 0
+/dev/vghrprod1 marking super-block as CLEAN
+/dev/vghrprod1/lvol1 /BCV/srvr09/u02 vxfs delaylog,nodatainlog 0 0
+#
+/BCV/srvr09/u02:0
+#
+8 of 8 passed FSCK and Mounted.
+BCV_RE_MOUNT file contains:
+/BCV/srvr09/u08:0
+/BCV/srvr09/u06:0
+/BCV/srvr09/u07:0
+/BCV/srvr09/apps:0
+/BCV/srvr09/u01:0
+/BCV/srvr09/u05:0
+/BCV/srvr09/u04:0
+/BCV/srvr09/u02:0
+#
+OMNI_FILESYSTEMS file contains:
+BCV/srvr16/u01:0
+BCV/srvr16/u02:0
+BCV/srvr16/apps:0
+BCV/srvr16/u05:0
+BCV/srvr16/u20:0
+BCV/srvr16/u21:0
+BCV/srvr16/u03:0
+BCV/srvr09/u08:0
+BCV/srvr09/u06:0
+BCV/srvr09/u07:0
+BCV/srvr09/apps:0
+BCV/srvr09/u01:0
+BCV/srvr09/u05:0
+BCV/srvr09/u04:0
+BCV/srvr09/u02:0
+#
+End FSCK & Mount Filesystems function. Mon May 23 06:53:07 EDT 2005
+
+Starting Oracle Logs Verify Function. Mon May 23 06:53:07 EDT 2005
+
+WEEKDAY is: Mon
+THIS_MONTH is: May
+TODAY_DATE is: 23
+
+Num of Log Files are: 8
+/home/oracle/logs/ora_start_backup_hrprod.log	was created on May 23 at 06:48.
+/home/oracle/logs/ora_start_backup_prgprod.log	was created on May 23 at 06:48.
+/home/oracle/logs/ora_start_backup_prod1.log	was created on May 23 at 06:48.
+/home/oracle/logs/ora_start_backup_scprod.log	was created on May 23 at 06:48.
+/home/oracle/logs/ora_stop_backup_hrprod.log	was created on May 23 at 06:53.
+/home/oracle/logs/ora_stop_backup_prgprod.log	was created on May 23 at 06:53.
+/home/oracle/logs/ora_stop_backup_prod1.log	was created on May 23 at 06:53.
+/home/oracle/logs/ora_stop_backup_scprod.log	was created on May 23 at 06:53.
+
+/usr/local/bin/bcvscripts/logs/server09_ora_start_backup_hrprod.log
+Hot backup BEGIN process for STARTED at Mon May 23 06:48:14 EDT 2005
+Hot backup BEGIN process for hrprod COMPLETED at Mon May 23 06:48:20 EDT 2005
+LOG_START_WKDAY is: Mon
+LOG_COMPLETED_WKDAY is: Mon
+LOG_START_MONTH is: May
+LOG_COMPLETED_MONTH is: May
+LOG_START_DATE is: 23
+LOG_COMPLETED_DATE is: 23
+
+/usr/local/bin/bcvscripts/logs/server09_ora_start_backup_prgprod.log
+Hot backup BEGIN process for STARTED at Mon May 23 06:48:22 EDT 2005
+Hot backup BEGIN process for prgprod COMPLETED at Mon May 23 06:48:23 EDT 2005
+LOG_START_WKDAY is: Mon
+LOG_COMPLETED_WKDAY is: Mon
+LOG_START_MONTH is: May
+LOG_COMPLETED_MONTH is: May
+LOG_START_DATE is: 23
+LOG_COMPLETED_DATE is: 23
+
+/usr/local/bin/bcvscripts/logs/server09_ora_start_backup_prod1.log
+Hot backup BEGIN process for STARTED at Mon May 23 06:48:09 EDT 2005
+Hot backup BEGIN process for prod1 COMPLETED at Mon May 23 06:48:14 EDT 2005
+LOG_START_WKDAY is: Mon
+LOG_COMPLETED_WKDAY is: Mon
+LOG_START_MONTH is: May
+LOG_COMPLETED_MONTH is: May
+LOG_START_DATE is: 23
+LOG_COMPLETED_DATE is: 23
+
+/usr/local/bin/bcvscripts/logs/server09_ora_start_backup_scprod.log
+Hot backup BEGIN process for STARTED at Mon May 23 06:48:20 EDT 2005
+Hot backup BEGIN process for scprod COMPLETED at Mon May 23 06:48:22 EDT 2005
+LOG_START_WKDAY is: Mon
+LOG_COMPLETED_WKDAY is: Mon
+LOG_START_MONTH is: May
+LOG_COMPLETED_MONTH is: May
+LOG_START_DATE is: 23
+LOG_COMPLETED_DATE is: 23
+
+/usr/local/bin/bcvscripts/logs/server09_ora_stop_backup_hrprod.log
+Hot backup BEGIN process for STARTED at Mon May 23 06:53:30 EDT 2005
+Hot backup BEGIN process for hrprod COMPLETED at Mon May 23 06:53:32 EDT 2005
+LOG_START_WKDAY is: Mon
+LOG_COMPLETED_WKDAY is: Mon
+LOG_START_MONTH is: May
+LOG_COMPLETED_MONTH is: May
+LOG_START_DATE is: 23
+LOG_COMPLETED_DATE is: 23
+
+/usr/local/bin/bcvscripts/logs/server09_ora_stop_backup_prgprod.log
+Hot backup BEGIN process for STARTED at Mon May 23 06:53:33 EDT 2005
+Hot backup BEGIN process for prgprod COMPLETED at Mon May 23 06:53:33 EDT 2005
+LOG_START_WKDAY is: Mon
+LOG_COMPLETED_WKDAY is: Mon
+LOG_START_MONTH is: May
+LOG_COMPLETED_MONTH is: May
+LOG_START_DATE is: 23
+LOG_COMPLETED_DATE is: 23
+
+/usr/local/bin/bcvscripts/logs/server09_ora_stop_backup_prod1.log
+Hot backup BEGIN process for STARTED at Mon May 23 06:53:29 EDT 2005
+Hot backup BEGIN process for prod1 COMPLETED at Mon May 23 06:53:30 EDT 2005
+LOG_START_WKDAY is: Mon
+LOG_COMPLETED_WKDAY is: Mon
+LOG_START_MONTH is: May
+LOG_COMPLETED_MONTH is: May
+LOG_START_DATE is: 23
+LOG_COMPLETED_DATE is: 23
+
+/usr/local/bin/bcvscripts/logs/server09_ora_stop_backup_scprod.log
+Hot backup BEGIN process for STARTED at Mon May 23 06:53:32 EDT 2005
+Hot backup BEGIN process for scprod COMPLETED at Mon May 23 06:53:33 EDT 2005
+LOG_START_WKDAY is: Mon
+LOG_COMPLETED_WKDAY is: Mon
+LOG_START_MONTH is: May
+LOG_COMPLETED_MONTH is: May
+LOG_START_DATE is: 23
+LOG_COMPLETED_DATE is: 23
+
+No errors found in the ORacle logs.
+End the Oracle Logs Verify Function. Mon May 23 06:53:12 EDT 2005
+
+Start CHECK LVM ERRORS function. Mon May 23 06:53:12 EDT 2005.
+#
+NO LVM Errors Recorded: (LVM-ERRORS 0)
+#
+End CHECK LVM ERRORS function. Mon May 23 06:53:12 EDT 2005.
+
+Begin Start OmniBack Job Function. Mon May 23 06:53:12 EDT 2005
+#
+Attempting to start OmniBackup Job.
+OMNIBACK_OBJ is SERVER09
+List of Filesystems to backup for SERVER09 is:
+OMNI_DRV is
+#
+Filesystems are ready to run the Omniback Job.
+#
+Starting Backup Job: remsh sta0lx07 BPbackup -i -p Qwest_UNIX_BCV_SERVER09 -s QBCV_SRVR09_Daily
+#
+End Start OmniBack Job Function. Mon May 23 06:53:12 EDT 2005
+
+Start Verify Variables Function. Mon May 23 06:53:12 EDT 2005
+#
+End Verify Variables Function. Mon May 23 06:53:13 EDT 2005
+
+Start Clean Up Function Mon May 23 06:53:13 EDT 2005
+#
+a ./server09-HBM.log 7 blocks
+a ./server09_BCV_LOG 79 blocks
+a ./server09_Email_Report 6 blocks
+a ./server09_Error_Report 0 blocks
+a ./server09_FIFO 1 blocks
+a ./server09_ORACLE_Log 0 blocks
+a ./server09_Pipe_Log 1 blocks
+a ./server09_QEmail_Report 3 blocks
+a ./server09_ora_start_backup_hrprod.log 8 blocks
+a ./server09_ora_start_backup_prgprod.log 3 blocks
+a ./server09_ora_start_backup_prod1.log 5 blocks
+a ./server09_ora_start_backup_scprod.log 5 blocks
+a ./server09_ora_stop_backup_hrprod.log 9 blocks
+a ./server09_ora_stop_backup_prgprod.log 4 blocks
+a ./server09_ora_stop_backup_prod1.log 7 blocks
+a ./server09_ora_stop_backup_scprod.log 6 blocks
+a ./server09_set.out 22 blocks
+a ./server09_DG_ELEM.vars 1 blocks
+a ./server09_DG_ELEM_XACT.vars 0 blocks
+a ./server09_EST_MONITOR 2 blocks
+a ./server09_EST_STATUS 1 blocks
+a ./server09_EXPORT_STATUS 0 blocks
+a ./server09_FSCK_OUTPUT 1 blocks
+a ./server09_IMPORT_STATUS 0 blocks
+a ./server09_RE_MOUNT 1 blocks
+a ./server09_SPLIT_STATUS 1 blocks
+a ./server09_SYNC_STATUS 1 blocks
+a ./server09_UMOUNT_STATUS 1 blocks
+a ./server09_VGCHANGE_STATUS 1 blocks
+a ./server09_VG_ELEM.vars 1 blocks
+a ./server09_VG_ELEM_XACT.vars 0 blocks
+a ./server09_VG_MINNUM 0 blocks
+a ./server09_Verify_Variables 17 blocks
+a ./2005143_FS.OB 1 blocks
+a ./bcv_scripts.conf 9 blocks
+tar: cannot stat ./ChangeLog.  Not dumped.
+#
+End Clean Up Function Mon May 23 06:53:13 EDT 2005
+
+END BCV Establish and Split Script for server09 on Mon May 23 06:53:13 EDT 2005
+
+Executing Final Notification.
+Final notification list is to: dholton jstenglein calley mbmcclos
+#
+Checking System Load. If too high, Notify will wait 30 minutes.
+Uptime output:   6:53am  up 20 days, 14:30,  0 users,  load average: 24.68, 25.94, 13.92
+System Load is:  2468
+Reference Load is: 70
+#
+System Load is too high to send email.  Sleeping 30 minutes.
+Time_Counter Starting at: Mon May 23 06:53:14 EDT 2005
+Sleeping 1800 Seconds. Total: 0 hour(s) 30 minute(s) 0 second(s)
+#
+#
+Checking System Load. If too high, Notify will wait 30 minutes.
+Uptime output:   7:23am  up 20 days, 15 hrs,  0 users,  load average: 76.47, 79.06, 72.40
+System Load is: 
+Reference Load is: 70
+#
+System Load below .5  Sending email.

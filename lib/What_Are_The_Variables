@@ -1,0 +1,24 @@
+What_Are_The_Variables() {
+#set -vn
+
+#
+## Here we print out the variables as we cycle through the VGs to make sure they are correct.
+#
+
+cat << END_OF_TEXT
+
+	VOLGROUP is ${VOLGROUP}
+	FSTAB_EXTRACT is ${FSTAB_EXTRACT}
+	VG is ${VG}
+	VGNAME is ${VGNAME}
+	VG_LVOL is ${VG_LVOL}
+	VG_RLVOL is ${VG_RLVOL}
+	FILESYSTEM is ${FILESYSTEM}
+	FILESYSTEM is ${#FILESYSTEM} characters long
+	MAPDIR is ${MAPDIR}
+	MAPFILE is ${MAPFILE}
+	PVPATHFILE is ${PVPATHFILE}
+	GROUPFILE is ${GROUPFILE}
+
+END_OF_TEXT
+}

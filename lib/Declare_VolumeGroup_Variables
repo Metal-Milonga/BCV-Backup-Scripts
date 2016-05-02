@@ -1,0 +1,234 @@
+Declare_VolumeGroup_Variables(){
+#
+# Function - Declare_VolumeGroup_Variables
+# Version - 1.0
+# Author - David Holton
+# Date - April 19, 2002
+#
+# Description - This function will create variables for the volume groups the
+#		script is working with.  It gets them from the config file.
+#		It separates the VGs into two groups: exact and normal.
+#
+#		There is a separate line in the config file for normal and
+#		exact VGs. DO NOT have the same VG listed on both the normal
+#		line and the exact lines.
+#
+#		Other functions use these variables for the following
+#		purposes:
+#
+#		The exact VGs are ones that have had new disks added to them,
+#		therefore the BCVs must be sync'ed using the -exact switch
+#		on the symmir command.  So, these VG will need to be exported
+#		before the sync operation and then imported after they are
+#		split.
+#
+#		The normal VGs simply have their filesystems unmounted, and
+#		then the VG is deactivated before the sync starts.  After the
+#		split the VG is activated, the filesystem is checked by FSCK,
+#		and mounted if it checks out okay.
+#
+###############################################################################
+# Modification history
+# Date     Who          What was modified.
+# -------- ------------ ------------------
+#
+###############################################################################
+#set -n
+#set -x
+
+print Start Declare_VolumeGroup_Variables Function. $(date)
+
+#
+## Remove the tmp files that holds the varibales we need to work with.
+#
+if [[ -f ${BCV_VG_ELEMENTS} ]]
+then
+	rm ${BCV_VG_ELEMENTS}
+fi
+
+if [[ -f ${BCV_VG_XACT_ELEMENTS} ]]
+then
+	rm ${BCV_VG_XACT_ELEMENTS}
+fi
+
+#
+## Now touch new variable files. Otherwise we get an error if one of the variable
+## creation routines has nothing to put in a file.
+#
+touch ${BCV_VG_ELEMENTS}
+touch ${BCV_VG_XACT_ELEMENTS}
+
+NORMAL_VG_ELEMS() {
+#
+## This internal function names the VGs that only need normal actions taken against
+## them.
+#
+## Grab the Volume Group names for the server from the config file, and
+## load them into an array
+#
+print "#"
+print Grabbing VGS for normal BCV Establish.
+#
+## Grep the Volume group names from the config file.
+#
+set -A SRVR_VGS $(grep ${SERVER}_VG ${BCVCFGFILE} | grep -v "X" | cut -d":" -f2 | sed "s/,/ /g")
+#
+## This variable gives us the total number of Volume Groups in the array.
+#
+TOTAL_VG_ARRAY="${#SRVR_VGS[*]}"
+#
+## The total number of volume groups in the array minus 1.
+## The array starts counting at 0, so we have to subtract one.
+#
+VG_ARRAY_START=$(( ${TOTAL_VG_ARRAY} - 1 ))
+#
+## The total number of volume groups in the array minus 1.
+## The array starts counting at 0, so we have to subtract one.
+#
+VG_ELEM=$(( ${TOTAL_VG_ARRAY} - 1 ))
+
+#
+## If there are NO normal VGs to work on, then the value of the variable VG_ARRAY_START
+## will be negative.  Therefore we can skip the rest of this internal function.
+## This would happen if every VG for this script had new disks added to them, and this
+## was the first time the script was run against them.
+#
+if [[ ${VG_ARRAY_START} -eq "-1" ]]
+then
+	print "VG_ARRAY_START (${VG_ARRAY_START}) has a negative value. No data here. Skipping."
+	return
+fi
+
+##### print You should not see this line if VG_ARRAY_START is negative.
+
+#
+## Taking the number of elements in the VG array, build the individual variables
+## and assign them their appropriate value.  I have to write the variables and thier values
+## out to a temp file and then read them back in to get them in the scripts environment.
+while [[ VG_ELEM -ge 0 ]]
+do 
+	#
+	## Cycle through each element of the array
+	print SRVR_VG Array element ${VG_ELEM} is: ${SRVR_VGS[${VG_ELEM}]}
+
+	#
+	## Create the variable name
+	VG_ELEM_NUM=VG_ELEM_${VG_ELEM}
+	#
+	## Assign the name of the VG to the variable name, and
+	## write it to the tmp file.  We will read it in later.
+	print ${VG_ELEM_NUM}=${SRVR_VGS[${VG_ELEM}]} >> ${BCV_VG_ELEMENTS}
+
+	#
+	## Change the value of the variable to controls with element of the variable
+	## we are working with.
+	VG_ELEM=$(( ${VG_ELEM} - 1 ))
+done
+
+#
+## Read in the tmp file. It loads the variable and its value into
+## the script's environment.
+. ${BCV_VG_ELEMENTS}
+}
+
+XACT_VG_ELEMS() {
+#
+## This is for doing Exact BCV Establish and Splits.  This is done when the filesystems have
+## had disk space added to them.  The BCVs need to be Established in -exact mode.
+## These filesystems need to be differentiated because the Volume Group needs to be exported
+## and imported for the filesystem to stay intact.
+#
+## Grab the Volume Group names for the server from the config file.
+#
+
+print "#"
+print Grabbing VGS for exact mode BCV Establish.
+
+#
+## Load the VG for exact establish into an array.
+set -A SRVR_VGS_XACT $(grep X_${SERVER}_VG ${BCVCFGFILE} | cut -d":" -f2 | sed "s/,/ /g")
+	#print SRVR_VGS_XACT is ${SRVR_VGS_XACT[*]}
+#
+## Variable with the number of elements loaded into the array create above.
+TOTAL_VG_ARRAY_XACT="${#SRVR_VGS_XACT[*]}"
+	#print TOTAL_VG_ARRAY_XACT is ${TOTAL_VG_ARRAY_XACT}
+#
+## If there were no elements in the array, this value will be a negative number
+VG_ARRAY_START_XACT=$(( ${TOTAL_VG_ARRAY_XACT} - 1 ))
+	#print VG_ARRAY_START_XACT is ${VG_ARRAY_START_XACT}
+VG_ELEM_XACT=$(( ${TOTAL_VG_ARRAY_XACT} - 1 ))
+	#print VG_ELEM_XACT is ${VG_ELEM_XACT}
+
+#
+## If we have a no elements in the array, the value will be negative, so
+## we can skip this internal function.
+if [[ ${VG_ARRAY_START_XACT} -eq "-1" ]]
+then
+	print "VG_ARRAY_START_XACT (${VG_ARRAY_START_XACT}) has a negative value. No need to proceed. Skipping."
+	return
+fi
+
+##### print You should not see this line if VG_ARRAY_START_XACT is negative.
+
+#
+## Taking the number of elements in the VG array, build the individual variables
+## and assign them their appropriate value.  I have to write the variables and thier values
+## out to a temp file and then read them back in to get them in the scripts environment.
+while [[ VG_ELEM_XACT -ge 0 ]]
+do 
+	#
+	## Cycle through each element of the array
+	print SRVR_VG_XACT Array element ${VG_ELEM_XACT} is: ${SRVR_VGS_XACT[${VG_ELEM_XACT}]}
+
+	#
+	## Create the variable name
+	VG_ELEM_NUM_XACT=VG_ELEM_XACT_${VG_ELEM_XACT}
+	#
+	## Assign the name of the VG to the variable name, and
+	## write it to the tmp file.  We will read it in later.
+	print ${VG_ELEM_NUM_XACT}=${SRVR_VGS_XACT[${VG_ELEM_XACT}]} >> ${BCV_VG_XACT_ELEMENTS}
+
+	#
+	## Change the value of the variable to controls with element of the variable
+	## we are working with.
+	VG_ELEM_XACT=$(( ${VG_ELEM_XACT} - 1 ))
+done
+
+#
+## Read in the tmp file. It loads the variable and its value into
+## the script's environment.
+. ${BCV_VG_XACT_ELEMENTS}
+}
+
+NORMAL_VG_ELEMS
+XACT_VG_ELEMS
+
+print "#"
+print End Declare_VolumeGroup_Variables Function. $(date); print
+
+## END of the function.
+## Everything below here is development or historical functions that I need to keep for reference for future versions.
+
+OLD_GRAB_VG_FUNCTION() {
+## This is still here for historical purposes.
+## Using the set command to look at the variables in the scripts environment,
+## this section pulls out the appropriate VG element variables and
+## prints out thier value.  It cycles through the number of elements contained
+## in the VG array counting from 0.
+## This section is for proof of concept that I can do it, and as a reference to
+## use when I need to cycle through various VGs and DGs to work with them.
+
+VG_ELEM=${VG_ARRAY_START}
+
+while [[ VG_ELEM -ge 0 ]]
+do
+	set | grep ^VG_ELEM_${VG_ELEM}
+	VG=$(set | grep ^VG_ELEM_${VG_ELEM} | cut -d"=" -f2)
+	print VG_ELEM_${VG_ELEM} is  ${VG}
+
+	VG_ELEM=$(( ${VG_ELEM} -1 ))
+
+done
+}
+
+}

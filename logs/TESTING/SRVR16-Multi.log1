@@ -1,0 +1,102 @@
+Script started with the following Options and Arguements: -MSqta1srvr16 -C Test.conf
+SERVER is set to: qta1srvr16
+CONFIG_FILE is set to: Test.conf
+Establish Type is set to: incr
+RUN_BACKUP is set to: NO
+Manual Monitoring is set to: YES
+Wait to Split the BCV is set to: NO
+
+START BCV Establish and Split Script for qta1srvr16 on Fri Nov 15 13:15:35 EST 2002
+
+Start Declare_General_Variables Function. Fri Nov 15 13:15:35 EST 2002.
+Script started with the following Options and Arguements: -MSqta1srvr16 -C Test.conf
+Working on BCVs for SERVER: qta1srvr16
+SERVER qta1srvr16 is a valid BCV Server. Continuing.
+Configuration file is: /usr/local/bin/bcvscripts/etc/Test.conf
+Establish Type is: incr
+Run Backup is set to: NO
+Manual Monitoring is set to: YES
+Wait to Split the BCVs is set to NO
+Split Time is: 23:40:00
+End Declare_General_Variables Function. Fri Nov 15 13:15:36 EST 2002
+
+Start Declare_VolumeGroup_Variables Function. Fri Nov 15 13:15:36 EST 2002
+#
+Grabbing VGS for normal BCV Establish.
+SRVR_VG Array element 2 is: vgpsfiles1/lvol3
+SRVR_VG Array element 1 is: vgpsfiles1/lvol2
+SRVR_VG Array element 0 is: vgpsfiles1/lvol1
+#
+Grabbing VGS for exact mode BCV Establish.
+VG_ARRAY_START_XACT (-1) has a negative value. No need to proceed. Skipping.
+#
+End Declare_VolumeGroup_Variables Function. Fri Nov 15 13:15:36 EST 2002
+
+Start Declare_DeviceGroup_Variables Function. Fri Nov 15 13:15:36 EST 2002
+#
+Grabbing DGs for normal BCV Establish.
+SRVR_DG Array element 0 is: psfiles1
+#
+Grabbing DGs for exact mode BCV Establish.
+DG_ARRAY_START_XACT (-1) has a negative value. No data here. Skipping.
+#
+End Declare_DeviceGroup_Variables Function. Fri Nov 15 13:15:36 EST 2002
+
+Start Declare_OmniBack_Variables Function. Fri Nov 15 13:15:36 EST 2002.
+#
+Run Backup at end of script: NO
+Not Running Backup. Variables build skipped.
+#
+End Declare_OmniBack_Variables Function. Fri Nov 15 13:15:36 EST 2002
+
+Start OOP Loading Function. Fri Nov 15 13:15:36 EST 2002
+#
+#
+End OOP Loading Function. Fri Nov 15 13:15:36 EST 2002
+
+Start Unmount Filesystem function. Fri Nov 15 13:15:36 EST 2002
+FileSystems to UNmount: 3
+#
+
+	VOLGROUP is vgpsfiles1/lvol1
+	FSTAB_EXTRACT is /dev/vgpsfiles1/lvol1:/BCV/srvr16/u05
+	VG is /dev/vgpsfiles1
+	VG_LVOL is /dev/vgpsfiles1/lvol1
+	VG_RLVOL is 
+	FILESYSTEM is /BCV/srvr16/u05
+	FILESYSTEM is 13 characters long
+
+
+	VOLGROUP is vgpsfiles1/lvol2
+	FSTAB_EXTRACT is /dev/vgpsfiles1/lvol2:/BCV/srvr16/u20
+	VG is /dev/vgpsfiles1/lvol2:/BCV/srvr16/u20
+	VG_LVOL is /dev/vgpsfiles1/lvol2
+	VG_RLVOL is 
+	FILESYSTEM is /BCV/srvr16/u20
+	FILESYSTEM is 13 characters long
+
+
+	VOLGROUP is vgpsfiles1/lvol3
+	FSTAB_EXTRACT is /dev/vgpsfiles1/lvol3:/BCV/srvr16/u21
+	VG is /dev/vgpsfiles1/lvol3:/BCV/srvr16/u21
+	VG_LVOL is /dev/vgpsfiles1/lvol3
+	VG_RLVOL is 
+	FILESYSTEM is /BCV/srvr16/u21
+	FILESYSTEM is 13 characters long
+
+Un-mounting successful for all filesystems.
+ out of 3 filesystems still mounted.
+End Unmount Filesystem function. Fri Nov 15 13:15:36 EST 2002
+
+Start CHECK LVM ERRORS function. Fri Nov 15 13:15:36 EST 2002.
+#
+NO LVM Errors Recorded: (LVM-ERRORS 0)
+#
+End CHECK LVM ERRORS function. Fri Nov 15 13:15:36 EST 2002.
+
+Start Verify Variables Function. Fri Nov 15 13:15:36 EST 2002
+#
+End Verify Variables Function. Fri Nov 15 13:15:36 EST 2002
+
+END BCV Establish and Split Script for qta1srvr16 on Fri Nov 15 13:15:36 EST 2002
+

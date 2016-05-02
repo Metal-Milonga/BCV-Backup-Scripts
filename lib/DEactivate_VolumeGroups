@@ -1,0 +1,167 @@
+DEactivate_VolumeGroups(){
+#
+# Function - DEactivate_VolumeGroups
+# Version - 1.02
+# Author - David Holton
+# Date - April 19, 2002
+#
+# Description - This function deactivates the volume groups after they have
+#		been unmounted.
+#
+###############################################################################
+# Modification history
+# Date     Who          What was modified.
+# -------- ------------ ------------------
+# 07/09/02 Dave Holton	Commented out the messages reporting successful
+#			deactivation of individual VG from the email report.
+# 07/10/02 Dave Holton	The message to the email report read as though none of
+#			the VG were deactivated, when in fact they were.
+#			Changed the message to read correctly.
+# 11/27/02 Dave Holton	Made the functions Define_VG_Variables and
+#			What_Are_The_Variables into external functions.
+#
+###############################################################################
+#set -vn
+
+print Start Deactivate VolumeGroups function. $(date)
+print Volume Groups to be Deactivated: $(${SERVER}_Total_VGs)
+print "#"
+print >> ${EMAIL_RPT}
+print Volume Groups to be Deactivated: $(${SERVER}_Total_VGs) >> ${EMAIL_RPT}
+
+#
+## If the BCV_VGCHANGE_STATUS exists, remove it and touch a new one.
+#
+if [ -f ${BCV_VGCHANGE_STATUS} ]
+then
+	rm ${BCV_VGCHANGE_STATUS}
+	touch ${BCV_VGCHANGE_STATUS}
+else
+	#
+	## If it did not exist, touch a new one.
+	#
+	touch ${BCV_VGCHANGE_STATUS}
+fi
+
+#####for VG in $( ${SERVER}_GET_ALL_VGS )	# This is kept for historical reasons.
+#####do
+#####	print VG from OOP Function is: $VG
+#####done
+
+for VOLGROUP in $( ${SERVER}_GET_ALL_VGS )
+do
+	#Define_VG_Variables(){
+	#FSTAB_EXTRACT=$(grep ${VOLGROUP} /etc/fstab | sed "s/  */:/g" | cut -d":" -f1,2)
+	#VG=${FSTAB_EXTRACT%/lvol1:*}
+	#VG_LVOL=${FSTAB_EXTRACT%:*}		# First half or FSTAB_EXTRACT to reference the lvol.
+	#VG_RLVOL=${FSTAB_EXTRACT%lvol1:*}rlvol1	# First half or the FSTAB_EXTRACT replacing lvol1 with rlvol1
+	#FILESYSTEM=${FSTAB_EXTRACT#*:}		# Last half of the FSTAB_EXTRACT to reference the file system.
+	#}
+#
+#What_Are_The_Variables(){
+#
+#cat << END_OF_TEXT
+#
+	#FSTAB_EXTRACT is ${FSTAB_EXTRACT}
+	#VG is ${FSTAB_EXTRACT%/lvol1:*}
+	#VG_LVOL is ${VG_LVOL}
+	#VG_RLVOL is ${VG_RLVOL}
+	#FILESYSTEM is ${FILESYSTEM}
+	##FILESYSTEM is ${#FILESYSTEM} characters long
+#
+#END_OF_TEXT
+#}
+
+	Deactivate_Em_Now(){
+	MOUNT_CHK=$(mount -p | grep ${VG} | sed "s/  */:/g" | cut -d":" -f2)
+	#print ${MOUNT_CHK}
+
+	if [[ -z ${MOUNT_CHK} ]]
+	then
+		print The filesystem ${FILESYSTEM} is not mounted. VG ${VG} will be deactivated.
+
+		vgdisplay ${VG} > /dev/null 2>&1
+		VG_STATUS_0=${?}
+		#####print VG_STATUS_0 is: ${VG_STATUS_0}
+
+		if [[ ${VG_STATUS_0} -eq 0 ]]
+		then
+
+			vgchange -a n ${VG}
+			VG_STATUS_1=${?}
+			####VG_STATUS_1=1
+	
+			vgdisplay ${VG} > /dev/null 2>&1
+			VG_STATUS_2=${?}
+	
+			print ${VG}:${VG_STATUS_1}:${VG_STATUS_2} >> ${BCV_VGCHANGE_STATUS}
+	
+			if [[ ${VG_STATUS_1} -eq 0 && ${VG_STATUS_2} -eq 1 ]]
+			then
+				print VG ${VG} was successfully deactivated.
+				print VG ${VG} was successfully deactivated. >> ${EMAIL_RPT}
+				print "#"
+			else
+				print VG ${VG} was NOT deactivated.
+				print VG ${VG} was NOT deactivated. >> ${ERROR_RPT}
+				print VG ${VG} was NOT deactivated. >> ${EMAIL_RPT}
+				print "#"
+			fi
+		else
+			print VG ${VG} was ALREADY DEactivated. Continuing.
+			print VG ${VG} was ALREADY DEactivated. >> ${EMAIL_RPT}
+			print ${VG}:${VG_STATUS_1:-0}:${VG_STATUS_2:-1} >> ${BCV_VGCHANGE_STATUS}
+			print "#"
+		fi
+	else
+		print The filesystem ${FILESYSTEM} was STILL Mounted. Cannot procede.
+		print The filesystem ${FILESYSTEM} was STILL Mounted. Cannot procede. >> ${ERROR_RPT}
+		print The filesystem ${FILESYSTEM} was STILL Mounted. Cannot procede. >> ${EMAIL_RPT}
+		print "#"
+		return
+	fi
+
+	}
+
+	Define_VG_Variables
+	What_Are_The_Variables
+	Deactivate_Em_Now
+
+	##VG_ELEM=$(( ${VG_ELEM} - 1 ))
+done
+
+#STAT_1=0
+for STAT_1 in $(cat ${BCV_VGCHANGE_STATUS} | cut -d":" -f2)
+do
+	#print STAT_1 equals ${STAT_1}
+	CHG_STAT_1=$(( ${CHG_STAT_1} + ${STAT_1} ))
+done
+
+#STAT_2=0
+for STAT_2 in $(cat ${BCV_VGCHANGE_STATUS} | cut -d":" -f3)
+do
+	#print STAT_2 equals ${STAT_2}
+	CHG_STAT_2=$(( ${CHG_STAT_2} + ${STAT_2} ))
+done
+
+
+if [[ ${CHG_STAT_1} -gt 0 || ${CHG_STAT_2} -lt $( ${SERVER}_Total_VGs ) ]]
+then
+	print "(${CHG_STAT_1}/${CHG_STAT_2}) of $( ${SERVER}_Total_VGs ) Volume Groups NOT deactivated. Exiting. $(date)"
+	print "(${CHG_STAT_1}/${CHG_STAT_2}) of $( ${SERVER}_Total_VGs ) VGs NOT deactivated. Exiting. $(date)" >> ${ERROR_RPT}
+	##print "(${CHG_STAT_1}/${CHG_STAT_2}) of $( ${SERVER}_Total_VGs ) VGs NOT deactivated. Exiting. $(date)" >> ${EMAIL_RPT}
+	print "${CHG_STAT_1} of $( ${SERVER}_Total_VGs ) VGs NOT deactivated. Exiting. $(date)" >> ${EMAIL_RPT}
+	print "${CHG_STAT_1} of $( ${SERVER}_Total_VGs ) VGs NOT deactivated. Exiting. $(date)" >> ${QEMAIL_RPT}
+	Notify Final
+	Notify Error
+	exit
+else
+	print "(${CHG_STAT_1}/${CHG_STAT_2}) of $( ${SERVER}_Total_VGs ) Volume Groups DEActivated."
+	##print "(${CHG_STAT_1}/${CHG_STAT_2}) of $( ${SERVER}_Total_VGs ) Volume Groups DEActivated." >> ${EMAIL_RPT}
+	print "${CHG_STAT_2} of $( ${SERVER}_Total_VGs ) Volume Groups DEActivated." >> ${EMAIL_RPT}
+	print "${CHG_STAT_2} of $( ${SERVER}_Total_VGs ) Volume Groups DEActivated." >> ${QEMAIL_RPT}
+fi
+
+print "#"
+print End Deactivate VolumeGroups function. $(date); print
+}

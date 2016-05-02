@@ -1,0 +1,331 @@
+Script started with the following Options and Arguements: -FMS qta1srvr09
+SERVER is set to: qta1srvr09
+CONFIG_FILE: Default config file will be used.
+Establish Type is set to: FULL
+RUN_BACKUP is set to: NO
+Manual Monitoring is set to: YES
+Wait to Split the BCV is set to: NO
+
+START BCV Establish and Split Script for qta1srvr09 on Mon Nov 4 23:47:58 EST 2002
+
+Start Declare_General_Variables Function. Mon Nov 4 23:47:58 EST 2002.
+Script started with the following Options and Arguements: -FMS qta1srvr09
+Working on BCVs for SERVER: qta1srvr09
+SERVER qta1srvr09 is a valid BCV Server. Continuing.
+Configuration file is: /usr/local/bin/bcvscripts/etc/bcv_scripts.conf
+Establish Type is: FULL
+Run Backup is set to: NO
+Manual Monitoring is set to: YES
+Wait to Split the BCVs is set to NO
+End Declare_General_Variables Function. Mon Nov 4 23:47:58 EST 2002
+
+Start Declare_VolumeGroup_Variables Function. Mon Nov 4 23:47:58 EST 2002
+#
+Grabbing VGS for normal BCV Establish.
+SRVR_VG Array element 2 is: vgfoobar3
+SRVR_VG Array element 1 is: vgfoobar2
+SRVR_VG Array element 0 is: vgfoobar1
+#
+Grabbing VGS for exact mode BCV Establish.
+SRVR_VG_XACT Array element 3 is: vgapps09
+SRVR_VG_XACT Array element 2 is: vghrprod1
+SRVR_VG_XACT Array element 1 is: vghrsystem1
+SRVR_VG_XACT Array element 0 is: vgpsfiles2
+#
+End Declare_VolumeGroup_Variables Function. Mon Nov 4 23:47:58 EST 2002
+
+Start Declare_DeviceGroup_Variables Function. Mon Nov 4 23:47:58 EST 2002
+#
+Grabbing DGs for normal BCV Establish.
+SRVR_DG Array element 2 is: foobar3
+SRVR_DG Array element 1 is: foobar2
+SRVR_DG Array element 0 is: foobar1
+#
+Grabbing DGs for exact mode BCV Establish.
+SRVR_DG_XACT Array element 3 is: apps09
+SRVR_DG_XACT Array element 2 is: pshrprod1
+SRVR_DG_XACT Array element 1 is: pshrsystem1
+SRVR_DG_XACT Array element 0 is: psfiles2
+#
+End Declare_DeviceGroup_Variables Function. Mon Nov 4 23:47:58 EST 2002
+
+Start Declare_OmniBack_Variables Function. Mon Nov 4 23:47:58 EST 2002.
+#
+Run Backup at end of script: NO
+Not Running Backup. Variables build skipped.
+#
+End Declare_OmniBack_Variables Function. Mon Nov 4 23:47:58 EST 2002
+
+Start OOP Loading Function. Mon Nov 4 23:47:58 EST 2002
+#
+#
+End OOP Loading Function. Mon Nov 4 23:47:58 EST 2002
+
+Start Unmount Filesystem function. Mon Nov 4 23:47:58 EST 2002
+FileSystems to UNmount: 7
+#
+
+	VOLGROUP is vgfoobar1
+	FSTAB_EXTRACT is /dev/vgfoobar1/lvol1:/BCV/srvr09/u08
+	VG is /dev/vgfoobar1
+	VG_LVOL is /dev/vgfoobar1/lvol1
+	VG_RLVOL is /dev/vgfoobar1/rlvol1
+	FILESYSTEM is /BCV/srvr09/u08
+	#FILESYSTEM is 13 characters long
+
+VG /dev/vgfoobar1 is mounted on /BCV/srvr09/u08. I will unmount it for you.
+VG /dev/vgfoobar1 was successfully UNmounted from /BCV/srvr09/u08.
+#
+
+	VOLGROUP is vgfoobar2
+	FSTAB_EXTRACT is /dev/vgfoobar2/lvol1:/BCV/srvr09/u06
+	VG is /dev/vgfoobar2
+	VG_LVOL is /dev/vgfoobar2/lvol1
+	VG_RLVOL is /dev/vgfoobar2/rlvol1
+	FILESYSTEM is /BCV/srvr09/u06
+	#FILESYSTEM is 13 characters long
+
+VG /dev/vgfoobar2 is mounted on /BCV/srvr09/u06. I will unmount it for you.
+VG /dev/vgfoobar2 was successfully UNmounted from /BCV/srvr09/u06.
+#
+
+	VOLGROUP is vgfoobar3
+	FSTAB_EXTRACT is /dev/vgfoobar3/lvol1:/BCV/srvr09/u07
+	VG is /dev/vgfoobar3
+	VG_LVOL is /dev/vgfoobar3/lvol1
+	VG_RLVOL is /dev/vgfoobar3/rlvol1
+	FILESYSTEM is /BCV/srvr09/u07
+	#FILESYSTEM is 13 characters long
+
+VG /dev/vgfoobar3 is mounted on /BCV/srvr09/u07. I will unmount it for you.
+VG /dev/vgfoobar3 was successfully UNmounted from /BCV/srvr09/u07.
+#
+
+	VOLGROUP is vgpsfiles2
+	FSTAB_EXTRACT is /dev/vgpsfiles2/lvol1:/BCV/srvr09/u05
+	VG is /dev/vgpsfiles2
+	VG_LVOL is /dev/vgpsfiles2/lvol1
+	VG_RLVOL is /dev/vgpsfiles2/rlvol1
+	FILESYSTEM is /BCV/srvr09/u05
+	#FILESYSTEM is 13 characters long
+
+VG /dev/vgpsfiles2 is mounted on /BCV/srvr09/u05. I will unmount it for you.
+VG /dev/vgpsfiles2 was successfully UNmounted from /BCV/srvr09/u05.
+#
+
+	VOLGROUP is vghrsystem1
+	FSTAB_EXTRACT is /dev/vghrsystem1/lvol1:/BCV/srvr09/u04
+	VG is /dev/vghrsystem1
+	VG_LVOL is /dev/vghrsystem1/lvol1
+	VG_RLVOL is /dev/vghrsystem1/rlvol1
+	FILESYSTEM is /BCV/srvr09/u04
+	#FILESYSTEM is 13 characters long
+
+VG /dev/vghrsystem1 is mounted on /BCV/srvr09/u04. I will unmount it for you.
+VG /dev/vghrsystem1 was successfully UNmounted from /BCV/srvr09/u04.
+#
+
+	VOLGROUP is vghrprod1
+	FSTAB_EXTRACT is /dev/vghrprod1/lvol1:/BCV/srvr09/u02
+	VG is /dev/vghrprod1
+	VG_LVOL is /dev/vghrprod1/lvol1
+	VG_RLVOL is /dev/vghrprod1/rlvol1
+	FILESYSTEM is /BCV/srvr09/u02
+	#FILESYSTEM is 13 characters long
+
+VG /dev/vghrprod1 is mounted on /BCV/srvr09/u02. I will unmount it for you.
+VG /dev/vghrprod1 was successfully UNmounted from /BCV/srvr09/u02.
+#
+
+	VOLGROUP is vgapps09
+	FSTAB_EXTRACT is /dev/vgapps09/lvol1:/BCV/srvr09/apps
+	VG is /dev/vgapps09
+	VG_LVOL is /dev/vgapps09/lvol1
+	VG_RLVOL is /dev/vgapps09/rlvol1
+	FILESYSTEM is /BCV/srvr09/apps
+	#FILESYSTEM is 14 characters long
+
+VG /dev/vgapps09 is mounted on /BCV/srvr09/apps. I will unmount it for you.
+VG /dev/vgapps09 was successfully UNmounted from /BCV/srvr09/apps.
+#
+/BCV/srvr09/u08:0
+/BCV/srvr09/u06:0
+/BCV/srvr09/u07:0
+/BCV/srvr09/u05:0
+/BCV/srvr09/u04:0
+/BCV/srvr09/u02:0
+/BCV/srvr09/apps:0
+Un-mounting successful for all filesystems.
+0 out of 7 filesystems still mounted.
+End Unmount Filesystem function. Mon Nov 4 23:48:02 EST 2002
+
+Start Deactivate VolumeGroups function. Mon Nov 4 23:48:02 EST 2002
+Volume Groups to be Deactivated: 7
+#
+
+	FSTAB_EXTRACT is /dev/vgfoobar1/lvol1:/BCV/srvr09/u08
+	VG is /dev/vgfoobar1
+	VG_LVOL is /dev/vgfoobar1/lvol1
+	VG_RLVOL is /dev/vgfoobar1/rlvol1
+	FILESYSTEM is /BCV/srvr09/u08
+	#FILESYSTEM is 13 characters long
+
+The filesystem /BCV/srvr09/u08 is not mounted. VG /dev/vgfoobar1 will be deactivated.
+Volume group "/dev/vgfoobar1" has been successfully changed.
+VG /dev/vgfoobar1 was successfully deactivated.
+#
+
+	FSTAB_EXTRACT is /dev/vgfoobar2/lvol1:/BCV/srvr09/u06
+	VG is /dev/vgfoobar2
+	VG_LVOL is /dev/vgfoobar2/lvol1
+	VG_RLVOL is /dev/vgfoobar2/rlvol1
+	FILESYSTEM is /BCV/srvr09/u06
+	#FILESYSTEM is 13 characters long
+
+The filesystem /BCV/srvr09/u06 is not mounted. VG /dev/vgfoobar2 will be deactivated.
+Volume group "/dev/vgfoobar2" has been successfully changed.
+VG /dev/vgfoobar2 was successfully deactivated.
+#
+
+	FSTAB_EXTRACT is /dev/vgfoobar3/lvol1:/BCV/srvr09/u07
+	VG is /dev/vgfoobar3
+	VG_LVOL is /dev/vgfoobar3/lvol1
+	VG_RLVOL is /dev/vgfoobar3/rlvol1
+	FILESYSTEM is /BCV/srvr09/u07
+	#FILESYSTEM is 13 characters long
+
+The filesystem /BCV/srvr09/u07 is not mounted. VG /dev/vgfoobar3 will be deactivated.
+Volume group "/dev/vgfoobar3" has been successfully changed.
+VG /dev/vgfoobar3 was successfully deactivated.
+#
+
+	FSTAB_EXTRACT is /dev/vgpsfiles2/lvol1:/BCV/srvr09/u05
+	VG is /dev/vgpsfiles2
+	VG_LVOL is /dev/vgpsfiles2/lvol1
+	VG_RLVOL is /dev/vgpsfiles2/rlvol1
+	FILESYSTEM is /BCV/srvr09/u05
+	#FILESYSTEM is 13 characters long
+
+The filesystem /BCV/srvr09/u05 is not mounted. VG /dev/vgpsfiles2 will be deactivated.
+Volume group "/dev/vgpsfiles2" has been successfully changed.
+VG /dev/vgpsfiles2 was successfully deactivated.
+#
+
+	FSTAB_EXTRACT is /dev/vghrsystem1/lvol1:/BCV/srvr09/u04
+	VG is /dev/vghrsystem1
+	VG_LVOL is /dev/vghrsystem1/lvol1
+	VG_RLVOL is /dev/vghrsystem1/rlvol1
+	FILESYSTEM is /BCV/srvr09/u04
+	#FILESYSTEM is 13 characters long
+
+The filesystem /BCV/srvr09/u04 is not mounted. VG /dev/vghrsystem1 will be deactivated.
+Volume group "/dev/vghrsystem1" has been successfully changed.
+VG /dev/vghrsystem1 was successfully deactivated.
+#
+
+	FSTAB_EXTRACT is /dev/vghrprod1/lvol1:/BCV/srvr09/u02
+	VG is /dev/vghrprod1
+	VG_LVOL is /dev/vghrprod1/lvol1
+	VG_RLVOL is /dev/vghrprod1/rlvol1
+	FILESYSTEM is /BCV/srvr09/u02
+	#FILESYSTEM is 13 characters long
+
+The filesystem /BCV/srvr09/u02 is not mounted. VG /dev/vghrprod1 will be deactivated.
+Volume group "/dev/vghrprod1" has been successfully changed.
+VG /dev/vghrprod1 was successfully deactivated.
+#
+
+	FSTAB_EXTRACT is /dev/vgapps09/lvol1:/BCV/srvr09/apps
+	VG is /dev/vgapps09
+	VG_LVOL is /dev/vgapps09/lvol1
+	VG_RLVOL is /dev/vgapps09/rlvol1
+	FILESYSTEM is /BCV/srvr09/apps
+	#FILESYSTEM is 14 characters long
+
+The filesystem /BCV/srvr09/apps is not mounted. VG /dev/vgapps09 will be deactivated.
+Volume group "/dev/vgapps09" has been successfully changed.
+VG /dev/vgapps09 was successfully deactivated.
+#
+(0/7) out of 7 Volume Groups DEActivated.
+#
+End Deactivate VolumeGroups function. Mon Nov 4 23:48:15 EST 2002
+
+Start Export Volume Groups function. Mon Nov 4 23:48:15 EST 2002
+Volume Groups to be Exported: 4
+#
+Working /dev/vgpsfiles2
+VG_MINOR_NUM is 0x0a0000
+No map directory exists for /dev/vgpsfiles2. Creating.
+Exporting /dev/vgpsfiles2.
+Beginning the export process on Volume Group "/dev/vgpsfiles2".
+/dev/dsk/c4t12d1
+/dev/dsk/c4t12d2
+/dev/dsk/c4t12d3
+/dev/dsk/c7t12d1
+/dev/dsk/c7t12d2
+/dev/dsk/c7t12d3
+Volume group "/dev/vgpsfiles2" has been successfully removed.
+/dev/vgpsfiles2 was Exported with STATUS = 0
+#
+Working /dev/vghrsystem1
+VG_MINOR_NUM is 0x080000
+No map directory exists for /dev/vghrsystem1. Creating.
+Exporting /dev/vghrsystem1.
+Beginning the export process on Volume Group "/dev/vghrsystem1".
+/dev/dsk/c4t11d3
+/dev/dsk/c4t11d4
+/dev/dsk/c4t11d5
+/dev/dsk/c4t11d6
+/dev/dsk/c7t11d3
+/dev/dsk/c7t11d4
+/dev/dsk/c7t11d5
+/dev/dsk/c7t11d6
+Volume group "/dev/vghrsystem1" has been successfully removed.
+/dev/vghrsystem1 was Exported with STATUS = 0
+#
+Working /dev/vghrprod1
+VG_MINOR_NUM is 0x070000
+No map directory exists for /dev/vghrprod1. Creating.
+Exporting /dev/vghrprod1.
+Beginning the export process on Volume Group "/dev/vghrprod1".
+/dev/dsk/c4t10d5
+/dev/dsk/c4t10d6
+/dev/dsk/c4t10d7
+/dev/dsk/c4t11d0
+/dev/dsk/c4t11d1
+/dev/dsk/c4t11d2
+/dev/dsk/c7t10d5
+/dev/dsk/c7t10d6
+/dev/dsk/c7t10d7
+/dev/dsk/c7t11d0
+/dev/dsk/c7t11d1
+/dev/dsk/c7t11d2
+Volume group "/dev/vghrprod1" has been successfully removed.
+/dev/vghrprod1 was Exported with STATUS = 0
+#
+Working /dev/vgapps09
+VG_MINOR_NUM is 0x100000
+No map directory exists for /dev/vgapps09. Creating.
+Exporting /dev/vgapps09.
+Beginning the export process on Volume Group "/dev/vgapps09".
+/dev/dsk/c5t1d4
+/dev/dsk/c8t1d4
+Volume group "/dev/vgapps09" has been successfully removed.
+/dev/vgapps09 was Exported with STATUS = 0
+#
+Contents of Export Status file is: /dev/vgpsfiles2=0:1
+/dev/vgpsfiles2 was Exported successfully
+Contents of Export Status file is: /dev/vghrsystem1=0:1
+/dev/vghrsystem1 was Exported successfully
+Contents of Export Status file is: /dev/vghrprod1=0:1
+/dev/vghrprod1 was Exported successfully
+Contents of Export Status file is: /dev/vgapps09=0:1
+/dev/vgapps09 was Exported successfully
+End Export Volume Groups function. Mon Nov 4 23:48:16 EST 2002
+
+Start Verify Variables Function. Mon Nov 4 23:48:16 EST 2002
+#
+End Verify Variables Function. Mon Nov 4 23:48:16 EST 2002
+
+END BCV Establish and Split Script for qta1srvr09 on Mon Nov 4 23:48:16 EST 2002
+

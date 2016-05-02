@@ -1,0 +1,163 @@
+FSCK_and_Mount_Filesystems(){
+#
+# Function - FSCK_and_Mount_Filesystems
+# Version - 1.03
+# Author - David Holton
+# Date - April 19, 2002
+#
+# Description - 
+#
+###############################################################################
+# Modification history
+# Date     Who          What was modified.
+# -------- ------------ ------------------
+# 07/09/02 Dave Holton	Commented out lines reporting successfule FSCK and mount
+#			of individual Filesystems from going to the email report.
+#			Also, created a counter to report the number of filesystems
+#			successfully FSCK'ed and mounted and compared against the 
+#			total number of filesystems to work on.
+# 07/10/02 Dave Holton	The message to the email report listed the individual
+#			Filesystems instead of the total filesystems. Changed.
+# 08/03/02 Dave Holton	Just a spelling correction to one of the lines that
+#			prints to the log file:
+#			print BCV_RE_MOUNT fine contains
+#			changed fine to file
+# 11/27/02 Dave Holton	Made the functions Define_VG_Variables and
+#			What_Are_The_Variables into external functions.
+#
+###############################################################################
+#set -n
+
+print Start FSCK \& Mount Filesystems function. $(date)
+print FileSystems to Check and Mount: $( ${SERVER}_Total_VGs )
+print "#"
+print >> ${EMAIL_RPT}
+print FileSystems to Check and Mount: $( ${SERVER}_Total_VGs ) >> ${EMAIL_RPT}
+
+
+if [[ -f ${BCV_RE_MOUNT} ]]
+then
+	rm ${BCV_RE_MOUNT}
+fi
+cat /dev/null > ${BCV_RE_MOUNT}
+
+for VG in $( ${SERVER}_GET_ALL_VGS )
+do
+	print VG from OOP Function is: $VG
+done
+print "#"
+
+FS_MOUNTED=0
+
+for VOLGROUP in $( ${SERVER}_GET_ALL_VGS )
+do
+	#Define_VG_Variables(){
+	#FSTAB_EXTRACT=$(grep ${VOLGROUP} /etc/fstab | sed "s/  */:/g" | cut -d":" -f1,2)
+	#VG=${FSTAB_EXTRACT%/lvol1:*}
+	#VG_LVOL=${FSTAB_EXTRACT%:*}             # First half or FSTAB_EXTRACT to reference the lvol.
+	#VG_RLVOL=${FSTAB_EXTRACT%lvol1:*}rlvol1 # First half or the FSTAB_EXTRACT replacing lvol1 with rlvol1
+	#FILESYSTEM=${FSTAB_EXTRACT#*:}          # Last half of the FSTAB_EXTRACT to reference the file system.
+	#}
+#
+#	What_Are_The_Variables(){
+#	cat << END_OF_TEXT
+#
+#	FSTAB_EXTRACT is ${FSTAB_EXTRACT}
+#	VG is ${VG}
+#	VG_LVOL is ${VG_LVOL}
+#	VG_RLVOL is ${VG_RLVOL}
+#	FILESYSTEM is ${FILESYSTEM}
+#	#FILESYSTEM is ${#FILESYSTEM} characters long
+#
+#END_OF_TEXT
+#        }
+
+	Check_And_Mount_Em(){
+
+	vgdisplay ${VG} >> /dev/null 2>&1
+	VG_ACTIVE_STAT3=${?}
+	#####print VG_ACTIVE_STAT3 equals ${VG_ACTIVE_STAT3}
+
+	if [[ ${VG_ACTIVE_STAT3} -eq 0 ]]
+	then
+		fsck -F vxfs ${VG_RLVOL} > ${FSCK_OUTPUT}
+		FSCK_STAT=${?}
+
+		if [[ ${FSCK_STAT} -eq 0 ]]
+		then
+			mount ${FILESYSTEM}
+			RE_MOUNT_STAT=${?}
+
+			if [[ ${RE_MOUNT_STAT} -eq 0 ]]
+			then
+				F_STATUS=$(grep "-" ${FSCK_OUTPUT})
+				print ${VG} passed FSCK. Mount stat ${RE_MOUNT_STAT}
+				##print ${VG} passed FSCK. Mount stat ${RE_MOUNT_STAT} >> ${EMAIL_RPT}
+				print ${VG} ${F_STATUS#*-}
+				##print $(mount -p | grep ${FILESYSTEM} | sed "s/  */:/g" | cut -d":" -f1,2)  >> ${EMAIL_RPT}
+				mount -p | grep ${FILESYSTEM} | sed "s/  */ /g"
+				print "#"
+				((FS_MOUNTED+=1))
+			else
+				print Filesystem ${FILESYSTEM} did NOT mount. Moving on to next Filesystem.
+				print Filesystem ${FILESYSTEM} did NOT mount. Moving on to next Filesystem. >> ${ERROR_RPT}
+				print Filesystem ${FILESYSTEM} did NOT mount. Moving on to next Filesystem. >> ${EMAIL_RPT}
+				print "#"
+				LVM_ERRORS=$(( ${LVM_ERRORS} + 1 ))
+				return
+				print You should never see this line >> ${ERROR_RPT}.
+			fi
+
+		else
+			print FSCK FAILED!!!! on ${VG} ${FILESYSTEM} Move on to next filesystem.
+			print FSCK FAILED!!!! on ${VG} ${FILESYSTEM} Move on to next filesystem. >> ${ERROR_RPT}
+			print FSCK FAILED!!!! on ${VG} ${FILESYSTEM} Move on to next filesystem. >> ${EMAIL_RPT}
+			print "#"
+			LVM_ERRORS=$(( ${LVM_ERRORS} + 1 ))
+			return
+			print You should never see this line. >> ${ERROR_RPT}
+		fi
+
+	else
+		print VG ${VG} NOT active. Trying next Filesystem.
+		print VG ${VG} NOT active. Trying next Filesystem. >> ${ERROR_RPT}
+		print VG ${VG} NOT active. Trying next Filesystem. >> ${EMAIL_RPT}
+		print "#"
+		LVM_ERRORS=$(( ${LVM_ERRORS} + 1 ))
+		return
+		print You should never see this line print.
+	fi
+
+
+	}
+
+	Define_VG_Variables
+	What_Are_The_Variables
+	Check_And_Mount_Em
+
+	print ${FILESYSTEM}:${RE_MOUNT_STAT:-9}
+	print ${FILESYSTEM}:${RE_MOUNT_STAT:-9} >> ${BCV_RE_MOUNT}
+	print ${FILESYSTEM#*/}:${RE_MOUNT_STAT:-9} >> ${OMNI_FILESYSTEMS}
+
+done
+
+print "#"
+print ${FS_MOUNTED} of $( ${SERVER}_Total_VGs ) passed FSCK and Mounted.
+print ${FS_MOUNTED} of $( ${SERVER}_Total_VGs ) passed FSCK and Mounted. >> ${EMAIL_RPT}
+print ${FS_MOUNTED} of $( ${SERVER}_Total_VGs ) passed FSCK and Mounted. >> ${QEMAIL_RPT}
+
+print BCV_RE_MOUNT file contains:
+cat ${BCV_RE_MOUNT}
+print "#"
+#if [[ -n "${OMNI_FILESYSTEMS}" && -f "${OMNI_FILESYSTEMS}" ]]
+if [[ ${RUN_BACKUP} = 'YES' ]]
+then
+	print OMNI_FILESYSTEMS file contains:
+	cat ${OMNI_FILESYSTEMS}
+else
+	print Backup not being run, so OMNI_FILESYSTEMS file does not exist.
+fi
+
+print "#"
+print End FSCK \& Mount Filesystems function. $(date); print
+}

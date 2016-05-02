@@ -1,0 +1,343 @@
+Script started with the following Options and Arguements: -FMS qta1srvr16
+SERVER is set to: qta1srvr16
+CONFIG_FILE: Default config file will be used.
+Establish Type is set to: FULL
+RUN_BACKUP is set to: NO
+Manual Monitoring is set to: YES
+Wait to Split the BCV is set to: NO
+
+START BCV Establish and Split Script for qta1srvr16 on Tue Nov 12 14:14:39 EST 2002
+
+Start Declare_General_Variables Function. Tue Nov 12 14:14:39 EST 2002.
+Script started with the following Options and Arguements: -FMS qta1srvr16
+Working on BCVs for SERVER: qta1srvr16
+SERVER qta1srvr16 is a valid BCV Server. Continuing.
+Configuration file is: /usr/local/bin/bcvscripts/etc/bcv_scripts.conf
+Establish Type is: FULL
+Run Backup is set to: NO
+Manual Monitoring is set to: YES
+Wait to Split the BCVs is set to NO
+Split Time is: 23:40:00
+End Declare_General_Variables Function. Tue Nov 12 14:14:39 EST 2002
+
+Start Declare_VolumeGroup_Variables Function. Tue Nov 12 14:14:39 EST 2002
+#
+Grabbing VGS for normal BCV Establish.
+SRVR_VG Array element 4 is: vgapps16
+SRVR_VG Array element 3 is: vgfssystem1
+SRVR_VG Array element 2 is: vgfsprod2
+SRVR_VG Array element 1 is: vgfsprod1
+SRVR_VG Array element 0 is: vgpsfiles1
+#
+Grabbing VGS for exact mode BCV Establish.
+VG_ARRAY_START_XACT (-1) has a negative value. No need to proceed. Skipping.
+#
+End Declare_VolumeGroup_Variables Function. Tue Nov 12 14:14:39 EST 2002
+
+Start Declare_DeviceGroup_Variables Function. Tue Nov 12 14:14:39 EST 2002
+#
+Grabbing DGs for normal BCV Establish.
+SRVR_DG Array element 4 is: apps16
+SRVR_DG Array element 3 is: psfssystem1
+SRVR_DG Array element 2 is: psfsprod2
+SRVR_DG Array element 1 is: psfsprod1
+SRVR_DG Array element 0 is: psfiles1
+#
+Grabbing DGs for exact mode BCV Establish.
+DG_ARRAY_START_XACT (-1) has a negative value. No data here. Skipping.
+#
+End Declare_DeviceGroup_Variables Function. Tue Nov 12 14:14:39 EST 2002
+
+Start Declare_OmniBack_Variables Function. Tue Nov 12 14:14:39 EST 2002.
+#
+Run Backup at end of script: NO
+Not Running Backup. Variables build skipped.
+#
+End Declare_OmniBack_Variables Function. Tue Nov 12 14:14:39 EST 2002
+
+Start OOP Loading Function. Tue Nov 12 14:14:40 EST 2002
+#
+#
+End OOP Loading Function. Tue Nov 12 14:14:40 EST 2002
+
+Start Unmount Filesystem function. Tue Nov 12 14:14:40 EST 2002
+FileSystems to UNmount: 5
+#
+
+	VOLGROUP is vgpsfiles1
+	FSTAB_EXTRACT is /dev/vgpsfiles1/lvol1:/BCV/srvr16/u05
+	VG is /dev/vgpsfiles1
+	VG_LVOL is /dev/vgpsfiles1/lvol1
+	VG_RLVOL is /dev/vgpsfiles1/rlvol1
+	FILESYSTEM is /BCV/srvr16/u05
+	#FILESYSTEM is 13 characters long
+
+VG /dev/vgpsfiles1 is mounted on /BCV/srvr16/u05. I will unmount it for you.
+VG /dev/vgpsfiles1 was successfully UNmounted from /BCV/srvr16/u05.
+#
+
+	VOLGROUP is vgfsprod1
+	FSTAB_EXTRACT is /dev/vgfsprod1/lvol1:/BCV/srvr16/u01
+	VG is /dev/vgfsprod1
+	VG_LVOL is /dev/vgfsprod1/lvol1
+	VG_RLVOL is /dev/vgfsprod1/rlvol1
+	FILESYSTEM is /BCV/srvr16/u01
+	#FILESYSTEM is 13 characters long
+
+VG /dev/vgfsprod1 is mounted on /BCV/srvr16/u01. I will unmount it for you.
+VG /dev/vgfsprod1 was successfully UNmounted from /BCV/srvr16/u01.
+#
+
+	VOLGROUP is vgfsprod2
+	FSTAB_EXTRACT is /dev/vgfsprod2/lvol1:/BCV/srvr16/u02
+	VG is /dev/vgfsprod2
+	VG_LVOL is /dev/vgfsprod2/lvol1
+	VG_RLVOL is /dev/vgfsprod2/rlvol1
+	FILESYSTEM is /BCV/srvr16/u02
+	#FILESYSTEM is 13 characters long
+
+VG /dev/vgfsprod2 is mounted on /BCV/srvr16/u02. I will unmount it for you.
+VG /dev/vgfsprod2 was successfully UNmounted from /BCV/srvr16/u02.
+#
+
+	VOLGROUP is vgfssystem1
+	FSTAB_EXTRACT is /dev/vgfssystem1/lvol1:/BCV/srvr16/u03
+	VG is /dev/vgfssystem1
+	VG_LVOL is /dev/vgfssystem1/lvol1
+	VG_RLVOL is /dev/vgfssystem1/rlvol1
+	FILESYSTEM is /BCV/srvr16/u03
+	#FILESYSTEM is 13 characters long
+
+VG /dev/vgfssystem1 is mounted on /BCV/srvr16/u03. I will unmount it for you.
+VG /dev/vgfssystem1 was successfully UNmounted from /BCV/srvr16/u03.
+#
+
+	VOLGROUP is vgapps16
+	FSTAB_EXTRACT is /dev/vgapps16/lvol1:/BCV/srvr16/apps
+	VG is /dev/vgapps16
+	VG_LVOL is /dev/vgapps16/lvol1
+	VG_RLVOL is /dev/vgapps16/rlvol1
+	FILESYSTEM is /BCV/srvr16/apps
+	#FILESYSTEM is 14 characters long
+
+VG /dev/vgapps16 is mounted on /BCV/srvr16/apps. I will unmount it for you.
+VG /dev/vgapps16 was successfully UNmounted from /BCV/srvr16/apps.
+#
+/BCV/srvr16/u05:0
+/BCV/srvr16/u01:0
+/BCV/srvr16/u02:0
+/BCV/srvr16/u03:0
+/BCV/srvr16/apps:0
+Un-mounting successful for all filesystems.
+0 out of 5 filesystems still mounted.
+End Unmount Filesystem function. Tue Nov 12 14:14:44 EST 2002
+
+Start Deactivate VolumeGroups function. Tue Nov 12 14:14:44 EST 2002
+Volume Groups to be Deactivated: 5
+#
+
+	FSTAB_EXTRACT is /dev/vgpsfiles1/lvol1:/BCV/srvr16/u05
+	VG is /dev/vgpsfiles1
+	VG_LVOL is /dev/vgpsfiles1/lvol1
+	VG_RLVOL is /dev/vgpsfiles1/rlvol1
+	FILESYSTEM is /BCV/srvr16/u05
+	#FILESYSTEM is 13 characters long
+
+The filesystem /BCV/srvr16/u05 is not mounted. VG /dev/vgpsfiles1 will be deactivated.
+Volume group "/dev/vgpsfiles1" has been successfully changed.
+VG /dev/vgpsfiles1 was successfully deactivated.
+#
+
+	FSTAB_EXTRACT is /dev/vgfsprod1/lvol1:/BCV/srvr16/u01
+	VG is /dev/vgfsprod1
+	VG_LVOL is /dev/vgfsprod1/lvol1
+	VG_RLVOL is /dev/vgfsprod1/rlvol1
+	FILESYSTEM is /BCV/srvr16/u01
+	#FILESYSTEM is 13 characters long
+
+The filesystem /BCV/srvr16/u01 is not mounted. VG /dev/vgfsprod1 will be deactivated.
+Volume group "/dev/vgfsprod1" has been successfully changed.
+VG /dev/vgfsprod1 was successfully deactivated.
+#
+
+	FSTAB_EXTRACT is /dev/vgfsprod2/lvol1:/BCV/srvr16/u02
+	VG is /dev/vgfsprod2
+	VG_LVOL is /dev/vgfsprod2/lvol1
+	VG_RLVOL is /dev/vgfsprod2/rlvol1
+	FILESYSTEM is /BCV/srvr16/u02
+	#FILESYSTEM is 13 characters long
+
+The filesystem /BCV/srvr16/u02 is not mounted. VG /dev/vgfsprod2 will be deactivated.
+Volume group "/dev/vgfsprod2" has been successfully changed.
+VG /dev/vgfsprod2 was successfully deactivated.
+#
+
+	FSTAB_EXTRACT is /dev/vgfssystem1/lvol1:/BCV/srvr16/u03
+	VG is /dev/vgfssystem1
+	VG_LVOL is /dev/vgfssystem1/lvol1
+	VG_RLVOL is /dev/vgfssystem1/rlvol1
+	FILESYSTEM is /BCV/srvr16/u03
+	#FILESYSTEM is 13 characters long
+
+The filesystem /BCV/srvr16/u03 is not mounted. VG /dev/vgfssystem1 will be deactivated.
+Volume group "/dev/vgfssystem1" has been successfully changed.
+VG /dev/vgfssystem1 was successfully deactivated.
+#
+
+	FSTAB_EXTRACT is /dev/vgapps16/lvol1:/BCV/srvr16/apps
+	VG is /dev/vgapps16
+	VG_LVOL is /dev/vgapps16/lvol1
+	VG_RLVOL is /dev/vgapps16/rlvol1
+	FILESYSTEM is /BCV/srvr16/apps
+	#FILESYSTEM is 14 characters long
+
+The filesystem /BCV/srvr16/apps is not mounted. VG /dev/vgapps16 will be deactivated.
+Volume group "/dev/vgapps16" has been successfully changed.
+VG /dev/vgapps16 was successfully deactivated.
+#
+(0/5) out of 5 Volume Groups DEActivated.
+#
+End Deactivate VolumeGroups function. Tue Nov 12 14:14:57 EST 2002
+
+Start Export Volume Groups function. Tue Nov 12 14:14:57 EST 2002
+Volume Groups to be Exported: 0
+#
+End Export Volume Groups function. Tue Nov 12 14:14:57 EST 2002
+
+Start Establish BCVs function. Tue Nov 12 14:14:57 EST 2002
+#
+Device Groups are: psfiles1 psfsprod1 psfsprod2 psfssystem1 apps16
+#
+psfiles1 is a Normal DG.
+Running Command: /usr/symcli/bin/symir -g psfiles1 -full -noprompt est
+BCV Est for psfiles1 Initiated
+#
+psfsprod1 is a Normal DG.
+Running Command: /usr/symcli/bin/symir -g psfsprod1 -full -noprompt est
+BCV Est for psfsprod1 Initiated
+#
+psfsprod2 is a Normal DG.
+Running Command: /usr/symcli/bin/symir -g psfsprod2 -full -noprompt est
+BCV Est for psfsprod2 Initiated
+#
+psfssystem1 is a Normal DG.
+Running Command: /usr/symcli/bin/symir -g psfssystem1 -full -noprompt est
+BCV Est for psfssystem1 Initiated
+#
+apps16 is a Normal DG.
+Running Command: /usr/symcli/bin/symir -g apps16 -full -noprompt est
+BCV Est for apps16 Initiated
+#
+End Establish BCVs function. Tue Nov 12 14:17:04 EST 2002
+
+Start Verify BCV Sync Started function. Tue Nov 12 14:17:04 EST 2002
+#
+DEVGRP is psfiles1
+	Line is psfiles1=0, Group is psfiles1, Value is 0
+ALL_GROUPS_START Count is 1
+#
+DEVGRP is psfsprod1
+	Line is psfsprod1=0, Group is psfsprod1, Value is 0
+ALL_GROUPS_START Count is 2
+#
+DEVGRP is psfsprod2
+	Line is psfsprod2=0, Group is psfsprod2, Value is 0
+ALL_GROUPS_START Count is 3
+#
+DEVGRP is psfssystem1
+	Line is psfssystem1=0, Group is psfssystem1, Value is 0
+ALL_GROUPS_START Count is 4
+#
+DEVGRP is apps16
+	Line is apps16=0, Group is apps16, Value is 0
+ALL_GROUPS_START Count is 5
+#
+5 out of 5 Device Groups Sync Started.
+#
+End Verify BCV Sync Started function. Tue Nov 12 14:17:04 EST 2002
+
+Start Monitor BCV Establish function. Tue Nov 12 14:17:04 EST 2002
+#
+Device Groups are: psfiles1 psfsprod1 psfsprod2 psfssystem1 apps16.
+psfiles1 status: Synch stat is 11. Syncinprog stat is 0. MEG left 8319.4.
+psfsprod1 status: Synch stat is 11. Syncinprog stat is 0. MEG left 60330.4.
+psfsprod2 status: Synch stat is 11. Syncinprog stat is 0. MEG left 24933.6.
+psfssystem1 status: Synch stat is 11. Syncinprog stat is 0. MEG left 58128.8.
+apps16 status: Synch stat is 11. Syncinprog stat is 0. MEG left 4315.3.
+Group Count is: 0
+The Device Groups for qta1srvr16 are NOT YET established.
+Resetting Group Count to 0.
+Time_Counter Starting at: Tue Nov 12 14:17:07 EST 2002
+Sleeping 900 Seconds. Total: 0 hour(s) 15 minute(s) 0 second(s)
+		0 hrs 15 min 0 sec  		0 hrs 14 min 59 sec  		0 hrs 14 min 58 sec  		0 hrs 14 min 57 sec  		0 hrs 14 min 56 sec  		0 hrs 14 min 55 sec  		0 hrs 14 min 54 sec  		0 hrs 14 min 53 sec  		0 hrs 14 min 52 sec  		0 hrs 14 min 51 sec  		0 hrs 14 min 50 sec  		0 hrs 14 min 49 sec  		0 hrs 14 min 48 sec  		0 hrs 14 min 47 sec  		0 hrs 14 min 46 sec  		0 hrs 14 min 45 sec  		0 hrs 14 min 44 sec  		0 hrs 14 min 43 sec  		0 hrs 14 min 42 sec  		0 hrs 14 min 41 sec  		0 hrs 14 min 40 sec  		0 hrs 14 min 39 sec  		0 hrs 14 min 38 sec  		0 hrs 14 min 37 sec  		0 hrs 14 min 36 sec  		0 hrs 14 min 35 sec  		0 hrs 14 min 34 sec  		0 hrs 14 min 33 sec  		0 hrs 14 min 32 sec  		0 hrs 14 min 31 sec  		0 hrs 14 min 30 sec  		0 hrs 14 min 29 sec  		0 hrs 14 min 28 sec  		0 hrs 14 min 27 sec  		0 hrs 14 min 26 sec  		0 hrs 14 min 25 sec  		0 hrs 14 min 24 sec  		0 hrs 14 min 23 sec  		0 hrs 14 min 22 sec  		0 hrs 14 min 21 sec  		0 hrs 14 min 20 sec  		0 hrs 14 min 19 sec  		0 hrs 14 min 18 sec  		0 hrs 14 min 17 sec  		0 hrs 14 min 16 sec  		0 hrs 14 min 15 sec  		0 hrs 14 min 14 sec  		0 hrs 14 min 13 sec  		0 hrs 14 min 12 sec  		0 hrs 14 min 11 sec  		0 hrs 14 min 10 sec  		0 hrs 14 min 9 sec  		0 hrs 14 min 8 sec  		0 hrs 14 min 7 sec  		0 hrs 14 min 6 sec  		0 hrs 14 min 5 sec  		0 hrs 14 min 4 sec  		0 hrs 14 min 3 sec  		0 hrs 14 min 2 sec  		0 hrs 14 min 1 sec  		0 hrs 14 min 0 sec  		0 hrs 13 min 59 sec  		0 hrs 13 min 58 sec  		0 hrs 13 min 57 sec  		0 hrs 13 min 56 sec  		0 hrs 13 min 55 sec  		0 hrs 13 min 54 sec  		0 hrs 13 min 53 sec  		0 hrs 13 min 52 sec  		0 hrs 13 min 51 sec  		0 hrs 13 min 50 sec  		0 hrs 13 min 49 sec  		0 hrs 13 min 48 sec  		0 hrs 13 min 47 sec  		0 hrs 13 min 46 sec  		0 hrs 13 min 45 sec  		0 hrs 13 min 44 sec  		0 hrs 13 min 43 sec  		0 hrs 13 min 42 sec  		0 hrs 13 min 41 sec  		0 hrs 13 min 40 sec  		0 hrs 13 min 39 sec  		0 hrs 13 min 38 sec  		0 hrs 13 min 37 sec  		0 hrs 13 min 36 sec  		0 hrs 13 min 35 sec  		0 hrs 13 min 34 sec  		0 hrs 13 min 33 sec  		0 hrs 13 min 32 sec  		0 hrs 13 min 31 sec  		0 hrs 13 min 30 sec  		0 hrs 13 min 29 sec  		0 hrs 13 min 28 sec  		0 hrs 13 min 27 sec  		0 hrs 13 min 26 sec  		0 hrs 13 min 25 sec  		0 hrs 13 min 24 sec  		0 hrs 13 min 23 sec  		0 hrs 13 min 22 sec  		0 hrs 13 min 21 sec  		0 hrs 13 min 20 sec  		0 hrs 13 min 19 sec  		0 hrs 13 min 18 sec  		0 hrs 13 min 17 sec  		0 hrs 13 min 16 sec  		0 hrs 13 min 15 sec  		0 hrs 13 min 14 sec  		0 hrs 13 min 13 sec  		0 hrs 13 min 12 sec  		0 hrs 13 min 11 sec  		0 hrs 13 min 10 sec  		0 hrs 13 min 9 sec  		0 hrs 13 min 8 sec  		0 hrs 13 min 7 sec  		0 hrs 13 min 6 sec  		0 hrs 13 min 5 sec  		0 hrs 13 min 4 sec  		0 hrs 13 min 3 sec  		0 hrs 13 min 2 sec  		0 hrs 13 min 1 sec  		0 hrs 13 min 0 sec  		0 hrs 12 min 59 sec  		0 hrs 12 min 58 sec  		0 hrs 12 min 57 sec  		0 hrs 12 min 56 sec  		0 hrs 12 min 55 sec  		0 hrs 12 min 54 sec  		0 hrs 12 min 53 sec  		0 hrs 12 min 52 sec  		0 hrs 12 min 51 sec  		0 hrs 12 min 50 sec  		0 hrs 12 min 49 sec  		0 hrs 12 min 48 sec  		0 hrs 12 min 47 sec  		0 hrs 12 min 46 sec  		0 hrs 12 min 45 sec  		0 hrs 12 min 44 sec  		0 hrs 12 min 43 sec  		0 hrs 12 min 42 sec  		0 hrs 12 min 41 sec  		0 hrs 12 min 40 sec  		0 hrs 12 min 39 sec  		0 hrs 12 min 38 sec  		0 hrs 12 min 37 sec  		0 hrs 12 min 36 sec  		0 hrs 12 min 35 sec  		0 hrs 12 min 34 sec  		0 hrs 12 min 33 sec  		0 hrs 12 min 32 sec  		0 hrs 12 min 31 sec  		0 hrs 12 min 30 sec  		0 hrs 12 min 29 sec  		0 hrs 12 min 28 sec  		0 hrs 12 min 27 sec  		0 hrs 12 min 26 sec  		0 hrs 12 min 25 sec  		0 hrs 12 min 24 sec  		0 hrs 12 min 23 sec  		0 hrs 12 min 22 sec  		0 hrs 12 min 21 sec  		0 hrs 12 min 20 sec  		0 hrs 12 min 19 sec  		0 hrs 12 min 18 sec  		0 hrs 12 min 17 sec  		0 hrs 12 min 16 sec  		0 hrs 12 min 15 sec  		0 hrs 12 min 14 sec  		0 hrs 12 min 13 sec  		0 hrs 12 min 12 sec  		0 hrs 12 min 11 sec  		0 hrs 12 min 10 sec  		0 hrs 12 min 9 sec  		0 hrs 12 min 8 sec  		0 hrs 12 min 7 sec  		0 hrs 12 min 6 sec  		0 hrs 12 min 5 sec  		0 hrs 12 min 4 sec  		0 hrs 12 min 3 sec  		0 hrs 12 min 2 sec  		0 hrs 12 min 1 sec  		0 hrs 12 min 0 sec  		0 hrs 11 min 59 sec  		0 hrs 11 min 58 sec  		0 hrs 11 min 57 sec  		0 hrs 11 min 56 sec  		0 hrs 11 min 55 sec  		0 hrs 11 min 54 sec  		0 hrs 11 min 53 sec  		0 hrs 11 min 52 sec  		0 hrs 11 min 51 sec  		0 hrs 11 min 50 sec  		0 hrs 11 min 49 sec  		0 hrs 11 min 48 sec  		0 hrs 11 min 47 sec  		0 hrs 11 min 46 sec  		0 hrs 11 min 45 sec  		0 hrs 11 min 44 sec  		0 hrs 11 min 43 sec  		0 hrs 11 min 42 sec  		0 hrs 11 min 41 sec  		0 hrs 11 min 40 sec  		0 hrs 11 min 39 sec  		0 hrs 11 min 38 sec  		0 hrs 11 min 37 sec  		0 hrs 11 min 36 sec  		0 hrs 11 min 35 sec  		0 hrs 11 min 34 sec  		0 hrs 11 min 33 sec  		0 hrs 11 min 32 sec  		0 hrs 11 min 31 sec  		0 hrs 11 min 30 sec  		0 hrs 11 min 29 sec  		0 hrs 11 min 28 sec  		0 hrs 11 min 27 sec  		0 hrs 11 min 26 sec  		0 hrs 11 min 25 sec  		0 hrs 11 min 24 sec  		0 hrs 11 min 23 sec  		0 hrs 11 min 22 sec  		0 hrs 11 min 21 sec  		0 hrs 11 min 20 sec  		0 hrs 11 min 19 sec  		0 hrs 11 min 18 sec  		0 hrs 11 min 17 sec  		0 hrs 11 min 16 sec  		0 hrs 11 min 15 sec  		0 hrs 11 min 14 sec  		0 hrs 11 min 13 sec  		0 hrs 11 min 12 sec  		0 hrs 11 min 11 sec  		0 hrs 11 min 10 sec  		0 hrs 11 min 9 sec  		0 hrs 11 min 8 sec  		0 hrs 11 min 7 sec  		0 hrs 11 min 6 sec  		0 hrs 11 min 5 sec  		0 hrs 11 min 4 sec  		0 hrs 11 min 3 sec  		0 hrs 11 min 2 sec  		0 hrs 11 min 1 sec  		0 hrs 11 min 0 sec  		0 hrs 10 min 59 sec  		0 hrs 10 min 58 sec  		0 hrs 10 min 57 sec  		0 hrs 10 min 56 sec  		0 hrs 10 min 55 sec  		0 hrs 10 min 54 sec  		0 hrs 10 min 53 sec  		0 hrs 10 min 52 sec  		0 hrs 10 min 51 sec  		0 hrs 10 min 50 sec  		0 hrs 10 min 49 sec  		0 hrs 10 min 48 sec  		0 hrs 10 min 47 sec  		0 hrs 10 min 46 sec  		0 hrs 10 min 45 sec  		0 hrs 10 min 44 sec  		0 hrs 10 min 43 sec  		0 hrs 10 min 42 sec  		0 hrs 10 min 41 sec  		0 hrs 10 min 40 sec  		0 hrs 10 min 39 sec  		0 hrs 10 min 38 sec  		0 hrs 10 min 37 sec  		0 hrs 10 min 36 sec  		0 hrs 10 min 35 sec  		0 hrs 10 min 34 sec  		0 hrs 10 min 33 sec  		0 hrs 10 min 32 sec  		0 hrs 10 min 31 sec  		0 hrs 10 min 30 sec  		0 hrs 10 min 29 sec  		0 hrs 10 min 28 sec  		0 hrs 10 min 27 sec  		0 hrs 10 min 26 sec  		0 hrs 10 min 25 sec  		0 hrs 10 min 24 sec  		0 hrs 10 min 23 sec  		0 hrs 10 min 22 sec  		0 hrs 10 min 21 sec  		0 hrs 10 min 20 sec  		0 hrs 10 min 19 sec  		0 hrs 10 min 18 sec  		0 hrs 10 min 17 sec  		0 hrs 10 min 16 sec  		0 hrs 10 min 15 sec  		0 hrs 10 min 14 sec  		0 hrs 10 min 13 sec  		0 hrs 10 min 12 sec  		0 hrs 10 min 11 sec  		0 hrs 10 min 10 sec  		0 hrs 10 min 9 sec  		0 hrs 10 min 8 sec  		0 hrs 10 min 7 sec  		0 hrs 10 min 6 sec  		0 hrs 10 min 5 sec  		0 hrs 10 min 4 sec  		0 hrs 10 min 3 sec  		0 hrs 10 min 2 sec  		0 hrs 10 min 1 sec  		0 hrs 10 min 0 sec  		0 hrs 9 min 59 sec  		0 hrs 9 min 58 sec  		0 hrs 9 min 57 sec  		0 hrs 9 min 56 sec  		0 hrs 9 min 55 sec  		0 hrs 9 min 54 sec  		0 hrs 9 min 53 sec  		0 hrs 9 min 52 sec  		0 hrs 9 min 51 sec  		0 hrs 9 min 50 sec  		0 hrs 9 min 49 sec  		0 hrs 9 min 48 sec  		0 hrs 9 min 47 sec  		0 hrs 9 min 46 sec  		0 hrs 9 min 45 sec  		0 hrs 9 min 44 sec  		0 hrs 9 min 43 sec  		0 hrs 9 min 42 sec  		0 hrs 9 min 41 sec  		0 hrs 9 min 40 sec  		0 hrs 9 min 39 sec  		0 hrs 9 min 38 sec  		0 hrs 9 min 37 sec  		0 hrs 9 min 36 sec  		0 hrs 9 min 35 sec  		0 hrs 9 min 34 sec  		0 hrs 9 min 33 sec  		0 hrs 9 min 32 sec  		0 hrs 9 min 31 sec  		0 hrs 9 min 30 sec  		0 hrs 9 min 29 sec  		0 hrs 9 min 28 sec  		0 hrs 9 min 27 sec  		0 hrs 9 min 26 sec  		0 hrs 9 min 25 sec  		0 hrs 9 min 24 sec  		0 hrs 9 min 23 sec  		0 hrs 9 min 22 sec  		0 hrs 9 min 21 sec  		0 hrs 9 min 20 sec  		0 hrs 9 min 19 sec  		0 hrs 9 min 18 sec  		0 hrs 9 min 17 sec  		0 hrs 9 min 16 sec  		0 hrs 9 min 15 sec  		0 hrs 9 min 14 sec  		0 hrs 9 min 13 sec  		0 hrs 9 min 12 sec  		0 hrs 9 min 11 sec  		0 hrs 9 min 10 sec  		0 hrs 9 min 9 sec  		0 hrs 9 min 8 sec  		0 hrs 9 min 7 sec  		0 hrs 9 min 6 sec  		0 hrs 9 min 5 sec  		0 hrs 9 min 4 sec  		0 hrs 9 min 3 sec  		0 hrs 9 min 2 sec  		0 hrs 9 min 1 sec  		0 hrs 9 min 0 sec  		0 hrs 8 min 59 sec  		0 hrs 8 min 58 sec  		0 hrs 8 min 57 sec  		0 hrs 8 min 56 sec  		0 hrs 8 min 55 sec  		0 hrs 8 min 54 sec  		0 hrs 8 min 53 sec  		0 hrs 8 min 52 sec  		0 hrs 8 min 51 sec  		0 hrs 8 min 50 sec  		0 hrs 8 min 49 sec  		0 hrs 8 min 48 sec  		0 hrs 8 min 47 sec  		0 hrs 8 min 46 sec  		0 hrs 8 min 45 sec  		0 hrs 8 min 44 sec  		0 hrs 8 min 43 sec  		0 hrs 8 min 42 sec  		0 hrs 8 min 41 sec  		0 hrs 8 min 40 sec  		0 hrs 8 min 39 sec  		0 hrs 8 min 38 sec  		0 hrs 8 min 37 sec  		0 hrs 8 min 36 sec  		0 hrs 8 min 35 sec  		0 hrs 8 min 34 sec  		0 hrs 8 min 33 sec  		0 hrs 8 min 32 sec  		0 hrs 8 min 31 sec  		0 hrs 8 min 30 sec  		0 hrs 8 min 29 sec  		0 hrs 8 min 28 sec  		0 hrs 8 min 27 sec  		0 hrs 8 min 26 sec  		0 hrs 8 min 25 sec  		0 hrs 8 min 24 sec  		0 hrs 8 min 23 sec  		0 hrs 8 min 22 sec  		0 hrs 8 min 21 sec  		0 hrs 8 min 20 sec  		0 hrs 8 min 19 sec  		0 hrs 8 min 18 sec  		0 hrs 8 min 17 sec  		0 hrs 8 min 16 sec  		0 hrs 8 min 15 sec  		0 hrs 8 min 14 sec  		0 hrs 8 min 13 sec  		0 hrs 8 min 12 sec  		0 hrs 8 min 11 sec  		0 hrs 8 min 10 sec  		0 hrs 8 min 9 sec  		0 hrs 8 min 8 sec  		0 hrs 8 min 7 sec  		0 hrs 8 min 6 sec  		0 hrs 8 min 5 sec  		0 hrs 8 min 4 sec  		0 hrs 8 min 3 sec  		0 hrs 8 min 2 sec  		0 hrs 8 min 1 sec  		0 hrs 8 min 0 sec  		0 hrs 7 min 59 sec  		0 hrs 7 min 58 sec  		0 hrs 7 min 57 sec  		0 hrs 7 min 56 sec  		0 hrs 7 min 55 sec  		0 hrs 7 min 54 sec  		0 hrs 7 min 53 sec  		0 hrs 7 min 52 sec  		0 hrs 7 min 51 sec  		0 hrs 7 min 50 sec  		0 hrs 7 min 49 sec  		0 hrs 7 min 48 sec  		0 hrs 7 min 47 sec  		0 hrs 7 min 46 sec  		0 hrs 7 min 45 sec  		0 hrs 7 min 44 sec  		0 hrs 7 min 43 sec  		0 hrs 7 min 42 sec  		0 hrs 7 min 41 sec  		0 hrs 7 min 40 sec  		0 hrs 7 min 39 sec  		0 hrs 7 min 38 sec  		0 hrs 7 min 37 sec  		0 hrs 7 min 36 sec  		0 hrs 7 min 35 sec  		0 hrs 7 min 34 sec  		0 hrs 7 min 33 sec  		0 hrs 7 min 32 sec  		0 hrs 7 min 31 sec  		0 hrs 7 min 30 sec  		0 hrs 7 min 29 sec  		0 hrs 7 min 28 sec  		0 hrs 7 min 27 sec  		0 hrs 7 min 26 sec  		0 hrs 7 min 25 sec  		0 hrs 7 min 24 sec  		0 hrs 7 min 23 sec  		0 hrs 7 min 22 sec  		0 hrs 7 min 21 sec  		0 hrs 7 min 20 sec  		0 hrs 7 min 19 sec  		0 hrs 7 min 18 sec  		0 hrs 7 min 17 sec  		0 hrs 7 min 16 sec  		0 hrs 7 min 15 sec  		0 hrs 7 min 14 sec  		0 hrs 7 min 13 sec  		0 hrs 7 min 12 sec  		0 hrs 7 min 11 sec  		0 hrs 7 min 10 sec  		0 hrs 7 min 9 sec  		0 hrs 7 min 8 sec  		0 hrs 7 min 7 sec  		0 hrs 7 min 6 sec  		0 hrs 7 min 5 sec  		0 hrs 7 min 4 sec  		0 hrs 7 min 3 sec  		0 hrs 7 min 2 sec  		0 hrs 7 min 1 sec  		0 hrs 7 min 0 sec  		0 hrs 6 min 59 sec  		0 hrs 6 min 58 sec  		0 hrs 6 min 57 sec  		0 hrs 6 min 56 sec  		0 hrs 6 min 55 sec  		0 hrs 6 min 54 sec  		0 hrs 6 min 53 sec  		0 hrs 6 min 52 sec  		0 hrs 6 min 51 sec  		0 hrs 6 min 50 sec  		0 hrs 6 min 49 sec  		0 hrs 6 min 48 sec  		0 hrs 6 min 47 sec  		0 hrs 6 min 46 sec  		0 hrs 6 min 45 sec  		0 hrs 6 min 44 sec  		0 hrs 6 min 43 sec  		0 hrs 6 min 42 sec  		0 hrs 6 min 41 sec  		0 hrs 6 min 40 sec  		0 hrs 6 min 39 sec  		0 hrs 6 min 38 sec  		0 hrs 6 min 37 sec  		0 hrs 6 min 36 sec  		0 hrs 6 min 35 sec  		0 hrs 6 min 34 sec  		0 hrs 6 min 33 sec  		0 hrs 6 min 32 sec  		0 hrs 6 min 31 sec  		0 hrs 6 min 30 sec  		0 hrs 6 min 29 sec  		0 hrs 6 min 28 sec  		0 hrs 6 min 27 sec  		0 hrs 6 min 26 sec  		0 hrs 6 min 25 sec  		0 hrs 6 min 24 sec  		0 hrs 6 min 23 sec  		0 hrs 6 min 22 sec  		0 hrs 6 min 21 sec  		0 hrs 6 min 20 sec  		0 hrs 6 min 19 sec  		0 hrs 6 min 18 sec  		0 hrs 6 min 17 sec  		0 hrs 6 min 16 sec  		0 hrs 6 min 15 sec  		0 hrs 6 min 14 sec  		0 hrs 6 min 13 sec  		0 hrs 6 min 12 sec  		0 hrs 6 min 11 sec  		0 hrs 6 min 10 sec  		0 hrs 6 min 9 sec  		0 hrs 6 min 8 sec  		0 hrs 6 min 7 sec  		0 hrs 6 min 6 sec  		0 hrs 6 min 5 sec  		0 hrs 6 min 4 sec  		0 hrs 6 min 3 sec  		0 hrs 6 min 2 sec  		0 hrs 6 min 1 sec  		0 hrs 6 min 0 sec  		0 hrs 5 min 59 sec  		0 hrs 5 min 58 sec  		0 hrs 5 min 57 sec  		0 hrs 5 min 56 sec  		0 hrs 5 min 55 sec  		0 hrs 5 min 54 sec  		0 hrs 5 min 53 sec  		0 hrs 5 min 52 sec  		0 hrs 5 min 51 sec  		0 hrs 5 min 50 sec  		0 hrs 5 min 49 sec  		0 hrs 5 min 48 sec  		0 hrs 5 min 47 sec  		0 hrs 5 min 46 sec  		0 hrs 5 min 45 sec  		0 hrs 5 min 44 sec  		0 hrs 5 min 43 sec  		0 hrs 5 min 42 sec  		0 hrs 5 min 41 sec  		0 hrs 5 min 40 sec  		0 hrs 5 min 39 sec  		0 hrs 5 min 38 sec  		0 hrs 5 min 37 sec  		0 hrs 5 min 36 sec  		0 hrs 5 min 35 sec  		0 hrs 5 min 34 sec  		0 hrs 5 min 33 sec  		0 hrs 5 min 32 sec  		0 hrs 5 min 31 sec  		0 hrs 5 min 30 sec  		0 hrs 5 min 29 sec  		0 hrs 5 min 28 sec  		0 hrs 5 min 27 sec  		0 hrs 5 min 26 sec  		0 hrs 5 min 25 sec  		0 hrs 5 min 24 sec  		0 hrs 5 min 23 sec  		0 hrs 5 min 22 sec  		0 hrs 5 min 21 sec  		0 hrs 5 min 20 sec  		0 hrs 5 min 19 sec  		0 hrs 5 min 18 sec  		0 hrs 5 min 17 sec  		0 hrs 5 min 16 sec  		0 hrs 5 min 15 sec  		0 hrs 5 min 14 sec  		0 hrs 5 min 13 sec  		0 hrs 5 min 12 sec  		0 hrs 5 min 11 sec  		0 hrs 5 min 10 sec  		0 hrs 5 min 9 sec  		0 hrs 5 min 8 sec  		0 hrs 5 min 7 sec  		0 hrs 5 min 6 sec  		0 hrs 5 min 5 sec  		0 hrs 5 min 4 sec  		0 hrs 5 min 3 sec  		0 hrs 5 min 2 sec  		0 hrs 5 min 1 sec  		0 hrs 5 min 0 sec  		0 hrs 4 min 59 sec  		0 hrs 4 min 58 sec  		0 hrs 4 min 57 sec  		0 hrs 4 min 56 sec  		0 hrs 4 min 55 sec  		0 hrs 4 min 54 sec  		0 hrs 4 min 53 sec  		0 hrs 4 min 52 sec  		0 hrs 4 min 51 sec  		0 hrs 4 min 50 sec  		0 hrs 4 min 49 sec  		0 hrs 4 min 48 sec  		0 hrs 4 min 47 sec  		0 hrs 4 min 46 sec  		0 hrs 4 min 45 sec  		0 hrs 4 min 44 sec  		0 hrs 4 min 43 sec  		0 hrs 4 min 42 sec  		0 hrs 4 min 41 sec  		0 hrs 4 min 40 sec  		0 hrs 4 min 39 sec  		0 hrs 4 min 38 sec  		0 hrs 4 min 37 sec  		0 hrs 4 min 36 sec  		0 hrs 4 min 35 sec  		0 hrs 4 min 34 sec  		0 hrs 4 min 33 sec  		0 hrs 4 min 32 sec  		0 hrs 4 min 31 sec  		0 hrs 4 min 30 sec  		0 hrs 4 min 29 sec  		0 hrs 4 min 28 sec  		0 hrs 4 min 27 sec  		0 hrs 4 min 26 sec  		0 hrs 4 min 25 sec  		0 hrs 4 min 24 sec  		0 hrs 4 min 23 sec  		0 hrs 4 min 22 sec  		0 hrs 4 min 21 sec  		0 hrs 4 min 20 sec  		0 hrs 4 min 19 sec  		0 hrs 4 min 18 sec  		0 hrs 4 min 17 sec  		0 hrs 4 min 16 sec  		0 hrs 4 min 15 sec  		0 hrs 4 min 14 sec  		0 hrs 4 min 13 sec  		0 hrs 4 min 12 sec  		0 hrs 4 min 11 sec  		0 hrs 4 min 10 sec  		0 hrs 4 min 9 sec  		0 hrs 4 min 8 sec  		0 hrs 4 min 7 sec  		0 hrs 4 min 6 sec  		0 hrs 4 min 5 sec  		0 hrs 4 min 4 sec  		0 hrs 4 min 3 sec  		0 hrs 4 min 2 sec  		0 hrs 4 min 1 sec  		0 hrs 4 min 0 sec  		0 hrs 3 min 59 sec  		0 hrs 3 min 58 sec  		0 hrs 3 min 57 sec  		0 hrs 3 min 56 sec  		0 hrs 3 min 55 sec  		0 hrs 3 min 54 sec  		0 hrs 3 min 53 sec  		0 hrs 3 min 52 sec  		0 hrs 3 min 51 sec  		0 hrs 3 min 50 sec  		0 hrs 3 min 49 sec  		0 hrs 3 min 48 sec  		0 hrs 3 min 47 sec  		0 hrs 3 min 46 sec  		0 hrs 3 min 45 sec  		0 hrs 3 min 44 sec  		0 hrs 3 min 43 sec  		0 hrs 3 min 42 sec  		0 hrs 3 min 41 sec  		0 hrs 3 min 40 sec  		0 hrs 3 min 39 sec  		0 hrs 3 min 38 sec  		0 hrs 3 min 37 sec  		0 hrs 3 min 36 sec  		0 hrs 3 min 35 sec  		0 hrs 3 min 34 sec  		0 hrs 3 min 33 sec  		0 hrs 3 min 32 sec  		0 hrs 3 min 31 sec  		0 hrs 3 min 30 sec  		0 hrs 3 min 29 sec  		0 hrs 3 min 28 sec  		0 hrs 3 min 27 sec  		0 hrs 3 min 26 sec  		0 hrs 3 min 25 sec  		0 hrs 3 min 24 sec  		0 hrs 3 min 23 sec  		0 hrs 3 min 22 sec  		0 hrs 3 min 21 sec  		0 hrs 3 min 20 sec  		0 hrs 3 min 19 sec  		0 hrs 3 min 18 sec  		0 hrs 3 min 17 sec  		0 hrs 3 min 16 sec  		0 hrs 3 min 15 sec  		0 hrs 3 min 14 sec  		0 hrs 3 min 13 sec  		0 hrs 3 min 12 sec  		0 hrs 3 min 11 sec  		0 hrs 3 min 10 sec  		0 hrs 3 min 9 sec  		0 hrs 3 min 8 sec  		0 hrs 3 min 7 sec  		0 hrs 3 min 6 sec  		0 hrs 3 min 5 sec  		0 hrs 3 min 4 sec  		0 hrs 3 min 3 sec  		0 hrs 3 min 2 sec  		0 hrs 3 min 1 sec  		0 hrs 3 min 0 sec  		0 hrs 2 min 59 sec  		0 hrs 2 min 58 sec  		0 hrs 2 min 57 sec  		0 hrs 2 min 56 sec  		0 hrs 2 min 55 sec  		0 hrs 2 min 54 sec  		0 hrs 2 min 53 sec  		0 hrs 2 min 52 sec  		0 hrs 2 min 51 sec  		0 hrs 2 min 50 sec  		0 hrs 2 min 49 sec  		0 hrs 2 min 48 sec  		0 hrs 2 min 47 sec  		0 hrs 2 min 46 sec  		0 hrs 2 min 45 sec  		0 hrs 2 min 44 sec  		0 hrs 2 min 43 sec  		0 hrs 2 min 42 sec  		0 hrs 2 min 41 sec  		0 hrs 2 min 40 sec  		0 hrs 2 min 39 sec  		0 hrs 2 min 38 sec  		0 hrs 2 min 37 sec  		0 hrs 2 min 36 sec  		0 hrs 2 min 35 sec  		0 hrs 2 min 34 sec  		0 hrs 2 min 33 sec  		0 hrs 2 min 32 sec  		0 hrs 2 min 31 sec  		0 hrs 2 min 30 sec  		0 hrs 2 min 29 sec  		0 hrs 2 min 28 sec  		0 hrs 2 min 27 sec  		0 hrs 2 min 26 sec  		0 hrs 2 min 25 sec  		0 hrs 2 min 24 sec  		0 hrs 2 min 23 sec  		0 hrs 2 min 22 sec  		0 hrs 2 min 21 sec  		0 hrs 2 min 20 sec  		0 hrs 2 min 19 sec  		0 hrs 2 min 18 sec  		0 hrs 2 min 17 sec  		0 hrs 2 min 16 sec  		0 hrs 2 min 15 sec  		0 hrs 2 min 14 sec  		0 hrs 2 min 13 sec  		0 hrs 2 min 12 sec  		0 hrs 2 min 11 sec  		0 hrs 2 min 10 sec  		0 hrs 2 min 9 sec  		0 hrs 2 min 8 sec  		0 hrs 2 min 7 sec  		0 hrs 2 min 6 sec  		0 hrs 2 min 5 sec  		0 hrs 2 min 4 sec  		0 hrs 2 min 3 sec  		0 hrs 2 min 2 sec  		0 hrs 2 min 1 sec  		0 hrs 2 min 0 sec  		0 hrs 1 min 59 sec  		0 hrs 1 min 58 sec  		0 hrs 1 min 57 sec  		0 hrs 1 min 56 sec  		0 hrs 1 min 55 sec  		0 hrs 1 min 54 sec  		0 hrs 1 min 53 sec  		0 hrs 1 min 52 sec  		0 hrs 1 min 51 sec  		0 hrs 1 min 50 sec  		0 hrs 1 min 49 sec  		0 hrs 1 min 48 sec  		0 hrs 1 min 47 sec  		0 hrs 1 min 46 sec  		0 hrs 1 min 45 sec  		0 hrs 1 min 44 sec  		0 hrs 1 min 43 sec  		0 hrs 1 min 42 sec  		0 hrs 1 min 41 sec  		0 hrs 1 min 40 sec  		0 hrs 1 min 39 sec  		0 hrs 1 min 38 sec  		0 hrs 1 min 37 sec  		0 hrs 1 min 36 sec  		0 hrs 1 min 35 sec  		0 hrs 1 min 34 sec  		0 hrs 1 min 33 sec  		0 hrs 1 min 32 sec  		0 hrs 1 min 31 sec  		0 hrs 1 min 30 sec  		0 hrs 1 min 29 sec  		0 hrs 1 min 28 sec  		0 hrs 1 min 27 sec  		0 hrs 1 min 26 sec  		0 hrs 1 min 25 sec  		0 hrs 1 min 24 sec  		0 hrs 1 min 23 sec  		0 hrs 1 min 22 sec  		0 hrs 1 min 21 sec  		0 hrs 1 min 20 sec  		0 hrs 1 min 19 sec  		0 hrs 1 min 18 sec  		0 hrs 1 min 17 sec  		0 hrs 1 min 16 sec  		0 hrs 1 min 15 sec  		0 hrs 1 min 14 sec  		0 hrs 1 min 13 sec  		0 hrs 1 min 12 sec  		0 hrs 1 min 11 sec  		0 hrs 1 min 10 sec  		0 hrs 1 min 9 sec  		0 hrs 1 min 8 sec  		0 hrs 1 min 7 sec  		0 hrs 1 min 6 sec  		0 hrs 1 min 5 sec  		0 hrs 1 min 4 sec  		0 hrs 1 min 3 sec  		0 hrs 1 min 2 sec  		0 hrs 1 min 1 sec  		0 hrs 1 min 0 sec  		0 hrs 0 min 59 sec  		0 hrs 0 min 58 sec  		0 hrs 0 min 57 sec  		0 hrs 0 min 56 sec  		0 hrs 0 min 55 sec  		0 hrs 0 min 54 sec  		0 hrs 0 min 53 sec  		0 hrs 0 min 52 sec  		0 hrs 0 min 51 sec  		0 hrs 0 min 50 sec  		0 hrs 0 min 49 sec  		0 hrs 0 min 48 sec  		0 hrs 0 min 47 sec  		0 hrs 0 min 46 sec  		0 hrs 0 min 45 sec  		0 hrs 0 min 44 sec  		0 hrs 0 min 43 sec  		0 hrs 0 min 42 sec  		0 hrs 0 min 41 sec  		0 hrs 0 min 40 sec  		0 hrs 0 min 39 sec  		0 hrs 0 min 38 sec  		0 hrs 0 min 37 sec  		0 hrs 0 min 36 sec  		0 hrs 0 min 35 sec  		0 hrs 0 min 34 sec  		0 hrs 0 min 33 sec  		0 hrs 0 min 32 sec  		0 hrs 0 min 31 sec  		0 hrs 0 min 30 sec  		0 hrs 0 min 29 sec  		0 hrs 0 min 28 sec  		0 hrs 0 min 27 sec  		0 hrs 0 min 26 sec  		0 hrs 0 min 25 sec  		0 hrs 0 min 24 sec  		0 hrs 0 min 23 sec  		0 hrs 0 min 22 sec  		0 hrs 0 min 21 sec  		0 hrs 0 min 20 sec  		0 hrs 0 min 19 sec  		0 hrs 0 min 18 sec  		0 hrs 0 min 17 sec  		0 hrs 0 min 16 sec  		0 hrs 0 min 15 sec  		0 hrs 0 min 14 sec  		0 hrs 0 min 13 sec  		0 hrs 0 min 12 sec  		0 hrs 0 min 11 sec  		0 hrs 0 min 10 sec  		0 hrs 0 min 9 sec  		0 hrs 0 min 8 sec  		0 hrs 0 min 7 sec  		0 hrs 0 min 6 sec  		0 hrs 0 min 5 sec  		0 hrs 0 min 4 sec  		0 hrs 0 min 3 sec  		0 hrs 0 min 2 sec  		0 hrs 0 min 1 sec  		0 hrs 0 min 0 sec  
+
+psfiles1 status: Synch stat is 11. Syncinprog stat is 0. MEG left 5375.2.
+psfsprod1 status: Synch stat is 10. Syncinprog stat is 27. MEG left 11966.7.
+psfsprod2 status: Synch stat is 11. Syncinprog stat is 0. MEG left 15629.8.
+psfssystem1 status: Synch stat is 10. Syncinprog stat is 27. MEG left 19423.3.
+apps16 status: Synch stat is 11. Syncinprog stat is 0. MEG left 2090.0.
+Group Count is: 0
+The Device Groups for qta1srvr16 are NOT YET established.
+Resetting Group Count to 0.
+Time_Counter Starting at: Tue Nov 12 14:32:21 EST 2002
+Sleeping 900 Seconds. Total: 0 hour(s) 15 minute(s) 0 second(s)
+		0 hrs 15 min 0 sec  		0 hrs 14 min 59 sec  		0 hrs 14 min 58 sec  		0 hrs 14 min 57 sec  		0 hrs 14 min 56 sec  		0 hrs 14 min 55 sec  		0 hrs 14 min 54 sec  		0 hrs 14 min 53 sec  		0 hrs 14 min 52 sec  		0 hrs 14 min 51 sec  		0 hrs 14 min 50 sec  		0 hrs 14 min 49 sec  		0 hrs 14 min 48 sec  		0 hrs 14 min 47 sec  		0 hrs 14 min 46 sec  		0 hrs 14 min 45 sec  		0 hrs 14 min 44 sec  		0 hrs 14 min 43 sec  		0 hrs 14 min 42 sec  		0 hrs 14 min 41 sec  		0 hrs 14 min 40 sec  		0 hrs 14 min 39 sec  		0 hrs 14 min 38 sec  		0 hrs 14 min 37 sec  		0 hrs 14 min 36 sec  		0 hrs 14 min 35 sec  		0 hrs 14 min 34 sec  		0 hrs 14 min 33 sec  		0 hrs 14 min 32 sec  		0 hrs 14 min 31 sec  		0 hrs 14 min 30 sec  		0 hrs 14 min 29 sec  		0 hrs 14 min 28 sec  		0 hrs 14 min 27 sec  		0 hrs 14 min 26 sec  		0 hrs 14 min 25 sec  		0 hrs 14 min 24 sec  		0 hrs 14 min 23 sec  		0 hrs 14 min 22 sec  		0 hrs 14 min 21 sec  		0 hrs 14 min 20 sec  		0 hrs 14 min 19 sec  		0 hrs 14 min 18 sec  		0 hrs 14 min 17 sec  		0 hrs 14 min 16 sec  		0 hrs 14 min 15 sec  		0 hrs 14 min 14 sec  		0 hrs 14 min 13 sec  		0 hrs 14 min 12 sec  		0 hrs 14 min 11 sec  		0 hrs 14 min 10 sec  		0 hrs 14 min 9 sec  		0 hrs 14 min 8 sec  		0 hrs 14 min 7 sec  		0 hrs 14 min 6 sec  		0 hrs 14 min 5 sec  		0 hrs 14 min 4 sec  		0 hrs 14 min 3 sec  		0 hrs 14 min 2 sec  		0 hrs 14 min 1 sec  		0 hrs 14 min 0 sec  		0 hrs 13 min 59 sec  		0 hrs 13 min 58 sec  		0 hrs 13 min 57 sec  		0 hrs 13 min 56 sec  		0 hrs 13 min 55 sec  		0 hrs 13 min 54 sec  		0 hrs 13 min 53 sec  		0 hrs 13 min 52 sec  		0 hrs 13 min 51 sec  		0 hrs 13 min 50 sec  		0 hrs 13 min 49 sec  		0 hrs 13 min 48 sec  		0 hrs 13 min 47 sec  		0 hrs 13 min 46 sec  		0 hrs 13 min 45 sec  		0 hrs 13 min 44 sec  		0 hrs 13 min 43 sec  		0 hrs 13 min 42 sec  		0 hrs 13 min 41 sec  		0 hrs 13 min 40 sec  		0 hrs 13 min 39 sec  		0 hrs 13 min 38 sec  		0 hrs 13 min 37 sec  		0 hrs 13 min 36 sec  		0 hrs 13 min 35 sec  		0 hrs 13 min 34 sec  		0 hrs 13 min 33 sec  		0 hrs 13 min 32 sec  		0 hrs 13 min 31 sec  		0 hrs 13 min 30 sec  		0 hrs 13 min 29 sec  		0 hrs 13 min 28 sec  		0 hrs 13 min 27 sec  		0 hrs 13 min 26 sec  		0 hrs 13 min 25 sec  		0 hrs 13 min 24 sec  		0 hrs 13 min 23 sec  		0 hrs 13 min 22 sec  		0 hrs 13 min 21 sec  		0 hrs 13 min 20 sec  		0 hrs 13 min 19 sec  		0 hrs 13 min 18 sec  		0 hrs 13 min 17 sec  		0 hrs 13 min 16 sec  		0 hrs 13 min 15 sec  		0 hrs 13 min 14 sec  		0 hrs 13 min 13 sec  		0 hrs 13 min 12 sec  		0 hrs 13 min 11 sec  		0 hrs 13 min 10 sec  		0 hrs 13 min 9 sec  		0 hrs 13 min 8 sec  		0 hrs 13 min 7 sec  		0 hrs 13 min 6 sec  		0 hrs 13 min 5 sec  		0 hrs 13 min 4 sec  		0 hrs 13 min 3 sec  		0 hrs 13 min 2 sec  		0 hrs 13 min 1 sec  		0 hrs 13 min 0 sec  		0 hrs 12 min 59 sec  		0 hrs 12 min 58 sec  		0 hrs 12 min 57 sec  		0 hrs 12 min 56 sec  		0 hrs 12 min 55 sec  		0 hrs 12 min 54 sec  		0 hrs 12 min 53 sec  		0 hrs 12 min 52 sec  		0 hrs 12 min 51 sec  		0 hrs 12 min 50 sec  		0 hrs 12 min 49 sec  		0 hrs 12 min 48 sec  		0 hrs 12 min 47 sec  		0 hrs 12 min 46 sec  		0 hrs 12 min 45 sec  		0 hrs 12 min 44 sec  		0 hrs 12 min 43 sec  		0 hrs 12 min 42 sec  		0 hrs 12 min 41 sec  		0 hrs 12 min 40 sec  		0 hrs 12 min 39 sec  		0 hrs 12 min 38 sec  		0 hrs 12 min 37 sec  		0 hrs 12 min 36 sec  		0 hrs 12 min 35 sec  		0 hrs 12 min 34 sec  		0 hrs 12 min 33 sec  		0 hrs 12 min 32 sec  		0 hrs 12 min 31 sec  		0 hrs 12 min 30 sec  		0 hrs 12 min 29 sec  		0 hrs 12 min 28 sec  		0 hrs 12 min 27 sec  		0 hrs 12 min 26 sec  		0 hrs 12 min 25 sec  		0 hrs 12 min 24 sec  		0 hrs 12 min 23 sec  		0 hrs 12 min 22 sec  		0 hrs 12 min 21 sec  		0 hrs 12 min 20 sec  		0 hrs 12 min 19 sec  		0 hrs 12 min 18 sec  		0 hrs 12 min 17 sec  		0 hrs 12 min 16 sec  		0 hrs 12 min 15 sec  		0 hrs 12 min 14 sec  		0 hrs 12 min 13 sec  		0 hrs 12 min 12 sec  		0 hrs 12 min 11 sec  		0 hrs 12 min 10 sec  		0 hrs 12 min 9 sec  		0 hrs 12 min 8 sec  		0 hrs 12 min 7 sec  		0 hrs 12 min 6 sec  		0 hrs 12 min 5 sec  		0 hrs 12 min 4 sec  		0 hrs 12 min 3 sec  		0 hrs 12 min 2 sec  		0 hrs 12 min 1 sec  		0 hrs 12 min 0 sec  		0 hrs 11 min 59 sec  		0 hrs 11 min 58 sec  		0 hrs 11 min 57 sec  		0 hrs 11 min 56 sec  		0 hrs 11 min 55 sec  		0 hrs 11 min 54 sec  		0 hrs 11 min 53 sec  		0 hrs 11 min 52 sec  		0 hrs 11 min 51 sec  		0 hrs 11 min 50 sec  		0 hrs 11 min 49 sec  		0 hrs 11 min 48 sec  		0 hrs 11 min 47 sec  		0 hrs 11 min 46 sec  		0 hrs 11 min 45 sec  		0 hrs 11 min 44 sec  		0 hrs 11 min 43 sec  		0 hrs 11 min 42 sec  		0 hrs 11 min 41 sec  		0 hrs 11 min 40 sec  		0 hrs 11 min 39 sec  		0 hrs 11 min 38 sec  		0 hrs 11 min 37 sec  		0 hrs 11 min 36 sec  		0 hrs 11 min 35 sec  		0 hrs 11 min 34 sec  		0 hrs 11 min 33 sec  		0 hrs 11 min 32 sec  		0 hrs 11 min 31 sec  		0 hrs 11 min 30 sec  		0 hrs 11 min 29 sec  		0 hrs 11 min 28 sec  		0 hrs 11 min 27 sec  		0 hrs 11 min 26 sec  		0 hrs 11 min 25 sec  		0 hrs 11 min 24 sec  		0 hrs 11 min 23 sec  		0 hrs 11 min 22 sec  		0 hrs 11 min 21 sec  		0 hrs 11 min 20 sec  		0 hrs 11 min 19 sec  		0 hrs 11 min 18 sec  		0 hrs 11 min 17 sec  		0 hrs 11 min 16 sec  		0 hrs 11 min 15 sec  		0 hrs 11 min 14 sec  		0 hrs 11 min 13 sec  		0 hrs 11 min 12 sec  		0 hrs 11 min 11 sec  		0 hrs 11 min 10 sec  		0 hrs 11 min 9 sec  		0 hrs 11 min 8 sec  		0 hrs 11 min 7 sec  		0 hrs 11 min 6 sec  		0 hrs 11 min 5 sec  		0 hrs 11 min 4 sec  		0 hrs 11 min 3 sec  		0 hrs 11 min 2 sec  		0 hrs 11 min 1 sec  		0 hrs 11 min 0 sec  		0 hrs 10 min 59 sec  		0 hrs 10 min 58 sec  		0 hrs 10 min 57 sec  		0 hrs 10 min 56 sec  		0 hrs 10 min 55 sec  		0 hrs 10 min 54 sec  		0 hrs 10 min 53 sec  		0 hrs 10 min 52 sec  		0 hrs 10 min 51 sec  		0 hrs 10 min 50 sec  		0 hrs 10 min 49 sec  		0 hrs 10 min 48 sec  		0 hrs 10 min 47 sec  		0 hrs 10 min 46 sec  		0 hrs 10 min 45 sec  		0 hrs 10 min 44 sec  		0 hrs 10 min 43 sec  		0 hrs 10 min 42 sec  		0 hrs 10 min 41 sec  		0 hrs 10 min 40 sec  		0 hrs 10 min 39 sec  		0 hrs 10 min 38 sec  		0 hrs 10 min 37 sec  		0 hrs 10 min 36 sec  		0 hrs 10 min 35 sec  		0 hrs 10 min 34 sec  		0 hrs 10 min 33 sec  		0 hrs 10 min 32 sec  		0 hrs 10 min 31 sec  		0 hrs 10 min 30 sec  		0 hrs 10 min 29 sec  		0 hrs 10 min 28 sec  		0 hrs 10 min 27 sec  		0 hrs 10 min 26 sec  		0 hrs 10 min 25 sec  		0 hrs 10 min 24 sec  		0 hrs 10 min 23 sec  		0 hrs 10 min 22 sec  		0 hrs 10 min 21 sec  		0 hrs 10 min 20 sec  		0 hrs 10 min 19 sec  		0 hrs 10 min 18 sec  		0 hrs 10 min 17 sec  		0 hrs 10 min 16 sec  		0 hrs 10 min 15 sec  		0 hrs 10 min 14 sec  		0 hrs 10 min 13 sec  		0 hrs 10 min 12 sec  		0 hrs 10 min 11 sec  		0 hrs 10 min 10 sec  		0 hrs 10 min 9 sec  		0 hrs 10 min 8 sec  		0 hrs 10 min 7 sec  		0 hrs 10 min 6 sec  		0 hrs 10 min 5 sec  		0 hrs 10 min 4 sec  		0 hrs 10 min 3 sec  		0 hrs 10 min 2 sec  		0 hrs 10 min 1 sec  		0 hrs 10 min 0 sec  		0 hrs 9 min 59 sec  		0 hrs 9 min 58 sec  		0 hrs 9 min 57 sec  		0 hrs 9 min 56 sec  		0 hrs 9 min 55 sec  		0 hrs 9 min 54 sec  		0 hrs 9 min 53 sec  		0 hrs 9 min 52 sec  		0 hrs 9 min 51 sec  		0 hrs 9 min 50 sec  		0 hrs 9 min 49 sec  		0 hrs 9 min 48 sec  		0 hrs 9 min 47 sec  		0 hrs 9 min 46 sec  		0 hrs 9 min 45 sec  		0 hrs 9 min 44 sec  		0 hrs 9 min 43 sec  		0 hrs 9 min 42 sec  		0 hrs 9 min 41 sec  		0 hrs 9 min 40 sec  		0 hrs 9 min 39 sec  		0 hrs 9 min 38 sec  		0 hrs 9 min 37 sec  		0 hrs 9 min 36 sec  		0 hrs 9 min 35 sec  		0 hrs 9 min 34 sec  		0 hrs 9 min 33 sec  		0 hrs 9 min 32 sec  		0 hrs 9 min 31 sec  		0 hrs 9 min 30 sec  		0 hrs 9 min 29 sec  		0 hrs 9 min 28 sec  		0 hrs 9 min 27 sec  		0 hrs 9 min 26 sec  		0 hrs 9 min 25 sec  		0 hrs 9 min 24 sec  		0 hrs 9 min 23 sec  		0 hrs 9 min 22 sec  		0 hrs 9 min 21 sec  		0 hrs 9 min 20 sec  		0 hrs 9 min 19 sec  		0 hrs 9 min 18 sec  		0 hrs 9 min 17 sec  		0 hrs 9 min 16 sec  		0 hrs 9 min 15 sec  		0 hrs 9 min 14 sec  		0 hrs 9 min 13 sec  		0 hrs 9 min 12 sec  		0 hrs 9 min 11 sec  		0 hrs 9 min 10 sec  		0 hrs 9 min 9 sec  		0 hrs 9 min 8 sec  		0 hrs 9 min 7 sec  		0 hrs 9 min 6 sec  		0 hrs 9 min 5 sec  		0 hrs 9 min 4 sec  		0 hrs 9 min 3 sec  		0 hrs 9 min 2 sec  		0 hrs 9 min 1 sec  		0 hrs 9 min 0 sec  		0 hrs 8 min 59 sec  		0 hrs 8 min 58 sec  		0 hrs 8 min 57 sec  		0 hrs 8 min 56 sec  		0 hrs 8 min 55 sec  		0 hrs 8 min 54 sec  		0 hrs 8 min 53 sec  		0 hrs 8 min 52 sec  		0 hrs 8 min 51 sec  		0 hrs 8 min 50 sec  		0 hrs 8 min 49 sec  		0 hrs 8 min 48 sec  		0 hrs 8 min 47 sec  		0 hrs 8 min 46 sec  		0 hrs 8 min 45 sec  		0 hrs 8 min 44 sec  		0 hrs 8 min 43 sec  		0 hrs 8 min 42 sec  		0 hrs 8 min 41 sec  		0 hrs 8 min 40 sec  		0 hrs 8 min 39 sec  		0 hrs 8 min 38 sec  		0 hrs 8 min 37 sec  		0 hrs 8 min 36 sec  		0 hrs 8 min 35 sec  		0 hrs 8 min 34 sec  		0 hrs 8 min 33 sec  		0 hrs 8 min 32 sec  		0 hrs 8 min 31 sec  		0 hrs 8 min 30 sec  		0 hrs 8 min 29 sec  		0 hrs 8 min 28 sec  		0 hrs 8 min 27 sec  		0 hrs 8 min 26 sec  		0 hrs 8 min 25 sec  		0 hrs 8 min 24 sec  		0 hrs 8 min 23 sec  		0 hrs 8 min 22 sec  		0 hrs 8 min 21 sec  		0 hrs 8 min 20 sec  		0 hrs 8 min 19 sec  		0 hrs 8 min 18 sec  		0 hrs 8 min 17 sec  		0 hrs 8 min 16 sec  		0 hrs 8 min 15 sec  		0 hrs 8 min 14 sec  		0 hrs 8 min 13 sec  		0 hrs 8 min 12 sec  		0 hrs 8 min 11 sec  		0 hrs 8 min 10 sec  		0 hrs 8 min 9 sec  		0 hrs 8 min 8 sec  		0 hrs 8 min 7 sec  		0 hrs 8 min 6 sec  		0 hrs 8 min 5 sec  		0 hrs 8 min 4 sec  		0 hrs 8 min 3 sec  		0 hrs 8 min 2 sec  		0 hrs 8 min 1 sec  		0 hrs 8 min 0 sec  		0 hrs 7 min 59 sec  		0 hrs 7 min 58 sec  		0 hrs 7 min 57 sec  		0 hrs 7 min 56 sec  		0 hrs 7 min 55 sec  		0 hrs 7 min 54 sec  		0 hrs 7 min 53 sec  		0 hrs 7 min 52 sec  		0 hrs 7 min 51 sec  		0 hrs 7 min 50 sec  		0 hrs 7 min 49 sec  		0 hrs 7 min 48 sec  		0 hrs 7 min 47 sec  		0 hrs 7 min 46 sec  		0 hrs 7 min 45 sec  		0 hrs 7 min 44 sec  		0 hrs 7 min 43 sec  		0 hrs 7 min 42 sec  		0 hrs 7 min 41 sec  		0 hrs 7 min 40 sec  		0 hrs 7 min 39 sec  		0 hrs 7 min 38 sec  		0 hrs 7 min 37 sec  		0 hrs 7 min 36 sec  		0 hrs 7 min 35 sec  		0 hrs 7 min 34 sec  		0 hrs 7 min 33 sec  		0 hrs 7 min 32 sec  		0 hrs 7 min 31 sec  		0 hrs 7 min 30 sec  		0 hrs 7 min 29 sec  		0 hrs 7 min 28 sec  		0 hrs 7 min 27 sec  		0 hrs 7 min 26 sec  		0 hrs 7 min 25 sec  		0 hrs 7 min 24 sec  		0 hrs 7 min 23 sec  		0 hrs 7 min 22 sec  		0 hrs 7 min 21 sec  		0 hrs 7 min 20 sec  		0 hrs 7 min 19 sec  		0 hrs 7 min 18 sec  		0 hrs 7 min 17 sec  		0 hrs 7 min 16 sec  		0 hrs 7 min 15 sec  		0 hrs 7 min 14 sec  		0 hrs 7 min 13 sec  		0 hrs 7 min 12 sec  		0 hrs 7 min 11 sec  		0 hrs 7 min 10 sec  		0 hrs 7 min 9 sec  		0 hrs 7 min 8 sec  		0 hrs 7 min 7 sec  		0 hrs 7 min 6 sec  		0 hrs 7 min 5 sec  		0 hrs 7 min 4 sec  		0 hrs 7 min 3 sec  		0 hrs 7 min 2 sec  		0 hrs 7 min 1 sec  		0 hrs 7 min 0 sec  		0 hrs 6 min 59 sec  		0 hrs 6 min 58 sec  		0 hrs 6 min 57 sec  		0 hrs 6 min 56 sec  		0 hrs 6 min 55 sec  		0 hrs 6 min 54 sec  		0 hrs 6 min 53 sec  		0 hrs 6 min 52 sec  		0 hrs 6 min 51 sec  		0 hrs 6 min 50 sec  		0 hrs 6 min 49 sec  		0 hrs 6 min 48 sec  		0 hrs 6 min 47 sec  		0 hrs 6 min 46 sec  		0 hrs 6 min 45 sec  		0 hrs 6 min 44 sec  		0 hrs 6 min 43 sec  		0 hrs 6 min 42 sec  		0 hrs 6 min 41 sec  		0 hrs 6 min 40 sec  		0 hrs 6 min 39 sec  		0 hrs 6 min 38 sec  		0 hrs 6 min 37 sec  		0 hrs 6 min 36 sec  		0 hrs 6 min 35 sec  		0 hrs 6 min 34 sec  		0 hrs 6 min 33 sec  		0 hrs 6 min 32 sec  		0 hrs 6 min 31 sec  		0 hrs 6 min 30 sec  		0 hrs 6 min 29 sec  		0 hrs 6 min 28 sec  		0 hrs 6 min 27 sec  		0 hrs 6 min 26 sec  		0 hrs 6 min 25 sec  		0 hrs 6 min 24 sec  		0 hrs 6 min 23 sec  		0 hrs 6 min 22 sec  		0 hrs 6 min 21 sec  		0 hrs 6 min 20 sec  		0 hrs 6 min 19 sec  		0 hrs 6 min 18 sec  		0 hrs 6 min 17 sec  		0 hrs 6 min 16 sec  		0 hrs 6 min 15 sec  		0 hrs 6 min 14 sec  		0 hrs 6 min 13 sec  		0 hrs 6 min 12 sec  		0 hrs 6 min 11 sec  		0 hrs 6 min 10 sec  		0 hrs 6 min 9 sec  		0 hrs 6 min 8 sec  		0 hrs 6 min 7 sec  		0 hrs 6 min 6 sec  		0 hrs 6 min 5 sec  		0 hrs 6 min 4 sec  		0 hrs 6 min 3 sec  		0 hrs 6 min 2 sec  		0 hrs 6 min 1 sec  		0 hrs 6 min 0 sec  		0 hrs 5 min 59 sec  		0 hrs 5 min 58 sec  		0 hrs 5 min 57 sec  		0 hrs 5 min 56 sec  		0 hrs 5 min 55 sec  		0 hrs 5 min 54 sec  		0 hrs 5 min 53 sec  		0 hrs 5 min 52 sec  		0 hrs 5 min 51 sec  		0 hrs 5 min 50 sec  		0 hrs 5 min 49 sec  		0 hrs 5 min 48 sec  		0 hrs 5 min 47 sec  		0 hrs 5 min 46 sec  		0 hrs 5 min 45 sec  		0 hrs 5 min 44 sec  		0 hrs 5 min 43 sec  		0 hrs 5 min 42 sec  		0 hrs 5 min 41 sec  		0 hrs 5 min 40 sec  		0 hrs 5 min 39 sec  		0 hrs 5 min 38 sec  		0 hrs 5 min 37 sec  		0 hrs 5 min 36 sec  		0 hrs 5 min 35 sec  		0 hrs 5 min 34 sec  		0 hrs 5 min 33 sec  		0 hrs 5 min 32 sec  		0 hrs 5 min 31 sec  		0 hrs 5 min 30 sec  		0 hrs 5 min 29 sec  		0 hrs 5 min 28 sec  		0 hrs 5 min 27 sec  		0 hrs 5 min 26 sec  		0 hrs 5 min 25 sec  		0 hrs 5 min 24 sec  		0 hrs 5 min 23 sec  		0 hrs 5 min 22 sec  		0 hrs 5 min 21 sec  		0 hrs 5 min 20 sec  		0 hrs 5 min 19 sec  		0 hrs 5 min 18 sec  		0 hrs 5 min 17 sec  		0 hrs 5 min 16 sec  		0 hrs 5 min 15 sec  		0 hrs 5 min 14 sec  		0 hrs 5 min 13 sec  		0 hrs 5 min 12 sec  		0 hrs 5 min 11 sec  		0 hrs 5 min 10 sec  		0 hrs 5 min 9 sec  		0 hrs 5 min 8 sec  		0 hrs 5 min 7 sec  		0 hrs 5 min 6 sec  		0 hrs 5 min 5 sec  		0 hrs 5 min 4 sec  		0 hrs 5 min 3 sec  		0 hrs 5 min 2 sec  		0 hrs 5 min 1 sec  		0 hrs 5 min 0 sec  		0 hrs 4 min 59 sec  		0 hrs 4 min 58 sec  		0 hrs 4 min 57 sec  		0 hrs 4 min 56 sec  		0 hrs 4 min 55 sec  		0 hrs 4 min 54 sec  		0 hrs 4 min 53 sec  		0 hrs 4 min 52 sec  		0 hrs 4 min 51 sec  		0 hrs 4 min 50 sec  		0 hrs 4 min 49 sec  		0 hrs 4 min 48 sec  		0 hrs 4 min 47 sec  		0 hrs 4 min 46 sec  		0 hrs 4 min 45 sec  		0 hrs 4 min 44 sec  		0 hrs 4 min 43 sec  		0 hrs 4 min 42 sec  		0 hrs 4 min 41 sec  		0 hrs 4 min 40 sec  		0 hrs 4 min 39 sec  		0 hrs 4 min 38 sec  		0 hrs 4 min 37 sec  		0 hrs 4 min 36 sec  		0 hrs 4 min 35 sec  		0 hrs 4 min 34 sec  		0 hrs 4 min 33 sec  		0 hrs 4 min 32 sec  		0 hrs 4 min 31 sec  		0 hrs 4 min 30 sec  		0 hrs 4 min 29 sec  		0 hrs 4 min 28 sec  		0 hrs 4 min 27 sec  		0 hrs 4 min 26 sec  		0 hrs 4 min 25 sec  		0 hrs 4 min 24 sec  		0 hrs 4 min 23 sec  		0 hrs 4 min 22 sec  		0 hrs 4 min 21 sec  		0 hrs 4 min 20 sec  		0 hrs 4 min 19 sec  		0 hrs 4 min 18 sec  		0 hrs 4 min 17 sec  		0 hrs 4 min 16 sec  		0 hrs 4 min 15 sec  		0 hrs 4 min 14 sec  		0 hrs 4 min 13 sec  		0 hrs 4 min 12 sec  		0 hrs 4 min 11 sec  		0 hrs 4 min 10 sec  		0 hrs 4 min 9 sec  		0 hrs 4 min 8 sec  		0 hrs 4 min 7 sec  		0 hrs 4 min 6 sec  		0 hrs 4 min 5 sec  		0 hrs 4 min 4 sec  		0 hrs 4 min 3 sec  		0 hrs 4 min 2 sec  		0 hrs 4 min 1 sec  		0 hrs 4 min 0 sec  		0 hrs 3 min 59 sec  		0 hrs 3 min 58 sec  		0 hrs 3 min 57 sec  		0 hrs 3 min 56 sec  		0 hrs 3 min 55 sec  		0 hrs 3 min 54 sec  		0 hrs 3 min 53 sec  		0 hrs 3 min 52 sec  		0 hrs 3 min 51 sec  		0 hrs 3 min 50 sec  		0 hrs 3 min 49 sec  		0 hrs 3 min 48 sec  		0 hrs 3 min 47 sec  		0 hrs 3 min 46 sec  		0 hrs 3 min 45 sec  		0 hrs 3 min 44 sec  		0 hrs 3 min 43 sec  		0 hrs 3 min 42 sec  		0 hrs 3 min 41 sec  		0 hrs 3 min 40 sec  		0 hrs 3 min 39 sec  		0 hrs 3 min 38 sec  		0 hrs 3 min 37 sec  		0 hrs 3 min 36 sec  		0 hrs 3 min 35 sec  		0 hrs 3 min 34 sec  		0 hrs 3 min 33 sec  		0 hrs 3 min 32 sec  		0 hrs 3 min 31 sec  		0 hrs 3 min 30 sec  		0 hrs 3 min 29 sec  		0 hrs 3 min 28 sec  		0 hrs 3 min 27 sec  		0 hrs 3 min 26 sec  		0 hrs 3 min 25 sec  		0 hrs 3 min 24 sec  		0 hrs 3 min 23 sec  		0 hrs 3 min 22 sec  		0 hrs 3 min 21 sec  		0 hrs 3 min 20 sec  		0 hrs 3 min 19 sec  		0 hrs 3 min 18 sec  		0 hrs 3 min 17 sec  		0 hrs 3 min 16 sec  		0 hrs 3 min 15 sec  		0 hrs 3 min 14 sec  		0 hrs 3 min 13 sec  		0 hrs 3 min 12 sec  		0 hrs 3 min 11 sec  		0 hrs 3 min 10 sec  		0 hrs 3 min 9 sec  		0 hrs 3 min 8 sec  		0 hrs 3 min 7 sec  		0 hrs 3 min 6 sec  		0 hrs 3 min 5 sec  		0 hrs 3 min 4 sec  		0 hrs 3 min 3 sec  		0 hrs 3 min 2 sec  		0 hrs 3 min 1 sec  		0 hrs 3 min 0 sec  		0 hrs 2 min 59 sec  		0 hrs 2 min 58 sec  		0 hrs 2 min 57 sec  		0 hrs 2 min 56 sec  		0 hrs 2 min 55 sec  		0 hrs 2 min 54 sec  		0 hrs 2 min 53 sec  		0 hrs 2 min 52 sec  		0 hrs 2 min 51 sec  		0 hrs 2 min 50 sec  		0 hrs 2 min 49 sec  		0 hrs 2 min 48 sec  		0 hrs 2 min 47 sec  		0 hrs 2 min 46 sec  		0 hrs 2 min 45 sec  		0 hrs 2 min 44 sec  		0 hrs 2 min 43 sec  		0 hrs 2 min 42 sec  		0 hrs 2 min 41 sec  		0 hrs 2 min 40 sec  		0 hrs 2 min 39 sec  		0 hrs 2 min 38 sec  		0 hrs 2 min 37 sec  		0 hrs 2 min 36 sec  		0 hrs 2 min 35 sec  		0 hrs 2 min 34 sec  		0 hrs 2 min 33 sec  		0 hrs 2 min 32 sec  		0 hrs 2 min 31 sec  		0 hrs 2 min 30 sec  		0 hrs 2 min 29 sec  		0 hrs 2 min 28 sec  		0 hrs 2 min 27 sec  		0 hrs 2 min 26 sec  		0 hrs 2 min 25 sec  		0 hrs 2 min 24 sec  		0 hrs 2 min 23 sec  		0 hrs 2 min 22 sec  		0 hrs 2 min 21 sec  		0 hrs 2 min 20 sec  		0 hrs 2 min 19 sec  		0 hrs 2 min 18 sec  		0 hrs 2 min 17 sec  		0 hrs 2 min 16 sec  		0 hrs 2 min 15 sec  		0 hrs 2 min 14 sec  		0 hrs 2 min 13 sec  		0 hrs 2 min 12 sec  		0 hrs 2 min 11 sec  		0 hrs 2 min 10 sec  		0 hrs 2 min 9 sec  		0 hrs 2 min 8 sec  		0 hrs 2 min 7 sec  		0 hrs 2 min 6 sec  		0 hrs 2 min 5 sec  		0 hrs 2 min 4 sec  		0 hrs 2 min 3 sec  		0 hrs 2 min 2 sec  		0 hrs 2 min 1 sec  		0 hrs 2 min 0 sec  		0 hrs 1 min 59 sec  		0 hrs 1 min 58 sec  		0 hrs 1 min 57 sec  		0 hrs 1 min 56 sec  		0 hrs 1 min 55 sec  		0 hrs 1 min 54 sec  		0 hrs 1 min 53 sec  		0 hrs 1 min 52 sec  		0 hrs 1 min 51 sec  		0 hrs 1 min 50 sec  		0 hrs 1 min 49 sec  		0 hrs 1 min 48 sec  		0 hrs 1 min 47 sec  		0 hrs 1 min 46 sec  		0 hrs 1 min 45 sec  		0 hrs 1 min 44 sec  		0 hrs 1 min 43 sec  		0 hrs 1 min 42 sec  		0 hrs 1 min 41 sec  		0 hrs 1 min 40 sec  		0 hrs 1 min 39 sec  		0 hrs 1 min 38 sec  		0 hrs 1 min 37 sec  		0 hrs 1 min 36 sec  		0 hrs 1 min 35 sec  		0 hrs 1 min 34 sec  		0 hrs 1 min 33 sec  		0 hrs 1 min 32 sec  		0 hrs 1 min 31 sec  		0 hrs 1 min 30 sec  		0 hrs 1 min 29 sec  		0 hrs 1 min 28 sec  		0 hrs 1 min 27 sec  		0 hrs 1 min 26 sec  		0 hrs 1 min 25 sec  		0 hrs 1 min 24 sec  		0 hrs 1 min 23 sec  		0 hrs 1 min 22 sec  		0 hrs 1 min 21 sec  		0 hrs 1 min 20 sec  		0 hrs 1 min 19 sec  		0 hrs 1 min 18 sec  		0 hrs 1 min 17 sec  		0 hrs 1 min 16 sec  		0 hrs 1 min 15 sec  		0 hrs 1 min 14 sec  		0 hrs 1 min 13 sec  		0 hrs 1 min 12 sec  		0 hrs 1 min 11 sec  		0 hrs 1 min 10 sec  		0 hrs 1 min 9 sec  		0 hrs 1 min 8 sec  		0 hrs 1 min 7 sec  		0 hrs 1 min 6 sec  		0 hrs 1 min 5 sec  		0 hrs 1 min 4 sec  		0 hrs 1 min 3 sec  		0 hrs 1 min 2 sec  		0 hrs 1 min 1 sec  		0 hrs 1 min 0 sec  		0 hrs 0 min 59 sec  		0 hrs 0 min 58 sec  		0 hrs 0 min 57 sec  		0 hrs 0 min 56 sec  		0 hrs 0 min 55 sec  		0 hrs 0 min 54 sec  		0 hrs 0 min 53 sec  		0 hrs 0 min 52 sec  		0 hrs 0 min 51 sec  		0 hrs 0 min 50 sec  		0 hrs 0 min 49 sec  		0 hrs 0 min 48 sec  		0 hrs 0 min 47 sec  		0 hrs 0 min 46 sec  		0 hrs 0 min 45 sec  		0 hrs 0 min 44 sec  		0 hrs 0 min 43 sec  		0 hrs 0 min 42 sec  		0 hrs 0 min 41 sec  		0 hrs 0 min 40 sec  		0 hrs 0 min 39 sec  		0 hrs 0 min 38 sec  		0 hrs 0 min 37 sec  		0 hrs 0 min 36 sec  		0 hrs 0 min 35 sec  		0 hrs 0 min 34 sec  		0 hrs 0 min 33 sec  		0 hrs 0 min 32 sec  		0 hrs 0 min 31 sec  		0 hrs 0 min 30 sec  		0 hrs 0 min 29 sec  		0 hrs 0 min 28 sec  		0 hrs 0 min 27 sec  		0 hrs 0 min 26 sec  		0 hrs 0 min 25 sec  		0 hrs 0 min 24 sec  		0 hrs 0 min 23 sec  		0 hrs 0 min 22 sec  		0 hrs 0 min 21 sec  		0 hrs 0 min 20 sec  		0 hrs 0 min 19 sec  		0 hrs 0 min 18 sec  		0 hrs 0 min 17 sec  		0 hrs 0 min 16 sec  		0 hrs 0 min 15 sec  		0 hrs 0 min 14 sec  		0 hrs 0 min 13 sec  		0 hrs 0 min 12 sec  		0 hrs 0 min 11 sec  		0 hrs 0 min 10 sec  		0 hrs 0 min 9 sec  		0 hrs 0 min 8 sec  		0 hrs 0 min 7 sec  		0 hrs 0 min 6 sec  		0 hrs 0 min 5 sec  		0 hrs 0 min 4 sec  		0 hrs 0 min 3 sec  		0 hrs 0 min 2 sec  		0 hrs 0 min 1 sec  		0 hrs 0 min 0 sec  
+
+psfiles1 status: Synch stat is 0. Syncinprog stat is 28. MEG left 0.0.
+psfsprod1 status: Synch stat is 0. Syncinprog stat is 28. MEG left 0.0.
+psfsprod2 status: Synch stat is 0. Syncinprog stat is 28. MEG left 0.0.
+psfssystem1 status: Synch stat is 0. Syncinprog stat is 28. MEG left 0.0.
+apps16 status: Synch stat is 0. Syncinprog stat is 28. MEG left 0.0.
+Group Count is: 5
+The Device Groups for qta1srvr16 are fully established.
+#
+End Monitor BCV Establish function. Tue Nov 12 14:47:34 EST 2002
+
+Start Verify BCV Sync Finished function. Tue Nov 12 14:47:34 EST 2002
+#
+ALL_GROUPS_SYNCED Count is 0
+#
+Number of DG elements are: 5
+Device Groups are: psfiles1 psfsprod1 psfsprod2 psfssystem1 apps16
+psfiles1_synched=0
+psfsprod1_synched=0
+psfsprod2_synched=0
+psfssystem1_synched=0
+apps16_synched=0
+#
+DVGRP is psfiles1
+	LINE is psfiles1_synched=0, Group is psfiles1_synched, Value is 0
+ALL_GROUPS_SYNCED Count is 1
+#
+DVGRP is psfsprod1
+	LINE is psfsprod1_synched=0, Group is psfsprod1_synched, Value is 0
+ALL_GROUPS_SYNCED Count is 2
+#
+DVGRP is psfsprod2
+	LINE is psfsprod2_synched=0, Group is psfsprod2_synched, Value is 0
+ALL_GROUPS_SYNCED Count is 3
+#
+DVGRP is psfssystem1
+	LINE is psfssystem1_synched=0, Group is psfssystem1_synched, Value is 0
+ALL_GROUPS_SYNCED Count is 4
+#
+DVGRP is apps16
+	LINE is apps16_synched=0, Group is apps16_synched, Value is 0
+ALL_GROUPS_SYNCED Count is 5
+#
+5 out of 5 Device Groups Synched.
+#
+End Verify BCV Sync Finished function. Tue Nov 12 14:47:34 EST 2002
+
+Begin Start OmniBack Job Function. Tue Nov 12 14:47:34 EST 2002
+#
+Backup option set to NO. Backup will not be run.
+#
+End Start OmniBack Job Function. Tue Nov 12 14:47:34 EST 2002
+
+Start Verify Variables Function. Tue Nov 12 14:47:34 EST 2002
+#
+End Verify Variables Function. Tue Nov 12 14:47:34 EST 2002
+
+END BCV Establish and Split Script for qta1srvr16 on Tue Nov 12 14:47:35 EST 2002
+

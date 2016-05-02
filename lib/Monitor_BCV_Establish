@@ -1,0 +1,100 @@
+Monitor_BCV_Establish() {
+#
+# Function - 
+# Version - 
+# Author - David Holton
+# Date - April 19, 2002
+#
+# Description - 
+#
+###############################################################################
+# Modification history
+# Date     Who          What was modified.
+# -------- ------------ ------------------
+#
+###############################################################################
+## Location - /usr/local/bin/bcvscripts/lib
+#set -n
+
+print Start Monitor BCV Establish function. $(date)
+print "#"
+
+if [[ -f ${BCV_MONITOR_STATUS} ]]
+then
+	rm ${BCV_MONITOR_STATUS}
+fi
+date > ${BCV_MONITOR_STATUS}
+
+typeset SYNCHRONIZED=NO
+GROUP_COUNT_ORIG=0
+GROUP_COUNT=${GROUP_COUNT_ORIG}
+
+print Device Groups are: $( ${SERVER}_GET_ALL_DGS).
+
+until [[ ${SYNCHRONIZED} = YES ]]
+do
+
+	if [[ -f ${BCV_SYNC_STATUS} ]]
+	then
+		rm ${BCV_SYNC_STATUS}
+	fi
+
+	print '**' >> ${BCV_MONITOR_STATUS}
+	date >> ${BCV_MONITOR_STATUS}
+
+	for DEVG in $( ${SERVER}_GET_ALL_DGS )
+	do
+
+		${SYMCLIDIR}/symmir -g ${DEVG} verify -synched > /dev/null
+		SYNCHED_STAT=${?}
+		###print ${DEVG} synched status is ${SYNCHED_STAT}
+	
+		${SYMCLIDIR}/symmir -g ${DEVG} verify -syncinprog > /dev/null
+		INPROG_STAT=${?}
+		###print ${DEVG} syncinprog status is ${INPROG_STAT}
+
+		SYNCHSTAT=${DEVG}_synched
+		INPROGSTAT=${DEVG}_inprog
+		###print SYNCHSTAT is ${SYNCHSTAT}: status is ${SYNCHED_STAT}.
+		###print INPROGSTAT is ${INPROGSTAT}: status is ${INPROG_STAT}.
+
+		MB_CHECK=$(${SYMCLIDIR}/symmir -g ${DEVG} query | grep -e "MB(s)" | sed "s/  */:/g" | cut -d":" -f4)
+		print ${DEVG} status: Synch stat is ${SYNCHED_STAT}. Syncinprog stat is ${INPROG_STAT}. MEG left ${MB_CHECK}.
+		print ${SYNCHSTAT}=${SYNCHED_STAT}.  ${INPROGSTAT}=${INPROG_STAT}. MEG left ${MB_CHECK}. >> ${BCV_MONITOR_STATUS}
+		print ${SYNCHSTAT}=${SYNCHED_STAT} >> ${BCV_SYNC_STATUS}
+	
+		if [[ ${SYNCHED_STAT} -eq 0 ]]
+		then
+			GROUP_COUNT=$(( ${GROUP_COUNT} + 1 ))
+		fi
+	done
+
+	print Group Count is: ${GROUP_COUNT}
+	if [[ ${GROUP_COUNT} -eq $( ${SERVER}_Total_DGs ) ]]
+	then
+		print The Device Groups for ${SERVER} are fully established.
+		typeset SYNCHRONIZED=YES
+	else
+		print The Device Groups for ${SERVER} are NOT YET established.
+		print Resetting Group Count to ${GROUP_COUNT_ORIG}.
+		GROUP_COUNT=${GROUP_COUNT_ORIG}
+		typeset SYNCHRONIZED=NO
+	fi
+
+	if [[ ${SYNCHRONIZED} != YES ]]
+	then
+		if [[ ${MANUAL_MONITOR} = 'YES' ]]
+		then
+			Time_Counter ${COUNT_TIME_3}
+			print
+		else
+			Time_Counter ${COUNT_TIME_9}
+			print
+		fi
+	fi
+
+done
+
+print "#"
+print End Monitor BCV Establish function. $(date); print 
+}

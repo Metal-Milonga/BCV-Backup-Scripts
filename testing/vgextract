@@ -1,0 +1,45 @@
+#!/usr/bin/ksh
+
+L1="vg20u20"
+#L2="vgpsfiles1/lvol2"
+#L3="vgpsfiles1/lvol3"
+ROOTDSKDIR="/root/disks"
+
+
+What_Are_The_Variables() {
+
+cat << END_OF_TEXT
+
+	VOLGROUP is ${VOLGROUP}
+	FSTAB_EXTRACT is ${FSTAB_EXTRACT}
+	VG is ${VG}
+	VGNAME is ${VGNAME}
+	VG_LVOL is ${VG_LVOL}
+	VG_RLVOL is ${VG_RLVOL}
+	FILESYSTEM is ${FILESYSTEM}
+	FILESYSTEM is ${#FILESYSTEM} characters long
+	MAPDIR is ${MAPDIR}
+	MAPFILE is ${MAPFILE}
+	PVPATHFILE is ${PVPATHFILE}
+
+END_OF_TEXT
+}
+
+
+for VOLGROUP in ${L1}
+do
+
+	FSTAB_EXTRACT=$(grep ${VOLGROUP} /etc/fstab | sed "s/  */:/g" | cut -d":" -f1,2)
+	VG=${FSTAB_EXTRACT%/lvol?:*}
+	VGNAME=${VG##/dev/}
+	LVOL_NUM=${FSTAB_EXTRACT%/lvol?:*}
+	VG_LVOL=${FSTAB_EXTRACT%:*}					# First half or FSTAB_EXTRACT to reference the lvol.
+	VG_RLVOL=$(echo ${FSTAB_EXTRACT%:*} | sed "s/lvol/rlvol/")	# First half or the FSTAB_EXTRACT replacing lvol1 with rlvol
+	FILESYSTEM=${FSTAB_EXTRACT#*:}					# Last half of the FSTAB_EXTRACT to reference the file system.
+	MAPDIR=${ROOTDSKDIR}/${VGNAME}
+	MAPFILE=${MAPDIR}/${VGNAME}.map
+	PVPATHFILE=${MAPDIR}/${VGNAME}.pvpath
+	GROUPFILE=${VG}/group
+
+	What_Are_The_Variables
+done

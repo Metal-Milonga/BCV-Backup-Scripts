@@ -1,0 +1,53 @@
+Hot backup BEGIN process for  STARTED at Mon May 23 07:06:25 EDT 2005
+Making backup copy of CONTROL FILE
+
+SQL*Plus: Release 9.2.0.2.0 - Production on Mon May 23 07:06:25 2005
+
+Copyright (c) 1982, 2002, Oracle Corporation.  All rights reserved.
+
+
+Connected to:
+Oracle9i Enterprise Edition Release 9.2.0.2.0 - 64bit Production
+With the Partitioning, OLAP and Oracle Data Mining options
+JServer Release 9.2.0.2.0 - Production
+
+SQL> 
+Database altered.
+
+SQL> Database log mode	       Archive Mode
+Automatic archival	       Enabled
+Archive destination	       /u21/orachive/mprod/
+Oldest online log sequence     4967
+Next log sequence to archive   4971
+Current log sequence	       4971
+SQL> Disconnected from Oracle9i Enterprise Edition Release 9.2.0.2.0 - 64bit Production
+With the Partitioning, OLAP and Oracle Data Mining options
+JServer Release 9.2.0.2.0 - Production
+Creating a list of tablespaces.
+
+SQL*Plus: Release 9.2.0.2.0 - Production on Mon May 23 07:06:25 2005
+
+Copyright (c) 1982, 2002, Oracle Corporation.  All rights reserved.
+
+
+Connected to:
+Oracle9i Enterprise Edition Release 9.2.0.2.0 - 64bit Production
+With the Partitioning, OLAP and Oracle Data Mining options
+JServer Release 9.2.0.2.0 - Production
+
+SQL> SQL> SQL> SQL> SQL> SQL> SQL> SQL>   2    3    4    5    6  alter tablespace MTAX end backup;
+alter tablespace MTAX_I end backup;
+alter tablespace RBS end backup;
+alter tablespace STAX end backup;
+alter tablespace STAX_I end backup;
+alter tablespace SYSTEM end backup;
+alter tablespace TEMP end backup;
+alter tablespace TOOLS end backup;
+alter tablespace USERS end backup;
+SQL> SQL> SP2-0734: unknown command beginning "SQL> selec..." - rest of line ignored.
+  6*
+SP2-0734: unknown command beginning "SQL> spool..." - rest of line ignored.
+SQL> Disconnected from Oracle9i Enterprise Edition Release 9.2.0.2.0 - 64bit Production
+With the Partitioning, OLAP and Oracle Data Mining options
+JServer Release 9.2.0.2.0 - Production
+Hot backup BEGIN process for mprod COMPLETED at Mon May 23 07:06:26 EDT 2005

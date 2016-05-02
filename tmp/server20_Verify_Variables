@@ -1,0 +1,250 @@
+
+VERIFY COMMAND OPTIONS
+#
+SERVER is set to: server20
+VALID_SERVERS are: server09 server16 server20
+Establish Type is set to: incr
+RUN_BACKUP is set to: YES
+Manual Monitoring is set to: NO
+Wait to Split the BCVs is set to:
+Split Mode is set to: WAIT
+CONFIG_FILE: Default config file will be used.
+
+
+VERIFY GEN VARIABLES
+COUNT_TIME_S30 is 30
+COUNT_TIME_S60 is 60
+COUNT_TIME_3 is 300
+COUNT_TIME_6 is 600
+COUNT_TIME_9 is 900
+SPLIT_TIME is 07:00:00
+SPLIT_TIME_2 is 070000
+SPLIT_HR is 07
+SPLIT_MIN is 00
+SPLIT_SEC is 00
+SPLIT_TOT_SEC is 25200
+SYMCLIDIR is /usr/symcli/bin
+BINDIR is /usr/bin
+SBINDIR is /usr/sbin
+BCVBINDIR is /usr/local/bin/bcvscripts/bin
+BCVLOGDIR is /usr/local/bin/bcvscripts/logs
+BCVETCDIR is /usr/local/bin/bcvscripts/etc
+BCVLIBDIR is /usr/local/bin/bcvscripts/lib
+BCVTMPDIR is /usr/local/bin/bcvscripts/tmp
+BCVCFGFILE is /usr/local/bin/bcvscripts/etc/bcv_scripts.conf
+BCV_VG_ELEMENTS is /usr/local/bin/bcvscripts/tmp/server20_VG_ELEM.vars
+BCV_VG_XACT_ELEMENTS is /usr/local/bin/bcvscripts/tmp/server20_VG_ELEM_XACT.vars
+BCV_DG_ELEMENTS is /usr/local/bin/bcvscripts/tmp/server20_DG_ELEM.vars
+BCV_UMOUNT_STATUS is /usr/local/bin/bcvscripts/tmp/server20_UMOUNT_STATUS
+BCV_VGCHANGE_STATUS is /usr/local/bin/bcvscripts/tmp/server20_VGCHANGE_STATUS
+BCV_EST_STATUS is /usr/local/bin/bcvscripts/tmp/server20_EST_STATUS
+BCV_SYNC_STATUS is /usr/local/bin/bcvscripts/tmp/server20_SYNC_STATUS
+BCV_SPLIT_STATUS is /usr/local/bin/bcvscripts/tmp/server20_SPLIT_STATUS
+BCV_MONITOR_STATUS is /usr/local/bin/bcvscripts/tmp/server20_EST_MONITOR
+BCV_EXPORT_STATUS is /usr/local/bin/bcvscripts/tmp/server20_EXPORT_STATUS
+BCV_IMPORT_STATUS is /usr/local/bin/bcvscripts/tmp/server20_IMPORT_STATUS
+FSCK_OUTPUT is /usr/local/bin/bcvscripts/tmp/server20_FSCK_OUTPUT
+ROOTDSKDIR is /root/disks
+BCVLOGFILE is /usr/local/bin/bcvscripts/logs/server20_BCV_LOG
+EMAIL_RPT is /usr/local/bin/bcvscripts/logs/server20_Email_Report
+ERROR_RPT is /usr/local/bin/bcvscripts/logs/server20_Error_Report
+FINAL is dholton jstenglein calley mbmcclos
+ERROR is dholton jstenglein calley mbmcclos
+
+
+VERIFY VG VARIABLES - Old Style
+#
+## VG Variables
+Total VG array elements is 5.
+VG array elemenst will start at 4.
+#
+	VG_ELEM is 4
+	VOLGROUP is vg20u20
+	FSTAB_EXTRACT is /dev/vg20u20/lvol1:/BCV/srvr20/u20
+	VG is vg20u20
+	VG_LVOL is /dev/vg20u20/lvol1
+	VG_RLVOL is /dev/vg20u20/rlvol1
+	FILESYSTEM is /BCV/srvr20/u20
+	#
+	VG_ELEM is 3
+	VOLGROUP is vg20u03
+	FSTAB_EXTRACT is /dev/vg20u03/lvol1:/BCV/srvr20/u03
+	VG is vg20u03
+	VG_LVOL is /dev/vg20u03/lvol1
+	VG_RLVOL is /dev/vg20u03/rlvol1
+	FILESYSTEM is /BCV/srvr20/u03
+	#
+	VG_ELEM is 2
+	VOLGROUP is vg20u02
+	FSTAB_EXTRACT is /dev/vg20u02/lvol1:/BCV/srvr20/u02
+	VG is vg20u02
+	VG_LVOL is /dev/vg20u02/lvol1
+	VG_RLVOL is /dev/vg20u02/rlvol1
+	FILESYSTEM is /BCV/srvr20/u02
+	#
+	VG_ELEM is 1
+	VOLGROUP is vg20u01
+	FSTAB_EXTRACT is /dev/vg20u01/lvol1:/BCV/srvr20/u01
+	VG is vg20u01
+	VG_LVOL is /dev/vg20u01/lvol1
+	VG_RLVOL is /dev/vg20u01/rlvol1
+	FILESYSTEM is /BCV/srvr20/u01
+	#
+	VG_ELEM is 0
+	VOLGROUP is vgapps20
+	FSTAB_EXTRACT is /dev/vgapps20/lvol1:/BCV/srvr20/apps
+	VG is vgapps20
+	VG_LVOL is /dev/vgapps20/lvol1
+	VG_RLVOL is /dev/vgapps20/rlvol1
+	FILESYSTEM is /BCV/srvr20/apps
+	#
+
+
+VERIFY XACT VG VARIABLES - Old Style
+#
+## VG Variables for Xact Establish
+Total VG array elements is 0.
+VG array elemenst will start at -1.
+VG_ARRAY_START_XACT (-1) in a negative state.
+There is obviously nothing to process here. Skipping.
+
+VERIFY DG VARIABLES
+#
+## Verifying DG Variables
+Total DG array elements is 5.
+DG array elemenst will start at 4.
+#
+DG_ELEM_4 is srvr20u20
+DG_ELEM_3 is srvr20u03
+DG_ELEM_2 is srvr20u02
+DG_ELEM_1 is srvr20u01
+DG_ELEM_0 is apps20
+
+
+VERIFY XACT DG VARIABLES
+#
+## Verifying XACT DG Variables
+Total DG array elements is 0.
+DG array elemenst will start at -1.
+DG_ARRAY_START_XACT (-1) in a negative state.
+There is obviously nothing to process here. Skipping.
+
+VERIFY OMNIBACK VARIABLES
+OMNIETCDIR is /etc/opt/omni
+OMNIBINDIR is /opt/omni/bin
+INSTANCE_FILE is /usr/local/bin/bcvscripts/tmp/INSTANCES
+TOTAL_INSTANCES are 3
+INSTANCE is 1
+OMNIBACK_OBJ is SERVER20
+OMNIBACK_SCHED is QBCV_SRVR20
+OMNI_DRV is
+OMNI_LIST is
+JDATE is 2005143
+OMNI_FILESYSTEMS is /usr/local/bin/bcvscripts/tmp/2005143_FS.OB
+
+ORA_START_HBM is: /usr/local/bin/HBM/srvr20-StartHotBackup.sh
+ORA_STOP_HBM is: /usr/local/bin/HBM/srvr20-StopHotBackup.sh
+HBMLOGFILE is: /usr/local/bin/bcvscripts/logs/server20-HBM.log
+
+Verify_Full_VGs
+The number of Normal elements is 5
+The number of XACT elements is 0
+Total VGS from Normal and Xact settings is: 5
+server20_ALL_VGS is vgapps20 vg20u01 vg20u02 vg20u03 vg20u20
+server20_ALL_VGS_XACT is
+ALL VGs from each group are: vgapps20 vg20u01 vg20u02 vg20u03 vg20u20
+
+vgapps20
+/dev/vgapps20/lvol1 /BCV/srvr20/apps vxfs rw,suid,largefiles,delaylog,nodatainlog 0 2
+
+	FSTAB_XTRACT is /dev/vgapps20/lvol1:/BCV/srvr20/apps
+	VG is /dev/vgapps20
+	VG_LVOL is /dev/vgapps20/lvol1
+	VG_RLVOL is /dev/vgapps20/rlvol1
+	FILESYSTEM is /BCV/srvr20/apps
+
+
+vg20u01
+/dev/vg20u01/lvol1 /BCV/srvr20/u01 vxfs rw,suid,largefiles,delaylog,nodatainlog 0 2
+
+	FSTAB_XTRACT is /dev/vg20u01/lvol1:/BCV/srvr20/u01
+	VG is /dev/vg20u01
+	VG_LVOL is /dev/vg20u01/lvol1
+	VG_RLVOL is /dev/vg20u01/rlvol1
+	FILESYSTEM is /BCV/srvr20/u01
+
+
+vg20u02
+/dev/vg20u02/lvol1 /BCV/srvr20/u02 vxfs rw,suid,largefiles,delaylog,nodatainlog 0 2
+
+	FSTAB_XTRACT is /dev/vg20u02/lvol1:/BCV/srvr20/u02
+	VG is /dev/vg20u02
+	VG_LVOL is /dev/vg20u02/lvol1
+	VG_RLVOL is /dev/vg20u02/rlvol1
+	FILESYSTEM is /BCV/srvr20/u02
+
+
+vg20u03
+/dev/vg20u03/lvol1 /BCV/srvr20/u03 vxfs rw,suid,largefiles,delaylog,nodatainlog 0 2
+
+	FSTAB_XTRACT is /dev/vg20u03/lvol1:/BCV/srvr20/u03
+	VG is /dev/vg20u03
+	VG_LVOL is /dev/vg20u03/lvol1
+	VG_RLVOL is /dev/vg20u03/rlvol1
+	FILESYSTEM is /BCV/srvr20/u03
+
+
+vg20u20
+/dev/vg20u20/lvol1 /BCV/srvr20/u20 vxfs rw,suid,largefiles,delaylog,nodatainlog 0 2
+
+	FSTAB_XTRACT is /dev/vg20u20/lvol1:/BCV/srvr20/u20
+	VG is /dev/vg20u20
+	VG_LVOL is /dev/vg20u20/lvol1
+	VG_RLVOL is /dev/vg20u20/rlvol1
+	FILESYSTEM is /BCV/srvr20/u20
+
+
+
+GET ALL VGS
+vgapps20 vg20u01 vg20u02 vg20u03 vg20u20
+
+Total VGs
+5
+
+Xact VGS
+
+
+Total Xact VGS
+0
+
+Full Verify DGs
+
+The number of Normal DG elements is 5
+The number of XACT DG elements is 0
+Total DGs from Normal and Xact settings is: 5
+server20_ALL_DGS is apps20 srvr20u01 srvr20u02 srvr20u03 srvr20u20
+server20_ALL_DGS_XACT is
+ALL DGs from each group are: apps20 srvr20u01 srvr20u02 srvr20u03 srvr20u20
+DG is set to apps20
+DG is set to srvr20u01
+DG is set to srvr20u02
+DG is set to srvr20u03
+DG is set to srvr20u20
+
+GET ALL DGS
+apps20 srvr20u01 srvr20u02 srvr20u03 srvr20u20
+
+Total DGs
+5
+
+Norm DGS
+apps20 srvr20u01 srvr20u02 srvr20u03 srvr20u20
+
+Total Norm DGS
+5
+
+Xact DGS
+
+
+Total Xact DGS
+0

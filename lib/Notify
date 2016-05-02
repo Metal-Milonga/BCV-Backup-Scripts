@@ -1,0 +1,102 @@
+Notify() {
+#
+# Function - Notify
+# Version - 1.01
+# Author - David Holton
+# Date - April 19, 2002
+#
+# Description - 
+#
+###############################################################################
+# Modification history
+# Date     Who          What was modified.
+# -------- ------------ ------------------
+# 05/21/03 David Holton	Added the DBA Notification group.
+#
+# 10/12/04 david Holton	added code to evaluate system load.  if it is too high,
+#			the system will wait 30 minutes and check again.  once
+#			the load is below the reference load value, it will
+#			send the email.  Before, the email would just get lost.
+#
+# 10/13/04 david holton	added some comments to the system load section to go in
+#			the log.
+#
+###############################################################################
+
+Final_Notification() {
+	print Executing Final Notification.
+	print Sending Final report to FINAL notification list. >> ${EMAIL_RPT}
+	print Final notification list is to: ${FINAL_NOTIFY[*]}
+
+	echo "\n\n\n" >> ${QEMAIL_RPT}
+	cat ${EMAIL_RPT} >> ${QEMAIL_RPT}
+
+	REF_LOAD=70
+
+
+	LOAD_VAR=bad
+
+	until [ ${LOAD_VAR} = "good" ]
+	do
+		print "#"
+		print "Checking System Load. If too high, Notify will wait 30 minutes."
+		print "Uptime output: $(uptime)"
+		SYS_LOAD=$(uptime | cut -d":" -f4 | cut -d"," -f1 | sed "s/\.//" )
+		print "System Load is: ${SYS_LOAD}"
+		print "Reference Load is: ${REF_LOAD}"
+
+		if [[ ${SYS_LOAD} -gt ${REF_LOAD} ]]
+		then
+			print "#"
+			print "System Load is too high to send email.  Sleeping 30 minutes."
+			Time_Counter 1800
+		else
+			print "#"
+			print "System Load below .5  Sending email."
+
+			for USER_F in ${FINAL_NOTIFY[*]}
+			do
+				#mailx -s "BCV EST-SPLIT Script for ${SERVER}. $(date)." ${USER_F} < ${BCVLOGDIR}/${SERVER}_Email_Report
+				mailx -s "BCV EST-SPLIT Script for ${SERVER}. $(date)." ${USER_F} < ${QEMAIL_RPT}
+			done
+			LOAD_VAR=good
+		fi
+	done
+		
+}
+
+Error_Notification() {
+	print Executing Error Notification.
+	print Sending Error report to ERROR notification list. >> ${EMAIL_RPT}
+	print ERROR notification list is: ${ERROR_NOTIFY[*]}
+
+	for USER_E in ${ERROR_NOTIFY[*]}
+	do
+		mailx -s "BCV EST Error for ${SERVER}. $(date)." ${USER_E} < ${BCVLOGDIR}/${SERVER}_Error_Report
+	done
+}
+
+DBA_Notification() {
+	print Executing DBA Notification.
+	print Sending Error report to DBA notification list. >> ${EMAIL_RPT}
+	print DBA notification list is: ${DBA_NOTIFY[*]}
+
+	for USER_DBA in ${DBA_NOTIFY[*]}
+	do
+		mailx -s "BCV EST Error for ${SERVER}. $(date)." ${USER_DBA} < ${BCVLOGDIR}/${SERVER}_Error_Report
+	done
+}
+
+case $1 in
+	Final )
+		Final_Notification
+		;;
+	DBA )
+		DBA_Notification
+		;;
+	Error )
+		Error_Notification
+		;;
+esac
+
+}

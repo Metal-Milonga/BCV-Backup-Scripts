@@ -1,0 +1,8 @@
+/dev/vgfoobar1:0:1
+/dev/vgfoobar2:0:1
+/dev/vgfoobar3:0:1
+/dev/vgapps09:0:1
+/dev/vgpshr01:0:1
+/dev/vgpsfiles2:0:1
+/dev/vghrsystem1:0:1
+/dev/vghrprod1:0:1

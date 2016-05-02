@@ -1,0 +1,90 @@
+Quick Status Report:
+5 of 5 filesystems UNmounted.
+5 of 5 Volume Groups DEActivated.
+0 of 0 VGs Exported.
+5 of 5 DG Started Sync.
+5 of 5 DG Finished Sync.
+BCV Split started at Mon May 23 07:02:07 EDT 2005
+5 of 5 DG Split
+0 of 0 VGs Imported.
+5 of 5 VGs Activated.
+5 of 5 passed FSCK and Mounted.
+Hot backup BEGIN process for STARTED at Mon May 23 07:03:12 EDT 2005
+Hot backup BEGIN process for kprod COMPLETED at Mon May 23 07:03:15 EDT 2005
+Hot backup BEGIN process for STARTED at Mon May 23 07:03:15 EDT 2005
+Hot backup BEGIN process for mprod COMPLETED at Mon May 23 07:03:17 EDT 2005
+Hot backup BEGIN process for STARTED at Mon May 23 07:06:23 EDT 2005
+Hot backup BEGIN process for kprod COMPLETED at Mon May 23 07:06:25 EDT 2005
+Hot backup BEGIN process for STARTED at Mon May 23 07:06:25 EDT 2005
+Hot backup BEGIN process for mprod COMPLETED at Mon May 23 07:06:26 EDT 2005
+NO LVM Errors Recorded: (LVM-ERRORS 0)
+
+
+
+
+EMAIL REPORT Initialized at Mon May 23 02:20:00 EDT 2005
+START BCV Establish and Split Script for server20 on Mon May 23 02:20:00 EDT 2005
+
+Script started with the following Options and Arguements: -BS server20 -s wait
+Working on BCVs for SERVER: server20
+SERVER server20 is a valid BCV Server. Continuing.
+Configuration file is: /usr/local/bin/bcvscripts/etc/bcv_scripts.conf
+Establish Type is: incr
+Run Backup is set to: YES
+Manual Monitoring is set to: NO
+Split Mode is set to WAIT
+Split Time is: 07:00:00
+
+OMNIBACK_OBJ is: SERVER20
+
+FileSystems to UNmount: 5
+/BCV/srvr20/apps	was successfully UNmounted
+/BCV/srvr20/u01	was successfully UNmounted
+/BCV/srvr20/u02	was successfully UNmounted
+/BCV/srvr20/u03	was successfully UNmounted
+/BCV/srvr20/u20	was successfully UNmounted
+5 of 5 filesystems UNmounted.
+
+Volume Groups to be Deactivated: 5
+VG /dev/vgapps20 was successfully deactivated.
+VG /dev/vg20u01 was successfully deactivated.
+VG /dev/vg20u02 was successfully deactivated.
+VG /dev/vg20u03 was successfully deactivated.
+VG /dev/vg20u20 was successfully deactivated.
+5 of 5 Volume Groups DEActivated.
+
+Volume Groups to be Exported: 0
+0 of 0 VGs Exported.
+
+
+5 of 5 DG Started Sync.
+
+5 of 5 DG Finished Sync.
+
+BCV Split started at Mon May 23 07:02:07 EDT 2005
+
+5 of 5 DG Split
+
+Volume Groups to be Imported: 0
+0 of 0 VGs Imported.
+
+Volume Groups to ACTivate: 5
+5 of 5 VGs Activated.
+
+FileSystems to Check and Mount: 5
+5 of 5 passed FSCK and Mounted.
+Hot backup BEGIN process for STARTED at Mon May 23 07:03:12 EDT 2005
+Hot backup BEGIN process for kprod COMPLETED at Mon May 23 07:03:15 EDT 2005
+Hot backup BEGIN process for STARTED at Mon May 23 07:03:15 EDT 2005
+Hot backup BEGIN process for mprod COMPLETED at Mon May 23 07:03:17 EDT 2005
+Hot backup BEGIN process for STARTED at Mon May 23 07:06:23 EDT 2005
+Hot backup BEGIN process for kprod COMPLETED at Mon May 23 07:06:25 EDT 2005
+Hot backup BEGIN process for STARTED at Mon May 23 07:06:25 EDT 2005
+Hot backup BEGIN process for mprod COMPLETED at Mon May 23 07:06:26 EDT 2005
+
+NO LVM Errors Recorded: (LVM-ERRORS 0)
+
+Starting Backup Job: remsh sta0lx07 BPbackup -i -p Qwest_UNIX_BCV_SERVER20 -s QBCV_SRVR20_Daily
+
+END BCV Establish and Split Script for server20 on Mon May 23 07:05:40 EDT 2005
+Sending Final report to FINAL notification list.

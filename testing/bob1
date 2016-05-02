@@ -1,0 +1,16 @@
+#!/usr/bin/ksh
+
+while [[ $1 = -* ]]
+do
+	case $1 in
+		-alan ) print Option A processed
+		     print \$1 equals ${1} ;;
+		-betty ) print Option B processed
+		     print \$1 equals ${1} ;;
+		-carl ) print Option C processed
+		     print \$1 equals ${1} ;;
+		*  ) print 'usage: bob [-a] [-b] [-c] args...'
+			return 1
+	esac
+	shift
+done

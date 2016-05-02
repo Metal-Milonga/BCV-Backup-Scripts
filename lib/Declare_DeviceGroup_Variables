@@ -1,0 +1,215 @@
+Declare_DeviceGroup_Variables(){
+#
+# Function - Declare_DeviceGroup_Variables
+# Version - 1.00
+# Author - David Holton
+# Date - April 19, 2002
+#
+# Description - Pulls the EMC Symmetrix device groups from the config file.
+#		These are used to control the BCV establish and split.
+#
+#		Just like with the Volume Groups, there are two types of device
+#		groups listed in the config file.
+#
+#		1. The Xact device groups will have the establish performed in
+#		exact mode.  These are device groups that have had a new
+#		disk(s) added to them, and this is the first time they have
+#		been established since the disk(s) were added.  These groups
+#		must have thier associated Volume Groups exported before the
+#		establish begins, and imported after the BCVs are split.
+#
+#		2. The other type of device group is labeled normal. The
+#		establish for this group in not performed in exact mode. This
+#		is the day-to-day mode for performing establishes.
+#
+#		Once the device group has had an exact mode establish performed
+#		against it, it can be moved back to the normal line in the
+#		config file.
+#
+###############################################################################
+# Modification history
+# Date     Who          What was modified.
+# -------- ------------ ------------------
+#
+###############################################################################
+## Declare_DeviceGroup_Variables Ver 2.0
+#set -n
+
+print Start Declare_DeviceGroup_Variables Function. $(date)
+
+#
+## Remove the tmp files that hold the variables we need to work with.
+#
+if [[ -f ${BCV_DG_ELEMENTS} ]]
+then
+	rm ${BCV_DG_ELEMENTS}
+fi
+
+if [[ -f ${BCV_DG_XACT_ELEMENTS} ]]
+then
+	rm ${BCV_DG_XACT_ELEMENTS}
+fi
+
+#
+## Now touch new variable files. Otherwise we get an error if one
+## of the variable creation routines has nothing to put in a file.
+#
+touch ${BCV_DG_ELEMENTS}
+touch ${BCV_DG_XACT_ELEMENTS}
+
+NORMAL_DG_ELEMS() {
+#
+## This internal function grabs (from the config file) the device groups that
+## only need normal establish and split performed on them.
+##
+## It grabs the device group name and loads them into an array.
+#
+#set -x
+print "#"
+print Grabbing DGs for normal BCV Establish.
+
+#
+## Grep the Device Group names for the server from the config file, and
+## put in an array.
+#
+set -A SRVR_DGS $(grep ${SERVER}_DG ${BCVCFGFILE} | grep -v "X" | cut -d":" -f2 | sed "s/,/ /g")
+	#print SRVR_DGS is ${SRVR_DGS[*]}
+#
+## This variable gives us the total number of Device Groups in the array.
+#
+TOTAL_DG_ARRAY="${#SRVR_DGS[*]}"
+	#print TOTAL_DG_ARRAY is ${TOTAL_DG_ARRAY}
+#
+## The total number of device groups in the array minus 1.
+## The array starts counting at 0, so we have to subtract one.
+#
+DG_ARRAY_START=$(( ${TOTAL_DG_ARRAY} - 1 ))
+	#print DG_ARRAY_START is ${DG_ARRAY_START}
+#
+## The total number of device groups in the array minus 1.
+## The array starts counting at 0, so we have to subtract one.
+#
+DG_ELEM=$(( ${TOTAL_DG_ARRAY} - 1 ))
+	#print DG_ELEM is ${DG_ELEM}
+
+#
+## If all the device groups were going to be exact established, then this array would
+## be empty.  If it is empty it will have a negative value, so we want to skip the rest
+## of this internal function.
+#
+if [[ ${DG_ARRAY_START} -eq "-1" ]]
+then
+	print "DG_ARRAY_START (${DG_ARRAY_START}) has a negative Value. No data here. Skipping."
+	return
+fi
+##### print You should not see this line if VG_ARRAY_START is negative.
+
+#
+## Taking the number of elements in the DG array, build the individual variables
+## and assign them their appropriate value.  I have to write the variables and thier values
+## out to a temp file and then read them back in to get them in the scripts environment.
+#
+while [[ DG_ELEM -ge 0 ]]
+do 
+	print SRVR_DG Array element ${DG_ELEM} is: ${SRVR_DGS[${DG_ELEM}]}
+
+	DG_ELEM_NUM=DG_ELEM_${DG_ELEM}
+	print ${DG_ELEM_NUM}=${SRVR_DGS[${DG_ELEM}]} >> ${BCV_DG_ELEMENTS}
+
+	DG_ELEM=$(( ${DG_ELEM} -1 ))
+done
+
+#
+## Reading the variables back into the environment.
+#
+. ${BCV_DG_ELEMENTS}
+}
+
+XACT_DG_ELEMS() {
+#set -x
+print "#"
+print Grabbing DGs for exact mode BCV Establish.
+
+#
+## Grep the Device Group names for the server from the config file, and
+## put in an array.
+#
+set -A SRVR_DGS_XACT $(grep X_${SERVER}_DG ${BCVCFGFILE} | cut -d":" -f2 | sed "s/,/ /g")
+	#print SRVR_DGS_XACT is ${SRVR_DGS_XACT[*]}
+#
+## This variable gives us the total number of Device Groups in the array.
+#
+TOTAL_DG_ARRAY_XACT="${#SRVR_DGS_XACT[*]}"
+	#print TOTAL_DG_ARRAY_XACT is ${TOTAL_DG_ARRAY_XACT}
+#
+## The total number of device groups in the array minus 1.
+## The array starts counting at 0, so we have to subtract one.
+#
+DG_ARRAY_START_XACT=$(( ${TOTAL_DG_ARRAY_XACT} - 1 ))
+	#print DG_ARRAY_START_XACT is ${DG_ARRAY_START_XACT}
+#
+## The total number of device groups in the array minus 1.
+## The array starts counting at 0, so we have to subtract one.
+#
+DG_ELEM_XACT=$(( ${TOTAL_DG_ARRAY_XACT} - 1 ))
+	#print DG_ELEM_XACT is ${DG_ELEM_XACT}
+
+#
+## If all the device groups are going to be established in normal mode, then this array would
+## be empty.  If it is empty it will have a negative value, so we want to skip the rest
+## of this internal function.
+#
+if [[ ${DG_ARRAY_START_XACT} -eq "-1" ]]
+then
+	print "DG_ARRAY_START_XACT (${DG_ARRAY_START_XACT}) has a negative value. No data here. Skipping."
+	return
+fi
+##### print You should not see this line if DG_ARRAY_START_XACT is negative.
+
+#
+## Taking the number of elements in the DG array, build the individual variables
+## and assign them their appropriate value.  I have to write the variables and thier values
+## out to a temp file and then read them back in to get them in the scripts environment.
+#
+while [[ DG_ELEM_XACT -ge 0 ]]
+do 
+	print SRVR_DG_XACT Array element ${DG_ELEM_XACT} is: ${SRVR_DGS_XACT[${DG_ELEM_XACT}]}
+
+	DG_ELEM_NUM_XACT=DG_ELEM_XACT_${DG_ELEM_XACT}
+	print ${DG_ELEM_NUM_XACT}=${SRVR_DGS_XACT[${DG_ELEM_XACT}]} >> ${BCV_DG_XACT_ELEMENTS}
+
+	DG_ELEM_XACT=$(( ${DG_ELEM_XACT} -1 ))
+done
+
+#
+## Reading the variables back into the environment.
+#
+. ${BCV_DG_XACT_ELEMENTS}
+}
+
+NORMAL_DG_ELEMS
+XACT_DG_ELEMS
+
+print "#"
+print End Declare_DeviceGroup_Variables Function. $(date); print
+
+## END of function.  The stuff below this is for reference and historical purposes.
+## It will be used in future versions.
+
+## Using the set command to look at the variables in the scripts environment,
+## this section pulls out the appropriate DG element variables and 
+## prints out thier value.  It cycles through the number of elements contained
+## in the DG array counting from 0.
+## This section is for proof of concept that I can do it, and as a reference to
+## use when I need to cycle through various VGs and DGs to work with them.
+#DG_ELEM=${DG_ARRAY_START}
+#while [[ DG_ELEM -ge 0 ]]
+#do
+#	set | grep ^DG_ELEM_${DG_ELEM}
+#	DG=$(set | grep ^DG_ELEM_${DG_ELEM} | cut -d"=" -f2)
+#	print DG_ELEM_${DG_ELEM} is  ${DG}
+#
+#	DG_ELEM=$(( ${DG_ELEM} -1 ))
+#done
+
+}

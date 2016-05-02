@@ -1,0 +1,173 @@
+Command_Options() {
+#
+# Function - Command_Options
+# Version - 1.00
+# Author - David Holton
+# Date - April 19, 2002
+#
+# Description - This function makes sure the commandline options passed to the
+#		the main script are correct and have the right format.  If they
+#		are NOT correct, this function prints out a syntax error message
+#		and usage message.
+#		Then it exits the script without executing any further functions.
+#
+###############################################################################
+# Modification history
+# Date     Who          What was modified.
+# -------- ------------ ------------------
+#
+###############################################################################
+#set -x
+
+NO_Options() {
+#set -x
+#
+# This internal function checks to make sure we had some arguements passed to the script.
+# If the script was put in without ANY options, it will print out a usage message and
+# exit the script.
+#
+
+# If $# (the total number of command-line arguements) is 0,then print the
+# the usage message and exit.
+if [[ $# -eq 0 ]]
+then
+	print; print
+	print BCV-Est.sh Command-Line Syntax Error.
+	print ${USAGE}
+	exit
+	print; print
+fi
+}
+
+CORRECT_OPTIONS() {
+#set -x
+#
+# This internal function checks the syntax of the arguements passed to the script
+# and make sure they are correct.
+#
+#
+# The OPTIONS variable is made by taking the dashes (-) out of the arguement string.
+# It makes it easier to check the syntax if there are no dashes.
+#
+# $* lists the entire set of command-line arguements encased in double quotes.
+#
+OPTIONS=$( echo $* | sed "s/-//g")
+#print OPTIONS are now: ${OPTIONS}
+#print
+
+# Store the original arguements (with the dashes) in the U_OPTIONS variable.
+#
+U_OPTIONS=$( echo $* )
+
+# This test allows various combinations of arguements on the command line. That way you are not stuck with an exact way of
+# entering the arguements.
+# If the test fails then print the usage message and exit the main script.
+#
+# If the below test is broken, use the CO1.sh script in the /usr/local/bin/bcvscripts/testing directory to troubleshoot it.
+# When the script was written the CO1.sh script was used to work out the logic.  It will be easier to troubleshoot there
+# and then paste the new solution from that script.
+#
+if [[ ${OPTIONS} = ?([BFMW])?(' ')?([BFMW])?(' ')?([BFMW])?(' ')?([BFMW])"S"?(' ')"server"[0-9][0-9]?(' 'C?(' ')+([._-a-zA-Z0-9]))  ||\
+      ${OPTIONS} = ?([BFMW])?(' ')?([BFMW])?(' ')?([BFMW])?(' ')?([BFMW])?(' 'C?(' ')+([._-a-zA-Z0-9]))" S"?(' ')"server"[0-9][0-9]    ||\
+      ${OPTIONS} = ?([BFMW])?(' ')?([BFMW])?(' ')?([BFMW])?(' ')?([BFMW])?(C?(' ')+([._-a-zA-Z0-9]))" S"?(' ')"server"[0-9][0-9]    ||\
+      ${OPTIONS} = ?(C?(' ')+([._-a-zA-Z0-9]))" S"?(' ')"server"[0-9][0-9]" "?([BFMW])?(' ')?([BFMW])?(' ')?([BFMW])?(' ')?([BFMW]) ||\
+      ${OPTIONS} = "S"?(' ')"server"[0-9][0-9]?(' 'C?(' ')+([._-a-zA-Z0-9]))" "?([BFMW])?(' ')?([BFMW])?(' ')?([BFMW])?(' ')?([BFMW]) ||\
+      ${OPTIONS} = "S"?(' ')"server"[0-9][0-9]" "?([BFMW])?(' ')?([BFMW])?(' ')?([BFMW])?(' ')?([BFMW])?(' 'C?(' ')+([._-a-zA-Z0-9])) ||\
+      ${OPTIONS} = "S"?(' ')"server"[0-9][0-9]" "?([BFMW])?(' ')?([BFMW])?(' ')?([BFMW])?(' ')?([BFMW])?(C?(' ')+([._-a-zA-Z0-9])) ||\
+      ${OPTIONS} = ?(C?(' ')+([._-a-zA-Z0-9]))" "?([BFMW])?(' ')?([BFMW])?(' ')?([BFMW])?(' ')?([BFMW])" S"?(' ')"server"[0-9][0-9] ||\
+      ${OPTIONS} = ?(C?(' ')+([._-a-zA-Z0-9]))" "?([BFMW])?(' ')?([BFMW])?(' ')?([BFMW])?(' ')?([BFMW])"S"?(' ')"server"[0-9][0-9] ]]
+then
+	:
+else
+#	print
+	print Inside Function, OPTIONS are: ${OPTIONS}
+	print; print
+	print BCV-Est.sh Command-Line Syntax Error.
+	print ${USAGE}
+	print; print
+	exit
+fi
+}
+
+# The usage message. One big, multiline variable.
+#
+USAGE=$(cat << END_OF_USAGE 
+usage: BCV-Est.sh -[B] -[F] -[M] -[W] -S servername [-C new_config_file]  \n
+\t The "S" option is NOT optional.  It MUST be supplied with a valid servername following. \n\n
+\t The M, F, B, C options do not have to be used. They are optional. \n
+\t By default the Establish will be run in Incremental mode with NO visual monitor, and Backups turned OFF. \n\n
+\t -F = Will run a FULL Establish \n
+\t -M = Will display information on the screen as the script monitors the establish. \n
+\t -W = Will force the Split to wait until the time set in the Config file. \n
+\t\t    It was designed for use in crontab. Data Services needs the split to happen at specfic times. \n
+\t\t    Otherwise, the split will take place as soon as the Establish has finished. \n
+\t -B = Should only be used with crontab.  It runs the OmniBack backup job at the end of the script. \n
+\t -C = Designate a different Config file to be used. \n\n
+\t As always you can combine command that do not take arguements behind one dash.\n
+\t Example:\t -FMC new_config_file -S servername \n
+\t OR:\t\t -BFS servername -C new_config_file
+\n\n
+END_OF_USAGE)
+
+#
+# Run the internal functions to make sure we have a good commandline
+#
+NO_Options $@
+CORRECT_OPTIONS $@
+
+#
+# Use getopts to handle any or all of the variables passed to the script.
+#
+while getopts ":BFMWS:C:" opt
+do
+	case $opt in
+		M )	MANUAL_MONITOR=YES
+			;;
+		F )	EST_TYPE=FULL
+			;;
+		S )	SERVER=${OPTARG}
+			;;
+		B )	RUN_BACKUP=YES
+			;;
+		C )	CONFIG_FILE=${OPTARG}
+			;;
+		W )	WAIT_TO_SPLIT=YES
+			;;
+		\? )	print ${USAGE}
+			print exiting
+			exit
+	esac
+done
+
+#
+# Print the values of the variables to the log
+#
+print "Script started with the following Options and Arguements: $*" 
+
+print SERVER is set to: ${SERVER} 
+
+if [ -n "${CONFIG_FILE}" ]
+then
+	print CONFIG_FILE is set to: ${CONFIG_FILE} 
+else
+	print CONFIG_FILE: Default config file will be used. 
+fi
+
+#
+# If the following variables do not already have a value, set it to the default value
+# which follows the ":="
+#
+EST_TYPE=${EST_TYPE:=incr}
+print Establish Type is set to: ${EST_TYPE} 
+
+RUN_BACKUP=${RUN_BACKUP:=NO}
+print RUN_BACKUP is set to: ${RUN_BACKUP} 
+
+MANUAL_MONITOR=${MANUAL_MONITOR:=NO}
+print Manual Monitoring is set to: ${MANUAL_MONITOR} 
+
+WAIT_TO_SPLIT=${WAIT_TO_SPLIT:=NO}
+print Wait to Split the BCV is set to: ${WAIT_TO_SPLIT}
+
+print
+}

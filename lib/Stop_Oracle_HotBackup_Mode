@@ -1,0 +1,32 @@
+Stop_Oracle_HotBackup_Mode() {
+#
+# Function - 
+# Version - 
+# Author - David Holton
+# Date - April 19, 2002
+#
+# Description - 
+#
+###############################################################################
+# Modification history
+# Date     Who          What was modified.
+# -------- ------------ ------------------
+# 07/30/02 Dave Holton  Redirected the output of the Hot backup scripts to a 
+#			log file named SERVER-HBM.log. This may help if there
+#			are further problems calling the Oracle scripts on the
+#			DB servers.
+#
+###############################################################################
+#set -n
+
+print Starting the Stop Hot Backup Mode Function. $(date)
+
+print ${SERVER}
+
+##remsh ${SERVER} ${ORA_STOP_HBM} > /dev/null 2>&1
+remsh ${SERVER} ${ORA_STOP_HBM} >> ${HBMLOGFILE} 2>&1
+
+#####remsh ${SERVER} /usr/local/sbin/stopOracleHotBackup.sh  # Used for testing.
+
+print End Stop Hot Backup Mode Function. $(date); print
+}

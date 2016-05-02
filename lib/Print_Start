@@ -1,0 +1,23 @@
+Print_Start() {
+#
+# Function - Print_Start
+# Version - 1.00
+# Author - David Holton
+# Date - April 19, 2002
+#
+# Description - Prints a start message for the main script to be used in logs.
+#		This was put into it's own function to keep the main
+#		script uniform.
+#
+###############################################################################
+# Modification history
+# Date     Who          What was modified.
+# -------- ------------ ------------------
+#
+###############################################################################
+
+START_MESG=$(print START BCV Establish and Split Script for ${SERVER} on $(date);print)
+print ${START_MESG}
+print
+
+}

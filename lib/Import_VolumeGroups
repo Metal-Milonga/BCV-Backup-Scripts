@@ -1,0 +1,169 @@
+Import_VolumeGroups(){
+#
+# Function - 
+# Version - 
+# Author - David Holton
+# Date - April 19, 2002
+#
+# Description - 
+#
+###############################################################################
+# Modification history
+# Date     Who          What was modified.
+# -------- ------------ ------------------
+# 07/09/02 Dave Holton	COmmented out reports messages about individual VG
+#			being imported from going to the email report.
+# 10/15/02 Dave Holton	Added and Import counter to be reported in the email
+#			report.
+# 11/27/02 Dave Holton  Made the functions Define_VG_Variables and
+#                       What_Are_The_Variables into external functions.
+# 07/15/03 Dave Holton	Changed Mk_Nod function to use test -a instead of
+#			test -f.  The group file is not a regular file so -f
+#			resulted in the file not existing.
+# 07/15/03 Dave Holton	Added the IMPORT_PREFLIGHT function.
+#			Also, put Get_Minor_Num Mkdir_VG Mknod_VG, and
+#			Import_VG functions under the PREFLIGHT.
+#			Also, moved the IMPORT_COUNT function earlier in the
+#			script.
+#
+###############################################################################
+#set -n
+
+print Start Import Volume Groups function. $(date)
+print Volume Groups to be Imported: $( ${SERVER}_Total_Xact_VGS )
+print "#"
+print >> ${EMAIL_RPT}
+print Volume Groups to be Imported: $( ${SERVER}_Total_Xact_VGS ) >> ${EMAIL_RPT}
+
+if [[ -f ${BCV_IMPORT_STATUS} ]]
+then
+	rm ${BCV_IMPORT_STATUS}
+	touch ${BCV_IMPORT_STATUS}
+else
+	touch ${BCV_IMPORT_STATUS}
+fi
+
+IMPORT_COUNT=0
+for VOLGROUP in $( ${SERVER}_Xact_VGS )
+do
+
+	Get_Minor_Num(){
+
+	print Working ${VG}
+	VG_MINOR_NUM=$(grep ${VG} ${BCV_VG_MINNUM} | cut -d":" -f2)
+	print VG_MINOR_NUM is ${VG_MINOR_NUM}
+
+	}
+
+
+	Mkdir_VG() {
+	if [[ ! -d ${VG} ]]
+	then
+		print ${VG} DEV directory does not exist. Creating...
+		mkdir ${VG}
+		ll -d ${VG}
+	else
+		print ${VG} DEV directory already exists.
+		ll -d ${VG}
+	fi
+	}
+
+	Mknod_VG() {
+	if [ -a ${GROUPFILE} ]
+	then
+		print ${GROUPFILE} DEV Group file already exists.
+		ll ${GROUPFILE}
+	else
+		print Group file does not exist. Creating...
+		print Group file is ${GROUPFILE}
+		mknod ${GROUPFILE} c 64 ${VG_MINOR_NUM}
+		ll ${GROUPFILE}
+	fi
+	}
+
+	Import_VG(){
+	print Importing ${VG}
+	vgimport -v -m ${MAPFILE} -f ${PVPATHFILE} ${VG}
+	IMPORT_STAT=${?}
+
+	grep ${VOLGROUP} /etc/lvmtab >> /dev/null 2>&1
+	IMPORT_STAT2=${?}
+	print ${VG}=${IMPORT_STAT}:${IMPORT_STAT2} >> ${BCV_IMPORT_STATUS}
+	print ${VG} was Imported with STATUS = ${IMPORT_STAT}
+	##print ${VG} Imported STATUS ${IMPORT_STAT} >> ${EMAIL_RPT}
+	print "#"
+
+	}
+
+	IMPORT_PREFLIGHT() {
+	#
+	## This function will check to see if the volume group has
+	## already been imported.
+	##
+	## This was neccessary because of older volume
+	## groups that had more than one LVOL in them.  Multiple exports
+	## running against the same VG caused the map and pvpath files
+	## to get overwritten....then import would not work without the files.
+	#
+	IM_GREP_STAT=$(grep ${VG} ${BCV_IMPORT_STATUS})
+
+	if [ -z "${IM_GREP_STAT}" ]
+	then
+		Get_Minor_Num
+		Mkdir_VG
+		Mknod_VG
+	        Import_VG
+		IMPORT_COUNT=$(( ${IMPORT_COUNT} + 1 ))
+	else
+	        print ${VG} already imported: ${IM_GREP_STAT}
+		IMPORT_COUNT=$(( ${IMPORT_COUNT} + 1 ))
+	fi
+	}
+
+
+	Define_VG_Variables
+	What_Are_The_Variables
+	IMPORT_PREFLIGHT	# This function calls:
+				#	Get_Minor_Num
+				#	Mkdir_VG
+				#	Mknod_VG
+				#	Import_VG
+
+done
+
+IMPORT_STATUS_CHECK() {
+for IVG in $(< ${BCV_IMPORT_STATUS})
+do
+	print Contents of Import Status file is: ${IVG}
+
+	IVG_0=${IVG%=*}
+		#print IVG_0 is ${IVG_0}
+
+	IVG_1=${IVG#*=}
+		#print IVG_1 is ${IVG_1}
+
+	nImport_Stat1=${IVG_1%:*}
+		#print nImport_Stat1 is ${nImport_Stat1}
+
+	nImport_Stat2=${IVG_1#*:}
+		#print nImport_Stat2 is ${nImport_Stat2}
+
+	if [[ ! nImport_Stat1 -eq 0 && ! nImport_Stat2 -eq 0 ]]
+	then
+		print ${IVG_0} was NOT Imported!!
+		print ${IVG_0} was NOT Imported!! >> ${EMAIL_RPT}
+		print ${IVG_0} was NOT Imported!! >> ${ERROR_RPT}
+		LVM_ERRORS=$(( ${LVM_ERRORS} + 1 ))
+	else
+		print ${IVG_0} was Imported successfully
+	fi
+done
+}
+
+IMPORT_STATUS_CHECK
+
+print ${IMPORT_COUNT} of $( ${SERVER}_Total_Xact_VGS ) VGs Imported.  >> ${EMAIL_RPT}
+print ${IMPORT_COUNT} of $( ${SERVER}_Total_Xact_VGS ) VGs Imported.  >> ${QEMAIL_RPT}
+
+print End Export Import VG function. $(date); print
+}

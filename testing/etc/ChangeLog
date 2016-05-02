@@ -1,0 +1,67 @@
+##################################################### 
+ Mon Jul 29 15:11:46 EDT 2002
+ root changed:
+ 	 Files Changed: 	 	 	
+ 	/usr/local/bin/bcvscripts/testing/BIN
+ 		BCV-Est.sh
+ 	/usr/local/bin/bcvscripts/testing/LIB
+ 		Check_LVM_Errors Clean_Up Command_Options
+
+ 	 Changes:
+ 	 Added the -I option to make the script interactive.
+
+##################################################### 
+ Mon Jul 29 15:13:14 EDT 2002
+ root changed:
+ 	 Files Changed: 	 	
+ 	/usr/local/bin/bcvscripts/testing/LIB
+ 		Check_LVM_Errors
+
+ 	 Changes:
+ 	 Added more detail to Check_LVM_Errors output in the detailed log file.
+
+##################################################### 
+ Mon Jul 29 15:30:25 EDT 2002
+ root changed:
+ 	 Files Changed: 	 
+
+ 	 Changes:
+ 	 
+ 	 Added files to be archived in the Clean-Up function.
+
+##################################################### 
+ Mon Jul 29 15:38:33 EDT 2002
+ root changed:
+ 	 Files Changed: 	 	
+ 	/usr/local/bin/bcvscripts/testing/LIB
+ 		Command_Options Check_LVM_Errors
+
+ 	 Changes:
+ 	 
+ 	 Added the -Z option to make everything sleep.
+
+##################################################### 
+ Mon Jul 29 15:46:15 EDT 2002
+ root changed:
+ 	 Files Changed: 	 	 	
+ 	/usr/local/bin/bcvscripts/testing/BIN
+ 		BCV-Est.sh
+ 	/usr/local/bin/bcvscripts/testing/LIB
+ 		Clean_Up
+
+ 	 Changes:
+ 	 Major commands commented out.
+ 	 Added the -zz option to wake up.
+
+##################################################### 
+ Mon Jul 29 15:55:28 EDT 2002
+ root changed:
+ 	 Files Changed: 	 	
+ 	/usr/local/bin/bcvscripts/testing/LIB
+ 		Command_Options
+
+ 	 Changes:
+ 	 Major were commands commented out.
+ 		 Major command lines from the Main Script
+ 	 Changed teh way the config file is handled. Had the script create a run-time config file with all the comment and blank lines removed.
+

@@ -1,0 +1,107 @@
+Hot backup BEGIN process for  STARTED at Mon May 23 06:48:14 EDT 2005
+Making backup copy of CONTROL FILE
+
+SQL*Plus: Release 9.2.0.2.0 - Production on Mon May 23 06:48:14 2005
+
+Copyright (c) 1982, 2002, Oracle Corporation.  All rights reserved.
+
+
+Connected to:
+Oracle9i Enterprise Edition Release 9.2.0.2.0 - 64bit Production
+With the Partitioning, OLAP and Oracle Data Mining options
+JServer Release 9.2.0.2.0 - Production
+
+SQL> 
+Database altered.
+
+SQL> 
+System altered.
+
+SQL> Database log mode	       Archive Mode
+Automatic archival	       Enabled
+Archive destination	       /u24/orachive/hrprod/
+Oldest online log sequence     293337
+Next log sequence to archive   293343
+Current log sequence	       293344
+SQL> Disconnected from Oracle9i Enterprise Edition Release 9.2.0.2.0 - 64bit Production
+With the Partitioning, OLAP and Oracle Data Mining options
+JServer Release 9.2.0.2.0 - Production
+Creating a list of tablespaces.
+alter tablespace AMAPP begin backup;
+alter tablespace BDAPP begin backup;
+alter tablespace BNAPP begin backup;
+alter tablespace BNLARGE begin backup;
+alter tablespace COAPP begin backup;
+alter tablespace CUAUDIT begin backup;
+alter tablespace CULARG1 begin backup;
+alter tablespace CULARG2 begin backup;
+alter tablespace CULARG3 begin backup;
+alter tablespace CULARGE begin backup;
+alter tablespace DIAPP begin backup;
+alter tablespace EOAPP begin backup;
+alter tablespace EOLARGE begin backup;
+alter tablespace ERAPP begin backup;
+alter tablespace FGAPP begin backup;
+alter tablespace FSAPP begin backup;
+alter tablespace GI begin backup;
+alter tablespace GIAPP begin backup;
+alter tablespace GLAPP begin backup;
+alter tablespace GPAPP begin backup;
+alter tablespace GPDEAPP begin backup;
+alter tablespace HPAPP begin backup;
+alter tablespace HRAPP begin backup;
+alter tablespace HRAPP1 begin backup;
+alter tablespace HRAPP2 begin backup;
+alter tablespace HRAPP3 begin backup;
+alter tablespace HRAPP4 begin backup;
+alter tablespace HRAPP5 begin backup;
+alter tablespace HRAPP6 begin backup;
+alter tablespace HRLARGE begin backup;
+alter tablespace HRWORK begin backup;
+alter tablespace HTAPP begin backup;
+alter tablespace INAPP begin backup;
+alter tablespace PAAPP begin backup;
+alter tablespace PALARGE begin backup;
+alter tablespace PCAPP begin backup;
+alter tablespace PCLARGE begin backup;
+alter tablespace PIAPP begin backup;
+alter tablespace PILARGE begin backup;
+alter tablespace PIWORK begin backup;
+alter tablespace POAPP begin backup;
+alter tablespace PRECISE_INDEX_TBS begin backup;
+alter tablespace PRECISE_TBS begin backup;
+alter tablespace PSDEFAULT begin backup;
+alter tablespace PSHRMS begin backup;
+alter tablespace PSIMAGE begin backup;
+alter tablespace PSIMGR begin backup;
+alter tablespace PSINDEX begin backup;
+alter tablespace PSWORK begin backup;
+alter tablespace PTAMSG begin backup;
+alter tablespace PTAPP begin backup;
+alter tablespace PTAPPE begin backup;
+alter tablespace PTAUDIT begin backup;
+alter tablespace PTCMSTAR begin backup;
+alter tablespace PTLOCK begin backup;
+alter tablespace PTPRC begin backup;
+alter tablespace PTPRJWK begin backup;
+alter tablespace PTRPTS begin backup;
+alter tablespace PTTBL begin backup;
+alter tablespace PTTLRG begin backup;
+alter tablespace PTTREE begin backup;
+alter tablespace PTWORK begin backup;
+alter tablespace PVAPP begin backup;
+alter tablespace PYAPP begin backup;
+alter tablespace PYLARGE begin backup;
+alter tablespace PYWORK begin backup;
+alter tablespace STAPP begin backup;
+alter tablespace STLARGE begin backup;
+alter tablespace STWORK begin backup;
+alter tablespace SYSTEM begin backup;
+alter tablespace TLAPP begin backup;
+alter tablespace TLLARGE begin backup;
+alter tablespace TLWORK begin backup;
+alter tablespace TOOLS begin backup;
+alter tablespace UNDOTBS1 begin backup;
+alter tablespace USERS begin backup;
+alter tablespace WAAPP begin backup;
+Hot backup BEGIN process for hrprod COMPLETED at Mon May 23 06:48:20 EDT 2005

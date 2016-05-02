@@ -1,0 +1,36 @@
+Hot backup BEGIN process for  STARTED at Mon May 23 06:48:22 EDT 2005
+Making backup copy of CONTROL FILE
+
+SQL*Plus: Release 9.2.0.2.0 - Production on Mon May 23 06:48:22 2005
+
+Copyright (c) 1982, 2002, Oracle Corporation.  All rights reserved.
+
+
+Connected to:
+Oracle9i Enterprise Edition Release 9.2.0.2.0 - 64bit Production
+With the Partitioning, OLAP and Oracle Data Mining options
+JServer Release 9.2.0.2.0 - Production
+
+SQL> 
+Database altered.
+
+SQL> 
+System altered.
+
+SQL> Database log mode	       Archive Mode
+Automatic archival	       Enabled
+Archive destination	       /u21/orachive/prgprod/
+Oldest online log sequence     3538
+Next log sequence to archive   3541
+Current log sequence	       3542
+SQL> Disconnected from Oracle9i Enterprise Edition Release 9.2.0.2.0 - 64bit Production
+With the Partitioning, OLAP and Oracle Data Mining options
+JServer Release 9.2.0.2.0 - Production
+Creating a list of tablespaces.
+alter tablespace ASSET begin backup;
+alter tablespace RBS begin backup;
+alter tablespace SYSTEM begin backup;
+alter tablespace TEMP begin backup;
+alter tablespace TOOLS begin backup;
+alter tablespace USERS begin backup;
+Hot backup BEGIN process for prgprod COMPLETED at Mon May 23 06:48:23 EDT 2005

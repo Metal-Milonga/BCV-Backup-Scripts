@@ -1,0 +1,70 @@
+Clean_Up() {
+#
+# Function - Clean_Up
+# Version - 1.02
+# Author - David Holton
+# Date - April 19,2002
+#
+# Description - Tars up (and gzips) the log files, temp files, and etc files
+#		related to the server for which the script was run.  It puts
+#		the files in the /usr/local/bin/bcvscripts/Backup directory.
+#
+################################################################################
+# Modification History
+#
+# Date Who What
+# -------- ------------ --------------------------------------------------------
+# 05/06/02 Dave Holton	Changed the tar function to use the -C option which lets
+#			tar change to a directory before grapping files.  With
+#			this it can tar the files using relative pathnames
+#			instead of absolute pathnames.
+# 05/24/02 Dave Holton	The function was not finding the files to add to the tar
+#			archive. The change to use the -C option stopped working
+#			for some reason. I had to remove the -C options and do
+#			a cd to the directory.  The first tar uses -c to create
+#			the tarfile, and the rest use -r to append to the tar
+#			file.  It's not as neat and clean, but it works.
+# 07/26/02 Dave Holton	Changed the date format for the tar file name. It was
+#			not sorting in a way that was easy to read.  Changed it
+#			from 26Jul02 to 020726.  This should sort a lot better.
+#
+################################################################################
+print Start Clean Up Function $(date)
+print "#"
+
+#TARFILE="${BKUPDIR}/${SERVER}-Est-$(date "+%d%b%y-%H:%M:%S").tar"
+TARFILE="${BKUPDIR}/${SERVER}-Est-$(date "+%y%m%d-%H:%M:%S").tar"
+
+#print BCVLOGDIR is ${BCVLOGDIR}
+#cd ${BCVLOGDIR}
+#ll ./${SERVER}*
+
+#print BCVTMPDIR is ${BCVTMPDIR}
+#cd ${BCVTMPDIR}
+#ll ./${SERVER}*
+#ll ./*FS.OB
+
+#print BCVETCDIR is ${BCVETCDIR}
+#cd ${BCVETCDIR}
+#ll ./bcv*
+
+BUILD_TARFILE() {
+
+cd ${BCVLOGDIR}
+${BINDIR}/tar cvf ${TARFILE} ./${SERVER}*
+
+cd ${BCVTMPDIR}
+${BINDIR}/tar rvf ${TARFILE} ./${SERVER}* ./*FS.OB
+
+cd ${BCVETCDIR}
+${BINDIR}/tar rvf ${TARFILE} ./bcv*
+
+${CNTRBDIR}/gzip ${TARFILE}
+}
+
+BUILD_TARFILE
+
+print "#"
+print End Clean Up Function $(date); print
+
+}

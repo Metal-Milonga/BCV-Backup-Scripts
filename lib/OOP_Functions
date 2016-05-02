@@ -1,0 +1,248 @@
+OOP_Functions(){
+#
+# Function - OOP_Functions
+# Version - 1.00
+# Author - David Holton
+# Date - April 19, 2002
+#
+# Description - This function loads several smaller functions as executable
+#		objects (or Methods) in the script's environment. These
+#		objects can then be called from any of the other functions
+#		during execution, and the objects will return their output
+#		to the function that called them.
+#
+#		This effectively puts Object Oriented Programming to work
+#		in the script
+#
+###############################################################################
+# Modification history
+# Date     Who          What was modified.
+# -------- ------------ ------------------
+#
+###############################################################################
+#set -n
+#set -x
+#
+# Methods
+#
+# 10 ${SERVER}_Verify_Full_VGs()
+# 11 ${SERVER}_GET_ALL_VGS()
+# 12 ${SERVER}_Total_VGs()
+# 13 ${SERVER}_Xact_VGs()
+# 14 ${SERVER}_Total_Xact_VGs()
+#
+# 20 ${SERVER}_Full_Verify_VGs()
+# 21 ${SERVER}_GET_ALL_DGs()
+# 22 ${SERVER}_Total_DGs()
+# 23 ${SERVER}_Norm_DGs()
+# 24 ${SERVER}_Total_Norm_DGs()
+# 25 ${SERVER}_Xact_DGs()
+# 26 ${SERVER}_Total_Xact_DGs()
+
+print Start OOP Loading Function. $(date)
+print "#"
+
+#set > ${BCVTMPDIR}/set.out
+
+####10
+eval "${SERVER}_Verify_Full_VGs() {
+##
+## This section is for proof of concept that I can do it, and as a reference to
+## use when I need to cycle through various VGs and DGs to work with them.
+
+#This is to play with some variables and see if I can combine them in OOP.
+print The number of Normal elements is \${#SRVR_VGS[*]}
+print The number of XACT elements is \${#SRVR_VGS_XACT[*]}
+ALLVGS=\$((\${#SRVR_VGS[*]} + \${#SRVR_VGS_XACT[*]}))
+print Total VGS from Normal and Xact settings is: \${ALLVGS}
+
+${SERVER}_ALL_VGS=\${SRVR_VGS[*]}
+echo ${SERVER}_ALL_VGS is \$${SERVER}_ALL_VGS
+
+${SERVER}_ALL_VGS_XACT=\${SRVR_VGS_XACT[*]}
+echo ${SERVER}_ALL_VGS_XACT is \$${SERVER}_ALL_VGS_XACT
+
+echo ALL VGs from each group are: \$${SERVER}_ALL_VGS \$${SERVER}_ALL_VGS_XACT
+
+for VGS in \$${SERVER}_ALL_VGS \$${SERVER}_ALL_VGS_XACT
+do
+	print "#"
+	echo \${VGS}
+	grep \${VGS} /etc/fstab
+	FSTAB_XTRACT=\$(grep \${VGS} /etc/fstab | sed \"s/  */:/g\" | cut -d":" -f1,2)
+
+#	print VG is \${VGS}
+#	FS=\$(grep \${VGS} /etc/fstab | sed \"s/  */:/g\" | cut -d":" -f2)
+#	print FS is \${FS}
+
+	VG=\${FSTAB_XTRACT%/lvol1:*}
+	VG_LVOL=\${FSTAB_XTRACT%:*}
+	VG_RLVOL=\${FSTAB_XTRACT%lvol1:*}rlvol1
+	FILESYS=\${FSTAB_XTRACT#*:}
+
+cat << END_OF_TEXT
+
+	FSTAB_XTRACT is \${FSTAB_XTRACT}
+	VG is \${VG}
+	VG_LVOL is \${VG_LVOL}
+	VG_RLVOL is \${VG_RLVOL}
+	FILESYSTEM is \${FILESYS}
+
+END_OF_TEXT
+
+done
+
+#set > ${BCVTMPDIR}/${SERVER}-set.out
+print "#"
+}"
+
+####11
+eval "${SERVER}_GET_ALL_VGS() {
+	#######This is to play with some variables and see if I can combine them in OOP.
+	#######
+	####### DON'T LEAVE THESE LINES UNCOMMENTED.  IT WILL KILL THE SCRIPT!!!!
+	#######
+	####### ONLY THE TWO LINES THAT START WITH ${SERVER} SHOULD BE UNCOMMENTED,
+	####### AS WELL AS THE LAST ECHO LINE.
+	#######
+	#######print The number of Normal elements is \${#SRVR_VGS[*]}
+	#######print The number of XACT elements is \${#SRVR_VGS_XACT[*]}
+	#######ALLVGS=\$((\${#SRVR_VGS[*]} + \${#SRVR_VGS_XACT[*]}))
+	#######print Total VGS from Normal and Xact settings is: \${ALLVGS}
+	#######
+	###
+	### The following line should be uncommented.
+	${SERVER}_ALL_VGS=\${SRVR_VGS[*]}
+	#######echo ${SERVER}_ALL_VGS is \$${SERVER}_ALL_VGS
+	#######
+	###
+	### The following line should be uncommented.
+	${SERVER}_ALL_VGS_XACT=\${SRVR_VGS_XACT[*]}
+	#######echo ${SERVER}_ALL_VGS_XACT is \$${SERVER}_ALL_VGS_XACT
+	#######
+	#######echo ALL VGs from each group are: \$${SERVER}_ALL_VGS \$${SERVER}_ALL_VGS_XACT
+	###
+	### The following line should be uncommented.
+	echo \$${SERVER}_ALL_VGS \$${SERVER}_ALL_VGS_XACT
+}"
+
+####12
+eval "${SERVER}_Total_VGs() {
+	#${SERVER}_ALL_VGS=\${#SRVR_VGS[*]}
+	#${SERVER}_ALL_VGS_XACT=\${#SRVR_VGS_XACT[*]}
+	eval "${SERVER}_TOTAL_VGS=$(( ${#SRVR_VGS[*]} + ${#SRVR_VGS_XACT[*]} ))"
+	print \$${SERVER}_TOTAL_VGS
+}"
+
+####13
+eval "${SERVER}_Xact_VGS() {
+	#######This is to play with some variables and see if I can combine them in OOP.
+	#######
+	####### DON'T LEAVE THESE LINES UNCOMMENTED.  IT WILL KILL THE SCRIPT!!!!
+	#######
+	#######print The number of XACT elements is \${#SRVR_VGS_XACT[*]}
+	#######
+	${SERVER}_ALL_VGS_XACT=\${SRVR_VGS_XACT[*]}
+	#######echo ${SERVER}_ALL_VGS_XACT is \$${SERVER}_ALL_VGS_XACT
+	#######
+	echo \$${SERVER}_ALL_VGS_XACT
+}"
+
+####14
+eval "${SERVER}_Total_Xact_VGS() {
+	eval "${SERVER}_TOTAL_VGS=${#SRVR_VGS_XACT[*]}"
+	print \$${SERVER}_TOTAL_VGS
+}"
+
+### 20
+eval "${SERVER}_Full_Verify_DGs() {
+print "#"
+
+#This is to play with some variables and see if I can combine them in OOP.
+print The number of Normal DG elements is \${#SRVR_DGS[*]}
+print The number of XACT DG elements is \${#SRVR_DGS_XACT[*]}
+ALLDGS=\$((\${#SRVR_DGS[*]} + \${#SRVR_DGS_XACT[*]}))
+print Total DGs from Normal and Xact settings is: \${ALLDGS}
+
+${SERVER}_ALL_DGS=\${SRVR_DGS[*]}
+echo ${SERVER}_ALL_DGS is \$${SERVER}_ALL_DGS
+
+${SERVER}_ALL_DGS_XACT=\${SRVR_DGS_XACT[*]}
+echo ${SERVER}_ALL_DGS_XACT is \$${SERVER}_ALL_DGS_XACT
+
+echo ALL DGs from each group are: \$${SERVER}_ALL_DGS \$${SERVER}_ALL_DGS_XACT
+
+for DGS in \$${SERVER}_ALL_DGS \$${SERVER}_ALL_DGS_XACT
+do
+	print DG is set to \${DGS}
+done
+
+}"
+
+####21
+eval "${SERVER}_GET_ALL_DGS() {
+${SERVER}_ALL_DGS=\${SRVR_DGS[*]}
+${SERVER}_ALL_DGS_XACT=\${SRVR_DGS_XACT[*]}
+###### echo ALL DGs from each group are: \$${SERVER}_ALL_DGS \$${SERVER}_ALL_DGS_XACT
+echo \$${SERVER}_ALL_DGS \$${SERVER}_ALL_DGS_XACT
+
+}"
+
+####22
+eval "${SERVER}_Total_DGs() {
+	eval "${SERVER}_TOTAL_DGS=$(( ${#SRVR_DGS[*]} + ${#SRVR_DGS_XACT[*]} ))"
+	####### print Total DGs are: \$${SERVER}_TOTAL_DGS
+	print \$${SERVER}_TOTAL_DGS
+
+}"
+
+####23
+eval "${SERVER}_Norm_DGS() {
+	${SERVER}_ALL_DGS=\${SRVR_DGS[*]}
+	#####echo Normal DGs are: \$${SERVER}_ALL_DGS
+	echo \$${SERVER}_ALL_DGS
+
+}"
+
+####24
+eval "${SERVER}_Total_Norm_DGS() {
+	eval "${SERVER}_TOTAL_NORM_DGS=${#SRVR_DGS[*]}"
+	#####print Total Normal DGs are: \$${SERVER}_TOTAL_NORM_DGS
+	print \$${SERVER}_TOTAL_NORM_DGS
+}"
+
+####25
+eval "${SERVER}_Xact_DGS() {
+	#######print The number of XACT DG elements is \${#SRVR_DGS_XACT[*]}
+	#######
+	${SERVER}_ALL_DGS_XACT=\${SRVR_DGS_XACT[*]}
+	#######echo ${SERVER}_ALL_DGS_XACT is \$${SERVER}_ALL_DGS_XACT
+	#######
+	echo \$${SERVER}_ALL_DGS_XACT
+
+}"
+
+####26
+eval "${SERVER}_Total_Xact_DGS() {
+	eval "${SERVER}_TOTAL_DGS=${#SRVR_DGS_XACT[*]}"
+	print \$${SERVER}_TOTAL_DGS
+}"
+
+##${SERVER}_Verify_Full_VGs
+##${SERVER}_GET_ALL_VGS
+##${SERVER}_Total_VGs
+##${SERVER}_Xact_VGS
+##${SERVER}_Total_Xact_VGS
+
+##${SERVER}_Full_Verify_DGs
+##${SERVER}_GET_ALL_DGS
+##${SERVER}_Total_DGs
+##${SERVER}_Norm_DGS
+##${SERVER}_Total_Norm_DGS
+##${SERVER}_Xact_DGS
+##${SERVER}_Total_Xact_DGS
+
+print "#"
+print End OOP Loading Function. $(date); print
+
+}

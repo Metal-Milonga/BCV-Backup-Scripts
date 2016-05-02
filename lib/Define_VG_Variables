@@ -1,0 +1,42 @@
+Define_VG_Variables() {
+#
+# Function - Define_VG_Variables
+# Version - 1.01
+# Author - David Holton
+# Date - April 19, 2002
+#
+# Description - Used by all the functions that deal with volume groups and
+#		filesystems to define various elements of vgs and lvols.
+#
+###############################################################################
+# Modification history
+# Date     Who          What was modified.
+# -------- ------------ ------------------
+# 07/15/03 Dave Holton	Changed the code for the variables: MAPDIR, MAPFILE,
+#			and PVPATHFILE. Changed VOLGROUP to VG.  VOLGROUP was
+#			not getting the correct information for volume groups
+#			that have more than one lvol to deal with.
+#
+###############################################################################
+#set -n
+
+#
+#set -vn
+
+	#
+	## Take the variable VOLGROUP and use it to extract the VG's entry in the fstab file.
+	## We use that entry to create the rest of the variables needed to unmount the filesystem.
+	## I included all the variables we can build from the extract just too keep as a reference.
+	#
+	FSTAB_EXTRACT=$(grep ${VOLGROUP} /etc/fstab | sed "s/  */:/g" | cut -d":" -f1,2)
+	VG=${FSTAB_EXTRACT%/lvol?:*}
+	VGNAME=${VG##/dev/}
+	LVOL_NUM=${FSTAB_EXTRACT%/lvol?:*}
+	VG_LVOL=${FSTAB_EXTRACT%:*}					# First half or FSTAB_EXTRACT to reference the lvol.
+	VG_RLVOL=$(echo ${FSTAB_EXTRACT%:*} | sed "s/lvol/rlvol/")	# First half or the FSTAB_EXTRACT replacing lvol1 with rlvol
+	FILESYSTEM=${FSTAB_EXTRACT#*:}					# Last half of the FSTAB_EXTRACT to reference the file system.
+	MAPDIR=${ROOTDSKDIR}/${VGNAME}
+	MAPFILE=${MAPDIR}/${VGNAME}.map
+	PVPATHFILE=${MAPDIR}/${VGNAME}.pvpath
+	GROUPFILE=${VG}/group
+}

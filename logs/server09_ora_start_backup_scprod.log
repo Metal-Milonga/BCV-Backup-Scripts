@@ -1,0 +1,60 @@
+Hot backup BEGIN process for  STARTED at Mon May 23 06:48:20 EDT 2005
+Making backup copy of CONTROL FILE
+
+SQL*Plus: Release 9.2.0.2.0 - Production on Mon May 23 06:48:20 2005
+
+Copyright (c) 1982, 2002, Oracle Corporation.  All rights reserved.
+
+
+Connected to:
+Oracle9i Enterprise Edition Release 9.2.0.2.0 - 64bit Production
+With the Partitioning, OLAP and Oracle Data Mining options
+JServer Release 9.2.0.2.0 - Production
+
+SQL> 
+Database altered.
+
+SQL> 
+System altered.
+
+SQL> Database log mode	       Archive Mode
+Automatic archival	       Enabled
+Archive destination	       /u23/orachive/scprod/
+Oldest online log sequence     1966
+Next log sequence to archive   1972
+Current log sequence	       1973
+SQL> Disconnected from Oracle9i Enterprise Edition Release 9.2.0.2.0 - 64bit Production
+With the Partitioning, OLAP and Oracle Data Mining options
+JServer Release 9.2.0.2.0 - Production
+Creating a list of tablespaces.
+alter tablespace BNAPP begin backup;
+alter tablespace FSAPP begin backup;
+alter tablespace GIAPP begin backup;
+alter tablespace GLAPP begin backup;
+alter tablespace HRAPP begin backup;
+alter tablespace HTAPP begin backup;
+alter tablespace INAPP begin backup;
+alter tablespace OMAPP begin backup;
+alter tablespace PSDEFAULT begin backup;
+alter tablespace PSIMAGE begin backup;
+alter tablespace PSIMGR begin backup;
+alter tablespace PSINDEX begin backup;
+alter tablespace PSWORK begin backup;
+alter tablespace PTAMSG begin backup;
+alter tablespace PTAPP begin backup;
+alter tablespace PTAPPE begin backup;
+alter tablespace PTAUDIT begin backup;
+alter tablespace PTCMSTAR begin backup;
+alter tablespace PTLOCK begin backup;
+alter tablespace PTPRC begin backup;
+alter tablespace PTPRJWK begin backup;
+alter tablespace PTRPTS begin backup;
+alter tablespace PTTBL begin backup;
+alter tablespace PTTLRG begin backup;
+alter tablespace PTTREE begin backup;
+alter tablespace PTWORK begin backup;
+alter tablespace PY0LRG begin backup;
+alter tablespace PYAPP begin backup;
+alter tablespace SYSTEM begin backup;
+alter tablespace UNDOTBS begin backup;
+Hot backup BEGIN process for scprod COMPLETED at Mon May 23 06:48:22 EDT 2005

@@ -1,0 +1,148 @@
+Pull_Oracle_Logs() {
+#
+# Function - Pull_Oracle_Logs
+# Version - 2.00
+# Author - David A. Holton
+# Date - April 19, 2002
+#
+# Description - Gets a remsh ll output from the server to see the size and
+#		runtime of the logs.  Then copies the logs over to server19,
+#		and checks for any errors.
+#
+################################################################################
+# Modification History
+# 
+# Date     Who		What
+# -------- ------------	------------------------------------------------
+# 04/27/02 Dave Holton	server16 was hardcoded in the function as the
+#			server from which to pull the Oracle start/stop
+#			logs.  Changed to the SERVER variable.
+# 04/27/02 Dave Holton  Removed the Notify Final from the test to see if
+#			the logs contain errors. I don't want to exit the
+#			script since it is almost finished by this point.
+# 07/09/02 Dave Holton	Changed the output to the email report to only report
+#			whether and error was found or not.
+# 01/09/03 Dave Holton	The Variable that holds any errors found in the Oracle
+#			start hot backup log file:
+#						$ORACLE_START_RPT
+#			was not the same name when I went to evaluate it to see
+#			if it contained any errors. Therefore, any errors found
+#			were never reported.
+# 05/21/03 David Holton	Added Notification for the DBAs.
+# 08/20/04 David Holton	server09 saves a separate log file for each instance
+#			their script effects.  Put in code to pull all the files
+#			if the SERVER variable equals server09.
+# 08/24/04 david holton	the code to pull all the files did not work.  reworked
+#			the code from scratch. put in array of log files, and 
+#			cycle through the array to pull each file.  Done for both
+#			start and stop log files.
+# 08/25/04 david holton	Tweeking the changes made on 8/24. Small bugs in the works.
+#
+################################################################################
+#set -n
+
+print Starting the Pull Oracle Logs Function. $(date)
+print "" >> ${EMAIL_RPT}
+
+print The log files as they appear on ${SERVER}
+
+## remsh to the server and execute ll on the start and stop log.
+## Save the output in the variables.
+REMOTE_START_LOG=$(remsh ${SERVER} "ll ${REMOTE_ORA_LOGDIR}/${ORA_START_HB}" | sed "s/  */ /g")
+REMOTE_STOP_LOG=$(remsh ${SERVER} "ll ${REMOTE_ORA_LOGDIR}/${ORA_STOP_HB}" | sed "s/  */ /g")
+
+## print the variables. Probably could have just stuck the output where the variables are,
+## but I thought I was going to do something with them so I saved them. Anyway it works so
+## I am not going to fix it....yet.
+print REMOTE_START_LOG: ${REMOTE_START_LOG}
+print REMOTE_STOP_LOG: ${REMOTE_STOP_LOG}
+
+## sleep 5 seconds using the Time_Counter function. It produces visible output if
+## manual monitoring is turned on ( the -M option ).
+Time_Counter 5
+
+## Grab the Start log from the remote server
+print Pulling and Checking Oracle Start log
+##print REMOTE_START_LOG: ${REMOTE_START_LOG} >> ${EMAIL_RPT}
+
+## Now pull the logs over and save them in our logs directory.
+#
+if [[ ${SERVER} = 'server09' ]]
+then
+	set -A HBM_START_LOG_ARRAY $(remsh server09 "ls /home/oracle/logs/ora_start_backup_*.log")
+
+	for SRVR09_HBM_START_LOG in ${HBM_START_LOG_ARRAY[*]}
+	do
+		rcp ${SERVER}:${SRVR09_HBM_START_LOG} ${BCVLOGDIR}/${SERVER}_${SRVR09_HBM_START_LOG}
+	done
+else
+	rcp ${SERVER}:${REMOTE_ORA_LOGDIR}/${ORA_START_HB} ${BCVLOGDIR}/${SERVER}_${ORA_START_HB}
+fi
+Time_Counter 5
+
+## print the output of ll in our logs dir. That way we can compare them.
+print $(ll ${BCVLOGDIR}/${SERVER}_${ORA_START_HB} | sed "s/  */ /g" | cut -d" " -f5-)
+
+## Looking for an error in the log file. Save the output as a variable.
+ORACLE_START_RPT=$(grep "ORA-" ${BCVLOGDIR}/${SERVER}_${ORA_START_HB} | sort | uniq)
+
+## Test the variables. If it has a value, simply report that an error was found.
+## Otherwise, report that the log contained no errors.
+if [[ -n ${ORACLE_START_RPT} ]]
+then
+	print Error found in the Oracle Start Hot Backup Mode Log file
+	print Error found in the Oracle Start Hot Backup Mode Log file >> ${EMAIL_RPT}
+	print ORACLE_START_RPT is: ${ORACLE_START_RPT}
+	print ${ORACLE_START_RPT} >> ${ERROR_RPT}
+	Notify Error
+	Notify DBA
+else
+	print Oracle Start Hot Backup Mode Log file checks okay.
+	print Oracle Start Hot Backup Mode Log file checks okay. >> ${EMAIL_RPT}
+fi
+
+print "#"
+
+## Grab the Stop log from the remote server
+print Pulling and Checking Oracle Stop Log
+##print REMOTE_STOP_LOG: ${REMOTE_STOP_LOG} >> ${EMAIL_RPT}
+
+## print the output of ll in our logs dir. That way we can compare them.
+if [[ ${SERVER} = 'server09' ]]
+then
+	set -A HBM_STOP_LOG_ARRAY $(remsh server09 "ls /home/oracle/logs/ora_stop_backup_*.log")
+
+	for SRVR09_HBM_STOP_LOG in ${HBM_STOP_LOG_ARRAY[*]}
+	do
+		rcp ${SERVER}:${SRVR09_HBM_STOP_LOG} ${BCVLOGDIR}/${SERVER}_${SRVR09_HBM_STOP_LOG}
+	done
+else
+	rcp ${SERVER}:${REMOTE_ORA_LOGDIR}/${ORA_STOP_HB} ${BCVLOGDIR}/${SERVER}_${ORA_STOP_HB}
+fi
+Time_Counter 5
+print $(ll ${BCVLOGDIR}/${SERVER}_${ORA_STOP_HB} | sed "s/  */ /g" | cut -d" " -f5-)
+
+## Looking for an error in the log file. Save the output as a variable.
+ORACLE_STOP_RPT=$(grep "ORA-" ${BCVLOGDIR}/${SERVER}_${ORA_STOP_HB} | sort | uniq)
+
+## Test the variables. If it has a value, simply report that an error was found.
+## Otherwise, report that the log contained no errors.
+if [[ -n ${ORACLE_STOP_RPT} ]]
+then
+	print Error found in the Oracle Stop Hot Backup Mode Log file
+	print Error found in the Oracle Stop Hot Backup Mode Log file >> ${EMAIL_RPT}
+	print Error found in the Oracle Stop Hot Backup Mode Log file >> ${QEMAIL_RPT}
+	print ORACLE_STOP_RPT is: ${ORACLE_STOP_RPT}
+	print ${ORACLE_STOP_RPT} >> ${ERROR_RPT}
+	Notify Error
+	Notify DBA
+else
+	print Oracle Stop Hot Backup Mode Log file checks okay.
+	print Oracle Stop Hot Backup Mode Log file checks okay.  >> ${EMAIL_RPT}
+	print Oracle Stop Hot Backup Mode Log file checks okay.  >> ${QEMAIL_RPT}
+fi
+
+print "#"
+
+print End Pull Oracle Logs Function. $(date); print
+}

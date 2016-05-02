@@ -1,0 +1,77 @@
+#!/usr/bin/ksh
+#Oracle_Prep() {
+#
+# Function - Oracle_Prep
+# Version - V1.00
+# Author - David Holton
+# Date - December 4, 2003
+#
+# Description - This function will check that the Oracle Hot Backup mode
+#		scripts are in place before the script starts doing any
+#		real work.  If they are not there, it will attempt to 
+#		rebuild the structure it needs when it is time to start
+#		and stop Hot Backup mode.
+#
+###############################################################################
+# Modification history
+# Date     Who          What was modified.
+# -------- ------------ ------------------
+#
+###############################################################################
+#set -n
+
+print Start Oracle Prep Function. $(date); print
+
+SERVER=$1
+print SERVER is: ${SERVER}
+SERVER_CUNAME=${SERVER#*1}
+print SERVER_CUNAME is ${SERVER_CUNAME}
+
+BCVDIR=/usr/local/bin/bcvscripts
+
+HBMDIR_ARCHIVE=${BCVDIR}/HBM.archive
+
+#RMTHBMDIR=$(remsh ${SERVER} "ll -d /usr/local/bin/HBM" 2>/dev/null)
+RMTHBMDIR=$(remsh ${SERVER} "ll -d /usr/local/bin/HBM_Test" 2>/dev/null)
+print RMTHBMDIR is: ${RMTHBMDIR}
+
+set -A HBM_FILES $(remsh $SERVER "ls -d /usr/local/bin/HBM_Test/cu*" 2>/dev/null)
+print HBM Files are: ${HBM_FILES[*]}
+
+ARCH_FILES="${HBMDIR_ARCHIVE}/${SERVER}/${SERVER_CUNAME}*"
+print Archive files are: ${ARCH_FILES}
+
+print ""
+
+COPY_HOT_MODE_FILES() {
+	for FILE in ${ARCH_FILES}
+	do
+		print "I'm moving this file to ${SERVER}: ${FILE}"
+		rcp $FILE ${SERVER}:/usr/local/bin/HBM_Test
+	done
+}
+
+CHECK_FOR_HBM_DIR() {
+if [ -n "$RMTHBMDIR" ]
+then
+	print HBM dir exists.
+	if [ ! "$HBM_FILES" ]
+	then
+		print Hot Backup mode files do not exist
+		COPY_HOT_MODE_FILES
+	else
+		print Files are there.
+	fi
+else
+	print HBM dir does NOT exist.
+	print Creating ${SERVER}:${RMTHBMDIR}
+	remsh ${SERVER} mkdir /usr/local/bin/HBM_Test
+	COPY_HOT_MODE_FILES
+fi
+}
+
+#CHECK_FOR_HBM_DIR
+
+print ""
+print End Oracle Prep Function. $(date); print
+#}

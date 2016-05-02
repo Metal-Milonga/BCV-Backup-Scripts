@@ -1,0 +1,142 @@
+Activate_VolumeGroups(){
+#
+# Function - Activate VolumeGroups
+# Version - 1.3
+# Author - David Holton
+# Date - April 19, 2002
+#
+# Description - This function activates (vgchange) the volume groups after the
+#		BCVs have been Established and Split.
+#
+###############################################################################
+# Modification history
+# Date     Who          What was modified.
+# -------- ------------ ------------------
+# 07/09/02 Dave Holton	Commented out lines about individual VG being activated
+#			from going to the email report.
+#			Also, added a counter element to count the VGs as they
+#			are activated to report the number activated compared
+#			to the total number to be activated.
+# 07/10/02 Dave Holton	The message to the email report listed the individual
+#			VGs instead of the total number of VGs. Changed to read
+#			correctly.
+# 11/27/02 Dave Holton	Made the functions Define_VG_Variables and 
+#			What_Are_The_Variables into external functions.
+#
+###############################################################################
+#set -n
+
+print Start Activate VolumeGroups function. $(date)
+print Volume Groups to ACTivate: $(${SERVER}_Total_VGs)
+print "#"
+print >> ${EMAIL_RPT}
+print Volume Groups to ACTivate: $(${SERVER}_Total_VGs) >> ${EMAIL_RPT}
+
+#####for VG in $( ${SERVER}_GET_ALL_VGS )
+#####do
+#####	print VG from OOP Function is: $VG
+#####done
+
+VGS_ACTIVE=0
+
+for VOLGROUP in $( ${SERVER}_GET_ALL_VGS )
+do
+        #Define_VG_Variables(){
+        #FSTAB_EXTRACT=$(grep ${VOLGROUP} /etc/fstab | sed "s/  */:/g" | cut -d":" -f1,2)
+        #VG=${FSTAB_EXTRACT%/lvol1:*}		# Takes the Volume Group from the first half of the FSTAB_EXTRACT
+        #VG_LVOL=${FSTAB_EXTRACT%:*}             # First half of FSTAB_EXTRACT to reference the lvol.
+        #VG_RLVOL=${FSTAB_EXTRACT%lvol1:*}rlvol1 # First half of the FSTAB_EXTRACT replacing lvol1 with rlvol1
+        #FILESYSTEM=${FSTAB_EXTRACT#*:}          # Last half of the FSTAB_EXTRACT to reference the file system.
+        #}
+#
+#	What_Are_The_Variables(){
+#	cat << END_OF_TEXT
+#
+#        FSTAB_EXTRACT is ${FSTAB_EXTRACT}
+#        VG is ${VG}
+#        VG_LVOL is ${VG_LVOL}
+#        VG_RLVOL is ${VG_RLVOL}
+#        FILESYSTEM is ${FILESYSTEM}
+#        FILESYSTEM is ${#FILESYSTEM} characters long
+#
+#END_OF_TEXT
+#	}
+
+	Activate_Em_Now(){
+
+	print Working on VG: ${VG}
+
+	# Get the output of mount -p and store in the MOUNT_CHK variable. If the
+	# filesystem is mounted the variable with have a value, otherwise it will
+	# be empty.
+	#
+	MOUNT_CHK=$(mount -p | grep ${VG} | sed "s/  */:/g" | cut -d":" -f2)
+        #print MOUNT_CHK is ${MOUNT_CHK}
+
+	if [[ -n ${MOUNT_CHK} ]]
+	then
+		# If the variable, MOUNT_CHK, had a value the filesystem is already mounted, so it must
+		# therefore, already be activated.  So just print messages to that effect and go to the
+		# next one.
+		#
+		print Filesystem ${FILESYSTEM} is already mounted. Moving on to the next FileSystem.; print
+		##print Filesystem ${FILESYSTEM} already mounted. >> ${EMAIL_RPT}
+		return
+		print If the RETURN works correctly. You should not see this line.
+	else
+		# If the variable, MOUNT_CHK, was empty, then filesystem is not mounted and we can
+		# activate it.
+		#
+		print Activating ${VG}.
+
+		# Run VGChange on the volume group and send the output of the command to /dev/null
+		# Store the result of vgchange in the VG_ACTIVE_STAT variable.
+		#
+		vgchange -a y ${VG} >> /dev/null 2>&1
+		VG_ACTIVE_STAT=${?}
+			#print VG_ACTIVE_STAT equals ${VG_ACTIVE_STAT}
+
+		# If the vgchange command was successful, we should get an exit status of 0 from
+		# vgdisplay.  Send vgdisplay's output to /dev/null, but store the exit status in
+		# the VG_ACTIVE_STAT2 variable
+		# This is to double check the vgchange worked correctly.
+		#
+		vgdisplay ${VG} >> /dev/null 2>&1
+		VG_ACTIVE_STAT2=${?}
+			#print VG_ACTIVE_STAT2 equals ${VG_ACTIVE_STAT2}
+
+		# If both conditions are met below, the volume group was successfully
+		# activated and can have FSCK run against the rlvols
+		# Print both to the log and the email report.
+		#
+		if [[ ${VG_ACTIVE_STAT} -eq 0 && ${VG_ACTIVE_STAT2} -eq 0 ]]
+		then
+			print VG ${VG} was successfully activated.
+			##print VG ${VG} was successfully activated. >> ${EMAIL_RPT}
+			print "#"
+			((VGS_ACTIVE+=1))
+		else
+			print VG ${VG} was NOT activated!.
+			print VG ${VG} was NOT activated!. >> ${ERROR_RPT}
+			print VG ${VG} was NOT activated!. >> ${EMAIL_RPT}
+			print "#"
+			LVM_ERRORS=$(( ${LVM_ERRORS} + 1 ))
+			return
+			print Second line you should not see.  >> ${ERROR_RPT}
+		fi
+	fi
+	}
+
+	Define_VG_Variables
+	What_Are_The_Variables
+	Activate_Em_Now
+
+done
+
+print "#"
+print ${VGS_ACTIVE} of $(${SERVER}_Total_VGs) VGs Activated.
+print ${VGS_ACTIVE} of $(${SERVER}_Total_VGs) VGs Activated. >> ${EMAIL_RPT}
+print ${VGS_ACTIVE} of $(${SERVER}_Total_VGs) VGs Activated. >> ${QEMAIL_RPT}
+
+print End Activate VolumeGroups function. $(date); print
+}

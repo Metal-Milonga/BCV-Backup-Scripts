@@ -1,0 +1,57 @@
+#!/usr/bin/ksh
+
+while getopts ":MFS:X:" opt
+do
+	case $opt in
+		M )	MAN_MONITOR=yes
+			print Manual Monitoring is set to ${MAN_MONITOR}
+			;;
+		F )	EST_TYPE=full
+			print Establish Type is set to -${EST_TYPE}
+			;;
+		S )	SERVER=${OPTARG}
+			print SERVER equals ${SERVER}
+			;;
+		X )	XACT_EST=YESS
+			##XDG_GROUP=${OPTARG}
+			print XACT_EST equals ${XACT_EST}
+			set -A XDG_ARRAY ${OPTARG}
+			#print "XDG_ARRAY 0 contains: ${XDG_ARRAY[0]}"
+			#print "XDG_ARRAY 1 contains: ${XDG_ARRAY[1]}"
+			#print "XDG_ARRAY 2 contains: ${XDG_ARRAY[2]}"
+			;;
+		\? )	print 'usage: bob4 [-F] [-S ServerName]'
+			return 1
+	esac
+done
+
+shift $((${OPTIND} -1))
+#print OPTIND equals ${OPTIND}
+
+
+if [[ -n ${XACT_EST} ]]
+then
+	print EXact Establish type has been set: ${XACT_EST}
+
+	if [[ -n ${XDG_ARRAY} ]]
+	then
+		print XDG_ARRAY contains data.
+
+		XDG_ELEMENT=$(( ${#XDG_ARRAY[*]} - 1 ))
+		print Number of elements in XDG_ARRAY is ${#XDG_ARRAY[*]}
+		print XDG_ELEMENTs start counting at ${XDG_ELEMENT}
+	
+		until [[ ${XDG_ELEMENT} -lt 0 ]]
+		do
+			print DG_ARRAY Element ${XDG_ELEMENT} contains ${XDG_ARRAY[${XDG_ELEMENT}]}
+			(( XDG_ELEMENT-=1 ))
+		done
+
+	else
+		print XDG_ARRAY DOES NOT contain data.
+	fi
+	
+else
+	XACT_EST=NO
+	print EXact Establish tyep has NOT been set: ${XACT_EST}
+fi

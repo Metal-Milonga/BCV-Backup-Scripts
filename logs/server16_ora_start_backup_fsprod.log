@@ -1,0 +1,161 @@
+Hot backup BEGIN process for  STARTED at Mon May 23 06:24:27 EDT 2005
+Making backup copy of CONTROL FILE
+
+SQL*Plus: Release 9.2.0.2.0 - Production on Mon May 23 06:24:27 2005
+
+Copyright (c) 1982, 2002, Oracle Corporation.  All rights reserved.
+
+
+Connected to:
+Oracle9i Enterprise Edition Release 9.2.0.2.0 - 64bit Production
+With the Partitioning, OLAP and Oracle Data Mining options
+JServer Release 9.2.0.2.0 - Production
+
+SQL> 
+Database altered.
+
+SQL> 
+System altered.
+
+SQL> Database log mode	       Archive Mode
+Automatic archival	       Enabled
+Archive destination	       /u20/orachive/fsprod
+Oldest online log sequence     26464
+Next log sequence to archive   26470
+Current log sequence	       26471
+SQL> Disconnected from Oracle9i Enterprise Edition Release 9.2.0.2.0 - 64bit Production
+With the Partitioning, OLAP and Oracle Data Mining options
+JServer Release 9.2.0.2.0 - Production
+Creating a list of tablespaces.
+alter tablespace AMAPP begin backup;
+alter tablespace AMLARGE begin backup;
+alter tablespace AMWORK begin backup;
+alter tablespace APAPP begin backup;
+alter tablespace APLARGE begin backup;
+alter tablespace APWORK begin backup;
+alter tablespace ARAPP begin backup;
+alter tablespace ARLARGE begin backup;
+alter tablespace ARWORK begin backup;
+alter tablespace AUCAPP begin backup;
+alter tablespace BDAPP begin backup;
+alter tablespace BDLARGE begin backup;
+alter tablespace BIAPP begin backup;
+alter tablespace BILARGE begin backup;
+alter tablespace BIWORK begin backup;
+alter tablespace BNAPP begin backup;
+alter tablespace CAAPP begin backup;
+alter tablespace CAWORK begin backup;
+alter tablespace CPAPP begin backup;
+alter tablespace CUAUDIT begin backup;
+alter tablespace CULARG1 begin backup;
+alter tablespace CULARG2 begin backup;
+alter tablespace CULARG3 begin backup;
+alter tablespace CULARGE begin backup;
+alter tablespace DIAPP begin backup;
+alter tablespace DPAPP begin backup;
+alter tablespace DPLARGE begin backup;
+alter tablespace EOAPP begin backup;
+alter tablespace EOCMAPP begin backup;
+alter tablespace EOCMLRG begin backup;
+alter tablespace EOCMWRK begin backup;
+alter tablespace EOCUAPP begin backup;
+alter tablespace EOCULRG begin backup;
+alter tablespace EODITBL begin backup;
+alter tablespace EODSAPP begin backup;
+alter tablespace EODSLRG begin backup;
+alter tablespace EOECAPP begin backup;
+alter tablespace EOECLRG begin backup;
+alter tablespace EOECWRK begin backup;
+alter tablespace EOEIAPP begin backup;
+alter tablespace EOEILRG begin backup;
+alter tablespace EOEWAPP begin backup;
+alter tablespace EOEWLRG begin backup;
+alter tablespace EOEWWRK begin backup;
+alter tablespace EOIUAPP begin backup;
+alter tablespace EOIULRG begin backup;
+alter tablespace EOIUWRK begin backup;
+alter tablespace EOLARGE begin backup;
+alter tablespace EOTPAPP begin backup;
+alter tablespace EOTPLRG begin backup;
+alter tablespace EXAPP begin backup;
+alter tablespace EXLARGE begin backup;
+alter tablespace FAAPP begin backup;
+alter tablespace FALARGE begin backup;
+alter tablespace FAWORK begin backup;
+alter tablespace FIAPP begin backup;
+alter tablespace FILARGE begin backup;
+alter tablespace FSAPP begin backup;
+alter tablespace FSAPP1 begin backup;
+alter tablespace FSAPPS begin backup;
+alter tablespace FSARCHIVE begin backup;
+alter tablespace FSLARGE begin backup;
+alter tablespace FSWORK begin backup;
+alter tablespace GIAPP begin backup;
+alter tablespace GLAPP begin backup;
+alter tablespace GLLARGE begin backup;
+alter tablespace GLWORK begin backup;
+alter tablespace GMAPP begin backup;
+alter tablespace HRAPP begin backup;
+alter tablespace HRLARGE begin backup;
+alter tablespace HTAPP begin backup;
+alter tablespace INAPP begin backup;
+alter tablespace INLARGE begin backup;
+alter tablespace INWORK begin backup;
+alter tablespace LCAPP begin backup;
+alter tablespace LCLARGE begin backup;
+alter tablespace MGAPP begin backup;
+alter tablespace MGLARGE begin backup;
+alter tablespace MPAPP begin backup;
+alter tablespace MPLARGE begin backup;
+alter tablespace OEAPP begin backup;
+alter tablespace OMAPP begin backup;
+alter tablespace OMLARGE begin backup;
+alter tablespace OMWORK begin backup;
+alter tablespace PCAPP begin backup;
+alter tablespace PCLARGE begin backup;
+alter tablespace POAPP begin backup;
+alter tablespace POLARGE begin backup;
+alter tablespace POWORK begin backup;
+alter tablespace PSDEFAULT begin backup;
+alter tablespace PSFINS begin backup;
+alter tablespace PSIMAGE begin backup;
+alter tablespace PSIMGR begin backup;
+alter tablespace PSINDEX begin backup;
+alter tablespace PSINDEXARCHIVE begin backup;
+alter tablespace PSWORK begin backup;
+alter tablespace PTAMSG begin backup;
+alter tablespace PTAPP begin backup;
+alter tablespace PTAPPE begin backup;
+alter tablespace PTAUDIT begin backup;
+alter tablespace PTCMSTAR begin backup;
+alter tablespace PTLOCK begin backup;
+alter tablespace PTPRC begin backup;
+alter tablespace PTPRCS begin backup;
+alter tablespace PTPRJWK begin backup;
+alter tablespace PTRPTS begin backup;
+alter tablespace PTTBL begin backup;
+alter tablespace PTTLRG begin backup;
+alter tablespace PTTREE begin backup;
+alter tablespace PTWORK begin backup;
+alter tablespace PVAPP begin backup;
+alter tablespace PY0LRG begin backup;
+alter tablespace PYAPP begin backup;
+alter tablespace RSAPP begin backup;
+alter tablespace RSLARGE begin backup;
+alter tablespace SPAPP begin backup;
+alter tablespace SYSTEM begin backup;
+alter tablespace TDAPP begin backup;
+alter tablespace TDLARGE begin backup;
+alter tablespace TDWORK begin backup;
+alter tablespace TLAPP begin backup;
+alter tablespace TLWORK begin backup;
+alter tablespace TOOLS begin backup;
+alter tablespace TPMAPP begin backup;
+alter tablespace TRAPP begin backup;
+alter tablespace TRLARGE begin backup;
+alter tablespace TRWORK begin backup;
+alter tablespace UNDOTBS1 begin backup;
+alter tablespace USERS begin backup;
+alter tablespace VERTEX begin backup;
+alter tablespace WSAPP begin backup;
+Hot backup BEGIN process for fsprod COMPLETED at Mon May 23 06:25:22 EDT 2005

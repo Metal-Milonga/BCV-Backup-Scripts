@@ -1,0 +1,6 @@
+#
+Split Mode is set to: PIPE
+#
+Waiting on "go" signal from /usr/local/bin/bcvscripts/etc/server16_FIFO before proceeding.
+#
+Signal from server16_FIFO was correct. Proceeding with BCV Split.

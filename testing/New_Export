@@ -1,0 +1,47 @@
+#!/usr/bin/ksh
+#
+
+. ./vgextract
+
+EXPORT_PREFLIGHT() {
+#
+## This function will check to see if the volume group has
+## already been exported.
+#
+EX_GREP_STAT=$(grep ${VG} ../tmp/server20_EXPORT_STATUS)
+GS=$?
+echo status is: $GS
+
+if [ -z "${EX_GREP_STAT}" ]
+then
+	Export_VG
+else
+	print ${VG} already exported: ${EX_GREP_STAT}
+fi
+}
+
+Export_VG(){
+print Exporting ${VG}
+}
+
+EXPORT_PREFLIGHT	# This function calls the Export_VG function.
+
+#	EXPORT_PREFLIGHT() {
+#	#
+#	## This function will check to see if the volume group has
+#	## already been exported.
+#	##
+#	## This was neccessary because of older volume
+#	## groups that had more than one LVOL in them.  Multiple exports
+#	## running against the same VG caused the map and pvpath files
+#	## to get overwritten....them import would not work without the files.
+#	#
+#	EX_GREP_STAT=$(grep ${VG} ${BCV_EXPORT_STATUS})
+#
+#	if [ -z "${EX_GREP_STAT}" ]
+#	then
+#		Export_VG
+#	else
+#		print ${VG} already exported: ${EX_GREP_STAT} >> ${BCV_EXPORT_STATUS}
+#	fi
+#	}

@@ -1,0 +1,308 @@
+Script started with the following Options and Arguements: -FMS qta1srvr16
+SERVER is set to: qta1srvr16
+CONFIG_FILE: Default config file will be used.
+Establish Type is set to: FULL
+RUN_BACKUP is set to: NO
+Manual Monitoring is set to: YES
+Wait to Split the BCV is set to: NO
+
+START BCV Establish and Split Script for qta1srvr16 on Tue Nov 12 15:21:15 EST 2002
+
+Start Declare_General_Variables Function. Tue Nov 12 15:21:15 EST 2002.
+Script started with the following Options and Arguements: -FMS qta1srvr16
+Working on BCVs for SERVER: qta1srvr16
+SERVER qta1srvr16 is a valid BCV Server. Continuing.
+Configuration file is: /usr/local/bin/bcvscripts/etc/bcv_scripts.conf
+Establish Type is: FULL
+Run Backup is set to: NO
+Manual Monitoring is set to: YES
+Wait to Split the BCVs is set to NO
+Split Time is: 23:40:00
+End Declare_General_Variables Function. Tue Nov 12 15:21:15 EST 2002
+
+Start Declare_VolumeGroup_Variables Function. Tue Nov 12 15:21:15 EST 2002
+#
+Grabbing VGS for normal BCV Establish.
+SRVR_VG Array element 4 is: vgapps16
+SRVR_VG Array element 3 is: vgfssystem1
+SRVR_VG Array element 2 is: vgfsprod2
+SRVR_VG Array element 1 is: vgfsprod1
+SRVR_VG Array element 0 is: vgpsfiles1
+#
+Grabbing VGS for exact mode BCV Establish.
+VG_ARRAY_START_XACT (-1) has a negative value. No need to proceed. Skipping.
+#
+End Declare_VolumeGroup_Variables Function. Tue Nov 12 15:21:15 EST 2002
+
+Start Declare_DeviceGroup_Variables Function. Tue Nov 12 15:21:15 EST 2002
+#
+Grabbing DGs for normal BCV Establish.
+SRVR_DG Array element 4 is: apps16
+SRVR_DG Array element 3 is: psfssystem1
+SRVR_DG Array element 2 is: psfsprod2
+SRVR_DG Array element 1 is: psfsprod1
+SRVR_DG Array element 0 is: psfiles1
+#
+Grabbing DGs for exact mode BCV Establish.
+DG_ARRAY_START_XACT (-1) has a negative value. No data here. Skipping.
+#
+End Declare_DeviceGroup_Variables Function. Tue Nov 12 15:21:15 EST 2002
+
+Start Declare_OmniBack_Variables Function. Tue Nov 12 15:21:16 EST 2002.
+#
+Run Backup at end of script: NO
+Not Running Backup. Variables build skipped.
+#
+End Declare_OmniBack_Variables Function. Tue Nov 12 15:21:16 EST 2002
+
+Start OOP Loading Function. Tue Nov 12 15:21:16 EST 2002
+#
+#
+End OOP Loading Function. Tue Nov 12 15:21:16 EST 2002
+
+Start Split BCVs function. Tue Nov 12 15:21:16 EST 2002
+Wait to Split is set to: NO
+I can split the BCVs NOW!
+#
+Starting the Start Hot Backup Mode Function. Tue Nov 12 15:21:16 EST 2002
+qta1srvr16
+
+
+End Start Hot Backup Mode Function. Tue Nov 12 15:21:16 EST 2002
+
+Time_Counter Starting at: Tue Nov 12 15:21:16 EST 2002
+Sleeping 120 Seconds. Total: 0 hour(s) 2 minute(s) 0 second(s)
+		0 hrs 2 min 0 sec  		0 hrs 1 min 59 sec  		0 hrs 1 min 58 sec  		0 hrs 1 min 57 sec  		0 hrs 1 min 56 sec  		0 hrs 1 min 55 sec  		0 hrs 1 min 54 sec  		0 hrs 1 min 53 sec  		0 hrs 1 min 52 sec  		0 hrs 1 min 51 sec  		0 hrs 1 min 50 sec  		0 hrs 1 min 49 sec  		0 hrs 1 min 48 sec  		0 hrs 1 min 47 sec  		0 hrs 1 min 46 sec  		0 hrs 1 min 45 sec  		0 hrs 1 min 44 sec  		0 hrs 1 min 43 sec  		0 hrs 1 min 42 sec  		0 hrs 1 min 41 sec  		0 hrs 1 min 40 sec  		0 hrs 1 min 39 sec  		0 hrs 1 min 38 sec  		0 hrs 1 min 37 sec  		0 hrs 1 min 36 sec  		0 hrs 1 min 35 sec  		0 hrs 1 min 34 sec  		0 hrs 1 min 33 sec  		0 hrs 1 min 32 sec  		0 hrs 1 min 31 sec  		0 hrs 1 min 30 sec  		0 hrs 1 min 29 sec  		0 hrs 1 min 28 sec  		0 hrs 1 min 27 sec  		0 hrs 1 min 26 sec  		0 hrs 1 min 25 sec  		0 hrs 1 min 24 sec  		0 hrs 1 min 23 sec  		0 hrs 1 min 22 sec  		0 hrs 1 min 21 sec  		0 hrs 1 min 20 sec  		0 hrs 1 min 19 sec  		0 hrs 1 min 18 sec  		0 hrs 1 min 17 sec  		0 hrs 1 min 16 sec  		0 hrs 1 min 15 sec  		0 hrs 1 min 14 sec  		0 hrs 1 min 13 sec  		0 hrs 1 min 12 sec  		0 hrs 1 min 11 sec  		0 hrs 1 min 10 sec  		0 hrs 1 min 9 sec  		0 hrs 1 min 8 sec  		0 hrs 1 min 7 sec  		0 hrs 1 min 6 sec  		0 hrs 1 min 5 sec  		0 hrs 1 min 4 sec  		0 hrs 1 min 3 sec  		0 hrs 1 min 2 sec  		0 hrs 1 min 1 sec  		0 hrs 1 min 0 sec  		0 hrs 0 min 59 sec  		0 hrs 0 min 58 sec  		0 hrs 0 min 57 sec  		0 hrs 0 min 56 sec  		0 hrs 0 min 55 sec  		0 hrs 0 min 54 sec  		0 hrs 0 min 53 sec  		0 hrs 0 min 52 sec  		0 hrs 0 min 51 sec  		0 hrs 0 min 50 sec  		0 hrs 0 min 49 sec  		0 hrs 0 min 48 sec  		0 hrs 0 min 47 sec  		0 hrs 0 min 46 sec  		0 hrs 0 min 45 sec  		0 hrs 0 min 44 sec  		0 hrs 0 min 43 sec  		0 hrs 0 min 42 sec  		0 hrs 0 min 41 sec  		0 hrs 0 min 40 sec  		0 hrs 0 min 39 sec  		0 hrs 0 min 38 sec  		0 hrs 0 min 37 sec  		0 hrs 0 min 36 sec  		0 hrs 0 min 35 sec  		0 hrs 0 min 34 sec  		0 hrs 0 min 33 sec  		0 hrs 0 min 32 sec  		0 hrs 0 min 31 sec  		0 hrs 0 min 30 sec  		0 hrs 0 min 29 sec  		0 hrs 0 min 28 sec  		0 hrs 0 min 27 sec  		0 hrs 0 min 26 sec  		0 hrs 0 min 25 sec  		0 hrs 0 min 24 sec  		0 hrs 0 min 23 sec  		0 hrs 0 min 22 sec  		0 hrs 0 min 21 sec  		0 hrs 0 min 20 sec  		0 hrs 0 min 19 sec  		0 hrs 0 min 18 sec  		0 hrs 0 min 17 sec  		0 hrs 0 min 16 sec  		0 hrs 0 min 15 sec  		0 hrs 0 min 14 sec  		0 hrs 0 min 13 sec  		0 hrs 0 min 12 sec  		0 hrs 0 min 11 sec  		0 hrs 0 min 10 sec  		0 hrs 0 min 9 sec  		0 hrs 0 min 8 sec  		0 hrs 0 min 7 sec  		0 hrs 0 min 6 sec  		0 hrs 0 min 5 sec  		0 hrs 0 min 4 sec  		0 hrs 0 min 3 sec  		0 hrs 0 min 2 sec  		0 hrs 0 min 1 sec  		0 hrs 0 min 0 sec  
+BCV Split started at Tue Nov 12 15:23:18 EST 2002
+#
+Working on psfiles1
+Running Command: /usr/symcli/bin/symir -g psfiles1 -noprompt split
+Device Group psfiles1 was split successfully.
+#
+BCV Split started at Tue Nov 12 15:24:34 EST 2002
+#
+Working on psfsprod1
+Running Command: /usr/symcli/bin/symir -g psfsprod1 -noprompt split
+Device Group psfsprod1 was split successfully.
+#
+BCV Split started at Tue Nov 12 15:27:11 EST 2002
+#
+Working on psfsprod2
+Running Command: /usr/symcli/bin/symir -g psfsprod2 -noprompt split
+Device Group psfsprod2 was split successfully.
+#
+BCV Split started at Tue Nov 12 15:28:34 EST 2002
+#
+Working on psfssystem1
+Running Command: /usr/symcli/bin/symir -g psfssystem1 -noprompt split
+Device Group psfssystem1 was split successfully.
+#
+BCV Split started at Tue Nov 12 15:31:15 EST 2002
+#
+Working on apps16
+Running Command: /usr/symcli/bin/symir -g apps16 -noprompt split
+Device Group apps16 was split successfully.
+#
+Starting the Stop Hot Backup Mode Function. Tue Nov 12 15:32:34 EST 2002
+qta1srvr16
+End Stop Hot Backup Mode Function. Tue Nov 12 15:32:34 EST 2002
+
+Time_Counter Starting at: Tue Nov 12 15:32:34 EST 2002
+Sleeping 120 Seconds. Total: 0 hour(s) 2 minute(s) 0 second(s)
+		0 hrs 2 min 0 sec  		0 hrs 1 min 59 sec  		0 hrs 1 min 58 sec  		0 hrs 1 min 57 sec  		0 hrs 1 min 56 sec  		0 hrs 1 min 55 sec  		0 hrs 1 min 54 sec  		0 hrs 1 min 53 sec  		0 hrs 1 min 52 sec  		0 hrs 1 min 51 sec  		0 hrs 1 min 50 sec  		0 hrs 1 min 49 sec  		0 hrs 1 min 48 sec  		0 hrs 1 min 47 sec  		0 hrs 1 min 46 sec  		0 hrs 1 min 45 sec  		0 hrs 1 min 44 sec  		0 hrs 1 min 43 sec  		0 hrs 1 min 42 sec  		0 hrs 1 min 41 sec  		0 hrs 1 min 40 sec  		0 hrs 1 min 39 sec  		0 hrs 1 min 38 sec  		0 hrs 1 min 37 sec  		0 hrs 1 min 36 sec  		0 hrs 1 min 35 sec  		0 hrs 1 min 34 sec  		0 hrs 1 min 33 sec  		0 hrs 1 min 32 sec  		0 hrs 1 min 31 sec  		0 hrs 1 min 30 sec  		0 hrs 1 min 29 sec  		0 hrs 1 min 28 sec  		0 hrs 1 min 27 sec  		0 hrs 1 min 26 sec  		0 hrs 1 min 25 sec  		0 hrs 1 min 24 sec  		0 hrs 1 min 23 sec  		0 hrs 1 min 22 sec  		0 hrs 1 min 21 sec  		0 hrs 1 min 20 sec  		0 hrs 1 min 19 sec  		0 hrs 1 min 18 sec  		0 hrs 1 min 17 sec  		0 hrs 1 min 16 sec  		0 hrs 1 min 15 sec  		0 hrs 1 min 14 sec  		0 hrs 1 min 13 sec  		0 hrs 1 min 12 sec  		0 hrs 1 min 11 sec  		0 hrs 1 min 10 sec  		0 hrs 1 min 9 sec  		0 hrs 1 min 8 sec  		0 hrs 1 min 7 sec  		0 hrs 1 min 6 sec  		0 hrs 1 min 5 sec  		0 hrs 1 min 4 sec  		0 hrs 1 min 3 sec  		0 hrs 1 min 2 sec  		0 hrs 1 min 1 sec  		0 hrs 1 min 0 sec  		0 hrs 0 min 59 sec  		0 hrs 0 min 58 sec  		0 hrs 0 min 57 sec  		0 hrs 0 min 56 sec  		0 hrs 0 min 55 sec  		0 hrs 0 min 54 sec  		0 hrs 0 min 53 sec  		0 hrs 0 min 52 sec  		0 hrs 0 min 51 sec  		0 hrs 0 min 50 sec  		0 hrs 0 min 49 sec  		0 hrs 0 min 48 sec  		0 hrs 0 min 47 sec  		0 hrs 0 min 46 sec  		0 hrs 0 min 45 sec  		0 hrs 0 min 44 sec  		0 hrs 0 min 43 sec  		0 hrs 0 min 42 sec  		0 hrs 0 min 41 sec  		0 hrs 0 min 40 sec  		0 hrs 0 min 39 sec  		0 hrs 0 min 38 sec  		0 hrs 0 min 37 sec  		0 hrs 0 min 36 sec  		0 hrs 0 min 35 sec  		0 hrs 0 min 34 sec  		0 hrs 0 min 33 sec  		0 hrs 0 min 32 sec  		0 hrs 0 min 31 sec  		0 hrs 0 min 30 sec  		0 hrs 0 min 29 sec  		0 hrs 0 min 28 sec  		0 hrs 0 min 27 sec  		0 hrs 0 min 26 sec  		0 hrs 0 min 25 sec  		0 hrs 0 min 24 sec  		0 hrs 0 min 23 sec  		0 hrs 0 min 22 sec  		0 hrs 0 min 21 sec  		0 hrs 0 min 20 sec  		0 hrs 0 min 19 sec  		0 hrs 0 min 18 sec  		0 hrs 0 min 17 sec  		0 hrs 0 min 16 sec  		0 hrs 0 min 15 sec  		0 hrs 0 min 14 sec  		0 hrs 0 min 13 sec  		0 hrs 0 min 12 sec  		0 hrs 0 min 11 sec  		0 hrs 0 min 10 sec  		0 hrs 0 min 9 sec  		0 hrs 0 min 8 sec  		0 hrs 0 min 7 sec  		0 hrs 0 min 6 sec  		0 hrs 0 min 5 sec  		0 hrs 0 min 4 sec  		0 hrs 0 min 3 sec  		0 hrs 0 min 2 sec  		0 hrs 0 min 1 sec  		0 hrs 0 min 0 sec  
+#
+End Split BCVs function. Tue Nov 12 15:34:36 EST 2002
+
+Start Verify BCV Split function. Tue Nov 12 15:34:36 EST 2002
+Number of DG elements are: 5
+Device Groups are: psfiles1 psfsprod1 psfsprod2 psfssystem1 apps16
+psfiles1=0
+psfsprod1=0
+psfsprod2=0
+psfssystem1=0
+apps16=0
+#
+Checking psfiles1
+	LINE is psfiles1=0, Group is psfiles1, Value is 0
+ALL_GROUPS_SPLIT is 1
+#
+Checking psfsprod1
+	LINE is psfsprod1=0, Group is psfsprod1, Value is 0
+ALL_GROUPS_SPLIT is 2
+#
+Checking psfsprod2
+	LINE is psfsprod2=0, Group is psfsprod2, Value is 0
+ALL_GROUPS_SPLIT is 3
+#
+Checking psfssystem1
+	LINE is psfssystem1=0, Group is psfssystem1, Value is 0
+ALL_GROUPS_SPLIT is 4
+#
+Checking apps16
+	LINE is apps16=0, Group is apps16, Value is 0
+ALL_GROUPS_SPLIT is 5
+#
+5 out of 5 Device Groups Split.
+End Verify BCV Split function. Tue Nov 12 15:34:36 EST 2002
+
+Start Import Volume Groups function. Tue Nov 12 15:34:36 EST 2002
+Volume Groups to be Imported: 0
+#
+End Export Import VG function. Tue Nov 12 15:34:36 EST 2002
+
+Start Activate VolumeGroups function. Tue Nov 12 15:34:36 EST 2002
+Volume Groups to ACTivate: 5
+#
+
+        FSTAB_EXTRACT is /dev/vgpsfiles1/lvol1:/BCV/srvr16/u05
+        VG is /dev/vgpsfiles1
+        VG_LVOL is /dev/vgpsfiles1/lvol1
+        VG_RLVOL is /dev/vgpsfiles1/rlvol1
+        FILESYSTEM is /BCV/srvr16/u05
+        FILESYSTEM is 13 characters long
+
+Working on VG: /dev/vgpsfiles1
+Activating /dev/vgpsfiles1.
+VG /dev/vgpsfiles1 was successfully activated.
+#
+
+        FSTAB_EXTRACT is /dev/vgfsprod1/lvol1:/BCV/srvr16/u01
+        VG is /dev/vgfsprod1
+        VG_LVOL is /dev/vgfsprod1/lvol1
+        VG_RLVOL is /dev/vgfsprod1/rlvol1
+        FILESYSTEM is /BCV/srvr16/u01
+        FILESYSTEM is 13 characters long
+
+Working on VG: /dev/vgfsprod1
+Activating /dev/vgfsprod1.
+VG /dev/vgfsprod1 was successfully activated.
+#
+
+        FSTAB_EXTRACT is /dev/vgfsprod2/lvol1:/BCV/srvr16/u02
+        VG is /dev/vgfsprod2
+        VG_LVOL is /dev/vgfsprod2/lvol1
+        VG_RLVOL is /dev/vgfsprod2/rlvol1
+        FILESYSTEM is /BCV/srvr16/u02
+        FILESYSTEM is 13 characters long
+
+Working on VG: /dev/vgfsprod2
+Activating /dev/vgfsprod2.
+VG /dev/vgfsprod2 was successfully activated.
+#
+
+        FSTAB_EXTRACT is /dev/vgfssystem1/lvol1:/BCV/srvr16/u03
+        VG is /dev/vgfssystem1
+        VG_LVOL is /dev/vgfssystem1/lvol1
+        VG_RLVOL is /dev/vgfssystem1/rlvol1
+        FILESYSTEM is /BCV/srvr16/u03
+        FILESYSTEM is 13 characters long
+
+Working on VG: /dev/vgfssystem1
+Activating /dev/vgfssystem1.
+VG /dev/vgfssystem1 was successfully activated.
+#
+
+        FSTAB_EXTRACT is /dev/vgapps16/lvol1:/BCV/srvr16/apps
+        VG is /dev/vgapps16
+        VG_LVOL is /dev/vgapps16/lvol1
+        VG_RLVOL is /dev/vgapps16/rlvol1
+        FILESYSTEM is /BCV/srvr16/apps
+        FILESYSTEM is 14 characters long
+
+Working on VG: /dev/vgapps16
+Activating /dev/vgapps16.
+VG /dev/vgapps16 was successfully activated.
+#
+#
+5 of 5 VGs Activated.
+End Activate VolumeGroups function. Tue Nov 12 15:34:40 EST 2002
+
+Start FSCK & Mount Filesystems function. Tue Nov 12 15:34:40 EST 2002
+FileSystems to Check and Mount: 5
+#
+VG from OOP Function is: vgpsfiles1
+VG from OOP Function is: vgfsprod1
+VG from OOP Function is: vgfsprod2
+VG from OOP Function is: vgfssystem1
+VG from OOP Function is: vgapps16
+#
+
+	FSTAB_EXTRACT is /dev/vgpsfiles1/lvol1:/BCV/srvr16/u05
+	VG is /dev/vgpsfiles1
+	VG_LVOL is /dev/vgpsfiles1/lvol1
+	VG_RLVOL is /dev/vgpsfiles1/rlvol1
+	FILESYSTEM is /BCV/srvr16/u05
+	#FILESYSTEM is 13 characters long
+
+/dev/vgpsfiles1 passed FSCK. Mount stat 0
+/dev/vgpsfiles1 marking super-block as CLEAN
+/dev/vgpsfiles1/lvol1 /BCV/srvr16/u05 vxfs delaylog,nodatainlog 0 0
+#
+/BCV/srvr16/u05:0
+BCV/srvr16/u05:0
+
+	FSTAB_EXTRACT is /dev/vgfsprod1/lvol1:/BCV/srvr16/u01
+	VG is /dev/vgfsprod1
+	VG_LVOL is /dev/vgfsprod1/lvol1
+	VG_RLVOL is /dev/vgfsprod1/rlvol1
+	FILESYSTEM is /BCV/srvr16/u01
+	#FILESYSTEM is 13 characters long
+
+/dev/vgfsprod1 passed FSCK. Mount stat 0
+/dev/vgfsprod1 marking super-block as CLEAN
+/dev/vgfsprod1/lvol1 /BCV/srvr16/u01 vxfs delaylog,nodatainlog 0 0
+#
+/BCV/srvr16/u01:0
+BCV/srvr16/u01:0
+
+	FSTAB_EXTRACT is /dev/vgfsprod2/lvol1:/BCV/srvr16/u02
+	VG is /dev/vgfsprod2
+	VG_LVOL is /dev/vgfsprod2/lvol1
+	VG_RLVOL is /dev/vgfsprod2/rlvol1
+	FILESYSTEM is /BCV/srvr16/u02
+	#FILESYSTEM is 13 characters long
+
+/dev/vgfsprod2 passed FSCK. Mount stat 0
+/dev/vgfsprod2 marking super-block as CLEAN
+/dev/vgfsprod2/lvol1 /BCV/srvr16/u02 vxfs delaylog,nodatainlog 0 0
+#
+/BCV/srvr16/u02:0
+BCV/srvr16/u02:0
+
+	FSTAB_EXTRACT is /dev/vgfssystem1/lvol1:/BCV/srvr16/u03
+	VG is /dev/vgfssystem1
+	VG_LVOL is /dev/vgfssystem1/lvol1
+	VG_RLVOL is /dev/vgfssystem1/rlvol1
+	FILESYSTEM is /BCV/srvr16/u03
+	#FILESYSTEM is 13 characters long
+
+/dev/vgfssystem1 passed FSCK. Mount stat 0
+/dev/vgfssystem1 marking super-block as CLEAN
+/dev/vgfssystem1/lvol1 /BCV/srvr16/u03 vxfs delaylog,nodatainlog 0 0
+#
+/BCV/srvr16/u03:0
+BCV/srvr16/u03:0
+
+	FSTAB_EXTRACT is /dev/vgapps16/lvol1:/BCV/srvr16/apps
+	VG is /dev/vgapps16
+	VG_LVOL is /dev/vgapps16/lvol1
+	VG_RLVOL is /dev/vgapps16/rlvol1
+	FILESYSTEM is /BCV/srvr16/apps
+	#FILESYSTEM is 14 characters long
+
+/dev/vgapps16 passed FSCK. Mount stat 0
+/dev/vgapps16 marking super-block as CLEAN
+/dev/vgapps16/lvol1 /BCV/srvr16/apps vxfs delaylog,nodatainlog 0 0
+#
+/BCV/srvr16/apps:0
+BCV/srvr16/apps:0
+#
+5 of 5 passed FSCK and Mounted.
+BCV_RE_MOUNT file contains:
+/BCV/srvr16/u05:0
+/BCV/srvr16/u01:0
+/BCV/srvr16/u02:0
+/BCV/srvr16/u03:0
+/BCV/srvr16/apps:0
+#
+OMNI_FILESYSTEMS fine contains:

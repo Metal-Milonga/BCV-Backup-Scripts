@@ -1,0 +1,74 @@
+Hot backup BEGIN process for  STARTED at Mon May 23 06:53:32 EDT 2005
+Making backup copy of CONTROL FILE
+
+SQL*Plus: Release 9.2.0.2.0 - Production on Mon May 23 06:53:32 2005
+
+Copyright (c) 1982, 2002, Oracle Corporation.  All rights reserved.
+
+
+Connected to:
+Oracle9i Enterprise Edition Release 9.2.0.2.0 - 64bit Production
+With the Partitioning, OLAP and Oracle Data Mining options
+JServer Release 9.2.0.2.0 - Production
+
+SQL> 
+Database altered.
+
+SQL> Database log mode	       Archive Mode
+Automatic archival	       Enabled
+Archive destination	       /u23/orachive/scprod/
+Oldest online log sequence     1967
+Next log sequence to archive   1974
+Current log sequence	       1974
+SQL> Disconnected from Oracle9i Enterprise Edition Release 9.2.0.2.0 - 64bit Production
+With the Partitioning, OLAP and Oracle Data Mining options
+JServer Release 9.2.0.2.0 - Production
+Creating a list of tablespaces.
+
+SQL*Plus: Release 9.2.0.2.0 - Production on Mon May 23 06:53:32 2005
+
+Copyright (c) 1982, 2002, Oracle Corporation.  All rights reserved.
+
+
+Connected to:
+Oracle9i Enterprise Edition Release 9.2.0.2.0 - 64bit Production
+With the Partitioning, OLAP and Oracle Data Mining options
+JServer Release 9.2.0.2.0 - Production
+
+SQL> SQL> SQL> SQL> SQL> SQL> SQL> SQL>   2    3    4    5    6  alter tablespace BNAPP end backup;
+alter tablespace FSAPP end backup;
+alter tablespace GIAPP end backup;
+alter tablespace GLAPP end backup;
+alter tablespace HRAPP end backup;
+alter tablespace HTAPP end backup;
+alter tablespace INAPP end backup;
+alter tablespace OMAPP end backup;
+alter tablespace PSDEFAULT end backup;
+alter tablespace PSIMAGE end backup;
+alter tablespace PSIMGR end backup;
+alter tablespace PSINDEX end backup;
+alter tablespace PSWORK end backup;
+alter tablespace PTAMSG end backup;
+alter tablespace PTAPP end backup;
+alter tablespace PTAPPE end backup;
+alter tablespace PTAUDIT end backup;
+alter tablespace PTCMSTAR end backup;
+alter tablespace PTLOCK end backup;
+alter tablespace PTPRC end backup;
+alter tablespace PTPRJWK end backup;
+alter tablespace PTRPTS end backup;
+alter tablespace PTTBL end backup;
+alter tablespace PTTLRG end backup;
+alter tablespace PTTREE end backup;
+alter tablespace PTWORK end backup;
+alter tablespace PY0LRG end backup;
+alter tablespace PYAPP end backup;
+alter tablespace SYSTEM end backup;
+alter tablespace UNDOTBS end backup;
+SQL> SQL> SP2-0734: unknown command beginning "SQL> selec..." - rest of line ignored.
+  6*
+SP2-0734: unknown command beginning "SQL> spool..." - rest of line ignored.
+SQL> Disconnected from Oracle9i Enterprise Edition Release 9.2.0.2.0 - 64bit Production
+With the Partitioning, OLAP and Oracle Data Mining options
+JServer Release 9.2.0.2.0 - Production
+Hot backup BEGIN process for scprod COMPLETED at Mon May 23 06:53:33 EDT 2005

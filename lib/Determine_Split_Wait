@@ -1,0 +1,71 @@
+Determine_Split_Wait() {
+#
+# Function - 
+# Version - 
+# Author - David Holton
+# Date - April 23, 2002
+#
+# Description - 
+#
+###############################################################################
+# Modification history
+# Date     Who          What was modified.
+# -------- ------------ ------------------
+# 06/12/02 Dave Holton	Put in some if/then logic to only adjust the COUNT_TIME
+#			variable if the Manual Monitor option is set to YES. We
+#			do this because the Time_Counter functions adds some
+#			overhead in order to generate the screen output.
+#			Otherwise the COUNT_TIME will equal DIFF_TIME.
+#
+###############################################################################
+
+CURRENT_TIME=$(date +%H:%M:%S)
+CURRENT_TIME_2=$(date +%H:%M:%S | sed "s/://g")
+CURRENT_HR=$(echo ${CURRENT_TIME} | cut -d":" -f1)
+CURRENT_MIN=$(echo ${CURRENT_TIME} | cut -d":" -f2)
+CURRENT_SEC=$(echo ${CURRENT_TIME} | cut -d":" -f3)
+HR_SECONDS=$(( ${CURRENT_HR} * 3600 ))
+HR_MINUTES=$(( ${CURRENT_MIN} * 60 ))
+CURRENT_TOT_SEC=$(( ${HR_SECONDS} + ${HR_MINUTES} + ${CURRENT_SEC} ))
+
+DIFF_TIME=$(( ${SPLIT_TOT_SEC} - ${CURRENT_TOT_SEC} ))
+
+## If the Manual Monitoring Option is choosen, then run this adjustment
+## to the COUNT_TIME variable since the screen output for Manual Monitoring
+## adds some overhead to the actual wait time.
+if [[ ${MANUAL_MONITOR} = 'YES' ]]
+then
+	ADJ_HRS=$(( ${DIFF_TIME} / 3600 ))
+	ADJ_TIME=$(( ${ADJ_HRS} * 60 ))
+	COUNT_TIME=$(( ${DIFF_TIME} - ${ADJ_TIME} ))
+else
+	COUNT_TIME=${DIFF_TIME}
+fi
+
+Print_Variables() {
+	print "#"
+	print -n SPLIT_TIME is: ${SPLIT_TIME} \\t
+	print SPLIT_TIME_2 is: ${SPLIT_TIME_2}
+	print -n SPLIT_HR is: ${SPLIT_HR} \\t\\t
+	print -n SPLIT_MIN is: ${SPLIT_MIN} \\t
+	print SPLIT_SEC is: ${SPLIT_SEC}
+	print "#"
+	print -n CURRENT_TIME is: ${CURRENT_TIME} \\t
+	print CURRENT_TIME_2 is: ${CURRENT_TIME_2}
+	print -n CURRENT_HR is: ${CURRENT_HR} \\t\\t
+	print -n CURRENT_MIN is: ${CURRENT_MIN} \\t
+	print CURRENT_SEC is: ${CURRENT_SEC}
+	print -n HR_SECONDS are: ${HR_SECONDS} \\t
+	print HR_MINUTES are: ${HR_MINUTES}
+	print "#"
+	print -n SPLIT_TOT_SEC is: ${SPLIT_TOT_SEC} \\t
+	print CURRENT_TOT_SEC are: ${CURRENT_TOT_SEC}
+	print "#"
+	print -n DIFF_TIME is: ${DIFF_TIME} \\t
+	print -n ADJ_HRS are: ${ADJ_HRS} \\t
+	print ADJ_TIME is: ${ADJ_TIME} seconds
+	print COUNT_TIME is set to: ${COUNT_TIME}
+}
+Print_Variables
+
+}

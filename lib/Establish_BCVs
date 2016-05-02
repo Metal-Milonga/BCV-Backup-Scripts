@@ -1,0 +1,110 @@
+Establish_BCVs() {
+#
+# Function - 
+# Version - 
+# Author - David Holton
+# Date - April 19, 2002
+#
+# Description - 
+#
+###############################################################################
+# Modification history
+# Date     Who          What was modified.
+# -------- ------------ ------------------
+# 07/09/02 Dave Holton	Commented out the messages reporting successful initiation
+#			of BCV establish.
+# 11/26/02 Dave Holton	Added evaluation so that if the sync is already in
+#			in progress (return code 18) it will not register
+#			as an error but will register as a success.
+#
+###############################################################################
+#set -n
+
+print Start Establish BCVs function. $(date)
+print "#"
+print >> ${EMAIL_RPT}
+
+if [[ -f ${BCV_EST_STATUS} ]]
+then
+	rm ${BCV_EST_STATUS}
+fi
+
+print Device Groups are: $( ${SERVER}_GET_ALL_DGS )
+print "#"
+
+###for DGS in $( ${SERVER}_GET_ALL_DGS )
+###do
+###	print DG are: ${DGS}
+###done
+
+for DG_N in $( ${SERVER}_Norm_DGS )
+do
+	if [ ${DG_N} ]
+	then
+		print ${DG_N} is a Normal DG.
+		if [[ ${EST_TYPE} = 'FULL' ]]
+		then
+			### Full Establish
+
+			print Running Command: ${SYMCLIDIR}/symir -g ${DG_N} -full -noprompt est
+			${SYMCLIDIR}/symmir -g ${DG_N} -full -noprompt est
+			N_EST_STAT=${?}
+		else
+			### Incremental Establish
+
+			print Running Command: ${SYMCLIDIR}/symir -g ${DG_N} -noprompt est
+			${SYMCLIDIR}/symmir -g ${DG_N} -noprompt est
+			N_EST_STAT=${?}
+		fi
+
+		if [[ "${N_EST_STAT}" -eq "0" ]]
+		then
+			print BCV Est for ${DG_N} Initiated
+			##print BCV Est for ${DG_N} Initiated >> ${EMAIL_RPT}
+		elif [[ "${N_EST_STAT}" -eq "18" ]]
+		then
+			print BCV Est for ${DG_N} already in progress
+		else
+			print BCV Est for ${DG_N} Initiation FAILED
+			print BCV Est for ${DG_N} Initiation FAILED >> ${ERROR_RPT}
+			print BCV Est for ${DG_N} Initiation FAILED >> ${EMAIL_RPT}
+		fi	
+
+		print "#"
+
+		print ${DG_N}=${N_EST_STAT} >> ${BCV_EST_STATUS}
+	fi
+done
+
+for DG_X in $( ${SERVER}_Xact_DGS )
+do
+	if [ ${DG_X} ]
+	then
+		### EXact Full Establish
+
+		print ${DG_X} is an Xact DG.
+		print Running Command: ${SYMCLIDIR}/symir -g ${DG_X} -full -exact -noprompt est
+		${SYMCLIDIR}/symmir -g ${DG_X} -full -exact -noprompt est
+		X_EST_STAT=${?}
+	fi
+
+	if [[ "${X_EST_STAT}" -eq "0" ]]
+	then
+		print BCV Est for ${DG_X} Initiated
+		##print BCV Est for ${DG_X} Initiated >> ${EMAIL_RPT}
+	elif [[ "${X_EST_STAT}" -eq "18" ]]
+	then
+		print BCV Est for ${DG_X} already in progress
+	else
+		print BCV Est for ${DG_X} Initiation FAILED
+		print BCV Est for ${DG_X} Initiation FAILED >> ${ERROR_RPT}
+		print BCV Est for ${DG_X} Initiation FAILED >> ${EMAIL_RPT}
+	fi	
+
+	print "#"
+
+	print ${DG_X}=${X_EST_STAT} >> ${BCV_EST_STATUS}
+done
+
+print End Establish BCVs function. $(date); print
+}

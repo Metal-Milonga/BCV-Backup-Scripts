@@ -1,0 +1,68 @@
+Time_Counter() {
+#
+# Function - Time_Counter
+# Verisoin - 2.00
+# Author - David Holton
+# Date - May 23, 2002
+#
+# Description - It takes a value passed to it as an arguement and uses it to
+#		sleep that many seconds.  It also takes the value and breaks it
+#		up into hours, minutes, and seconds.  If the variable 
+#		MANUAL_MONITOR is set to YES, the it reports these values on the
+#		screen. On the next line it visually counts out the hours,
+#		minutes, and seconds as it sleeps.
+#
+################################################################################
+# Modification History
+#
+################################################################################
+# To Do
+#
+################################################################################
+
+## Variables for this function.
+#
+## Break down ${1} into hours, minutes, and seconds.
+typeset GOAL=${1}
+typeset HOURS=$(( ${GOAL} / 3600 ))		## Returns the number of hours in GOAL
+typeset PRE_MINUTES=$(( ${GOAL}  % 3600 ))	## Removes the hours from GOAL and
+						## returns the remaining minutes.
+typeset MINUTES=$(( ${PRE_MINUTES} / 60 ))		## Returns the number of minutes in GOAL
+typeset SECONDS=$(( ${GOAL} % 60 ))		## Returns the remainder from GOAL. This is
+						## the number of seconds in GOAL after the
+						## minutes have been removed.
+
+typeset COUNT=0				## Start a counter.
+					## We will use it to count up to GOAL
+
+## Report the break down of ${GOAL}.
+print $0 Starting at: $(date)
+print "Sleeping ${GOAL} Seconds. Total: ${HOURS} hour(s) ${MINUTES} minute(s) ${SECONDS} second(s)"
+
+## If yes we want to display the counting on he screen.
+if [[ ${MANUAL_MONITOR} = 'YES' ]]
+then
+	until [[ ${COUNT} -gt ${GOAL} ]] ## count up to GOAL
+	do
+		COUNT_DOWN=$(( ${GOAL} - ${COUNT} ))
+		typeset HOURS=$(( ${COUNT_DOWN} / 3600 ))
+		typeset PRE_MINUTES=$(( ${COUNT_DOWN}  % 3600 ))
+		typeset MINUTES=$(( ${PRE_MINUTES}  / 60 ))
+		typeset SECONDS=$(( ${PRE_MINUTES} % 60 ))
+
+		## The line below will  incrementally count the seconds on the screen
+		## without printing a newline. Each time $COUNT is printed it writes
+		## over the previously printed number.
+		echo "\t\t${HOURS} hrs ${MINUTES} min ${SECONDS} sec  \r\c"
+		((COUNT+=1))	## Increment COUNT by 1
+		sleep 1		## Acutally do the sleep, but only for 1 second.
+	done
+	print
+else
+	## This section executes if the MANUAL_MONITOR variable is set to something
+	## other than YES.  Here we just sleep the number of seconds contained 
+	## in GOAL
+	sleep ${GOAL}
+	print "#"
+fi
+}

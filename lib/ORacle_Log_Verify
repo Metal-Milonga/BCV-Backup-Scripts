@@ -1,0 +1,143 @@
+ORacle_Log_Verify() {
+
+###
+### Changed 08/31/04 by david holton: added code to populate the ORA_ERROR_LOG
+###					file with greps from the ORacle log files
+###					pulled from the individual servers.
+###				      Changed the error notification logic to only 
+###					send if it finds the ORA_ERROR_LOG file
+###					is NOT empty.
+###
+### Changed 11/18/04 by david holton: added code to check the day, month, & date
+###					in the oracle logs that are pulled over
+###					from the server.  If they do not match
+###					the values for the day the script ran,
+###					then an error notification will be sent
+### Changed 12/03/04 by david holton: changed TODAY_DATE=$(date +%d)
+###					to TODAY_DATE=$(date +%0d). added the "0"
+###					between the "%" and "d". This should 
+###					remove the 0 from days of the month that
+###					are only one digit.  The script was
+###					compareing 01 to 1.
+### Changed 12/03/04 by david holton: changed ${LOG_START_DATE} != ${TODAY_DATE}
+###					to ${LOG_START_DATE} -ne ${TODAY_DATE}
+###
+
+print Starting Oracle Logs Verify Function. $(date)
+print
+
+REMOTE_ORA_LOGDIR="/home/oracle/logs"
+ORA_GENERAL_FILE=ora_st*backup*.log
+WEEKDAY_NAME=$(date +%a)
+THIS_MONTH=$(date +%b)
+TODAY_DATE=$(date +%0d)
+print WEEKDAY is: ${WEEKDAY_NAME}
+print THIS_MONTH is: ${THIS_MONTH}
+print TODAY_DATE is: ${TODAY_DATE}
+print
+
+FILE_NUMBER=$(remsh ${SERVER} "ll ${REMOTE_ORA_LOGDIR}/${ORA_GENERAL_FILE}" | wc -l )
+print Num of Log Files are: ${FILE_NUMBER}
+
+Pull_LOGFILES() {
+#
+OIFS=${IFS}
+IFS="
+"
+#
+for LOG in $(remsh ${SERVER} "ll ${REMOTE_ORA_LOGDIR}/${ORA_GENERAL_FILE}" | sed "s/  */;/g")
+do
+	OHBML_DATE=$(echo $LOG | cut -d";" -f6,7 | sed "s/;/ /g")
+	OHBML_TIME=$(echo $LOG | cut -d";" -f8)
+	OHBML_FILEnPATH=$(echo $LOG | cut -d";" -f9)
+	OHBML_FILE=${OHBML_FILEnPATH##/*/}
+
+	print "${OHBML_FILEnPATH}\twas created on ${OHBML_DATE} at ${OHBML_TIME}."
+	rcp ${SERVER}:${OHBML_FILEnPATH} ${BCVLOGDIR}/${SERVER}_${OHBML_FILE}
+done
+IFS=${OIFS}
+print
+}
+
+CHK_ORA_LOGS_DATE() {
+
+	LOG_START_WKDAY=$(echo ${LOG_START} | sed "s/  */,/g" | cut -d"," -f8 )
+	LOG_COMPLETED_WKDAY=$(echo ${LOG_COMPLETED} | sed "s/  */,/g" | cut -d"," -f9 )
+
+	LOG_START_MONTH=$(echo ${LOG_START} | sed "s/  */,/g" | cut -d"," -f9 )
+	LOG_COMPLETED_MONTH=$(echo ${LOG_COMPLETED} | sed "s/  */,/g" | cut -d"," -f10 )
+
+	LOG_START_DATE=$(echo ${LOG_START} | sed "s/  */,/g" | cut -d"," -f10 )
+	LOG_COMPLETED_DATE=$(echo ${LOG_COMPLETED} | sed "s/  */,/g" | cut -d"," -f11 )
+
+	print LOG_START_WKDAY is: ${LOG_START_WKDAY}
+	print LOG_COMPLETED_WKDAY is: ${LOG_COMPLETED_WKDAY}
+	print LOG_START_MONTH is: ${LOG_START_MONTH}
+	print LOG_COMPLETED_MONTH is: ${LOG_COMPLETED_MONTH}
+	print LOG_START_DATE is: ${LOG_START_DATE}
+	print LOG_COMPLETED_DATE is: ${LOG_COMPLETED_DATE}
+
+	#if [[ ${LOG_START_WKDAY} != ${WEEKDAY_NAME} || ${LOG_START_MONTH} != ${THIS_MONTH} || ${LOG_START_DATE} != ${TODAY_DATE} ]]
+	### Changed ${LOG_START_DATE} != ${TODAY_DATE} to ${LOG_START_DATE} -ne ${TODAY_DATE}
+	if [[ ${LOG_START_WKDAY} != ${WEEKDAY_NAME} || ${LOG_START_MONTH} != ${THIS_MONTH} || ${LOG_START_DATE} -ne ${TODAY_DATE} ]]
+	then
+		print "Date stamp in ${LOG} is not correct"
+		print "Date stamp in ${LOG} is not correct" >> ${ORA_ERROR_LOG}
+		print "Date stamp in ${LOG} is not correct" >> ${ERROR_RPT}
+	fi
+
+}
+
+CHK_ORA_LOGS() {
+set -A ORA_LOG_ARRAY $(ls ${BCVLOGDIR}/${SERVER}_ora_st*.log)
+
+for LOG in ${ORA_LOG_ARRAY[*]}
+do
+	print $LOG
+	ORA_ERROR_1=$(grep "ORA-" ${LOG} | sort | uniq)
+	ORA_ERROR_2=$(grep -i "error" ${LOG} | sort | uniq)
+	grep "ORA-" ${LOG} >> ${ORA_ERROR_LOG}
+	grep "ORA-" ${LOG} >> ${ERROR_RPT}
+	grep -i "error" ${LOG} >> ${ORA_ERROR_LOG}
+	grep -i "error" ${LOG} >> ${ERROR_RPT}
+	LOG_START=$(grep "STARTED" ${LOG})
+	LOG_COMPLETED=$(grep "COMPLETED" ${LOG})
+	print ${LOG_START} 
+	print ${LOG_COMPLETED} 
+	print ${LOG_START}  >> ${EMAIL_RPT}
+	print ${LOG_COMPLETED} >> ${EMAIL_RPT}
+	print ${LOG_START} >> ${QEMAIL_RPT}
+	print ${LOG_COMPLETED} >> ${QEMAIL_RPT} 
+	#grep -e "STARTED" -e "COMPLETED" ${LOG}
+	#grep -e "STARTED" -e "COMPLETED" ${LOG} >> ${EMAIL_RPT}
+	#grep -e "STARTED" -e "COMPLETED" ${LOG} >> ${QEMAIL_RPT}
+
+	CHK_ORA_LOGS_DATE
+
+	print
+
+done
+ORA_ERROR_3=$(grep -i "killed" ${BCVLOGDIR}/${SERVER}-HBM.log | sort | uniq)
+grep -i "killed" ${BCVLOGDIR}/${SERVER}-HBM.log >> ${ORA_ERROR_LOG}
+grep -i "killed" ${BCVLOGDIR}/${SERVER}-HBM.log >> ${ERROR_RPT}
+
+}
+
+ORA_ERROR_NOTIFY() {
+if [[ -s ${ORA_ERROR_LOG} ]]
+then
+	print "ERRORs found in the Oracle logs. Sending email to error and dba notification lists."
+	Notify Error
+	Notify DBA
+else
+	print "No errors found in the ORacle logs."
+fi
+}
+
+Pull_LOGFILES
+CHK_ORA_LOGS
+ORA_ERROR_NOTIFY
+
+print End the Oracle Logs Verify Function. $(date)
+print
+}

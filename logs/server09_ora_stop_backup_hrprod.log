@@ -1,0 +1,121 @@
+Hot backup BEGIN process for  STARTED at Mon May 23 06:53:30 EDT 2005
+Making backup copy of CONTROL FILE
+
+SQL*Plus: Release 9.2.0.2.0 - Production on Mon May 23 06:53:30 2005
+
+Copyright (c) 1982, 2002, Oracle Corporation.  All rights reserved.
+
+
+Connected to:
+Oracle9i Enterprise Edition Release 9.2.0.2.0 - 64bit Production
+With the Partitioning, OLAP and Oracle Data Mining options
+JServer Release 9.2.0.2.0 - Production
+
+SQL> 
+Database altered.
+
+SQL> Database log mode	       Archive Mode
+Automatic archival	       Enabled
+Archive destination	       /u24/orachive/hrprod/
+Oldest online log sequence     293338
+Next log sequence to archive   293345
+Current log sequence	       293345
+SQL> Disconnected from Oracle9i Enterprise Edition Release 9.2.0.2.0 - 64bit Production
+With the Partitioning, OLAP and Oracle Data Mining options
+JServer Release 9.2.0.2.0 - Production
+Creating a list of tablespaces.
+
+SQL*Plus: Release 9.2.0.2.0 - Production on Mon May 23 06:53:30 2005
+
+Copyright (c) 1982, 2002, Oracle Corporation.  All rights reserved.
+
+
+Connected to:
+Oracle9i Enterprise Edition Release 9.2.0.2.0 - 64bit Production
+With the Partitioning, OLAP and Oracle Data Mining options
+JServer Release 9.2.0.2.0 - Production
+
+SQL> SQL> SQL> SQL> SQL> SQL> SQL> SQL>   2    3    4    5    6  alter tablespace AMAPP end backup;
+alter tablespace BDAPP end backup;
+alter tablespace BNAPP end backup;
+alter tablespace BNLARGE end backup;
+alter tablespace COAPP end backup;
+alter tablespace CUAUDIT end backup;
+alter tablespace CULARG1 end backup;
+alter tablespace CULARG2 end backup;
+alter tablespace CULARG3 end backup;
+alter tablespace CULARGE end backup;
+alter tablespace DIAPP end backup;
+alter tablespace EOAPP end backup;
+alter tablespace EOLARGE end backup;
+alter tablespace ERAPP end backup;
+alter tablespace FGAPP end backup;
+alter tablespace FSAPP end backup;
+alter tablespace GI end backup;
+alter tablespace GIAPP end backup;
+alter tablespace GLAPP end backup;
+alter tablespace GPAPP end backup;
+alter tablespace GPDEAPP end backup;
+alter tablespace HPAPP end backup;
+alter tablespace HRAPP end backup;
+alter tablespace HRAPP1 end backup;
+alter tablespace HRAPP2 end backup;
+alter tablespace HRAPP3 end backup;
+alter tablespace HRAPP4 end backup;
+alter tablespace HRAPP5 end backup;
+alter tablespace HRAPP6 end backup;
+alter tablespace HRLARGE end backup;
+alter tablespace HRWORK end backup;
+alter tablespace HTAPP end backup;
+alter tablespace INAPP end backup;
+alter tablespace PAAPP end backup;
+alter tablespace PALARGE end backup;
+alter tablespace PCAPP end backup;
+alter tablespace PCLARGE end backup;
+alter tablespace PIAPP end backup;
+alter tablespace PILARGE end backup;
+alter tablespace PIWORK end backup;
+alter tablespace POAPP end backup;
+alter tablespace PRECISE_INDEX_TBS end backup;
+alter tablespace PRECISE_TBS end backup;
+alter tablespace PSDEFAULT end backup;
+alter tablespace PSHRMS end backup;
+alter tablespace PSIMAGE end backup;
+alter tablespace PSIMGR end backup;
+alter tablespace PSINDEX end backup;
+alter tablespace PSWORK end backup;
+alter tablespace PTAMSG end backup;
+alter tablespace PTAPP end backup;
+alter tablespace PTAPPE end backup;
+alter tablespace PTAUDIT end backup;
+alter tablespace PTCMSTAR end backup;
+alter tablespace PTLOCK end backup;
+alter tablespace PTPRC end backup;
+alter tablespace PTPRJWK end backup;
+alter tablespace PTRPTS end backup;
+alter tablespace PTTBL end backup;
+alter tablespace PTTLRG end backup;
+alter tablespace PTTREE end backup;
+alter tablespace PTWORK end backup;
+alter tablespace PVAPP end backup;
+alter tablespace PYAPP end backup;
+alter tablespace PYLARGE end backup;
+alter tablespace PYWORK end backup;
+alter tablespace STAPP end backup;
+alter tablespace STLARGE end backup;
+alter tablespace STWORK end backup;
+alter tablespace SYSTEM end backup;
+alter tablespace TLAPP end backup;
+alter tablespace TLLARGE end backup;
+alter tablespace TLWORK end backup;
+alter tablespace TOOLS end backup;
+alter tablespace UNDOTBS1 end backup;
+alter tablespace USERS end backup;
+alter tablespace WAAPP end backup;
+SQL> SQL> SP2-0734: unknown command beginning "SQL> selec..." - rest of line ignored.
+  6*
+SP2-0734: unknown command beginning "SQL> spool..." - rest of line ignored.
+SQL> Disconnected from Oracle9i Enterprise Edition Release 9.2.0.2.0 - 64bit Production
+With the Partitioning, OLAP and Oracle Data Mining options
+JServer Release 9.2.0.2.0 - Production
+Hot backup BEGIN process for hrprod COMPLETED at Mon May 23 06:53:32 EDT 2005

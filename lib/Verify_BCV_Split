@@ -1,0 +1,78 @@
+Verify_BCV_Split() {
+#
+# Function - 
+# Version - 
+# Author - David Holton
+# Date - April 19, 2002
+#
+# Description - 
+#
+###############################################################################
+# Modification history
+# Date     Who          What was modified.
+# -------- ------------ ------------------
+#
+###############################################################################
+## Location: /usr/local/bin/bcvscripts/lib
+#set -n
+
+print Start Verify BCV Split function. $(date)
+print >> ${EMAIL_RPT}
+
+print Number of DG elements are: $( ${SERVER}_Total_DGs )
+print Device Groups are: $( ${SERVER}_GET_ALL_DGS )
+cat ${BCV_SPLIT_STATUS}
+print "#"
+
+ALL_GROUPS_SPLIT=0
+
+LOOP() {
+for DVGROUP in $( ${SERVER}_GET_ALL_DGS )
+do
+	print Checking ${DVGROUP}
+
+	LINE=$(grep ${DVGROUP} ${BCV_SPLIT_STATUS})
+	print -n "\tLINE is ${LINE},"
+
+	GROUP=${LINE%=*}
+	print -n " Group is ${GROUP},"
+
+	VALUE=${LINE#*=}
+	print " Value is ${VALUE}"
+
+	if [ ${VALUE} ]
+	then
+		if [[ "${VALUE}" -eq '0' ]]
+		then
+			ALL_GROUPS_SPLIT=$((ALL_GROUPS_SPLIT + 1))
+		fi
+	else
+		print VALUE is NULL. BIG PROBLEM!
+	fi
+	print ALL_GROUPS_SPLIT is ${ALL_GROUPS_SPLIT}
+	print "#"
+done
+}
+
+VERIFY_SPLIT() {
+if [[ ${ALL_GROUPS_SPLIT} -eq $( ${SERVER}_Total_DGs ) ]]
+then
+	print ${ALL_GROUPS_SPLIT} of $( ${SERVER}_Total_DGs ) Device Groups Split.
+	print ${ALL_GROUPS_SPLIT} of $( ${SERVER}_Total_DGs ) DG Split >> ${EMAIL_RPT}
+	print ${ALL_GROUPS_SPLIT} of $( ${SERVER}_Total_DGs ) DG Split >> ${QEMAIL_RPT}
+else
+	print ERROR - ${ALL_GROUPS_SPLIT} of $( ${SERVER}_Total_DGs ) DG Split. Script EXITING. $(date)
+	print ERROR - ${ALL_GROUPS_SPLIT} of $( ${SERVER}_Total_DGs ) DG Split. Script EXITING. $(date) >> ${EMAIL_RPT}
+	print ERROR - ${ALL_GROUPS_SPLIT} of $( ${SERVER}_Total_DGs ) DG Split. Script EXITING. $(date) >> ${QEMAIL_RPT}
+	print ERROR - ${ALL_GROUPS_SPLIT} of $( ${SERVER}_Total_DGs ) DG Split. Script EXITING. $(date) >> ${ERROR_RPT}
+	Notify Final
+	Notify Error
+	exit
+fi
+}
+
+LOOP
+VERIFY_SPLIT
+
+print End Verify BCV Split function. $(date); print
+}

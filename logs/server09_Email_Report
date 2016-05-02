@@ -1,0 +1,80 @@
+EMAIL REPORT Initialized at Mon May 23 01:40:00 EDT 2005
+START BCV Establish and Split Script for server09 on Mon May 23 01:40:00 EDT 2005
+
+Script started with the following Options and Arguements: -BS server09 -s wait
+Working on BCVs for SERVER: server09
+SERVER server09 is a valid BCV Server. Continuing.
+Configuration file is: /usr/local/bin/bcvscripts/etc/bcv_scripts.conf
+Establish Type is: incr
+Run Backup is set to: YES
+Manual Monitoring is set to: NO
+Split Mode is set to WAIT
+Split Time is: 06:30:00
+
+OMNIBACK_OBJ is: SERVER09
+
+FileSystems to UNmount: 8
+/BCV/srvr09/u08	was successfully UNmounted
+/BCV/srvr09/u06	was successfully UNmounted
+/BCV/srvr09/u07	was successfully UNmounted
+/BCV/srvr09/apps	was successfully UNmounted
+/BCV/srvr09/u01	was successfully UNmounted
+/BCV/srvr09/u05	was successfully UNmounted
+/BCV/srvr09/u04	was successfully UNmounted
+/BCV/srvr09/u02	was successfully UNmounted
+8 of 8 filesystems UNmounted.
+
+Volume Groups to be Deactivated: 8
+VG /dev/vgfoobar1 was successfully deactivated.
+VG /dev/vgfoobar2 was successfully deactivated.
+VG /dev/vgfoobar3 was successfully deactivated.
+VG /dev/vgapps09 was successfully deactivated.
+VG /dev/vgpshr01 was successfully deactivated.
+VG /dev/vgpsfiles2 was successfully deactivated.
+VG /dev/vghrsystem1 was successfully deactivated.
+VG /dev/vghrprod1 was successfully deactivated.
+8 of 8 Volume Groups DEActivated.
+
+Volume Groups to be Exported: 0
+0 of 0 VGs Exported.
+
+
+8 of 8 DG Started Sync.
+
+8 of 8 DG Finished Sync.
+
+BCV Split started at Mon May 23 06:47:15 EDT 2005
+
+8 of 8 DG Split
+
+Volume Groups to be Imported: 0
+0 of 0 VGs Imported.
+
+Volume Groups to ACTivate: 8
+8 of 8 VGs Activated.
+
+FileSystems to Check and Mount: 8
+8 of 8 passed FSCK and Mounted.
+Hot backup BEGIN process for STARTED at Mon May 23 06:48:14 EDT 2005
+Hot backup BEGIN process for hrprod COMPLETED at Mon May 23 06:48:20 EDT 2005
+Hot backup BEGIN process for STARTED at Mon May 23 06:48:22 EDT 2005
+Hot backup BEGIN process for prgprod COMPLETED at Mon May 23 06:48:23 EDT 2005
+Hot backup BEGIN process for STARTED at Mon May 23 06:48:09 EDT 2005
+Hot backup BEGIN process for prod1 COMPLETED at Mon May 23 06:48:14 EDT 2005
+Hot backup BEGIN process for STARTED at Mon May 23 06:48:20 EDT 2005
+Hot backup BEGIN process for scprod COMPLETED at Mon May 23 06:48:22 EDT 2005
+Hot backup BEGIN process for STARTED at Mon May 23 06:53:30 EDT 2005
+Hot backup BEGIN process for hrprod COMPLETED at Mon May 23 06:53:32 EDT 2005
+Hot backup BEGIN process for STARTED at Mon May 23 06:53:33 EDT 2005
+Hot backup BEGIN process for prgprod COMPLETED at Mon May 23 06:53:33 EDT 2005
+Hot backup BEGIN process for STARTED at Mon May 23 06:53:29 EDT 2005
+Hot backup BEGIN process for prod1 COMPLETED at Mon May 23 06:53:30 EDT 2005
+Hot backup BEGIN process for STARTED at Mon May 23 06:53:32 EDT 2005
+Hot backup BEGIN process for scprod COMPLETED at Mon May 23 06:53:33 EDT 2005
+
+NO LVM Errors Recorded: (LVM-ERRORS 0)
+
+Starting Backup Job: remsh sta0lx07 BPbackup -i -p Qwest_UNIX_BCV_SERVER09 -s QBCV_SRVR09_Daily
+
+END BCV Establish and Split Script for server09 on Mon May 23 06:53:13 EDT 2005
+Sending Final report to FINAL notification list.

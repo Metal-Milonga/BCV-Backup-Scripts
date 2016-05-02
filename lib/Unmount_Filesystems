@@ -1,0 +1,206 @@
+Unmount_Filesystems(){
+#
+# Function - Unmount_Filesystems
+# Version - 1.01
+# Author - David Holton
+# Date - April 19, 2002
+#
+# Description - This function will unmount the filesystems before the BCV
+#		establish starts.  It gets the list of filesystems from
+#		grep'ing the VG from the /etc/fstab file.
+#
+#		This function does extensive error checking on both the
+#		individual filesystem and on the group as a whole to make sure
+#		it has umounted them.
+#
+###############################################################################
+# Modification history
+# Date     Who          What was modified.
+# -------- ------------ ------------------
+# 07/09/02 Dave Holton	Commented out the messages about successful unmounts of
+#			individual filesystems from going to the email report.
+# 11/27/02 Dave Holton  Made the functions Define_VG_Variables and
+#                       What_Are_The_Variables into external functions.
+# 01/23/03 Dave Holton	Adding $UNMOUNT_COUNT to record the number of successful
+#			unmounts in an instance.  This will be used to change the
+#			format of the reports to match the other entries. i.e.
+#			"7 out of 7 filesystems unmounted" instead of "0 out of
+#			7 filesystems unmounted" to show complete success for this
+#			external function.
+# 04/10/03 Dave Holton	Added fuser -ku filesystem just before the umount.  This
+#			will kick off any users that may be logged into the
+#			system and parked on the filesystem.
+#
+###############################################################################
+#set -vn
+
+print Start Unmount Filesystem function. $(date)
+# The following line reports the total number of Filesystems that must be unmounted.
+print FileSystems to UNmount: $(${SERVER}_Total_VGs)
+print "#"
+print >> ${EMAIL_RPT}
+# The following line reports the total number of Filesystems that must be unmounted.
+print FileSystems to UNmount: $(${SERVER}_Total_VGs) >> ${EMAIL_RPT}
+
+#
+## We use the BCV_UMOUNT_STATUS file to keep track of the results of a filesystem being unmounted.
+## Here we delete any old file that may be hanging around, and then touch a new one.
+#
+if [[ -f ${BCV_UMOUNT_STATUS} ]]
+then
+	rm ${BCV_UMOUNT_STATUS}
+	touch ${BCV_UMOUNT_STATUS}
+else
+	touch ${BCV_UMOUNT_STATUS}
+fi
+
+#
+## Start a counter to record the number of successful unmounts. This will allow the change of the reports to match
+## the current output of the other external functions, and help to simplify the email report.
+#
+UNMOUNT_COUNT=0
+
+######${SERVER}_Verify_Full_VGs	## This could be put in to set up Object Oriented building of the Volume Group
+######				## and File system variables.  The loop around it needs to be fixed.
+######				## The OOP function is built in the Declare_VolumeGroup_Variables Function.
+######echo ${FILESYS}
+
+#####for VG in $( ${SERVER}_GET_ALL_VGS )
+#####do
+#####	print VG from OOP Function is: $VG
+#####done
+
+#
+## Here we use the OOP function, SERVER_GET_ALL_VGS, to get a list of all the VGs, whose
+## filesystems must be unmounted. The results are cycled through and assigned to the
+## variable VOLGROUP.
+#
+for VOLGROUP in $( ${SERVER}_GET_ALL_VGS )
+do
+
+	Unmount_Em_Now(){
+	#
+	## This internal function performs the actual unmounting and the first part of the
+	## error checking.
+	#
+	## Assign MOUNT_STAT the value of the modified output of the mount command.
+	## We use this to see if the filesystem is currently mounted.
+	#
+	MOUNT_STAT=$(mount -p | grep ${FILESYSTEM} | sed "s/  */:/g" | cut -d":" -f2)
+
+	if [ ${MOUNT_STAT} ]	# If the variable MOUNT_STAT has a value then the filesystem
+	then			# is mounted, and we need to umount it. 
+		print VG ${VG} is mounted on ${MOUNT_STAT}. I will unmount it for you.
+
+		#
+		## Run fuser -ku against the filesystem to kick anyone off before
+		## trying to unmount the filesystem.
+		#
+		fuser -ku ${FILESYSTEM}
+
+		umount ${FILESYSTEM}
+		UMOUNT_STAT=${?}
+		#
+		## Obviously we are attempting to unmount the filesystem here.
+		## Recording the status of that command in UMOUNT_STAT.
+		## And in the next line we write the status to the BCV_UMOUNT_STATUS file. It
+		## should be '0' if it was successful.
+		#
+		print ${FILESYSTEM}:${UMOUNT_STAT} >> ${BCV_UMOUNT_STATUS}
+
+		#
+		## Now we double check the modified output of the mount command to make sure the
+		## filesystem actually unmounted. If so then the MOUNT_STAT_2 variable should have
+		## a zero length.
+		#
+		MOUNT_STAT_2=$(mount -p | grep ${FILESYSTEM} | sed "s/  */:/g" | cut -d":" -f2)
+
+		#
+		## If the MOUNT_STAT_2 is a zero lenght AND the UMOUNT_STAT equals '0'...
+		#
+		if [[ -z ${MOUNT_STAT_2} && ${UMOUNT_STAT} -eq 0 ]]
+		then
+			#
+			## The un-mount was successful.
+			#
+			UNMOUNT_COUNT=$(( ${UNMOUNT_COUNT} + 1 ))
+			print VG ${VG} was successfully UNmounted from ${FILESYSTEM}.
+			print "${FILESYSTEM}\twas successfully UNmounted" >> ${EMAIL_RPT}
+			print "#"
+		else
+			#
+			## The unmount was NOT successful.
+			#
+			print VG ${VG} IS STILL MOUNTED ON ${MOUNT_STAT_2}.
+			print ${MOUNT_STAT_2} DID NOT UN-mount >> ${ERROR_RPT}
+			print ${MOUNT_STAT_2} DID NOT UN-mount >> ${EMAIL_RPT}
+			print "#"
+			print "#" >> ${EMAIL_RPT}
+			return
+		fi
+	else
+		#
+		## If MOUNT_STAT had no value then the filesystem was not mounted, so
+		## we don't have to do anything to it except record that fact in the
+		## BCV_UMOUNT_STATUS file.
+		#
+		UNMOUNT_COUNT=$(( ${UNMOUNT_COUNT} + 1 ))
+		print VG ${VG} is NOT mounted.
+		print "VG ${VG}\tis NOT mounted." >> ${EMAIL_RPT}
+		print "${FILESYSTEM}:0" >> ${BCV_UMOUNT_STATUS}
+		print "#"
+		print "#" >> ${EMAIL_RPT}
+	fi
+	}
+
+	#
+	## Run the specific internal functions
+	#
+	Define_VG_Variables
+	What_Are_The_Variables
+	Unmount_Em_Now
+
+done
+
+#print "#" >> ${EMAIL_RPT}
+
+cat ${BCV_UMOUNT_STATUS}
+
+#
+## This for loop runs through the entries in the BCV_UMOUNT_STATUS file.
+## For each entry (which is a number), it increments U_STATUS_2 (which starts at 0) by the value of
+## U_STATUS.  If everything was successfully unmounted then the value of
+## U_STATUS_2 will still be 0 when the loop is finished.
+#
+for U_STATUS in $(cat ${BCV_UMOUNT_STATUS} | cut -d":" -f2 )
+do
+	print U_STATUS equals ${U_STATUS}
+	U_STATUS_2=$(( ${U_STATUS_2} + ${U_STATUS} ))
+done
+
+#
+## If the value of U_STATUS_2 (created above) is more than 0, then we had a problem
+## and we want the script to exit.
+## Otherwise all the filesystems unmounted and we can continue.
+#
+if [[ ${U_STATUS_2} -gt 0 || ${UNMOUNT_COUNT} -lt $(${SERVER}_Total_VGs) ]]
+then
+	print U_STATUS_2 is ${U_STATUS_2}
+	print "${U_STATUS_2} of $(${SERVER}_Total_VGs) filesystems still mounted."
+	print Some or all Umounts were UN-successful. Exiting $(date)
+	print Some or all Umounts were UN-successful. Exiting $(date) >> ${ERROR_RPT}
+	print Some or all Umounts were UN-successful. Exiting $(date) >> ${EMAIL_RPT}
+	print Some or all Umounts were UN-successful. Exiting $(date) >> ${QEMAIL_RPT}
+	Notify Final
+	Notify Error
+	exit
+else
+	print U_STATUS_2 is ${U_STATUS_2}
+	print Un-mounting successful for all filesystems.
+	print "${UNMOUNT_COUNT} of $(${SERVER}_Total_VGs) filesystems UNmounted."
+	print "${UNMOUNT_COUNT} of $(${SERVER}_Total_VGs) filesystems UNmounted." >> ${EMAIL_RPT}
+	print "${UNMOUNT_COUNT} of $(${SERVER}_Total_VGs) filesystems UNmounted." >> ${QEMAIL_RPT}
+fi
+
+print End Unmount Filesystem function. $(date); print
+}

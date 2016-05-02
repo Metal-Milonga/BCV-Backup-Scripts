@@ -1,0 +1,64 @@
+Verify_BCV_Sync_Started() {
+#
+# Function - 
+# Version - 
+# Author - David Holton
+# Date - April 19, 2002
+#
+# Description - 
+#
+###############################################################################
+# Modification history
+# Date     Who          What was modified.
+# -------- ------------ ------------------
+#
+###############################################################################
+## Location: /usr/local/bin/bcvscripts/lib
+#set -n
+
+print Start Verify BCV Sync Started function. $(date)
+print "#"
+print >> ${EMAIL_RPT}
+
+ALL_GROUPS_START=0
+##print ALL_GROUPS_START Count is ${ALL_GROUPS_START}
+
+for DEVGRP in $( ${SERVER}_GET_ALL_DGS )
+do
+	print DEVGRP is ${DEVGRP}
+
+	LINE=$(grep ${DEVGRP} ${BCV_EST_STATUS})
+	print -n "\tLine is ${LINE},"
+
+	GROUP=${LINE%=*}
+	print -n " Group is ${GROUP},"
+
+	VALUE=${LINE#*=}
+	print " Value is ${VALUE}"
+
+	if [[ "${VALUE}" -eq "0" || "${VALUE}" -eq "18" ]]
+	then
+		ALL_GROUPS_START=$((ALL_GROUPS_START + 1))
+	fi
+	print ALL_GROUPS_START Count is ${ALL_GROUPS_START}
+	print "#"
+done
+
+if [[ ${ALL_GROUPS_START} -eq $(${SERVER}_Total_DGs) ]]
+then
+	print ${ALL_GROUPS_START} of $(${SERVER}_Total_DGs) Device Groups Sync Started.
+	print ${ALL_GROUPS_START} of $(${SERVER}_Total_DGs) DG Started Sync. >> ${EMAIL_RPT}
+	print ${ALL_GROUPS_START} of $(${SERVER}_Total_DGs) DG Started Sync. >> ${QEMAIL_RPT}
+else
+	print ERROR - Only ${ALL_GROUPS_START} of $(${SERVER}_Total_DGs) DG Started Sync. Script EXITING. $(date)
+	print ERROR - Only ${ALL_GROUPS_START} of $(${SERVER}_Total_DGs) DG Started Sync. Script EXITING. $(date) >> ${EMAIL_RPT}
+	print ERROR - Only ${ALL_GROUPS_START} of $(${SERVER}_Total_DGs) DG Started Sync. Script EXITING. $(date) >> ${QEMAIL_RPT}
+	print ERROR - Only ${ALL_GROUPS_START} of $(${SERVER}_Total_DGs) DG Started Sync. Script EXITING. $(date) >> ${ERROR_RPT}
+	Notify Final
+	Notify Error
+	exit
+fi
+
+print "#"
+print End Verify BCV Sync Started function. $(date); print
+}

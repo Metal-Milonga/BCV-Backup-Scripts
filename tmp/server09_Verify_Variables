@@ -1,0 +1,310 @@
+
+VERIFY COMMAND OPTIONS
+#
+SERVER is set to: server09
+VALID_SERVERS are: server09 server16 server20
+Establish Type is set to: incr
+RUN_BACKUP is set to: YES
+Manual Monitoring is set to: NO
+Wait to Split the BCVs is set to:
+Split Mode is set to: WAIT
+CONFIG_FILE: Default config file will be used.
+
+
+VERIFY GEN VARIABLES
+COUNT_TIME_S30 is 30
+COUNT_TIME_S60 is 60
+COUNT_TIME_3 is 300
+COUNT_TIME_6 is 600
+COUNT_TIME_9 is 900
+SPLIT_TIME is 06:30:00
+SPLIT_TIME_2 is 063000
+SPLIT_HR is 06
+SPLIT_MIN is 30
+SPLIT_SEC is 00
+SPLIT_TOT_SEC is 23400
+SYMCLIDIR is /usr/symcli/bin
+BINDIR is /usr/bin
+SBINDIR is /usr/sbin
+BCVBINDIR is /usr/local/bin/bcvscripts/bin
+BCVLOGDIR is /usr/local/bin/bcvscripts/logs
+BCVETCDIR is /usr/local/bin/bcvscripts/etc
+BCVLIBDIR is /usr/local/bin/bcvscripts/lib
+BCVTMPDIR is /usr/local/bin/bcvscripts/tmp
+BCVCFGFILE is /usr/local/bin/bcvscripts/etc/bcv_scripts.conf
+BCV_VG_ELEMENTS is /usr/local/bin/bcvscripts/tmp/server09_VG_ELEM.vars
+BCV_VG_XACT_ELEMENTS is /usr/local/bin/bcvscripts/tmp/server09_VG_ELEM_XACT.vars
+BCV_DG_ELEMENTS is /usr/local/bin/bcvscripts/tmp/server09_DG_ELEM.vars
+BCV_UMOUNT_STATUS is /usr/local/bin/bcvscripts/tmp/server09_UMOUNT_STATUS
+BCV_VGCHANGE_STATUS is /usr/local/bin/bcvscripts/tmp/server09_VGCHANGE_STATUS
+BCV_EST_STATUS is /usr/local/bin/bcvscripts/tmp/server09_EST_STATUS
+BCV_SYNC_STATUS is /usr/local/bin/bcvscripts/tmp/server09_SYNC_STATUS
+BCV_SPLIT_STATUS is /usr/local/bin/bcvscripts/tmp/server09_SPLIT_STATUS
+BCV_MONITOR_STATUS is /usr/local/bin/bcvscripts/tmp/server09_EST_MONITOR
+BCV_EXPORT_STATUS is /usr/local/bin/bcvscripts/tmp/server09_EXPORT_STATUS
+BCV_IMPORT_STATUS is /usr/local/bin/bcvscripts/tmp/server09_IMPORT_STATUS
+FSCK_OUTPUT is /usr/local/bin/bcvscripts/tmp/server09_FSCK_OUTPUT
+ROOTDSKDIR is /root/disks
+BCVLOGFILE is /usr/local/bin/bcvscripts/logs/server09_BCV_LOG
+EMAIL_RPT is /usr/local/bin/bcvscripts/logs/server09_Email_Report
+ERROR_RPT is /usr/local/bin/bcvscripts/logs/server09_Error_Report
+FINAL is dholton jstenglein calley mbmcclos
+ERROR is dholton jstenglein calley mbmcclos
+
+
+VERIFY VG VARIABLES - Old Style
+#
+## VG Variables
+Total VG array elements is 8.
+VG array elemenst will start at 7.
+#
+	VG_ELEM is 7
+	VOLGROUP is vghrprod1
+	FSTAB_EXTRACT is /dev/vghrprod1/lvol1:/BCV/srvr09/u02
+	VG is vghrprod1
+	VG_LVOL is /dev/vghrprod1/lvol1
+	VG_RLVOL is /dev/vghrprod1/rlvol1
+	FILESYSTEM is /BCV/srvr09/u02
+	#
+	VG_ELEM is 6
+	VOLGROUP is vghrsystem1
+	FSTAB_EXTRACT is /dev/vghrsystem1/lvol1:/BCV/srvr09/u04
+	VG is vghrsystem1
+	VG_LVOL is /dev/vghrsystem1/lvol1
+	VG_RLVOL is /dev/vghrsystem1/rlvol1
+	FILESYSTEM is /BCV/srvr09/u04
+	#
+	VG_ELEM is 5
+	VOLGROUP is vgpsfiles2
+	FSTAB_EXTRACT is /dev/vgpsfiles2/lvol1:/BCV/srvr09/u05
+	VG is vgpsfiles2
+	VG_LVOL is /dev/vgpsfiles2/lvol1
+	VG_RLVOL is /dev/vgpsfiles2/rlvol1
+	FILESYSTEM is /BCV/srvr09/u05
+	#
+	VG_ELEM is 4
+	VOLGROUP is vgpshr01
+	FSTAB_EXTRACT is /dev/vgpshr01/lvol1:/BCV/srvr09/u01
+	VG is vgpshr01
+	VG_LVOL is /dev/vgpshr01/lvol1
+	VG_RLVOL is /dev/vgpshr01/rlvol1
+	FILESYSTEM is /BCV/srvr09/u01
+	#
+	VG_ELEM is 3
+	VOLGROUP is vgapps09
+	FSTAB_EXTRACT is /dev/vgapps09/lvol1:/BCV/srvr09/apps
+	VG is vgapps09
+	VG_LVOL is /dev/vgapps09/lvol1
+	VG_RLVOL is /dev/vgapps09/rlvol1
+	FILESYSTEM is /BCV/srvr09/apps
+	#
+	VG_ELEM is 2
+	VOLGROUP is vgfoobar3
+	FSTAB_EXTRACT is /dev/vgfoobar3/lvol1:/BCV/srvr09/u07
+	VG is vgfoobar3
+	VG_LVOL is /dev/vgfoobar3/lvol1
+	VG_RLVOL is /dev/vgfoobar3/rlvol1
+	FILESYSTEM is /BCV/srvr09/u07
+	#
+	VG_ELEM is 1
+	VOLGROUP is vgfoobar2
+	FSTAB_EXTRACT is /dev/vgfoobar2/lvol1:/BCV/srvr09/u06
+	VG is vgfoobar2
+	VG_LVOL is /dev/vgfoobar2/lvol1
+	VG_RLVOL is /dev/vgfoobar2/rlvol1
+	FILESYSTEM is /BCV/srvr09/u06
+	#
+	VG_ELEM is 0
+	VOLGROUP is vgfoobar1
+	FSTAB_EXTRACT is /dev/vgfoobar1/lvol1:/BCV/srvr09/u08
+	VG is vgfoobar1
+	VG_LVOL is /dev/vgfoobar1/lvol1
+	VG_RLVOL is /dev/vgfoobar1/rlvol1
+	FILESYSTEM is /BCV/srvr09/u08
+	#
+
+
+VERIFY XACT VG VARIABLES - Old Style
+#
+## VG Variables for Xact Establish
+Total VG array elements is 0.
+VG array elemenst will start at -1.
+VG_ARRAY_START_XACT (-1) in a negative state.
+There is obviously nothing to process here. Skipping.
+
+VERIFY DG VARIABLES
+#
+## Verifying DG Variables
+Total DG array elements is 8.
+DG array elemenst will start at 7.
+#
+DG_ELEM_7 is pshrprod1
+DG_ELEM_6 is pshrsystem1
+DG_ELEM_5 is psfiles2
+DG_ELEM_4 is pshr01
+DG_ELEM_3 is apps09
+DG_ELEM_2 is foobar3
+DG_ELEM_1 is foobar2
+DG_ELEM_0 is foobar1
+
+
+VERIFY XACT DG VARIABLES
+#
+## Verifying XACT DG Variables
+Total DG array elements is 0.
+DG array elemenst will start at -1.
+DG_ARRAY_START_XACT (-1) in a negative state.
+There is obviously nothing to process here. Skipping.
+
+VERIFY OMNIBACK VARIABLES
+OMNIETCDIR is /etc/opt/omni
+OMNIBINDIR is /opt/omni/bin
+INSTANCE_FILE is /usr/local/bin/bcvscripts/tmp/INSTANCES
+TOTAL_INSTANCES are 3
+INSTANCE is 3
+OMNIBACK_OBJ is SERVER09
+OMNIBACK_SCHED is QBCV_SRVR09
+OMNI_DRV is
+OMNI_LIST is
+JDATE is 2005143
+OMNI_FILESYSTEMS is /usr/local/bin/bcvscripts/tmp/2005143_FS.OB
+
+ORA_START_HBM is: /usr/local/bin/HBM/srvr09-StartHotBackup.sh
+ORA_STOP_HBM is: /usr/local/bin/HBM/srvr09-StopHotBackup.sh
+HBMLOGFILE is: /usr/local/bin/bcvscripts/logs/server09-HBM.log
+
+Verify_Full_VGs
+The number of Normal elements is 8
+The number of XACT elements is 0
+Total VGS from Normal and Xact settings is: 8
+server09_ALL_VGS is vgfoobar1 vgfoobar2 vgfoobar3 vgapps09 vgpshr01 vgpsfiles2 vghrsystem1 vghrprod1
+server09_ALL_VGS_XACT is
+ALL VGs from each group are: vgfoobar1 vgfoobar2 vgfoobar3 vgapps09 vgpshr01 vgpsfiles2 vghrsystem1 vghrprod1
+
+vgfoobar1
+/dev/vgfoobar1/lvol1 /BCV/srvr09/u08 vxfs rw,suid,largefiles,delaylog,nodatainlog 0 2
+
+	FSTAB_XTRACT is /dev/vgfoobar1/lvol1:/BCV/srvr09/u08
+	VG is /dev/vgfoobar1
+	VG_LVOL is /dev/vgfoobar1/lvol1
+	VG_RLVOL is /dev/vgfoobar1/rlvol1
+	FILESYSTEM is /BCV/srvr09/u08
+
+
+vgfoobar2
+/dev/vgfoobar2/lvol1 /BCV/srvr09/u06 vxfs rw,suid,largefiles,delaylog,nodatainlog 0 2
+
+	FSTAB_XTRACT is /dev/vgfoobar2/lvol1:/BCV/srvr09/u06
+	VG is /dev/vgfoobar2
+	VG_LVOL is /dev/vgfoobar2/lvol1
+	VG_RLVOL is /dev/vgfoobar2/rlvol1
+	FILESYSTEM is /BCV/srvr09/u06
+
+
+vgfoobar3
+/dev/vgfoobar3/lvol1 /BCV/srvr09/u07 vxfs rw,suid,largefiles,delaylog,nodatainlog 0 2
+
+	FSTAB_XTRACT is /dev/vgfoobar3/lvol1:/BCV/srvr09/u07
+	VG is /dev/vgfoobar3
+	VG_LVOL is /dev/vgfoobar3/lvol1
+	VG_RLVOL is /dev/vgfoobar3/rlvol1
+	FILESYSTEM is /BCV/srvr09/u07
+
+
+vgapps09
+/dev/vgapps09/lvol1 /BCV/srvr09/apps vxfs rw,suid,largefiles,delaylog,nodatainlog 0 2
+
+	FSTAB_XTRACT is /dev/vgapps09/lvol1:/BCV/srvr09/apps
+	VG is /dev/vgapps09
+	VG_LVOL is /dev/vgapps09/lvol1
+	VG_RLVOL is /dev/vgapps09/rlvol1
+	FILESYSTEM is /BCV/srvr09/apps
+
+
+vgpshr01
+/dev/vgpshr01/lvol1 /BCV/srvr09/u01 vxfs rw,suid,largefiles,delaylog,nodatainlog 0 2
+
+	FSTAB_XTRACT is /dev/vgpshr01/lvol1:/BCV/srvr09/u01
+	VG is /dev/vgpshr01
+	VG_LVOL is /dev/vgpshr01/lvol1
+	VG_RLVOL is /dev/vgpshr01/rlvol1
+	FILESYSTEM is /BCV/srvr09/u01
+
+
+vgpsfiles2
+/dev/vgpsfiles2/lvol1 /BCV/srvr09/u05 vxfs rw,suid,largefiles,delaylog,nodatainlog 0 2
+
+	FSTAB_XTRACT is /dev/vgpsfiles2/lvol1:/BCV/srvr09/u05
+	VG is /dev/vgpsfiles2
+	VG_LVOL is /dev/vgpsfiles2/lvol1
+	VG_RLVOL is /dev/vgpsfiles2/rlvol1
+	FILESYSTEM is /BCV/srvr09/u05
+
+
+vghrsystem1
+/dev/vghrsystem1/lvol1 /BCV/srvr09/u04 vxfs rw,suid,largefiles,delaylog,nodatainlog 0 2
+
+	FSTAB_XTRACT is /dev/vghrsystem1/lvol1:/BCV/srvr09/u04
+	VG is /dev/vghrsystem1
+	VG_LVOL is /dev/vghrsystem1/lvol1
+	VG_RLVOL is /dev/vghrsystem1/rlvol1
+	FILESYSTEM is /BCV/srvr09/u04
+
+
+vghrprod1
+/dev/vghrprod1/lvol1 /BCV/srvr09/u02 vxfs rw,suid,largefiles,delaylog,nodatainlog 0 2
+
+	FSTAB_XTRACT is /dev/vghrprod1/lvol1:/BCV/srvr09/u02
+	VG is /dev/vghrprod1
+	VG_LVOL is /dev/vghrprod1/lvol1
+	VG_RLVOL is /dev/vghrprod1/rlvol1
+	FILESYSTEM is /BCV/srvr09/u02
+
+
+
+GET ALL VGS
+vgfoobar1 vgfoobar2 vgfoobar3 vgapps09 vgpshr01 vgpsfiles2 vghrsystem1 vghrprod1
+
+Total VGs
+8
+
+Xact VGS
+
+
+Total Xact VGS
+0
+
+Full Verify DGs
+
+The number of Normal DG elements is 8
+The number of XACT DG elements is 0
+Total DGs from Normal and Xact settings is: 8
+server09_ALL_DGS is foobar1 foobar2 foobar3 apps09 pshr01 psfiles2 pshrsystem1 pshrprod1
+server09_ALL_DGS_XACT is
+ALL DGs from each group are: foobar1 foobar2 foobar3 apps09 pshr01 psfiles2 pshrsystem1 pshrprod1
+DG is set to foobar1
+DG is set to foobar2
+DG is set to foobar3
+DG is set to apps09
+DG is set to pshr01
+DG is set to psfiles2
+DG is set to pshrsystem1
+DG is set to pshrprod1
+
+GET ALL DGS
+foobar1 foobar2 foobar3 apps09 pshr01 psfiles2 pshrsystem1 pshrprod1
+
+Total DGs
+8
+
+Norm DGS
+foobar1 foobar2 foobar3 apps09 pshr01 psfiles2 pshrsystem1 pshrprod1
+
+Total Norm DGS
+8
+
+Xact DGS
+
+
+Total Xact DGS
+0

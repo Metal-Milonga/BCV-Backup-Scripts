@@ -1,0 +1,40 @@
+Start_Oracle_HotBackup_Mode() {
+#
+# Function - Start_Oracle_HotBackup_Mode
+# Version - V1.00
+# Author - David Holton
+# Date - April 19, 2002
+#
+# Description - Calls the scripts on the appropriate server to put Oracle in
+#		Hot Backup mode so we can split the BCV.
+#
+###############################################################################
+# Modification history
+# Date     Who          What was modified.
+# -------- ------------ ------------------
+# 07/30/02 Dave Holton	Redirected the output of the Hot backup scripts to a
+#			log file named SERVER-HBM.log. This may help if there
+#			are further problems calling the Oracle scripts on the 
+#			DB servers.
+#
+###############################################################################
+#set -n
+
+print Starting the Start Hot Backup Mode Function. $(date)
+
+print ${SERVER}
+
+print $(date) >> ${HBMLOGFILE}
+print >> ${HBMLOGFILE}
+
+remsh ${SERVER} ${ORA_START_HBM} >> ${HBMLOGFILE} 2>&1
+
+print >> ${HBMLOGFILE}
+print ################################################################## >> ${HBMLOGFILE}
+print ################################################################## >> ${HBMLOGFILE}
+print >> ${HBMLOGFILE}
+
+#####remsh ${SERVER} "/usr/local/sbin/startOracleHotBackup.sh" # Used for testing.
+
+print End Start Hot Backup Mode Function. $(date); print
+}

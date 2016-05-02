@@ -1,0 +1,37 @@
+Sleeper() {
+#
+# Function - 
+# Version - 
+# Author - David Holton
+# Date - April 19, 2002
+#
+# Description - 
+#
+###############################################################################
+# Modification history
+# Date     Who          What was modified.
+# -------- ------------ ------------------
+#
+###############################################################################
+# A more simple sleep function than the Time_Counter Function.
+# Sleeper prints out a simple output.
+
+typeset nSECONDS=$1	# This variable is local to this function
+typeset COUNT=1
+
+print -n "Sleeping ${nSECONDS} seconds: "
+
+if [[ ${MANUAL_MONITOR} = 'YES' ]]
+then
+
+	until [[ "${nSECONDS}" -eq "0" ]]
+	do
+		print -n "Z"
+		sleep 1
+		((nSECONDS-=1))
+	done
+	print
+else
+	sleep ${nSECONDS}
+fi
+}

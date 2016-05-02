@@ -1,0 +1,328 @@
+Script started with the following Options and Arguements: -FMS qta1srvr16
+SERVER is set to: qta1srvr16
+CONFIG_FILE: Default config file will be used.
+Establish Type is set to: FULL
+RUN_BACKUP is set to: NO
+Manual Monitoring is set to: YES
+Wait to Split the BCV is set to: NO
+
+START BCV Establish and Split Script for qta1srvr16 on Mon Nov 4 23:50:33 EST 2002
+
+Start Declare_General_Variables Function. Mon Nov 4 23:50:33 EST 2002.
+Script started with the following Options and Arguements: -FMS qta1srvr16
+Working on BCVs for SERVER: qta1srvr16
+SERVER qta1srvr16 is a valid BCV Server. Continuing.
+Configuration file is: /usr/local/bin/bcvscripts/etc/bcv_scripts.conf
+Establish Type is: FULL
+Run Backup is set to: NO
+Manual Monitoring is set to: YES
+Wait to Split the BCVs is set to NO
+End Declare_General_Variables Function. Mon Nov 4 23:50:33 EST 2002
+
+Start Declare_VolumeGroup_Variables Function. Mon Nov 4 23:50:33 EST 2002
+#
+Grabbing VGS for normal BCV Establish.
+VG_ARRAY_START (-1) has a negative value. No data here. Skipping.
+#
+Grabbing VGS for exact mode BCV Establish.
+SRVR_VG_XACT Array element 4 is: vgapps16
+SRVR_VG_XACT Array element 3 is: vgfssystem1
+SRVR_VG_XACT Array element 2 is: vgfsprod2
+SRVR_VG_XACT Array element 1 is: vgfsprod1
+SRVR_VG_XACT Array element 0 is: vgpsfiles1
+#
+End Declare_VolumeGroup_Variables Function. Mon Nov 4 23:50:33 EST 2002
+
+Start Declare_DeviceGroup_Variables Function. Mon Nov 4 23:50:33 EST 2002
+#
+Grabbing DGs for normal BCV Establish.
+DG_ARRAY_START (-1) has a negative Value. No data here. Skipping.
+#
+Grabbing DGs for exact mode BCV Establish.
+SRVR_DG_XACT Array element 4 is: apps16
+SRVR_DG_XACT Array element 3 is: psfssystem1
+SRVR_DG_XACT Array element 2 is: psfsprod2
+SRVR_DG_XACT Array element 1 is: psfsprod1
+SRVR_DG_XACT Array element 0 is: psfiles1
+#
+End Declare_DeviceGroup_Variables Function. Mon Nov 4 23:50:34 EST 2002
+
+Start Declare_OmniBack_Variables Function. Mon Nov 4 23:50:34 EST 2002.
+#
+Run Backup at end of script: NO
+Not Running Backup. Variables build skipped.
+#
+End Declare_OmniBack_Variables Function. Mon Nov 4 23:50:34 EST 2002
+
+Start OOP Loading Function. Mon Nov 4 23:50:34 EST 2002
+#
+#
+End OOP Loading Function. Mon Nov 4 23:50:34 EST 2002
+
+Start Unmount Filesystem function. Mon Nov 4 23:50:34 EST 2002
+FileSystems to UNmount: 5
+#
+
+	VOLGROUP is vgpsfiles1
+	FSTAB_EXTRACT is /dev/vgpsfiles1/lvol1:/BCV/srvr16/u05
+	VG is /dev/vgpsfiles1
+	VG_LVOL is /dev/vgpsfiles1/lvol1
+	VG_RLVOL is /dev/vgpsfiles1/rlvol1
+	FILESYSTEM is /BCV/srvr16/u05
+	#FILESYSTEM is 13 characters long
+
+VG /dev/vgpsfiles1 is NOT mounted.
+#
+
+	VOLGROUP is vgfsprod1
+	FSTAB_EXTRACT is /dev/vgfsprod1/lvol1:/BCV/srvr16/u01
+	VG is /dev/vgfsprod1
+	VG_LVOL is /dev/vgfsprod1/lvol1
+	VG_RLVOL is /dev/vgfsprod1/rlvol1
+	FILESYSTEM is /BCV/srvr16/u01
+	#FILESYSTEM is 13 characters long
+
+VG /dev/vgfsprod1 is NOT mounted.
+#
+
+	VOLGROUP is vgfsprod2
+	FSTAB_EXTRACT is /dev/vgfsprod2/lvol1:/BCV/srvr16/u02
+	VG is /dev/vgfsprod2
+	VG_LVOL is /dev/vgfsprod2/lvol1
+	VG_RLVOL is /dev/vgfsprod2/rlvol1
+	FILESYSTEM is /BCV/srvr16/u02
+	#FILESYSTEM is 13 characters long
+
+VG /dev/vgfsprod2 is NOT mounted.
+#
+
+	VOLGROUP is vgfssystem1
+	FSTAB_EXTRACT is /dev/vgfssystem1/lvol1:/BCV/srvr16/u03
+	VG is /dev/vgfssystem1
+	VG_LVOL is /dev/vgfssystem1/lvol1
+	VG_RLVOL is /dev/vgfssystem1/rlvol1
+	FILESYSTEM is /BCV/srvr16/u03
+	#FILESYSTEM is 13 characters long
+
+VG /dev/vgfssystem1 is NOT mounted.
+#
+
+	VOLGROUP is vgapps16
+	FSTAB_EXTRACT is /dev/vgapps16/lvol1:/BCV/srvr16/apps
+	VG is /dev/vgapps16
+	VG_LVOL is /dev/vgapps16/lvol1
+	VG_RLVOL is /dev/vgapps16/rlvol1
+	FILESYSTEM is /BCV/srvr16/apps
+	#FILESYSTEM is 14 characters long
+
+VG /dev/vgapps16 is NOT mounted.
+#
+/BCV/srvr16/u05:0
+/BCV/srvr16/u01:0
+/BCV/srvr16/u02:0
+/BCV/srvr16/u03:0
+/BCV/srvr16/apps:0
+Un-mounting successful for all filesystems.
+0 out of 5 filesystems still mounted.
+End Unmount Filesystem function. Mon Nov 4 23:50:34 EST 2002
+
+Start Deactivate VolumeGroups function. Mon Nov 4 23:50:34 EST 2002
+Volume Groups to be Deactivated: 5
+#
+
+	FSTAB_EXTRACT is /dev/vgpsfiles1/lvol1:/BCV/srvr16/u05
+	VG is /dev/vgpsfiles1
+	VG_LVOL is /dev/vgpsfiles1/lvol1
+	VG_RLVOL is /dev/vgpsfiles1/rlvol1
+	FILESYSTEM is /BCV/srvr16/u05
+	#FILESYSTEM is 13 characters long
+
+The filesystem /BCV/srvr16/u05 is not mounted. VG /dev/vgpsfiles1 will be deactivated.
+Volume group "/dev/vgpsfiles1" has been successfully changed.
+VG /dev/vgpsfiles1 was successfully deactivated.
+#
+
+	FSTAB_EXTRACT is /dev/vgfsprod1/lvol1:/BCV/srvr16/u01
+	VG is /dev/vgfsprod1
+	VG_LVOL is /dev/vgfsprod1/lvol1
+	VG_RLVOL is /dev/vgfsprod1/rlvol1
+	FILESYSTEM is /BCV/srvr16/u01
+	#FILESYSTEM is 13 characters long
+
+The filesystem /BCV/srvr16/u01 is not mounted. VG /dev/vgfsprod1 will be deactivated.
+VG /dev/vgfsprod1 was ALREADY DEactivated. Continuing.
+#
+
+	FSTAB_EXTRACT is /dev/vgfsprod2/lvol1:/BCV/srvr16/u02
+	VG is /dev/vgfsprod2
+	VG_LVOL is /dev/vgfsprod2/lvol1
+	VG_RLVOL is /dev/vgfsprod2/rlvol1
+	FILESYSTEM is /BCV/srvr16/u02
+	#FILESYSTEM is 13 characters long
+
+The filesystem /BCV/srvr16/u02 is not mounted. VG /dev/vgfsprod2 will be deactivated.
+VG /dev/vgfsprod2 was ALREADY DEactivated. Continuing.
+#
+
+	FSTAB_EXTRACT is /dev/vgfssystem1/lvol1:/BCV/srvr16/u03
+	VG is /dev/vgfssystem1
+	VG_LVOL is /dev/vgfssystem1/lvol1
+	VG_RLVOL is /dev/vgfssystem1/rlvol1
+	FILESYSTEM is /BCV/srvr16/u03
+	#FILESYSTEM is 13 characters long
+
+The filesystem /BCV/srvr16/u03 is not mounted. VG /dev/vgfssystem1 will be deactivated.
+VG /dev/vgfssystem1 was ALREADY DEactivated. Continuing.
+#
+
+	FSTAB_EXTRACT is /dev/vgapps16/lvol1:/BCV/srvr16/apps
+	VG is /dev/vgapps16
+	VG_LVOL is /dev/vgapps16/lvol1
+	VG_RLVOL is /dev/vgapps16/rlvol1
+	FILESYSTEM is /BCV/srvr16/apps
+	#FILESYSTEM is 14 characters long
+
+The filesystem /BCV/srvr16/apps is not mounted. VG /dev/vgapps16 will be deactivated.
+VG /dev/vgapps16 was ALREADY DEactivated. Continuing.
+#
+(0/5) out of 5 Volume Groups DEActivated.
+#
+End Deactivate VolumeGroups function. Mon Nov 4 23:50:35 EST 2002
+
+Start Export Volume Groups function. Mon Nov 4 23:50:35 EST 2002
+Volume Groups to be Exported: 5
+#
+Working /dev/vgpsfiles1
+VG_MINOR_NUM is 0x090000
+No map directory exists for /dev/vgpsfiles1. Creating.
+Exporting /dev/vgpsfiles1.
+Beginning the export process on Volume Group "/dev/vgpsfiles1".
+/dev/dsk/c4t11d7
+/dev/dsk/c4t12d0
+/dev/dsk/c7t11d7
+/dev/dsk/c7t12d0
+Volume group "/dev/vgpsfiles1" has been successfully removed.
+/dev/vgpsfiles1 was Exported with STATUS = 0
+#
+Working /dev/vgfsprod1
+VG_MINOR_NUM is 0x040000
+No map directory exists for /dev/vgfsprod1. Creating.
+Exporting /dev/vgfsprod1.
+Beginning the export process on Volume Group "/dev/vgfsprod1".
+/dev/dsk/c4t6d2
+/dev/dsk/c4t6d3
+/dev/dsk/c4t6d4
+/dev/dsk/c4t6d5
+/dev/dsk/c4t6d6
+/dev/dsk/c4t6d7
+/dev/dsk/c4t7d0
+/dev/dsk/c4t7d1
+/dev/dsk/c4t7d2
+/dev/dsk/c4t7d3
+/dev/dsk/c4t7d4
+/dev/dsk/c4t7d5
+/dev/dsk/c4t7d6
+/dev/dsk/c4t7d7
+/dev/dsk/c4t8d0
+/dev/dsk/c7t6d2
+/dev/dsk/c7t6d3
+/dev/dsk/c7t6d4
+/dev/dsk/c7t6d5
+/dev/dsk/c7t6d6
+/dev/dsk/c7t6d7
+/dev/dsk/c7t7d0
+/dev/dsk/c7t7d1
+/dev/dsk/c7t7d2
+/dev/dsk/c7t7d3
+/dev/dsk/c7t7d4
+/dev/dsk/c7t7d5
+/dev/dsk/c7t7d6
+/dev/dsk/c7t7d7
+/dev/dsk/c7t8d0
+Volume group "/dev/vgfsprod1" has been successfully removed.
+/dev/vgfsprod1 was Exported with STATUS = 0
+#
+Working /dev/vgfsprod2
+VG_MINOR_NUM is 0x050000
+No map directory exists for /dev/vgfsprod2. Creating.
+Exporting /dev/vgfsprod2.
+Beginning the export process on Volume Group "/dev/vgfsprod2".
+/dev/dsk/c4t8d1
+/dev/dsk/c4t8d2
+/dev/dsk/c4t8d3
+/dev/dsk/c4t8d4
+/dev/dsk/c4t8d5
+/dev/dsk/c4t8d6
+/dev/dsk/c7t8d1
+/dev/dsk/c7t8d2
+/dev/dsk/c7t8d3
+/dev/dsk/c7t8d4
+/dev/dsk/c7t8d5
+/dev/dsk/c7t8d6
+Volume group "/dev/vgfsprod2" has been successfully removed.
+/dev/vgfsprod2 was Exported with STATUS = 0
+#
+Working /dev/vgfssystem1
+VG_MINOR_NUM is 0x060000
+No map directory exists for /dev/vgfssystem1. Creating.
+Exporting /dev/vgfssystem1.
+Beginning the export process on Volume Group "/dev/vgfssystem1".
+/dev/dsk/c4t8d7
+/dev/dsk/c4t9d0
+/dev/dsk/c4t9d1
+/dev/dsk/c4t9d2
+/dev/dsk/c4t9d3
+/dev/dsk/c4t9d4
+/dev/dsk/c4t9d5
+/dev/dsk/c4t9d6
+/dev/dsk/c4t9d7
+/dev/dsk/c4t10d0
+/dev/dsk/c4t10d1
+/dev/dsk/c4t10d2
+/dev/dsk/c4t10d3
+/dev/dsk/c4t10d4
+/dev/dsk/c7t8d7
+/dev/dsk/c7t9d0
+/dev/dsk/c7t9d1
+/dev/dsk/c7t9d2
+/dev/dsk/c7t9d3
+/dev/dsk/c7t9d4
+/dev/dsk/c7t9d5
+/dev/dsk/c7t9d6
+/dev/dsk/c7t9d7
+/dev/dsk/c7t10d0
+/dev/dsk/c7t10d1
+/dev/dsk/c7t10d2
+/dev/dsk/c7t10d3
+/dev/dsk/c7t10d4
+Volume group "/dev/vgfssystem1" has been successfully removed.
+/dev/vgfssystem1 was Exported with STATUS = 0
+#
+Working /dev/vgapps16
+VG_MINOR_NUM is 0x110000
+No map directory exists for /dev/vgapps16. Creating.
+Exporting /dev/vgapps16.
+Beginning the export process on Volume Group "/dev/vgapps16".
+/dev/dsk/c5t1d5
+/dev/dsk/c8t1d5
+Volume group "/dev/vgapps16" has been successfully removed.
+/dev/vgapps16 was Exported with STATUS = 0
+#
+Contents of Export Status file is: /dev/vgpsfiles1=0:1
+/dev/vgpsfiles1 was Exported successfully
+Contents of Export Status file is: /dev/vgfsprod1=0:1
+/dev/vgfsprod1 was Exported successfully
+Contents of Export Status file is: /dev/vgfsprod2=0:1
+/dev/vgfsprod2 was Exported successfully
+Contents of Export Status file is: /dev/vgfssystem1=0:1
+/dev/vgfssystem1 was Exported successfully
+Contents of Export Status file is: /dev/vgapps16=0:1
+/dev/vgapps16 was Exported successfully
+End Export Volume Groups function. Mon Nov 4 23:50:36 EST 2002
+
+Start Verify Variables Function. Mon Nov 4 23:50:36 EST 2002
+#
+End Verify Variables Function. Mon Nov 4 23:50:36 EST 2002
+
+END BCV Establish and Split Script for qta1srvr16 on Mon Nov 4 23:50:36 EST 2002
+

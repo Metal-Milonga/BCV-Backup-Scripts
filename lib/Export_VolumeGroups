@@ -1,0 +1,180 @@
+Export_VolumeGroups(){
+#
+# Function - 
+# Version - 
+# Author - David Holton
+# Date - April 19, 2002
+#
+# Description - 
+#
+###############################################################################
+# Modification history
+# Date     Who          What was modified.
+# -------- ------------ ------------------
+# 10/15/02 Dave Holton	Reduced the number of messages to the email report and
+#			created a export counter to compare to the number of
+#			VGs to be exported.
+# 11/27/02 Dave Holton	Made the functions Define_VG_Variables and
+#			What_Are_The_Variables into external functions.
+# 07/15/03 Dave Holton	Removed the old code for Define_VG_Variables and
+#			What_Are_The_Variables because it made the old code
+#			hard to read.
+# 07/15/03 Dave Holton	Added the EXPORT_PREFLIGHT function.
+#			Put CHK_MAP_DIR, CHK_MAP_FILE, CHK_PVPATH_FILE,
+#			Get_Minor_Num,and Export_VG under this function.
+#			Also, started the EXPORT_COUNT variable earlier.
+#
+###############################################################################
+#set -n
+
+print Start Export Volume Groups function. $(date)
+print Volume Groups to be Exported: $( ${SERVER}_Total_Xact_VGS )
+print "#"
+print >> ${EMAIL_RPT}
+print Volume Groups to be Exported: $( ${SERVER}_Total_Xact_VGS ) >> ${EMAIL_RPT}
+
+if [[ -f ${BCV_EXPORT_STATUS} ]]
+then
+	rm ${BCV_EXPORT_STATUS}
+	touch ${BCV_EXPORT_STATUS}
+else
+	touch ${BCV_EXPORT_STATUS}
+fi
+
+if [[ -f ${BCV_VG_MINNUM} ]]
+then
+	rm ${BCV_VG_MINNUM}
+	touch ${BCV_VG_MINNUM}
+else
+	touch ${BCV_VG_MINNUM}
+fi
+
+EXPORT_COUNT=0
+for VOLGROUP in $( ${SERVER}_Xact_VGS )
+do
+
+	Get_Minor_Num(){
+
+	print Working ${VG}
+	VG_MINOR_NUM=$(ll ${VG}/group | sed "s/  */:/g" | cut -d":" -f6)
+	print VG_MINOR_NUM is ${VG_MINOR_NUM}
+	print "${VG}:${VG_MINOR_NUM}" >> ${BCV_VG_MINNUM}
+
+	}
+
+	CHK_MAP_DIR() {
+	if [[ ! -d ${MAPDIR} ]]
+	then
+		print No map directory exists for ${VG}. Creating.
+		mkdir ${MAPDIR}
+		BCVMAPDIR="${MAPDIR}"
+	else
+		print ${MAPDIR} Map directory exists.
+		BCVMAPDIR="${MAPDIR}"
+	fi
+	}
+
+	CHK_MAP_FILE() {
+	if [[ -f ${MAPFILE} ]]
+	then
+		mv ${MAPFILE} ${MAPFILE}.$(date +%y%j)
+	fi
+	}
+
+	CHK_PVPATH_FILE() {
+	if [[ -f ${PVPATHFILE} ]]
+	then
+		mv ${PVPATHFILE} ${PVPATHFILE}.$(date +%y%j)
+	fi
+	}
+
+	Export_VG(){
+	print Exporting ${VG}.
+	vgexport -v -m ${MAPFILE} -f ${PVPATHFILE} ${VG}
+	EXPORT_STAT=${?}
+
+	grep ${VG} /etc/lvmtab >> /dev/null 2>&1
+	EXPORT_STAT2=${?}
+
+	print ${VG}=${EXPORT_STAT}:${EXPORT_STAT2} >> ${BCV_EXPORT_STATUS}
+	print ${VG} was Exported with STATUS = ${EXPORT_STAT}
+	}
+
+	EXPORT_PREFLIGHT() {
+	#
+	## This function will check to see if the volume group has
+	## already been exported.
+	##
+	## This was neccessary because of older volume
+	## groups that had more than one LVOL in them.  Multiple exports
+	## running against the same VG caused the map and pvpath files
+	## to get overwritten....then import would not work without the files.
+	#
+	EX_GREP_STAT=$(grep ${VG} ${BCV_EXPORT_STATUS})
+
+	if [ -z "${EX_GREP_STAT}" ]
+	then
+		Get_Minor_Num
+		CHK_MAP_DIR
+		CHK_MAP_FILE
+		CHK_PVPATH_FILE
+		Export_VG
+		EXPORT_COUNT=$(( ${EXPORT_COUNT} + 1 ))
+	else
+		print ${VG} already exported: ${EX_GREP_STAT}
+		print "#"
+		EXPORT_COUNT=$(( ${EXPORT_COUNT} + 1 ))
+	fi
+	}
+
+	Define_VG_Variables
+	What_Are_The_Variables
+	EXPORT_PREFLIGHT	# This calls the following Functions:
+				#	Get_Minor_Num
+				#	CHK_MAP_DIR
+				#	CHK_MAP_FILE
+				#	CHK_PVPATH_FILE
+				#	Export_VG
+
+	print "#"
+
+done
+
+EXPORT_STATUS_CHECK() {
+for XVG in $(< ${BCV_EXPORT_STATUS})
+do
+	print Contents of Export Status file is: ${XVG}
+
+	XVG_0=${XVG%=*}
+		#print XVG_0 is ${XVG_0}
+
+	XVG_1=${XVG#*=}
+		#print XVG_1 is ${XVG_1}
+
+	nXport_Stat1=${XVG_1%:*}
+		#print nXport_Stat1 is ${nXport_Stat1}
+
+	nXport_Stat2=${XVG_1#*:}
+		#print nXport_Stat2 is ${nXport_Stat2}
+
+	if [[ ! nXport_Stat1 -eq 0 && ! nXport_Stat2 -eq 1 ]]
+	then
+		print ${XVG_0} was NOT exported!!
+		print ${XVG_0} was NOT exported!! Exiting. >> ${EMAIL_RPT}
+		print ${XVG_0} was NOT exported!! Exiting. >> ${ERROR_RPT}
+		Notify Final
+		Notify Error
+		exit
+	else
+		print ${XVG_0} was Exported successfully
+	fi
+done
+}
+
+EXPORT_STATUS_CHECK
+
+print ${EXPORT_COUNT} of $( ${SERVER}_Total_Xact_VGS ) VGs Exported. >> ${EMAIL_RPT}
+print ${EXPORT_COUNT} of $( ${SERVER}_Total_Xact_VGS ) VGs Exported. >> ${QEMAIL_RPT}
+
+print End Export Volume Groups function. $(date); print
+}

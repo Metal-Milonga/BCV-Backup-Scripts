@@ -1,0 +1,266 @@
+Start_OmniBack_Job() {
+#
+# Function - Start OmniBack Job
+# Version - 1.04
+# Author - April 19, 2002
+#
+# Usage -	This function must be called with the command line option
+#		-B when the BCV-Est.sh script is started. Otherwise it will
+#		be skipped.
+#
+# Description - Based on which server the BCV-Est.sh script is run for, the 
+#		script is assigned a certain OmniBack job to run. It pull out
+#		the tape drive it is supposed to us from the Omniback
+#		Datalist for that OmniBack job. The Datalist is found in
+#		/etc/opt/omni/datalists
+#
+#		First it checks to see if the filesystems for that OmniBack job
+#		are mounted.  It looks at a file in the tmp directory that
+#		records which filesystems are mounted by different instances
+#		of BCV-Est.sh that have run that day. The file has the name
+#		that starts with the Julian date (i.e. 2002121) and ends with
+#		_FS.OB. The file is know to the script by variable name
+#		OMNI_FILESYSTEMS
+#
+#		If all the filesystems are mounted it uses omnistat to see if
+#		there are any backup jobs currently running. If not, it starts
+#		it's backup job.
+#
+#		If there are jobs running, it checks each one an pull out which
+#		tape drive the jobs are using.  Then it evaluates each drive
+#		and compares it to the drive it wants to use.  If the drive it
+#		wants in not in use, it starts the backup job.  If the drive
+#		is in use, it sleep for a set amount of time, and checks again.
+#
+# Bugs -	This script is still a little buggy, because of certain type of
+#		operations that Omniback runs that the script can not interpret.
+#		i.e. if a scan of new tapes is running, it shows up on omnistat
+#		as a job, but it can not get any details from the job including
+#		which drive the scan is running on.
+#
+################################################################################
+# Modification History
+#
+# Date     Who		What
+# -------- ------------	--------------------------------------------------------
+# 05/01/02 Dave Holton	Added code so that when the script determines that the
+#			drive is ready, it sets OMNI_JOB_COUNT=0. There was some
+#			problem with aborted jobs and rescan jobs confusing the
+#			script. It registered two jobs running on the same drive
+#			at one time, so the job count never reached zero. The
+#			job started, but on the next pass the script showed a job
+#			actively running on the drive the script wanted.
+#			Therefore the loop never ended.
+# 07/09/02 Dave Holton	Changed the output to the email report to only contain
+#			whether the job was started or not.  All other output
+#			was commented out.
+# 11/29/02 Dave Holton	Added the -load switch to the omnib line in the
+#			START_BACKUP internal function.
+# 11/29/02 Dave Holton	Changed the name of the datalist to match what is
+#			currently in the new version of Omniback.
+# 11/30/02 Dave Holton	When evaluating tape drives in use, it was looking for
+#			Drive. I changed it to look for DRV which is used in
+#			the new OmniBack libraries.
+# 09/30/03 Dave Holton	Converted to use Netbackup.
+#
+################################################################################
+#set -x
+
+print Begin Start OmniBack Job Function. $(date)
+print "#"
+print "" >> ${EMAIL_RPT}
+
+RDY_STAT=0
+
+START_BACKUP() {
+		print "Starting Backup Job: remsh sta0lx07 BPbackup -i -p Qwest_UNIX_BCV_${OMNIBACK_OBJ} -s ${OMNIBACK_SCHED}_Daily"
+		print "Starting Backup Job: remsh sta0lx07 BPbackup -i -p Qwest_UNIX_BCV_${OMNIBACK_OBJ} -s ${OMNIBACK_SCHED}_Daily" >> ${EMAIL_RPT}
+		#
+		# The variable OMNIBACK_OBJ is declared in the Declare OmniBack Variables function.
+		#
+		remsh sta0lx07 /usr/openv/netbackup/bin/bpbackup -i -p Qwest_UNIX_BCV_${OMNIBACK_OBJ} -s ${OMNIBACK_SCHED}_Daily
+}
+
+# The BCV-Est.sh commandline option -B is used when the script is started, the RUN_BACKUP variable will
+# be set to YES.  Otherwise it defaults to NO.
+if [[ ${RUN_BACKUP} = 'YES' ]]
+then
+
+	print Attempting to start OmniBackup Job.
+	##print Attempting to start OmniBackup Job. >> ${EMAIL_RPT}
+
+	print OMNIBACK_OBJ is ${OMNIBACK_OBJ}
+	##print OMNIBACK_OBJ is ${OMNIBACK_OBJ} >> ${EMAIL_RPT}
+
+	print List of Filesystems to backup for ${OMNIBACK_OBJ} is: ${OMNI_LIST[*]}
+	##print List of Filesystems to backup for ${OMNIBACK_OBJ} is: ${OMNI_LIST[*]} >> ${EMAIL_RPT}
+
+	print OMNI_DRV is ${OMNI_DRV}
+	##print OMNI_DRV is ${OMNI_DRV} >> ${EMAIL_RPT}
+
+	print "#"
+
+	# READY STAT LOOP
+	#
+	# The array OMNI_LIST is declared in the Declare OmniBack Variables function.
+	#
+	# Until RDY_STAT is equal to the number of elements in the OMNI_LIST array stay in the loop.
+	#
+	until (( ${RDY_STAT} == ${#OMNI_LIST[*]} ))
+	do
+		## FSS LOOP
+		## Now we cycle through the filesystem elements in the OMNI_LIST array.
+		for FSS in ${OMNI_LIST[*]}
+		do
+			print FSS is ${FSS}
+			#
+			# Grep the filesystem from the OMNI_FILESYSTEMS file (see Description at top
+			# for what this file contains). Cut out the second field which should be a 0
+			# if the filesystem has an entry in the file.  Otherwise the variable
+			# MNT_STAT will be null.
+			#
+			MNT_STAT=$(grep ${FSS} ${OMNI_FILESYSTEMS} | cut -d":" -f2)
+		#######	MNT_STAT=${MNT_STAT:-1}
+				print "\tMNT_STAT is ${MNT_STAT}"
+			#
+			# If MNT_STAT equals 0 then increment RDY_STAT by 1
+			if [[ ${MNT_STAT} = 0 ]]
+			then
+				RDY_STAT=$(( ${RDY_STAT} + 1 ))
+					print "\tRDY_STAT is ${RDY_STAT}"
+			fi
+		done
+
+		#
+		# After the FSS LOOP, if RDY_STAT does not equal the number of elements in
+		# OMNI_LIST, then we sleep for a set amount of time, and start the 
+		# READY STAT LOOP again.
+		#
+		# Other wise the READY STAT LOOP ends.
+		#
+		if (( ${RDY_STAT} != ${#OMNI_LIST[*]} ))
+		then
+			print "All Filesystems are not mounted. NOT ready for Backup yet."
+			print "\tReady_Status is ${RDY_STAT}. Resetting to 0."
+			RDY_STAT=0
+			Time_Counter ${COUNT_TIME_9}
+			print "#"
+		fi
+	done
+	
+	print "Filesystems are ready to run the Omniback Job."
+	##print "Filesystems are ready to run the Omniback Job." >> ${EMAIL_RPT}
+	print "#"
+
+	START_BACKUP
+
+#	# Initiate the OMNI_JOB_COUNT variable with a value that will fail in the loop.
+#	OMNI_JOB_COUNT=9
+#
+#	# MAIN OMNIBACK LOOP
+#	#
+#	# We stay in this loop until OMNI_JOB_COUNT equals 0
+#	until (( ${OMNI_JOB_COUNT} == 0 ))
+#	do
+#
+#		# Pulls the output of omnistat and stores it in OMNI_STAT
+#		OMNI_STAT=$(${OMNIBINDIR}/omnistat | grep -vi -e "Sessi" -e "=====" -e "Purge" )
+#
+#		# If OMNI_STAT has no value, assign it a 0.
+#		if [[ ${OMNI_STAT:-0} = "0" ]]
+#		then
+#			# If OMNI_STAT is 0, then we start the backup.
+#			#
+#			print No backup Jobs are currently running. Starting Backup job.
+#			##print No backup Jobs are currently running. Starting Backup job. >> ${EMAIL_RPT}
+#			OMNI_JOB_COUNT=0
+#			START_BACKUP
+#		else
+#			# Build an array that contains just the session ids of the backup jobs that are running.
+#			set -A OMNI_JOBS $(${OMNIBINDIR}/omnistat | grep -vi -e "Sessi" -e "=====" -e "Purge" | sed "s/  */:/g" | cut -d":" -f1)
+#			# print out the session ids that are in the array.
+#			print OmniBackup Jobs Running are ${OMNI_JOBS[*]}
+#			# Creates a variable that holds the number of elements in the array.
+#			OMNI_JOB_COUNT=${#OMNI_JOBS[*]}
+#			print Number of OmniBackup Jobs Running is ${#OMNI_JOBS[*]}
+#
+#			# Initiates an empty array.
+#			set -A DRIVE_ARRAY
+#
+#			# Cycle through the elements in the OMNI_JOBS array, and extract which drive each job
+#			# is using. The JOB_COUNT variable functions as the counter for adding drives to the
+#			# DRIVE_ARRAY array.
+#			JOB_COUNT=1
+#			for JOBS in ${OMNI_JOBS[*]}
+#			do
+#				#print ${JOBS}
+#				USED_DRIVE=$(${OMNIBINDIR}/omnistat -ses ${JOBS} | grep DRV | sed "s/  */:/g" | cut -d":" -f1)
+#				DRIVE_ARRAY[${JOB_COUNT}]=${USED_DRIVE}
+#				JOB_COUNT=$(( ${JOB_COUNT} + 1 ))
+#			done
+#			# Now print out what the DRIVE_ARRAY array contains and a count of how many elements are in it.
+#			# I like to verify the arrays with this kind of redundancy 
+#			print Drive Array contains: ${DRIVE_ARRAY[*]}
+#			DRIVE_USED_COUNT=${#DRIVE_ARRAY[*]}
+#			print Used Drive Count is: ${DRIVE_USED_COUNT}
+#			print "#"
+#
+#			print Checking the status of drives in use. I want ${OMNI_DRV}
+#			print "# #"
+#
+#			# DRIVE LOOP
+#			# Now we check each drive to see if it is the drive we need to use to start our backup job.
+#			DRIVE_COUNT=0
+#			# Cycle through the elements of the DRIVE_ARRAY array.
+#			for DRIVE in ${DRIVE_ARRAY[*]}
+#			do
+#				print Checking status of job running on ${DRIVE}
+#				if [[ ${OMNI_DRV} = ${DRIVE} ]]
+#				then
+#					# If the drive we want is occupied, print out which session is using it...
+#					print "OmniBack job ${JOBS} is running on my drive (${OMNI_DRV})."
+#					# and increment the DRIVE_COUNT variable by 1.
+#					DRIVE_COUNT=$(( ${DRIVE_COUNT} + 1 ))
+#				else
+#					print Drive ${DRIVE} is not mine. Skip it!
+#					# If the drive we want is NOT occupied,
+#					# decrement the OMNI_JOB_COUNT variable by 1.
+#					OMNI_JOB_COUNT=$(( ${OMNI_JOB_COUNT} - 1 ))
+#				fi
+#				print "#"
+#			done
+#	
+#			# In the DRIVE LOOP above, the DRIVE_COUNT variable will be incremented
+#			# if our drive is being used.  Otherwise it will remain at 0.
+#			if [[ ${DRIVE_COUNT} -eq "0" ]]
+#			then
+#				print "Tape Drive (${OMNI_DRV}) is ready."
+#				##print "Tape Drive (${OMNI_DRV}) is ready." >> ${EMAIL_RPT}
+#				# We reset OMNI_JOB_COUNT to 0 if our drive is not used.
+#				# this will end the MAIN OMNIBACK LOOP when it evaluates
+#				# the value of OMNI_JOB_COUNT again.
+#				OMNI_JOB_COUNT=0
+#				# We start the backup if our drive is not used.
+#				START_BACKUP
+#			else
+#				# If our drive is in use...
+#				print Tape Drive is occupied.  NOT ready for Backup yet.
+#				# call the Time Counter function and pass the amount of time to sleep.
+#				Time_Counter ${COUNT_TIME_9}
+#				print "#"
+#				# After the sleep, we start the MAIN OMNIBACK LOOP again.
+#				print Checking drive status again. Looking for ${OMNI_DRV}
+#				print "# #"
+#			fi
+#		fi
+#	done
+else
+	# These lines will be run if the RUN_BACKUP was set to NO.
+	print Backup option set to ${RUN_BACKUP}. Backup will not be run.
+	print Backup option set to ${RUN_BACKUP}. Backup will not be run. >> ${EMAIL_RPT}
+fi
+
+print "#"
+print End Start OmniBack Job Function. $(date); print
+
+}

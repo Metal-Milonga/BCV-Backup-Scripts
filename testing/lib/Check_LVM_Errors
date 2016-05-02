@@ -1,0 +1,38 @@
+Check_LVM_Errors() {
+#
+# Function - 
+# Version - 
+# Author - David Holton
+# Date - April 22, 2002
+#
+# Description - 
+#
+###############################################################################
+# Modification history
+# Date     Who          What was modified.
+# -------- ------------ ------------------
+#
+###############################################################################
+
+print Start CHECK LVM ERRORS function. $(date).
+print "#"
+print >> ${EMAIL_RPT}
+
+if [[ ${LVM_ERRORS} > 0 ]]
+then
+	print LVM Errors are: ${LVM_ERRORS}
+	print LVM Errors are: ${LVM_ERRORS} >> ${EMAIL_RPT}
+	print LVM Errors are: ${LVM_ERRORS} >> ${ERROR_RPT}
+	Notify Final
+	Notify Error
+	print Exiting Script
+	print "#"
+	exit
+else
+	print "NO LVM Errors Recorded: (LVM-ERRORS ${LVM_ERRORS})"
+	print "NO LVM Errors Recorded: (LVM-ERRORS ${LVM_ERRORS})" >> ${EMAIL_RPT}
+	print "#"
+fi
+
+print End CHECK LVM ERRORS function. $(date).; print
+}

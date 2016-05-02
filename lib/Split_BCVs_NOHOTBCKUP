@@ -1,0 +1,175 @@
+Split_BCVs_NOHOTBCKUP() {
+#
+# Function - Split_BCVs_NOHOTBCKUP
+# Version - 1.05
+# Author - David Holton
+# Date - March 23, 2003
+#
+# Description - This function will initiate the split of the BCVs. This
+#		funciton cantains two functions within it:
+#
+#		The Split_The_BCVs loop calls the Start and Stop Hot Backup
+#		scripts for the Oracle databases.  In between Starting
+#		and Stopping Oracle Hot Backup mode, it performs the BCV split
+#		for the appropriate EMC Device Groups.
+#
+#		If the -W option is used to start the BCV-Est.sh script, then
+#		this function will wait until the Split time defined in the 
+#		configuration file before actually splitting the BCVs. This is
+#		accomplished by the second function. It makes use of the
+#		Determine_Split_Wait function to find the right about of time
+#		to sleep until it is time to perform the split.
+#		
+#
+###############################################################################
+# Modification history
+# Date     Who          What was modified.
+# -------- ------------ ------------------
+# 05/23/02 Dave Holton	Edited the Wait_To_Split_Loop to run the new
+#			Determine_Split_Wait function, and edited the line in
+#			the Wait_To_Split_Loop that calls the Time_Counter to
+#			use the value of $COUNT_TIME returned from the
+#			Determine_Split_Wait function.
+# 05/24/02 Dave Holton	In the Wait_To_Split_Loop, changed the comparison of
+#			current time and split time to use >= instead of >
+# 07/09/02 Dave Holton	Commented out reports of indivitual splits from going
+#			to the email report. Also, lines regarding the wait
+#			state and when the split time is set to.
+# 11/26/02 Dave Holton	Added code to check for a SPLIT_LOCK file.  If the file
+#			is present, then another instance of the script is
+#			running a split routine. In that case, sleep for 900
+#			seconds and check again. If the file is not there then
+#			it is okay to split the BCVs, but first we touch the
+#			SPLIT_LOCK file so no other instances will error out
+#			while we are splitting.  Once we are finished, the 
+#			script removes the SPLIT_LOCK FILE.
+# 11/29/02 Dave Holton	Moved the SPLIT_LOCK logic inside the Split_The_BCVs
+#			internal function.  Then it is only executed when an
+#			instance of the script is ready to split.
+# 03/23/03 Dave Holton	This version has the call to the start and stop Oracle
+#			Hot Backup mode, commented out.  This is for doing
+#			manual establish and splits until I can get a version
+#			with a commandline switch build.
+#
+###############################################################################
+#set -n
+
+print Start Split BCVs function. $(date)
+print >> ${EMAIL_RPT}
+
+if [[ -f ${BCV_SPLIT_STATUS} ]]
+then
+	rm ${BCV_SPLIT_STATUS}
+fi
+touch ${BCV_SPLIT_STATUS}
+
+########################
+## INTERNAL FUNCTIONS ##
+########################
+Split_The_BCVs() {
+
+	SPLIT_LOCK_STATUS=1
+	SPLIT_LOCK_FILE=${BCVTMPDIR}/SPLIT_LOCK
+
+	while [[ ${SPLIT_LOCK_STATUS} -ne 0 ]]
+	do
+		if [[ -a ${SPLIT_LOCK_FILE} ]]
+		then
+			print "Another instance is currently splitting. Sleeping 15 minutes."
+			Time_Counter 900
+			SPLIT_LOCK_STATUS=1
+		else
+			touch ${SPLIT_LOCK_FILE}
+			SPLIT_LOCK_STATUS=0
+		fi
+	done
+
+	#####Start_Oracle_HotBackup_Mode
+
+	#####Time_Counter 120
+
+	print BCV Split started at $(date) >> ${EMAIL_RPT}
+
+	for DGROUPS in $( ${SERVER}_GET_ALL_DGS )
+	do
+		print BCV Split started at $(date)
+		print "#"
+		print Working on ${DGROUPS}
+
+		print Running Command: ${SYMCLIDIR}/symir -g ${DGROUPS} -noprompt split
+		${SYMCLIDIR}/symmir -g ${DGROUPS} -noprompt split
+		SPLIT_STAT=${?}
+
+		print ${DGROUPS}=${SPLIT_STAT} >> ${BCV_SPLIT_STATUS}
+
+		if [[ "${SPLIT_STAT}" -eq "0" ]]
+		then
+			print Device Group ${DGROUPS} was split successfully.
+			##print DG ${DGROUPS} split successfully. >> ${EMAIL_RPT}
+		else
+			print Device Group ${DGROUPS} did NOT split.
+			print Device Group ${DGROUPS} did NOT split. >> ${EMAIL_RPT}
+			print Device Group ${DGROUPS} did NOT split. >> ${ERROR_RPT}
+		fi
+		print "#"
+	done
+
+	#####Stop_Oracle_HotBackup_Mode
+
+	#####Time_Counter 120
+
+}
+
+
+Wait_To_Split_Loop() {
+STOP_LOOP=1
+until (( ${STOP_LOOP} == 0 ))
+do
+	CURRENT_TIME=$(date +%H%M%S)
+	print CURRENT_TIME is: ${CURRENT_TIME}
+	print SPLIT_TIME is: ${SPLIT_TIME_2}
+
+	if (( ${CURRENT_TIME} >= ${SPLIT_TIME_2} ))
+	then
+
+		print "#"
+		print It is now okay to Split the BCVs
+		print "#"
+
+		print Number of Device Groups is: $( ${SERVER}_Total_DGs )
+		print Device Groups are: $( ${SERVER}_GET_ALL_DGS )
+		print "#"
+
+		Split_The_BCVs
+
+		STOP_LOOP=0
+	else
+		Determine_Split_Wait
+		print It is NOT time to Split the BCVs YET!
+		Time_Counter ${COUNT_TIME}
+	fi
+done
+}
+
+if [[ ${WAIT_TO_SPLIT} = "YES" ]]
+then
+	print Wait to Split is set to: ${WAIT_TO_SPLIT}
+	##print Wait to Split is set to: ${WAIT_TO_SPLIT} >> ${EMAIL_RPT}
+	print I must wait until ${SPLIT_TIME} to split the BCVs.
+	##print I must wait until ${SPLIT_TIME} to split the BCVs. >> ${EMAIL_RPT}
+	print "#"
+	Wait_To_Split_Loop
+else
+	print Wait to Split is set to: ${WAIT_TO_SPLIT}
+	##print Wait to Split is set to: ${WAIT_TO_SPLIT} >> ${EMAIL_RPT}
+	print I can split the BCVs NOW!
+	##print I can split the BCVs NOW! >> ${EMAIL_RPT}
+	print "#"
+	Split_The_BCVs
+fi
+
+rm ${SPLIT_LOCK_FILE}
+
+print "#"
+print End Split BCVs function. $(date); print
+}

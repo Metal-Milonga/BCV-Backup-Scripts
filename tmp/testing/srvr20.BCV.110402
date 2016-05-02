@@ -1,0 +1,289 @@
+Script started with the following Options and Arguements: -FMS qta1srvr20
+SERVER is set to: qta1srvr20
+CONFIG_FILE: Default config file will be used.
+Establish Type is set to: FULL
+RUN_BACKUP is set to: NO
+Manual Monitoring is set to: YES
+Wait to Split the BCV is set to: NO
+
+START BCV Establish and Split Script for qta1srvr20 on Mon Nov 4 23:51:41 EST 2002
+
+Start Declare_General_Variables Function. Mon Nov 4 23:51:41 EST 2002.
+Script started with the following Options and Arguements: -FMS qta1srvr20
+Working on BCVs for SERVER: qta1srvr20
+SERVER qta1srvr20 is a valid BCV Server. Continuing.
+Configuration file is: /usr/local/bin/bcvscripts/etc/bcv_scripts.conf
+Establish Type is: FULL
+Run Backup is set to: NO
+Manual Monitoring is set to: YES
+Wait to Split the BCVs is set to NO
+Start Declare_VolumeGroup_Variables Function. Mon Nov 4 23:51:41 EST 2002
+#
+Grabbing VGS for normal BCV Establish.
+VG_ARRAY_START (-1) has a negative value. No data here. Skipping.
+#
+Grabbing VGS for exact mode BCV Establish.
+SRVR_VG_XACT Array element 4 is: vg20u20
+SRVR_VG_XACT Array element 3 is: vg20u03
+SRVR_VG_XACT Array element 2 is: vg20u02
+SRVR_VG_XACT Array element 1 is: vg20u01
+SRVR_VG_XACT Array element 0 is: vgapps20
+#
+End Declare_VolumeGroup_Variables Function. Mon Nov 4 23:51:42 EST 2002
+
+Start Declare_DeviceGroup_Variables Function. Mon Nov 4 23:51:42 EST 2002
+#
+Grabbing DGs for normal BCV Establish.
+DG_ARRAY_START (-1) has a negative Value. No data here. Skipping.
+#
+Grabbing DGs for exact mode BCV Establish.
+SRVR_DG_XACT Array element 4 is: srvr20u20
+SRVR_DG_XACT Array element 3 is: srvr20u03
+SRVR_DG_XACT Array element 2 is: srvr20u02
+SRVR_DG_XACT Array element 1 is: srvr20u01
+SRVR_DG_XACT Array element 0 is: apps20
+#
+End Declare_DeviceGroup_Variables Function. Mon Nov 4 23:51:42 EST 2002
+
+Start Declare_OmniBack_Variables Function. Mon Nov 4 23:51:42 EST 2002.
+#
+Run Backup at end of script: NO
+Not Running Backup. Variables build skipped.
+#
+End Declare_OmniBack_Variables Function. Mon Nov 4 23:51:42 EST 2002
+
+Start OOP Loading Function. Mon Nov 4 23:51:42 EST 2002
+#
+#
+End OOP Loading Function. Mon Nov 4 23:51:42 EST 2002
+
+Start Unmount Filesystem function. Mon Nov 4 23:51:42 EST 2002
+FileSystems to UNmount: 5
+#
+
+	VOLGROUP is vgapps20
+	FSTAB_EXTRACT is /dev/vgapps20/lvol1:/BCV/srvr20/apps
+	VG is /dev/vgapps20
+	VG_LVOL is /dev/vgapps20/lvol1
+	VG_RLVOL is /dev/vgapps20/rlvol1
+	FILESYSTEM is /BCV/srvr20/apps
+	#FILESYSTEM is 14 characters long
+
+VG /dev/vgapps20 is mounted on /BCV/srvr20/apps. I will unmount it for you.
+VG /dev/vgapps20 was successfully UNmounted from /BCV/srvr20/apps.
+#
+
+	VOLGROUP is vg20u01
+	FSTAB_EXTRACT is /dev/vg20u01/lvol1:/BCV/srvr20/u01
+	VG is /dev/vg20u01
+	VG_LVOL is /dev/vg20u01/lvol1
+	VG_RLVOL is /dev/vg20u01/rlvol1
+	FILESYSTEM is /BCV/srvr20/u01
+	#FILESYSTEM is 13 characters long
+
+VG /dev/vg20u01 is mounted on /BCV/srvr20/u01. I will unmount it for you.
+VG /dev/vg20u01 was successfully UNmounted from /BCV/srvr20/u01.
+#
+
+	VOLGROUP is vg20u02
+	FSTAB_EXTRACT is /dev/vg20u02/lvol1:/BCV/srvr20/u02
+	VG is /dev/vg20u02
+	VG_LVOL is /dev/vg20u02/lvol1
+	VG_RLVOL is /dev/vg20u02/rlvol1
+	FILESYSTEM is /BCV/srvr20/u02
+	#FILESYSTEM is 13 characters long
+
+VG /dev/vg20u02 is mounted on /BCV/srvr20/u02. I will unmount it for you.
+VG /dev/vg20u02 was successfully UNmounted from /BCV/srvr20/u02.
+#
+
+	VOLGROUP is vg20u03
+	FSTAB_EXTRACT is /dev/vg20u03/lvol1:/BCV/srvr20/u03
+	VG is /dev/vg20u03
+	VG_LVOL is /dev/vg20u03/lvol1
+	VG_RLVOL is /dev/vg20u03/rlvol1
+	FILESYSTEM is /BCV/srvr20/u03
+	#FILESYSTEM is 13 characters long
+
+VG /dev/vg20u03 is mounted on /BCV/srvr20/u03. I will unmount it for you.
+VG /dev/vg20u03 was successfully UNmounted from /BCV/srvr20/u03.
+#
+
+	VOLGROUP is vg20u20
+	FSTAB_EXTRACT is /dev/vg20u20/lvol1:/BCV/srvr20/u20
+	VG is /dev/vg20u20
+	VG_LVOL is /dev/vg20u20/lvol1
+	VG_RLVOL is /dev/vg20u20/rlvol1
+	FILESYSTEM is /BCV/srvr20/u20
+	#FILESYSTEM is 13 characters long
+
+VG /dev/vg20u20 is mounted on /BCV/srvr20/u20. I will unmount it for you.
+VG /dev/vg20u20 was successfully UNmounted from /BCV/srvr20/u20.
+#
+/BCV/srvr20/apps:0
+/BCV/srvr20/u01:0
+/BCV/srvr20/u02:0
+/BCV/srvr20/u03:0
+/BCV/srvr20/u20:0
+Un-mounting successful for all filesystems.
+0 out of 5 filesystems still mounted.
+End Unmount Filesystem function. Mon Nov 4 23:51:44 EST 2002
+
+Start Deactivate VolumeGroups function. Mon Nov 4 23:51:44 EST 2002
+Volume Groups to be Deactivated: 5
+#
+
+	FSTAB_EXTRACT is /dev/vgapps20/lvol1:/BCV/srvr20/apps
+	VG is /dev/vgapps20
+	VG_LVOL is /dev/vgapps20/lvol1
+	VG_RLVOL is /dev/vgapps20/rlvol1
+	FILESYSTEM is /BCV/srvr20/apps
+	#FILESYSTEM is 14 characters long
+
+The filesystem /BCV/srvr20/apps is not mounted. VG /dev/vgapps20 will be deactivated.
+Volume group "/dev/vgapps20" has been successfully changed.
+VG /dev/vgapps20 was successfully deactivated.
+#
+
+	FSTAB_EXTRACT is /dev/vg20u01/lvol1:/BCV/srvr20/u01
+	VG is /dev/vg20u01
+	VG_LVOL is /dev/vg20u01/lvol1
+	VG_RLVOL is /dev/vg20u01/rlvol1
+	FILESYSTEM is /BCV/srvr20/u01
+	#FILESYSTEM is 13 characters long
+
+The filesystem /BCV/srvr20/u01 is not mounted. VG /dev/vg20u01 will be deactivated.
+Volume group "/dev/vg20u01" has been successfully changed.
+VG /dev/vg20u01 was successfully deactivated.
+#
+
+	FSTAB_EXTRACT is /dev/vg20u02/lvol1:/BCV/srvr20/u02
+	VG is /dev/vg20u02
+	VG_LVOL is /dev/vg20u02/lvol1
+	VG_RLVOL is /dev/vg20u02/rlvol1
+	FILESYSTEM is /BCV/srvr20/u02
+	#FILESYSTEM is 13 characters long
+
+The filesystem /BCV/srvr20/u02 is not mounted. VG /dev/vg20u02 will be deactivated.
+Volume group "/dev/vg20u02" has been successfully changed.
+VG /dev/vg20u02 was successfully deactivated.
+#
+
+	FSTAB_EXTRACT is /dev/vg20u03/lvol1:/BCV/srvr20/u03
+	VG is /dev/vg20u03
+	VG_LVOL is /dev/vg20u03/lvol1
+	VG_RLVOL is /dev/vg20u03/rlvol1
+	FILESYSTEM is /BCV/srvr20/u03
+	#FILESYSTEM is 13 characters long
+
+The filesystem /BCV/srvr20/u03 is not mounted. VG /dev/vg20u03 will be deactivated.
+Volume group "/dev/vg20u03" has been successfully changed.
+VG /dev/vg20u03 was successfully deactivated.
+#
+
+	FSTAB_EXTRACT is /dev/vg20u20/lvol1:/BCV/srvr20/u20
+	VG is /dev/vg20u20
+	VG_LVOL is /dev/vg20u20/lvol1
+	VG_RLVOL is /dev/vg20u20/rlvol1
+	FILESYSTEM is /BCV/srvr20/u20
+	#FILESYSTEM is 13 characters long
+
+The filesystem /BCV/srvr20/u20 is not mounted. VG /dev/vg20u20 will be deactivated.
+Volume group "/dev/vg20u20" has been successfully changed.
+VG /dev/vg20u20 was successfully deactivated.
+#
+(0/5) out of 5 Volume Groups DEActivated.
+#
+End Deactivate VolumeGroups function. Mon Nov 4 23:51:50 EST 2002
+
+Start Export Volume Groups function. Mon Nov 4 23:51:50 EST 2002
+Volume Groups to be Exported: 5
+#
+Working /dev/vgapps20
+VG_MINOR_NUM is 0x0f0000
+No map directory exists for /dev/vgapps20. Creating.
+Exporting /dev/vgapps20.
+Beginning the export process on Volume Group "/dev/vgapps20".
+/dev/dsk/c5t1d6
+/dev/dsk/c5t1d7
+/dev/dsk/c5t2d0
+/dev/dsk/c8t1d6
+/dev/dsk/c8t1d7
+/dev/dsk/c8t2d0
+Volume group "/dev/vgapps20" has been successfully removed.
+/dev/vgapps20 was Exported with STATUS = 0
+#
+Working /dev/vg20u01
+VG_MINOR_NUM is 0x0b0000
+No map directory exists for /dev/vg20u01. Creating.
+Exporting /dev/vg20u01.
+Beginning the export process on Volume Group "/dev/vg20u01".
+/dev/dsk/c5t0d0
+/dev/dsk/c5t0d1
+/dev/dsk/c5t0d2
+/dev/dsk/c5t0d3
+/dev/dsk/c5t0d4
+/dev/dsk/c5t0d5
+/dev/dsk/c8t0d0
+/dev/dsk/c8t0d1
+/dev/dsk/c8t0d2
+/dev/dsk/c8t0d3
+/dev/dsk/c8t0d4
+/dev/dsk/c8t0d5
+Volume group "/dev/vg20u01" has been successfully removed.
+/dev/vg20u01 was Exported with STATUS = 0
+#
+Working /dev/vg20u02
+VG_MINOR_NUM is 0x0c0000
+No map directory exists for /dev/vg20u02. Creating.
+Exporting /dev/vg20u02.
+Beginning the export process on Volume Group "/dev/vg20u02".
+/dev/dsk/c5t0d6
+/dev/dsk/c5t0d7
+/dev/dsk/c5t1d0
+/dev/dsk/c5t1d1
+/dev/dsk/c8t0d6
+/dev/dsk/c8t0d7
+/dev/dsk/c8t1d0
+/dev/dsk/c8t1d1
+Volume group "/dev/vg20u02" has been successfully removed.
+/dev/vg20u02 was Exported with STATUS = 0
+#
+Working /dev/vg20u03
+VG_MINOR_NUM is 0x0d0000
+No map directory exists for /dev/vg20u03. Creating.
+Exporting /dev/vg20u03.
+Beginning the export process on Volume Group "/dev/vg20u03".
+/dev/dsk/c5t1d2
+/dev/dsk/c8t1d2
+Volume group "/dev/vg20u03" has been successfully removed.
+/dev/vg20u03 was Exported with STATUS = 0
+#
+Working /dev/vg20u20
+VG_MINOR_NUM is 0x0e0000
+No map directory exists for /dev/vg20u20. Creating.
+Exporting /dev/vg20u20.
+Beginning the export process on Volume Group "/dev/vg20u20".
+/dev/dsk/c5t1d3
+/dev/dsk/c8t1d3
+Volume group "/dev/vg20u20" has been successfully removed.
+/dev/vg20u20 was Exported with STATUS = 0
+#
+Contents of Export Status file is: /dev/vgapps20=0:1
+/dev/vgapps20 was Exported successfully
+Contents of Export Status file is: /dev/vg20u01=0:1
+/dev/vg20u01 was Exported successfully
+Contents of Export Status file is: /dev/vg20u02=0:1
+/dev/vg20u02 was Exported successfully
+Contents of Export Status file is: /dev/vg20u03=0:1
+/dev/vg20u03 was Exported successfully
+Contents of Export Status file is: /dev/vg20u20=0:1
+/dev/vg20u20 was Exported successfully
+End Export Volume Groups function. Mon Nov 4 23:51:51 EST 2002
+
+Start Verify Variables Function. Mon Nov 4 23:51:51 EST 2002
+#
+End Verify Variables Function. Mon Nov 4 23:51:52 EST 2002
+
+END BCV Establish and Split Script for qta1srvr20 on Mon Nov 4 23:51:52 EST 2002
+

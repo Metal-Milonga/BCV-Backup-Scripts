@@ -1,0 +1,347 @@
+Verify_Variables(){
+#
+# Function - 
+# Version - 
+# Author - David Holton
+# Date - April 19, 2002
+#
+# Description - 
+#
+###############################################################################
+# Modification history
+# Date     Who          What was modified.
+# -------- ------------ ------------------
+# 07/30/02 dave holton	Added the Oracle verify function.
+#
+###############################################################################
+
+print Start Verify Variables Function. $(date)
+
+VERIFY_VG_VARIABLES() {
+print; print VERIFY VG VARIABLES - Old Style
+print "#"
+print '## VG Variables'
+print Total VG array elements is ${TOTAL_VG_ARRAY}.
+print VG array elemenst will start at ${VG_ARRAY_START}.
+
+if [[ ${VG_ARRAY_START} -eq "-1" ]]
+then
+	print "VG_ARRAY_START (${VG_ARRAY_START}) in a negative state."
+	print There is obviously nothing to process here.  Skipping.
+	return
+fi
+
+#### print You should not see this line if the VG_ARRAY_START variable is negative.
+print "#"
+
+VG_ELEM=${VG_ARRAY_START}
+while [[ VG_ELEM -ge 0 ]]
+do
+	VOLGROUP=$(set | grep ^VG_ELEM_${VG_ELEM} | cut -d"=" -f2)
+	FSTAB_EXTRACT=$(grep ${VOLGROUP} /etc/fstab | sed "s/  */:/g" | cut -d":" -f1,2)
+	VG=${VOLGROUP}
+	VG_LVOL=${FSTAB_EXTRACT%:*}             # First half or FSTAB_EXTRACT to reference the lvol.
+	VG_RLVOL=${FSTAB_EXTRACT%lvol1:*}rlvol1 # First half or the FSTAB_EXTRACT replacing lvol1 with rlvol1
+	FILESYSTEM=${FSTAB_EXTRACT#*:}          # Last half of the FSTAB_EXTRACT to reference the file system.
+	#FILESYSTEM is ${#FILESYSTEM} characters long
+
+	cat << END_OF_TEXT
+	VG_ELEM is ${VG_ELEM}
+	VOLGROUP is ${VOLGROUP}
+	FSTAB_EXTRACT is ${FSTAB_EXTRACT}
+	VG is ${VG}
+	VG_LVOL is ${VG_LVOL}
+	VG_RLVOL is ${VG_RLVOL}
+	FILESYSTEM is ${FILESYSTEM}
+	#
+END_OF_TEXT
+
+	VG_ELEM=$((VG_ELEM - 1))
+
+done
+print
+}
+
+VERIFY_XACT_VG_VARIABLES() {
+print; print VERIFY XACT VG VARIABLES - Old Style
+print "#"
+print '## VG Variables for Xact Establish'
+print Total VG array elements is ${TOTAL_VG_ARRAY_XACT}.
+print VG array elemenst will start at ${VG_ARRAY_START_XACT}.
+
+if [[ ${VG_ARRAY_START_XACT} -eq "-1" ]]
+then
+	print "VG_ARRAY_START_XACT (${VG_ARRAY_START_XACT}) in a negative state."
+	print There is obviously nothing to process here.  Skipping.
+	return
+fi
+
+### print You should not see this line if the VG_ARRAY_START_XACT variable is negative.
+print "#"
+
+VG_ELEM_XACT=${VG_ARRAY_START_XACT}
+
+while [[ VG_ELEM_XACT -ge 0 ]]
+do
+	VOLGROUP_XACT=$(set | grep ^VG_ELEM_XACT_${VG_ELEM_XACT} | cut -d"=" -f2)
+	FSTAB_EXTRACT_XACT=$(grep ${VOLGROUP_XACT} /etc/fstab | sed "s/  */:/g" | cut -d":" -f1,2)
+	VG_XACT=${VOLGROUP_XACT}
+	VG_LVOL_XACT=${FSTAB_EXTRACT_XACT%:*}             # First half or FSTAB_EXTRACT to reference the lvol.
+	VG_RLVOL_XACT=${FSTAB_EXTRACT_XACT%lvol1:*}rlvol1 # First half or the FSTAB_EXTRACT replacing lvol1 with rlvol1
+	FILESYSTEM_XACT=${FSTAB_EXTRACT_XACT#*:}          # Last half of the FSTAB_EXTRACT to reference the file system.
+	#FILESYSTEM_XACT is ${#FILESYSTEM_XACT} characters long
+
+	cat << END_OF_TEXT
+	VG_ELEM_XACT is ${VG_ELEM_XACT}
+	VOLGROUP_XACT is ${VOLGROUP_XACT}
+	FSTAB_EXTRACT_XACT is ${FSTAB_EXTRACT_XACT}
+	VG_XACT is ${VG_XACT}
+	VG_LVOL_XACT is ${VG_LVOL_XACT}
+	VG_RLVOL_XACT is ${VG_RLVOL_XACT}
+	FILESYSTEM_XACT is ${FILESYSTEM_XACT}
+	#
+END_OF_TEXT
+
+	VG_ELEM_XACT=$((VG_ELEM_XACT - 1))
+
+done
+print
+}
+
+VERIFY_DG_VARIABLES() {
+print; print VERIFY DG VARIABLES
+print "#"
+print '## Verifying DG Variables'
+print Total DG array elements is ${TOTAL_DG_ARRAY}.
+print DG array elemenst will start at ${VG_ARRAY_START}.
+
+if [[ ${VG_ARRAY_START} -eq "-1" ]]
+then
+	print "DG_ARRAY_START (${DG_ARRAY_START}) in a negative state."
+	print There is obviously nothing to process here.  Skipping.
+	return
+fi
+### print You should not see this line if the VG_ARRAY_START_XACT variable is negative.
+print "#"
+
+DG_ELEM=${DG_ARRAY_START}
+
+while [[ DG_ELEM -ge 0 ]]
+do
+	DG=$(set | grep ^DG_ELEM_${DG_ELEM} | cut -d"=" -f2)
+	print DG_ELEM_${DG_ELEM} is  ${DG}
+
+	DG_ELEM=$(( ${DG_ELEM} -1 ))
+done
+print
+}
+
+VERIFY_XACT_DG_VARIABLES() {
+print; print VERIFY XACT DG VARIABLES
+print "#"
+print '## Verifying XACT DG Variables'
+print Total DG array elements is ${TOTAL_DG_ARRAY_XACT}.
+print DG array elemenst will start at ${VG_ARRAY_START_XACT}.
+
+if [[ ${VG_ARRAY_START_XACT} -eq "-1" ]]
+then
+	print "DG_ARRAY_START_XACT (${DG_ARRAY_START_XACT}) in a negative state."
+	print There is obviously nothing to process here.  Skipping.
+	return
+fi
+##### print You should not see this line if the VG_ARRAY_START_XACT variable is negative.
+print "#"
+
+DG_ELEM_XACT=${DG_ARRAY_START_XACT}
+
+while [[ DG_ELEM_XACT -ge 0 ]]
+do
+	DG_XACT=$(set | grep ^DG_ELEM_XACT_${DG_ELEM_XACT} | cut -d"=" -f2)
+	print DG_ELEM_XACT_${DG_ELEM_XACT} is  ${DG_XACT}
+
+	DG_ELEM_XACT=$(( ${DG_ELEM_XACT} -1 ))
+done
+print
+}
+
+VERIFY_GEN_VARIABLES() {
+print; print VERIFY GEN VARIABLES
+print COUNT_TIME_S30 is ${COUNT_TIME_S30}
+print COUNT_TIME_S60 is ${COUNT_TIME_S60}
+print COUNT_TIME_3 is ${COUNT_TIME_3}
+print COUNT_TIME_6 is ${COUNT_TIME_6}
+print COUNT_TIME_9 is ${COUNT_TIME_9}
+print SPLIT_TIME is ${SPLIT_TIME}
+print SPLIT_TIME_2 is ${SPLIT_TIME_2}
+print SPLIT_HR is ${SPLIT_HR}
+print SPLIT_MIN is ${SPLIT_MIN}
+print SPLIT_SEC is ${SPLIT_SEC}
+print SPLIT_TOT_SEC is ${SPLIT_TOT_SEC}
+print SYMCLIDIR is ${SYMCLIDIR}
+print BINDIR is ${BINDIR}
+print SBINDIR is ${SBINDIR}
+print BCVBINDIR is ${BCVBINDIR}
+print BCVLOGDIR is ${BCVLOGDIR}
+print BCVETCDIR is ${BCVETCDIR}
+print BCVLIBDIR is ${BCVLIBDIR}
+print BCVTMPDIR is ${BCVTMPDIR}
+print BCVCFGFILE is ${BCVCFGFILE}
+print BCV_VG_ELEMENTS is ${BCV_VG_ELEMENTS}
+print BCV_VG_XACT_ELEMENTS is ${BCV_VG_XACT_ELEMENTS}
+print BCV_DG_ELEMENTS is ${BCV_DG_ELEMENTS}
+print BCV_UMOUNT_STATUS is ${BCV_UMOUNT_STATUS}
+print BCV_VGCHANGE_STATUS is ${BCV_VGCHANGE_STATUS}
+print BCV_EST_STATUS is ${BCV_EST_STATUS}
+print BCV_SYNC_STATUS is ${BCV_SYNC_STATUS}
+print BCV_SPLIT_STATUS is ${BCV_SPLIT_STATUS}
+print BCV_MONITOR_STATUS is ${BCV_MONITOR_STATUS}
+print BCV_EXPORT_STATUS is ${BCV_EXPORT_STATUS}
+print BCV_IMPORT_STATUS is ${BCV_IMPORT_STATUS}
+print FSCK_OUTPUT is ${FSCK_OUTPUT}
+print ROOTDSKDIR is ${ROOTDSKDIR}
+print BCVLOGFILE is ${BCVLOGFILE}
+print EMAIL_RPT is ${EMAIL_RPT}
+print ERROR_RPT is ${ERROR_RPT}
+print FINAL is ${FINAL_NOTIFY[*]}
+print ERROR is ${ERROR_NOTIFY[*]}
+print
+}
+
+VERIFY_OMNIBACK_VARIABLES() {
+print; print VERIFY OMNIBACK VARIABLES
+print OMNIETCDIR is ${OMNIETCDIR}
+print OMNIBINDIR is ${OMNIBINDIR}
+print INSTANCE_FILE is ${INSTANCE_FILE}
+print TOTAL_INSTANCES are ${TOTAL_INSTANCES}
+print INSTANCE is ${INSTANCE}
+print OMNIBACK_OBJ is ${OMNIBACK_OBJ}
+print OMNIBACK_SCHED is ${OMNIBACK_SCHED}
+print OMNI_DRV is ${OMNI_DRV}
+print OMNI_LIST is ${OMNI_LIST[*]}
+print JDATE is ${JDATE}
+print OMNI_FILESYSTEMS is ${OMNI_FILESYSTEMS}
+print
+}
+
+VERIFY_ORACLE_VARIABLES() {
+print ORA_START_HBM is: ${ORA_START_HBM}
+print ORA_STOP_HBM is: ${ORA_STOP_HBM}
+print HBMLOGFILE is: ${HBMLOGFILE}
+}
+ 
+VERIFY_COMMAND_OPTIONS() {
+print; print VERIFY COMMAND OPTIONS
+print "#"
+print SERVER is set to: ${SERVER}
+print VALID_SERVERS are: ${VALID_SERVERS[*]}
+print Establish Type is set to: ${EST_TYPE}
+print RUN_BACKUP is set to: ${RUN_BACKUP}
+print Manual Monitoring is set to: ${MANUAL_MONITOR}
+print Wait to Split the BCVs is set to: ${WAIT_TO_SPLIT}
+print Split Mode is set to: ${SPLIT_MODE}
+if [ -n "${CONFIG_FILE}" ]
+then
+	print CONFIG_FILE is set to: ${CONFIG_FILE}
+else   
+	print CONFIG_FILE: Default config file will be used.
+fi
+print
+}
+
+VV_Verify_Full_VGs() {
+print; print Verify_Full_VGs
+${SERVER}_Verify_Full_VGs
+}
+
+VV_GET_ALL_VGS() {
+print; print GET ALL VGS
+${SERVER}_GET_ALL_VGS
+}
+
+VV_Total_VGs() {
+print; print Total VGs
+${SERVER}_Total_VGs
+}
+
+VV_Xact_VGS() {
+print; print Xact VGS
+${SERVER}_Xact_VGS
+}
+
+VV_Total_Xact_VGS() {
+print; print Total Xact VGS
+${SERVER}_Total_Xact_VGS
+}
+
+VV_Full_Verify_DGs() {
+print; print Full Verify DGs
+${SERVER}_Full_Verify_DGs
+}
+
+VV_GET_ALL_DGS() {
+print; print GET ALL DGS
+${SERVER}_GET_ALL_DGS
+}
+
+VV_Total_DGs() {
+print; print Total DGs
+${SERVER}_Total_DGs
+}
+
+VV_Norm_DGS() {
+print; print Norm DGS
+${SERVER}_Norm_DGS
+}
+
+VV_Total_Norm_DGS() {
+print; print Total Norm DGS
+${SERVER}_Total_Norm_DGS
+}
+
+VV_Xact_DGS() {
+print; print Xact DGS
+${SERVER}_Xact_DGS
+}
+
+VV_Total_Xact_DGS() {
+print; print Total Xact DGS
+${SERVER}_Total_Xact_DGS
+}
+
+VERIFY_COMMAND_OPTIONS		>> ${BCV_VERIFY_VARIABLES}
+VERIFY_GEN_VARIABLES		>> ${BCV_VERIFY_VARIABLES}
+VERIFY_VG_VARIABLES		>> ${BCV_VERIFY_VARIABLES}
+VERIFY_XACT_VG_VARIABLES	>> ${BCV_VERIFY_VARIABLES}
+VERIFY_DG_VARIABLES		>> ${BCV_VERIFY_VARIABLES}
+VERIFY_XACT_DG_VARIABLES	>> ${BCV_VERIFY_VARIABLES}
+VERIFY_OMNIBACK_VARIABLES	>> ${BCV_VERIFY_VARIABLES}
+VERIFY_ORACLE_VARIABLES		>> ${BCV_VERIFY_VARIABLES}
+
+##### OOP Verification
+VV_Verify_Full_VGs	>> ${BCV_VERIFY_VARIABLES}
+VV_GET_ALL_VGS		>> ${BCV_VERIFY_VARIABLES}
+VV_Total_VGs		>> ${BCV_VERIFY_VARIABLES}
+VV_Xact_VGS		>> ${BCV_VERIFY_VARIABLES}
+VV_Total_Xact_VGS	>> ${BCV_VERIFY_VARIABLES}
+VV_Full_Verify_DGs	>> ${BCV_VERIFY_VARIABLES}
+VV_GET_ALL_DGS		>> ${BCV_VERIFY_VARIABLES}
+VV_Total_DGs		>> ${BCV_VERIFY_VARIABLES}
+VV_Norm_DGS		>> ${BCV_VERIFY_VARIABLES}
+VV_Total_Norm_DGS	>> ${BCV_VERIFY_VARIABLES}
+VV_Xact_DGS		>> ${BCV_VERIFY_VARIABLES}
+VV_Total_Xact_DGS	>> ${BCV_VERIFY_VARIABLES}
+
+GET_ENV_VARIABLES() {
+
+set > ${BCVLOGDIR}/${SERVER}_set.out
+typeset +f >> ${BCVLOGDIR}/${SERVER}_set.out
+
+}
+
+##Leave this one on to collect Environment settings for the script.
+##It is useful for troubleshooting and produces no screen output.
+GET_ENV_VARIABLES
+
+print "#"
+print End Verify Variables Function. $(date); print
+}

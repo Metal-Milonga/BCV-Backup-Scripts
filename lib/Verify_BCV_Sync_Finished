@@ -1,0 +1,69 @@
+Verify_BCV_Sync_Finished() {
+#
+# Function - 
+# Version - 
+# Author - David Holton
+# Date - April 19, 2002
+#
+# Description - 
+#
+###############################################################################
+# Modification history
+# Date     Who          What was modified.
+# -------- ------------ ------------------
+#
+###############################################################################
+## Location: /usr/local/bin/bcvscripts/lib
+#set -n
+#set -x
+
+print Start Verify BCV Sync Finished function. $(date)
+print "#"
+print >> ${EMAIL_RPT}
+
+ALL_GROUPS_SYNCED=0
+print ALL_GROUPS_SYNCED Count is ${ALL_GROUPS_SYNCED}; print "#"
+
+print Number of DG elements are: $( ${SERVER}_Total_DGs )
+print Device Groups are: $( ${SERVER}_GET_ALL_DGS )
+cat ${BCV_SYNC_STATUS}; print "#"
+
+for DVGRP in $( ${SERVER}_GET_ALL_DGS )
+do
+	print DVGRP is ${DVGRP}
+
+	LINE=$(grep ${DVGRP} ${BCV_SYNC_STATUS})
+	print -n "\tLINE is ${LINE},"
+
+	GROUP=${LINE%=*}
+	print -n " Group is ${GROUP},"
+
+	VALUE=${LINE#*=}
+	print " Value is ${VALUE}"
+
+	if [[ "${VALUE}" -eq "0" ]]
+	then
+		ALL_GROUPS_SYNCED=$((ALL_GROUPS_SYNCED + 1))
+	fi
+	print ALL_GROUPS_SYNCED Count is ${ALL_GROUPS_SYNCED}
+	print "#"
+done
+
+if [[ ${ALL_GROUPS_SYNCED} -eq $( ${SERVER}_Total_DGs ) ]]
+then
+	print ${ALL_GROUPS_SYNCED} of $( ${SERVER}_Total_DGs ) Device Groups Synched.
+	print ${ALL_GROUPS_SYNCED} of $( ${SERVER}_Total_DGs ) DG Finished Sync. >> ${EMAIL_RPT}
+	print ${ALL_GROUPS_SYNCED} of $( ${SERVER}_Total_DGs ) DG Finished Sync. >> ${QEMAIL_RPT}
+else
+	print ERROR - Only ${ALL_GROUPS_SYNCED} of $( ${SERVER}_Total_DGs ) DG Synched. Script EXITING. $(date)
+	print ERROR - Only ${ALL_GROUPS_SYNCED} of $( ${SERVER}_Total_DGs ) DG Synched. Script EXITING. $(date) >> ${EMAIL_RPT}
+	print ERROR - Only ${ALL_GROUPS_SYNCED} of $( ${SERVER}_Total_DGs ) DG Synched. Script EXITING. $(date) >> ${QEMAIL_RPT}
+	print ERROR - Only ${ALL_GROUPS_SYNCED} of $( ${SERVER}_Total_DGs ) DG Synched. Script EXITING. $(date) >> ${ERROR_RPT}
+	Notify Final
+	Notify Error
+	exit
+fi
+
+print "#"
+print End Verify BCV Sync Finished function. $(date); print
+}

@@ -1,0 +1,967 @@
+Split Mode is set to: WAIT
+Script started with the following Options and Arguements: -BS server20 -s wait
+SERVER is set to: server20
+CONFIG_FILE: Default config file will be used.
+Establish Type is set to: incr
+RUN_BACKUP is set to: YES
+Manual Monitoring is set to: NO
+Split Mode is set to: WAIT
+Debug Mode is set to: OFF
+
+START BCV Establish and Split Script for server20 on Mon May 23 02:20:00 EDT 2005
+
+Start Declare_General_Variables Function. Mon May 23 02:20:00 EDT 2005.
+Script started with the following Options and Arguements: -BS server20 -s wait
+Working on BCVs for SERVER: server20
+SERVER server20 is a valid BCV Server. Continuing.
+Configuration file is: /usr/local/bin/bcvscripts/etc/bcv_scripts.conf
+Establish Type is: incr
+Run Backup is set to: YES
+Manual Monitoring is set to: NO
+Split Mode is set to WAIT
+Split Time is: 07:00:00
+End Declare_General_Variables Function. Mon May 23 02:20:00 EDT 2005
+
+Start Declare_VolumeGroup_Variables Function. Mon May 23 02:20:00 EDT 2005
+#
+Grabbing VGS for normal BCV Establish.
+SRVR_VG Array element 4 is: vg20u20
+SRVR_VG Array element 3 is: vg20u03
+SRVR_VG Array element 2 is: vg20u02
+SRVR_VG Array element 1 is: vg20u01
+SRVR_VG Array element 0 is: vgapps20
+#
+Grabbing VGS for exact mode BCV Establish.
+VG_ARRAY_START_XACT (-1) has a negative value. No need to proceed. Skipping.
+#
+End Declare_VolumeGroup_Variables Function. Mon May 23 02:20:00 EDT 2005
+
+Start Declare_DeviceGroup_Variables Function. Mon May 23 02:20:00 EDT 2005
+#
+Grabbing DGs for normal BCV Establish.
+SRVR_DG Array element 4 is: srvr20u20
+SRVR_DG Array element 3 is: srvr20u03
+SRVR_DG Array element 2 is: srvr20u02
+SRVR_DG Array element 1 is: srvr20u01
+SRVR_DG Array element 0 is: apps20
+#
+Grabbing DGs for exact mode BCV Establish.
+DG_ARRAY_START_XACT (-1) has a negative value. No data here. Skipping.
+#
+End Declare_DeviceGroup_Variables Function. Mon May 23 02:20:00 EDT 2005
+
+Start Declare_OmniBack_Variables Function. Mon May 23 02:20:00 EDT 2005.
+#
+Run Backup at end of script: YES
+grep: can't open /etc/opt/omni/datalists/BCVs-SERVER20
+OMNIBACK_OBJ is: SERVER20
+OMNI_LIST contains 0 objects
+OMNI_LIST contents:
+OMNI_DRV is:
+#
+Instance file exists
+Total Instances are: 3
+Current Instance is: 1
+#
+End Declare_OmniBack_Variables Function. Mon May 23 02:20:00 EDT 2005
+
+Start OOP Loading Function. Mon May 23 02:20:00 EDT 2005
+#
+#
+End OOP Loading Function. Mon May 23 02:20:00 EDT 2005
+
+Start Unmount Filesystem function. Mon May 23 02:20:00 EDT 2005
+FileSystems to UNmount: 5
+#
+
+	VOLGROUP is vgapps20
+	FSTAB_EXTRACT is /dev/vgapps20/lvol1:/BCV/srvr20/apps
+	VG is /dev/vgapps20
+	VGNAME is vgapps20
+	VG_LVOL is /dev/vgapps20/lvol1
+	VG_RLVOL is /dev/vgapps20/rlvol1
+	FILESYSTEM is /BCV/srvr20/apps
+	FILESYSTEM is 14 characters long
+	MAPDIR is /root/disks/vgapps20
+	MAPFILE is /root/disks/vgapps20/vgapps20.map
+	PVPATHFILE is /root/disks/vgapps20/vgapps20.pvpath
+	GROUPFILE is /dev/vgapps20/group
+
+VG /dev/vgapps20 is mounted on /BCV/srvr20/apps. I will unmount it for you.
+/BCV/srvr20/apps: 
+
+VG /dev/vgapps20 was successfully UNmounted from /BCV/srvr20/apps.
+#
+
+	VOLGROUP is vg20u01
+	FSTAB_EXTRACT is /dev/vg20u01/lvol1:/BCV/srvr20/u01
+	VG is /dev/vg20u01
+	VGNAME is vg20u01
+	VG_LVOL is /dev/vg20u01/lvol1
+	VG_RLVOL is /dev/vg20u01/rlvol1
+	FILESYSTEM is /BCV/srvr20/u01
+	FILESYSTEM is 13 characters long
+	MAPDIR is /root/disks/vg20u01
+	MAPFILE is /root/disks/vg20u01/vg20u01.map
+	PVPATHFILE is /root/disks/vg20u01/vg20u01.pvpath
+	GROUPFILE is /dev/vg20u01/group
+
+VG /dev/vg20u01 is mounted on /BCV/srvr20/u01. I will unmount it for you.
+/BCV/srvr20/u01: 
+
+VG /dev/vg20u01 was successfully UNmounted from /BCV/srvr20/u01.
+#
+
+	VOLGROUP is vg20u02
+	FSTAB_EXTRACT is /dev/vg20u02/lvol1:/BCV/srvr20/u02
+	VG is /dev/vg20u02
+	VGNAME is vg20u02
+	VG_LVOL is /dev/vg20u02/lvol1
+	VG_RLVOL is /dev/vg20u02/rlvol1
+	FILESYSTEM is /BCV/srvr20/u02
+	FILESYSTEM is 13 characters long
+	MAPDIR is /root/disks/vg20u02
+	MAPFILE is /root/disks/vg20u02/vg20u02.map
+	PVPATHFILE is /root/disks/vg20u02/vg20u02.pvpath
+	GROUPFILE is /dev/vg20u02/group
+
+VG /dev/vg20u02 is mounted on /BCV/srvr20/u02. I will unmount it for you.
+/BCV/srvr20/u02: 
+
+VG /dev/vg20u02 was successfully UNmounted from /BCV/srvr20/u02.
+#
+
+	VOLGROUP is vg20u03
+	FSTAB_EXTRACT is /dev/vg20u03/lvol1:/BCV/srvr20/u03
+	VG is /dev/vg20u03
+	VGNAME is vg20u03
+	VG_LVOL is /dev/vg20u03/lvol1
+	VG_RLVOL is /dev/vg20u03/rlvol1
+	FILESYSTEM is /BCV/srvr20/u03
+	FILESYSTEM is 13 characters long
+	MAPDIR is /root/disks/vg20u03
+	MAPFILE is /root/disks/vg20u03/vg20u03.map
+	PVPATHFILE is /root/disks/vg20u03/vg20u03.pvpath
+	GROUPFILE is /dev/vg20u03/group
+
+VG /dev/vg20u03 is mounted on /BCV/srvr20/u03. I will unmount it for you.
+/BCV/srvr20/u03: 
+
+VG /dev/vg20u03 was successfully UNmounted from /BCV/srvr20/u03.
+#
+
+	VOLGROUP is vg20u20
+	FSTAB_EXTRACT is /dev/vg20u20/lvol1:/BCV/srvr20/u20
+	VG is /dev/vg20u20
+	VGNAME is vg20u20
+	VG_LVOL is /dev/vg20u20/lvol1
+	VG_RLVOL is /dev/vg20u20/rlvol1
+	FILESYSTEM is /BCV/srvr20/u20
+	FILESYSTEM is 13 characters long
+	MAPDIR is /root/disks/vg20u20
+	MAPFILE is /root/disks/vg20u20/vg20u20.map
+	PVPATHFILE is /root/disks/vg20u20/vg20u20.pvpath
+	GROUPFILE is /dev/vg20u20/group
+
+VG /dev/vg20u20 is mounted on /BCV/srvr20/u20. I will unmount it for you.
+/BCV/srvr20/u20: 
+
+VG /dev/vg20u20 was successfully UNmounted from /BCV/srvr20/u20.
+#
+/BCV/srvr20/apps:0
+/BCV/srvr20/u01:0
+/BCV/srvr20/u02:0
+/BCV/srvr20/u03:0
+/BCV/srvr20/u20:0
+U_STATUS equals 0
+U_STATUS equals 0
+U_STATUS equals 0
+U_STATUS equals 0
+U_STATUS equals 0
+U_STATUS_2 is 0
+Un-mounting successful for all filesystems.
+5 of 5 filesystems UNmounted.
+End Unmount Filesystem function. Mon May 23 02:20:05 EDT 2005
+
+Start Deactivate VolumeGroups function. Mon May 23 02:20:05 EDT 2005
+Volume Groups to be Deactivated: 5
+#
+
+	VOLGROUP is vgapps20
+	FSTAB_EXTRACT is /dev/vgapps20/lvol1:/BCV/srvr20/apps
+	VG is /dev/vgapps20
+	VGNAME is vgapps20
+	VG_LVOL is /dev/vgapps20/lvol1
+	VG_RLVOL is /dev/vgapps20/rlvol1
+	FILESYSTEM is /BCV/srvr20/apps
+	FILESYSTEM is 14 characters long
+	MAPDIR is /root/disks/vgapps20
+	MAPFILE is /root/disks/vgapps20/vgapps20.map
+	PVPATHFILE is /root/disks/vgapps20/vgapps20.pvpath
+	GROUPFILE is /dev/vgapps20/group
+
+The filesystem /BCV/srvr20/apps is not mounted. VG /dev/vgapps20 will be deactivated.
+Volume group "/dev/vgapps20" has been successfully changed.
+VG /dev/vgapps20 was successfully deactivated.
+#
+
+	VOLGROUP is vg20u01
+	FSTAB_EXTRACT is /dev/vg20u01/lvol1:/BCV/srvr20/u01
+	VG is /dev/vg20u01
+	VGNAME is vg20u01
+	VG_LVOL is /dev/vg20u01/lvol1
+	VG_RLVOL is /dev/vg20u01/rlvol1
+	FILESYSTEM is /BCV/srvr20/u01
+	FILESYSTEM is 13 characters long
+	MAPDIR is /root/disks/vg20u01
+	MAPFILE is /root/disks/vg20u01/vg20u01.map
+	PVPATHFILE is /root/disks/vg20u01/vg20u01.pvpath
+	GROUPFILE is /dev/vg20u01/group
+
+The filesystem /BCV/srvr20/u01 is not mounted. VG /dev/vg20u01 will be deactivated.
+Volume group "/dev/vg20u01" has been successfully changed.
+VG /dev/vg20u01 was successfully deactivated.
+#
+
+	VOLGROUP is vg20u02
+	FSTAB_EXTRACT is /dev/vg20u02/lvol1:/BCV/srvr20/u02
+	VG is /dev/vg20u02
+	VGNAME is vg20u02
+	VG_LVOL is /dev/vg20u02/lvol1
+	VG_RLVOL is /dev/vg20u02/rlvol1
+	FILESYSTEM is /BCV/srvr20/u02
+	FILESYSTEM is 13 characters long
+	MAPDIR is /root/disks/vg20u02
+	MAPFILE is /root/disks/vg20u02/vg20u02.map
+	PVPATHFILE is /root/disks/vg20u02/vg20u02.pvpath
+	GROUPFILE is /dev/vg20u02/group
+
+The filesystem /BCV/srvr20/u02 is not mounted. VG /dev/vg20u02 will be deactivated.
+Volume group "/dev/vg20u02" has been successfully changed.
+VG /dev/vg20u02 was successfully deactivated.
+#
+
+	VOLGROUP is vg20u03
+	FSTAB_EXTRACT is /dev/vg20u03/lvol1:/BCV/srvr20/u03
+	VG is /dev/vg20u03
+	VGNAME is vg20u03
+	VG_LVOL is /dev/vg20u03/lvol1
+	VG_RLVOL is /dev/vg20u03/rlvol1
+	FILESYSTEM is /BCV/srvr20/u03
+	FILESYSTEM is 13 characters long
+	MAPDIR is /root/disks/vg20u03
+	MAPFILE is /root/disks/vg20u03/vg20u03.map
+	PVPATHFILE is /root/disks/vg20u03/vg20u03.pvpath
+	GROUPFILE is /dev/vg20u03/group
+
+The filesystem /BCV/srvr20/u03 is not mounted. VG /dev/vg20u03 will be deactivated.
+Volume group "/dev/vg20u03" has been successfully changed.
+VG /dev/vg20u03 was successfully deactivated.
+#
+
+	VOLGROUP is vg20u20
+	FSTAB_EXTRACT is /dev/vg20u20/lvol1:/BCV/srvr20/u20
+	VG is /dev/vg20u20
+	VGNAME is vg20u20
+	VG_LVOL is /dev/vg20u20/lvol1
+	VG_RLVOL is /dev/vg20u20/rlvol1
+	FILESYSTEM is /BCV/srvr20/u20
+	FILESYSTEM is 13 characters long
+	MAPDIR is /root/disks/vg20u20
+	MAPFILE is /root/disks/vg20u20/vg20u20.map
+	PVPATHFILE is /root/disks/vg20u20/vg20u20.pvpath
+	GROUPFILE is /dev/vg20u20/group
+
+The filesystem /BCV/srvr20/u20 is not mounted. VG /dev/vg20u20 will be deactivated.
+Volume group "/dev/vg20u20" has been successfully changed.
+VG /dev/vg20u20 was successfully deactivated.
+#
+(0/5) of 5 Volume Groups DEActivated.
+#
+End Deactivate VolumeGroups function. Mon May 23 02:20:14 EDT 2005
+
+Start Export Volume Groups function. Mon May 23 02:20:14 EDT 2005
+Volume Groups to be Exported: 0
+#
+End Export Volume Groups function. Mon May 23 02:20:14 EDT 2005
+
+Start Establish BCVs function. Mon May 23 02:20:14 EDT 2005
+#
+Device Groups are: apps20 srvr20u01 srvr20u02 srvr20u03 srvr20u20
+#
+apps20 is a Normal DG.
+Running Command: /usr/symcli/bin/symir -g apps20 -noprompt est
+
+'Incremental Establish' operation execution is in progress for
+device group 'apps20'. Please wait...
+
+'Incremental Establish' operation successfully initiated for device group
+'apps20'.
+
+BCV Est for apps20 Initiated
+#
+srvr20u01 is a Normal DG.
+Running Command: /usr/symcli/bin/symir -g srvr20u01 -noprompt est
+
+'Incremental Establish' operation execution is in progress for
+device group 'srvr20u01'. Please wait...
+
+'Incremental Establish' operation successfully initiated for device group
+'srvr20u01'.
+
+BCV Est for srvr20u01 Initiated
+#
+srvr20u02 is a Normal DG.
+Running Command: /usr/symcli/bin/symir -g srvr20u02 -noprompt est
+
+'Incremental Establish' operation execution is in progress for
+device group 'srvr20u02'. Please wait...
+
+'Incremental Establish' operation successfully initiated for device group
+'srvr20u02'.
+
+BCV Est for srvr20u02 Initiated
+#
+srvr20u03 is a Normal DG.
+Running Command: /usr/symcli/bin/symir -g srvr20u03 -noprompt est
+
+'Incremental Establish' operation execution is in progress for
+device group 'srvr20u03'. Please wait...
+
+'Incremental Establish' operation successfully initiated for device group
+'srvr20u03'.
+
+BCV Est for srvr20u03 Initiated
+#
+srvr20u20 is a Normal DG.
+Running Command: /usr/symcli/bin/symir -g srvr20u20 -noprompt est
+
+'Incremental Establish' operation execution is in progress for
+device group 'srvr20u20'. Please wait...
+
+'Incremental Establish' operation successfully initiated for device group
+'srvr20u20'.
+
+BCV Est for srvr20u20 Initiated
+#
+End Establish BCVs function. Mon May 23 02:22:36 EDT 2005
+
+Start Verify BCV Sync Started function. Mon May 23 02:22:36 EDT 2005
+#
+DEVGRP is apps20
+	Line is apps20=0, Group is apps20, Value is 0
+ALL_GROUPS_START Count is 1
+#
+DEVGRP is srvr20u01
+	Line is srvr20u01=0, Group is srvr20u01, Value is 0
+ALL_GROUPS_START Count is 2
+#
+DEVGRP is srvr20u02
+	Line is srvr20u02=0, Group is srvr20u02, Value is 0
+ALL_GROUPS_START Count is 3
+#
+DEVGRP is srvr20u03
+	Line is srvr20u03=0, Group is srvr20u03, Value is 0
+ALL_GROUPS_START Count is 4
+#
+DEVGRP is srvr20u20
+	Line is srvr20u20=0, Group is srvr20u20, Value is 0
+ALL_GROUPS_START Count is 5
+#
+5 of 5 Device Groups Sync Started.
+#
+End Verify BCV Sync Started function. Mon May 23 02:22:36 EDT 2005
+
+Start Monitor BCV Establish function. Mon May 23 02:22:36 EDT 2005
+#
+Device Groups are: apps20 srvr20u01 srvr20u02 srvr20u03 srvr20u20.
+apps20 status: Synch stat is 10. Syncinprog stat is 27. MEG left 1.3.
+srvr20u01 status: Synch stat is 10. Syncinprog stat is 27. MEG left 42.1.
+srvr20u02 status: Synch stat is 11. Syncinprog stat is 0. MEG left 533.2.
+srvr20u03 status: Synch stat is 11. Syncinprog stat is 0. MEG left 82.4.
+srvr20u20 status: Synch stat is 11. Syncinprog stat is 0. MEG left 61.1.
+Group Count is: 0
+The Device Groups for server20 are NOT YET established.
+Resetting Group Count to 0.
+Time_Counter Starting at: Mon May 23 02:22:41 EDT 2005
+Sleeping 900 Seconds. Total: 0 hour(s) 15 minute(s) 0 second(s)
+#
+
+apps20 status: Synch stat is 0. Syncinprog stat is 28. MEG left 0.0.
+srvr20u01 status: Synch stat is 0. Syncinprog stat is 28. MEG left 0.0.
+srvr20u02 status: Synch stat is 0. Syncinprog stat is 28. MEG left 0.0.
+srvr20u03 status: Synch stat is 0. Syncinprog stat is 28. MEG left 0.0.
+srvr20u20 status: Synch stat is 0. Syncinprog stat is 28. MEG left 0.0.
+Group Count is: 5
+The Device Groups for server20 are fully established.
+#
+End Monitor BCV Establish function. Mon May 23 02:37:46 EDT 2005
+
+Start Verify BCV Sync Finished function. Mon May 23 02:37:46 EDT 2005
+#
+ALL_GROUPS_SYNCED Count is 0
+#
+Number of DG elements are: 5
+Device Groups are: apps20 srvr20u01 srvr20u02 srvr20u03 srvr20u20
+apps20_synched=0
+srvr20u01_synched=0
+srvr20u02_synched=0
+srvr20u03_synched=0
+srvr20u20_synched=0
+#
+DVGRP is apps20
+	LINE is apps20_synched=0, Group is apps20_synched, Value is 0
+ALL_GROUPS_SYNCED Count is 1
+#
+DVGRP is srvr20u01
+	LINE is srvr20u01_synched=0, Group is srvr20u01_synched, Value is 0
+ALL_GROUPS_SYNCED Count is 2
+#
+DVGRP is srvr20u02
+	LINE is srvr20u02_synched=0, Group is srvr20u02_synched, Value is 0
+ALL_GROUPS_SYNCED Count is 3
+#
+DVGRP is srvr20u03
+	LINE is srvr20u03_synched=0, Group is srvr20u03_synched, Value is 0
+ALL_GROUPS_SYNCED Count is 4
+#
+DVGRP is srvr20u20
+	LINE is srvr20u20_synched=0, Group is srvr20u20_synched, Value is 0
+ALL_GROUPS_SYNCED Count is 5
+#
+5 of 5 Device Groups Synched.
+#
+End Verify BCV Sync Finished function. Mon May 23 02:37:46 EDT 2005
+
+Start Split BCVs function. Mon May 23 02:37:46 EDT 2005
+Split Mode is set to: WAIT
+I must wait until 07:00:00 to split the BCVs.
+#
+CURRENT_TIME is: 023746
+SPLIT_TIME is: 070000
+#
+SPLIT_TIME is: 07:00:00 	SPLIT_TIME_2 is: 070000
+SPLIT_HR is: 07 		SPLIT_MIN is: 00 	SPLIT_SEC is: 00
+#
+CURRENT_TIME is: 02:37:46 	CURRENT_TIME_2 is: 023746
+CURRENT_HR is: 02 		CURRENT_MIN is: 37 	CURRENT_SEC is: 46
+HR_SECONDS are: 7200 	HR_MINUTES are: 2220
+#
+SPLIT_TOT_SEC is: 25200 	CURRENT_TOT_SEC are: 9466
+#
+DIFF_TIME is: 15734 	ADJ_HRS are: 	ADJ_TIME is: seconds
+COUNT_TIME is set to: 15734
+It is NOT time to Split the BCVs YET!
+Time_Counter Starting at: Mon May 23 02:37:46 EDT 2005
+Sleeping 15734 Seconds. Total: 4 hour(s) 22 minute(s) 14 second(s)
+#
+CURRENT_TIME is: 070000
+SPLIT_TIME is: 070000
+#
+It is now okay to Split the BCVs
+#
+Number of Device Groups is: 5
+Device Groups are: apps20 srvr20u01 srvr20u02 srvr20u03 srvr20u20
+#
+Starting the Start Hot Backup Mode Function. Mon May 23 07:00:00 EDT 2005
+server20
+
+
+End Start Hot Backup Mode Function. Mon May 23 07:00:07 EDT 2005
+
+Time_Counter Starting at: Mon May 23 07:00:07 EDT 2005
+Sleeping 120 Seconds. Total: 0 hour(s) 2 minute(s) 0 second(s)
+#
+BCV Split started at Mon May 23 07:02:07 EDT 2005
+#
+Working on apps20
+Running Command: /usr/symcli/bin/symir -g apps20 -noprompt split
+
+'Split' operation execution is in progress for
+device group 'apps20'. Please wait...
+
+'Split' operation successfully executed for device group
+'apps20'.
+
+Device Group apps20 was split successfully.
+#
+BCV Split started at Mon May 23 07:02:16 EDT 2005
+#
+Working on srvr20u01
+Running Command: /usr/symcli/bin/symir -g srvr20u01 -noprompt split
+
+'Split' operation execution is in progress for
+device group 'srvr20u01'. Please wait...
+
+'Split' operation successfully executed for device group
+'srvr20u01'.
+
+Device Group srvr20u01 was split successfully.
+#
+BCV Split started at Mon May 23 07:02:30 EDT 2005
+#
+Working on srvr20u02
+Running Command: /usr/symcli/bin/symir -g srvr20u02 -noprompt split
+
+'Split' operation execution is in progress for
+device group 'srvr20u02'. Please wait...
+
+'Split' operation successfully executed for device group
+'srvr20u02'.
+
+Device Group srvr20u02 was split successfully.
+#
+BCV Split started at Mon May 23 07:02:52 EDT 2005
+#
+Working on srvr20u03
+Running Command: /usr/symcli/bin/symir -g srvr20u03 -noprompt split
+
+'Split' operation execution is in progress for
+device group 'srvr20u03'. Please wait...
+
+'Split' operation successfully executed for device group
+'srvr20u03'.
+
+Device Group srvr20u03 was split successfully.
+#
+BCV Split started at Mon May 23 07:03:00 EDT 2005
+#
+Working on srvr20u20
+Running Command: /usr/symcli/bin/symir -g srvr20u20 -noprompt split
+
+'Split' operation execution is in progress for
+device group 'srvr20u20'. Please wait...
+
+'Split' operation successfully executed for device group
+'srvr20u20'.
+
+Device Group srvr20u20 was split successfully.
+#
+Starting the Stop Hot Backup Mode Function. Mon May 23 07:03:13 EDT 2005
+server20
+End Stop Hot Backup Mode Function. Mon May 23 07:03:16 EDT 2005
+
+Time_Counter Starting at: Mon May 23 07:03:16 EDT 2005
+Sleeping 120 Seconds. Total: 0 hour(s) 2 minute(s) 0 second(s)
+#
+#
+End Split BCVs function. Mon May 23 07:05:17 EDT 2005
+
+Start Verify BCV Split function. Mon May 23 07:05:17 EDT 2005
+Number of DG elements are: 5
+Device Groups are: apps20 srvr20u01 srvr20u02 srvr20u03 srvr20u20
+apps20=0
+srvr20u01=0
+srvr20u02=0
+srvr20u03=0
+srvr20u20=0
+#
+Checking apps20
+	LINE is apps20=0, Group is apps20, Value is 0
+ALL_GROUPS_SPLIT is 1
+#
+Checking srvr20u01
+	LINE is srvr20u01=0, Group is srvr20u01, Value is 0
+ALL_GROUPS_SPLIT is 2
+#
+Checking srvr20u02
+	LINE is srvr20u02=0, Group is srvr20u02, Value is 0
+ALL_GROUPS_SPLIT is 3
+#
+Checking srvr20u03
+	LINE is srvr20u03=0, Group is srvr20u03, Value is 0
+ALL_GROUPS_SPLIT is 4
+#
+Checking srvr20u20
+	LINE is srvr20u20=0, Group is srvr20u20, Value is 0
+ALL_GROUPS_SPLIT is 5
+#
+5 of 5 Device Groups Split.
+End Verify BCV Split function. Mon May 23 07:05:17 EDT 2005
+
+Start Import Volume Groups function. Mon May 23 07:05:17 EDT 2005
+Volume Groups to be Imported: 0
+#
+End Export Import VG function. Mon May 23 07:05:17 EDT 2005
+
+Start Activate VolumeGroups function. Mon May 23 07:05:17 EDT 2005
+Volume Groups to ACTivate: 5
+#
+
+	VOLGROUP is vgapps20
+	FSTAB_EXTRACT is /dev/vgapps20/lvol1:/BCV/srvr20/apps
+	VG is /dev/vgapps20
+	VGNAME is vgapps20
+	VG_LVOL is /dev/vgapps20/lvol1
+	VG_RLVOL is /dev/vgapps20/rlvol1
+	FILESYSTEM is /BCV/srvr20/apps
+	FILESYSTEM is 14 characters long
+	MAPDIR is /root/disks/vgapps20
+	MAPFILE is /root/disks/vgapps20/vgapps20.map
+	PVPATHFILE is /root/disks/vgapps20/vgapps20.pvpath
+	GROUPFILE is /dev/vgapps20/group
+
+Working on VG: /dev/vgapps20
+Activating /dev/vgapps20.
+VG /dev/vgapps20 was successfully activated.
+#
+
+	VOLGROUP is vg20u01
+	FSTAB_EXTRACT is /dev/vg20u01/lvol1:/BCV/srvr20/u01
+	VG is /dev/vg20u01
+	VGNAME is vg20u01
+	VG_LVOL is /dev/vg20u01/lvol1
+	VG_RLVOL is /dev/vg20u01/rlvol1
+	FILESYSTEM is /BCV/srvr20/u01
+	FILESYSTEM is 13 characters long
+	MAPDIR is /root/disks/vg20u01
+	MAPFILE is /root/disks/vg20u01/vg20u01.map
+	PVPATHFILE is /root/disks/vg20u01/vg20u01.pvpath
+	GROUPFILE is /dev/vg20u01/group
+
+Working on VG: /dev/vg20u01
+Activating /dev/vg20u01.
+VG /dev/vg20u01 was successfully activated.
+#
+
+	VOLGROUP is vg20u02
+	FSTAB_EXTRACT is /dev/vg20u02/lvol1:/BCV/srvr20/u02
+	VG is /dev/vg20u02
+	VGNAME is vg20u02
+	VG_LVOL is /dev/vg20u02/lvol1
+	VG_RLVOL is /dev/vg20u02/rlvol1
+	FILESYSTEM is /BCV/srvr20/u02
+	FILESYSTEM is 13 characters long
+	MAPDIR is /root/disks/vg20u02
+	MAPFILE is /root/disks/vg20u02/vg20u02.map
+	PVPATHFILE is /root/disks/vg20u02/vg20u02.pvpath
+	GROUPFILE is /dev/vg20u02/group
+
+Working on VG: /dev/vg20u02
+Activating /dev/vg20u02.
+VG /dev/vg20u02 was successfully activated.
+#
+
+	VOLGROUP is vg20u03
+	FSTAB_EXTRACT is /dev/vg20u03/lvol1:/BCV/srvr20/u03
+	VG is /dev/vg20u03
+	VGNAME is vg20u03
+	VG_LVOL is /dev/vg20u03/lvol1
+	VG_RLVOL is /dev/vg20u03/rlvol1
+	FILESYSTEM is /BCV/srvr20/u03
+	FILESYSTEM is 13 characters long
+	MAPDIR is /root/disks/vg20u03
+	MAPFILE is /root/disks/vg20u03/vg20u03.map
+	PVPATHFILE is /root/disks/vg20u03/vg20u03.pvpath
+	GROUPFILE is /dev/vg20u03/group
+
+Working on VG: /dev/vg20u03
+Activating /dev/vg20u03.
+VG /dev/vg20u03 was successfully activated.
+#
+
+	VOLGROUP is vg20u20
+	FSTAB_EXTRACT is /dev/vg20u20/lvol1:/BCV/srvr20/u20
+	VG is /dev/vg20u20
+	VGNAME is vg20u20
+	VG_LVOL is /dev/vg20u20/lvol1
+	VG_RLVOL is /dev/vg20u20/rlvol1
+	FILESYSTEM is /BCV/srvr20/u20
+	FILESYSTEM is 13 characters long
+	MAPDIR is /root/disks/vg20u20
+	MAPFILE is /root/disks/vg20u20/vg20u20.map
+	PVPATHFILE is /root/disks/vg20u20/vg20u20.pvpath
+	GROUPFILE is /dev/vg20u20/group
+
+Working on VG: /dev/vg20u20
+Activating /dev/vg20u20.
+VG /dev/vg20u20 was successfully activated.
+#
+#
+5 of 5 VGs Activated.
+End Activate VolumeGroups function. Mon May 23 07:05:26 EDT 2005
+
+Start FSCK & Mount Filesystems function. Mon May 23 07:05:26 EDT 2005
+FileSystems to Check and Mount: 5
+#
+VG from OOP Function is: vgapps20
+VG from OOP Function is: vg20u01
+VG from OOP Function is: vg20u02
+VG from OOP Function is: vg20u03
+VG from OOP Function is: vg20u20
+#
+
+	VOLGROUP is vgapps20
+	FSTAB_EXTRACT is /dev/vgapps20/lvol1:/BCV/srvr20/apps
+	VG is /dev/vgapps20
+	VGNAME is vgapps20
+	VG_LVOL is /dev/vgapps20/lvol1
+	VG_RLVOL is /dev/vgapps20/rlvol1
+	FILESYSTEM is /BCV/srvr20/apps
+	FILESYSTEM is 14 characters long
+	MAPDIR is /root/disks/vgapps20
+	MAPFILE is /root/disks/vgapps20/vgapps20.map
+	PVPATHFILE is /root/disks/vgapps20/vgapps20.pvpath
+	GROUPFILE is /dev/vgapps20/group
+
+/dev/vgapps20 passed FSCK. Mount stat 0
+/dev/vgapps20 marking super-block as CLEAN
+/dev/vgapps20/lvol1 /BCV/srvr20/apps vxfs delaylog,nodatainlog 0 0
+#
+/BCV/srvr20/apps:0
+
+	VOLGROUP is vg20u01
+	FSTAB_EXTRACT is /dev/vg20u01/lvol1:/BCV/srvr20/u01
+	VG is /dev/vg20u01
+	VGNAME is vg20u01
+	VG_LVOL is /dev/vg20u01/lvol1
+	VG_RLVOL is /dev/vg20u01/rlvol1
+	FILESYSTEM is /BCV/srvr20/u01
+	FILESYSTEM is 13 characters long
+	MAPDIR is /root/disks/vg20u01
+	MAPFILE is /root/disks/vg20u01/vg20u01.map
+	PVPATHFILE is /root/disks/vg20u01/vg20u01.pvpath
+	GROUPFILE is /dev/vg20u01/group
+
+/dev/vg20u01 passed FSCK. Mount stat 0
+/dev/vg20u01 marking super-block as CLEAN
+/dev/vg20u01/lvol1 /BCV/srvr20/u01 vxfs delaylog,nodatainlog 0 0
+#
+/BCV/srvr20/u01:0
+
+	VOLGROUP is vg20u02
+	FSTAB_EXTRACT is /dev/vg20u02/lvol1:/BCV/srvr20/u02
+	VG is /dev/vg20u02
+	VGNAME is vg20u02
+	VG_LVOL is /dev/vg20u02/lvol1
+	VG_RLVOL is /dev/vg20u02/rlvol1
+	FILESYSTEM is /BCV/srvr20/u02
+	FILESYSTEM is 13 characters long
+	MAPDIR is /root/disks/vg20u02
+	MAPFILE is /root/disks/vg20u02/vg20u02.map
+	PVPATHFILE is /root/disks/vg20u02/vg20u02.pvpath
+	GROUPFILE is /dev/vg20u02/group
+
+/dev/vg20u02 passed FSCK. Mount stat 0
+/dev/vg20u02 marking super-block as CLEAN
+/dev/vg20u02/lvol1 /BCV/srvr20/u02 vxfs delaylog,nodatainlog 0 0
+#
+/BCV/srvr20/u02:0
+
+	VOLGROUP is vg20u03
+	FSTAB_EXTRACT is /dev/vg20u03/lvol1:/BCV/srvr20/u03
+	VG is /dev/vg20u03
+	VGNAME is vg20u03
+	VG_LVOL is /dev/vg20u03/lvol1
+	VG_RLVOL is /dev/vg20u03/rlvol1
+	FILESYSTEM is /BCV/srvr20/u03
+	FILESYSTEM is 13 characters long
+	MAPDIR is /root/disks/vg20u03
+	MAPFILE is /root/disks/vg20u03/vg20u03.map
+	PVPATHFILE is /root/disks/vg20u03/vg20u03.pvpath
+	GROUPFILE is /dev/vg20u03/group
+
+/dev/vg20u03 passed FSCK. Mount stat 0
+/dev/vg20u03 marking super-block as CLEAN
+/dev/vg20u03/lvol1 /BCV/srvr20/u03 vxfs delaylog,nodatainlog 0 0
+#
+/BCV/srvr20/u03:0
+
+	VOLGROUP is vg20u20
+	FSTAB_EXTRACT is /dev/vg20u20/lvol1:/BCV/srvr20/u20
+	VG is /dev/vg20u20
+	VGNAME is vg20u20
+	VG_LVOL is /dev/vg20u20/lvol1
+	VG_RLVOL is /dev/vg20u20/rlvol1
+	FILESYSTEM is /BCV/srvr20/u20
+	FILESYSTEM is 13 characters long
+	MAPDIR is /root/disks/vg20u20
+	MAPFILE is /root/disks/vg20u20/vg20u20.map
+	PVPATHFILE is /root/disks/vg20u20/vg20u20.pvpath
+	GROUPFILE is /dev/vg20u20/group
+
+/dev/vg20u20 passed FSCK. Mount stat 0
+/dev/vg20u20 marking super-block as CLEAN
+/dev/vg20u20/lvol1 /BCV/srvr20/u20 vxfs delaylog,nodatainlog 0 0
+#
+/BCV/srvr20/u20:0
+#
+5 of 5 passed FSCK and Mounted.
+BCV_RE_MOUNT file contains:
+/BCV/srvr20/apps:0
+/BCV/srvr20/u01:0
+/BCV/srvr20/u02:0
+/BCV/srvr20/u03:0
+/BCV/srvr20/u20:0
+#
+OMNI_FILESYSTEMS file contains:
+BCV/srvr16/u01:0
+BCV/srvr16/u02:0
+BCV/srvr16/apps:0
+BCV/srvr16/u05:0
+BCV/srvr16/u20:0
+BCV/srvr16/u21:0
+BCV/srvr16/u03:0
+BCV/srvr09/u08:0
+BCV/srvr09/u06:0
+BCV/srvr09/u07:0
+BCV/srvr09/apps:0
+BCV/srvr09/u01:0
+BCV/srvr09/u05:0
+BCV/srvr09/u04:0
+BCV/srvr09/u02:0
+BCV/srvr20/apps:0
+BCV/srvr20/u01:0
+BCV/srvr20/u02:0
+BCV/srvr20/u03:0
+BCV/srvr20/u20:0
+#
+End FSCK & Mount Filesystems function. Mon May 23 07:05:35 EDT 2005
+
+Starting Oracle Logs Verify Function. Mon May 23 07:05:35 EDT 2005
+
+WEEKDAY is: Mon
+THIS_MONTH is: May
+TODAY_DATE is: 23
+
+Num of Log Files are: 4
+/home/oracle/logs/ora_start_backup_kprod.log	was created on May 23 at 07:03.
+/home/oracle/logs/ora_start_backup_mprod.log	was created on May 23 at 07:03.
+/home/oracle/logs/ora_stop_backup_kprod.log	was created on May 23 at 07:06.
+/home/oracle/logs/ora_stop_backup_mprod.log	was created on May 23 at 07:06.
+
+/usr/local/bin/bcvscripts/logs/server20_ora_start_backup_kprod.log
+Hot backup BEGIN process for STARTED at Mon May 23 07:03:12 EDT 2005
+Hot backup BEGIN process for kprod COMPLETED at Mon May 23 07:03:15 EDT 2005
+LOG_START_WKDAY is: Mon
+LOG_COMPLETED_WKDAY is: Mon
+LOG_START_MONTH is: May
+LOG_COMPLETED_MONTH is: May
+LOG_START_DATE is: 23
+LOG_COMPLETED_DATE is: 23
+
+/usr/local/bin/bcvscripts/logs/server20_ora_start_backup_mprod.log
+Hot backup BEGIN process for STARTED at Mon May 23 07:03:15 EDT 2005
+Hot backup BEGIN process for mprod COMPLETED at Mon May 23 07:03:17 EDT 2005
+LOG_START_WKDAY is: Mon
+LOG_COMPLETED_WKDAY is: Mon
+LOG_START_MONTH is: May
+LOG_COMPLETED_MONTH is: May
+LOG_START_DATE is: 23
+LOG_COMPLETED_DATE is: 23
+
+/usr/local/bin/bcvscripts/logs/server20_ora_stop_backup_kprod.log
+Hot backup BEGIN process for STARTED at Mon May 23 07:06:23 EDT 2005
+Hot backup BEGIN process for kprod COMPLETED at Mon May 23 07:06:25 EDT 2005
+LOG_START_WKDAY is: Mon
+LOG_COMPLETED_WKDAY is: Mon
+LOG_START_MONTH is: May
+LOG_COMPLETED_MONTH is: May
+LOG_START_DATE is: 23
+LOG_COMPLETED_DATE is: 23
+
+/usr/local/bin/bcvscripts/logs/server20_ora_stop_backup_mprod.log
+Hot backup BEGIN process for STARTED at Mon May 23 07:06:25 EDT 2005
+Hot backup BEGIN process for mprod COMPLETED at Mon May 23 07:06:26 EDT 2005
+LOG_START_WKDAY is: Mon
+LOG_COMPLETED_WKDAY is: Mon
+LOG_START_MONTH is: May
+LOG_COMPLETED_MONTH is: May
+LOG_START_DATE is: 23
+LOG_COMPLETED_DATE is: 23
+
+No errors found in the ORacle logs.
+End the Oracle Logs Verify Function. Mon May 23 07:05:38 EDT 2005
+
+Start CHECK LVM ERRORS function. Mon May 23 07:05:38 EDT 2005.
+#
+NO LVM Errors Recorded: (LVM-ERRORS 0)
+#
+End CHECK LVM ERRORS function. Mon May 23 07:05:38 EDT 2005.
+
+Begin Start OmniBack Job Function. Mon May 23 07:05:38 EDT 2005
+#
+Attempting to start OmniBackup Job.
+OMNIBACK_OBJ is SERVER20
+List of Filesystems to backup for SERVER20 is:
+OMNI_DRV is
+#
+Filesystems are ready to run the Omniback Job.
+#
+Starting Backup Job: remsh sta0lx07 BPbackup -i -p Qwest_UNIX_BCV_SERVER20 -s QBCV_SRVR20_Daily
+#
+End Start OmniBack Job Function. Mon May 23 07:05:39 EDT 2005
+
+Start Verify Variables Function. Mon May 23 07:05:39 EDT 2005
+#
+End Verify Variables Function. Mon May 23 07:05:39 EDT 2005
+
+Start Clean Up Function Mon May 23 07:05:39 EDT 2005
+#
+a ./server20-HBM.log 7 blocks
+a ./server20_BCV_LOG 53 blocks
+a ./server20_Email_Report 5 blocks
+a ./server20_Error_Report 0 blocks
+a ./server20_ORACLE_Log 0 blocks
+a ./server20_Pipe_Log 1 blocks
+a ./server20_QEmail_Report 2 blocks
+a ./server20_ora_start_backup_kprod.log 5 blocks
+a ./server20_ora_start_backup_mprod.log 3 blocks
+a ./server20_ora_stop_backup_kprod.log 6 blocks
+a ./server20_ora_stop_backup_mprod.log 4 blocks
+a ./server20_set.out 21 blocks
+a ./server20_DG_ELEM.vars 1 blocks
+a ./server20_DG_ELEM_XACT.vars 0 blocks
+a ./server20_EST_MONITOR 2 blocks
+a ./server20_EST_STATUS 1 blocks
+a ./server20_EXPORT_STATUS 0 blocks
+a ./server20_FSCK_OUTPUT 1 blocks
+a ./server20_IMPORT_STATUS 0 blocks
+a ./server20_RE_MOUNT 1 blocks
+a ./server20_SPLIT_STATUS 1 blocks
+a ./server20_SYNC_STATUS 1 blocks
+a ./server20_UMOUNT_STATUS 1 blocks
+a ./server20_VGCHANGE_STATUS 1 blocks
+a ./server20_VG_ELEM.vars 1 blocks
+a ./server20_VG_ELEM_XACT.vars 0 blocks
+a ./server20_VG_MINNUM 0 blocks
+a ./server20_Verify_Variables 13 blocks
+a ./2005143_FS.OB 1 blocks
+a ./bcv_scripts.conf 9 blocks
+tar: cannot stat ./ChangeLog.  Not dumped.
+#
+End Clean Up Function Mon May 23 07:05:40 EDT 2005
+
+END BCV Establish and Split Script for server20 on Mon May 23 07:05:40 EDT 2005
+
+Executing Final Notification.
+Final notification list is to: dholton jstenglein calley mbmcclos
+#
+Checking System Load. If too high, Notify will wait 30 minutes.
+Uptime output:   7:05am  up 20 days, 14:43,  0 users,  load average: 87.73, 77.40, 48.65
+System Load is:  8773
+Reference Load is: 70
+#
+System Load is too high to send email.  Sleeping 30 minutes.
+Time_Counter Starting at: Mon May 23 07:05:40 EDT 2005
+Sleeping 1800 Seconds. Total: 0 hour(s) 30 minute(s) 0 second(s)
+#
+#
+Checking System Load. If too high, Notify will wait 30 minutes.
+Uptime output:   7:35am  up 20 days, 15:13,  0 users,  load average: 98.10, 99.45, 90.54
+System Load is:  9810
+Reference Load is: 70
+#
+System Load is too high to send email.  Sleeping 30 minutes.
+Time_Counter Starting at: Mon May 23 07:35:40 EDT 2005
+Sleeping 1800 Seconds. Total: 0 hour(s) 30 minute(s) 0 second(s)
+#
+#
+Checking System Load. If too high, Notify will wait 30 minutes.
+Uptime output:   8:05am  up 20 days, 15:43,  1 user,  load average: 116.72, 117.61, 112.79
+System Load is:  11672
+Reference Load is: 70
+#
+System Load is too high to send email.  Sleeping 30 minutes.
+Time_Counter Starting at: Mon May 23 08:05:40 EDT 2005
+Sleeping 1800 Seconds. Total: 0 hour(s) 30 minute(s) 0 second(s)

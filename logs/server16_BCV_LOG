@@ -1,0 +1,1270 @@
+Split Mode is set to: WAIT
+Script started with the following Options and Arguements: -FBS server16 -s wait
+SERVER is set to: server16
+CONFIG_FILE: Default config file will be used.
+Establish Type is set to: FULL
+RUN_BACKUP is set to: YES
+Manual Monitoring is set to: NO
+Split Mode is set to: WAIT
+Debug Mode is set to: OFF
+
+START BCV Establish and Split Script for server16 on Mon May 23 02:30:00 EDT 2005
+
+Start Declare_General_Variables Function. Mon May 23 02:30:00 EDT 2005.
+Script started with the following Options and Arguements: -FBS server16 -s wait
+Working on BCVs for SERVER: server16
+SERVER server16 is a valid BCV Server. Continuing.
+Configuration file is: /usr/local/bin/bcvscripts/etc/bcv_scripts.conf
+Establish Type is: FULL
+Run Backup is set to: YES
+Manual Monitoring is set to: NO
+Split Mode is set to WAIT
+Split Time is: 06:00:00
+End Declare_General_Variables Function. Mon May 23 02:30:00 EDT 2005
+
+Start Declare_VolumeGroup_Variables Function. Mon May 23 02:30:00 EDT 2005
+#
+Grabbing VGS for normal BCV Establish.
+SRVR_VG Array element 6 is: vgfssystem1
+SRVR_VG Array element 5 is: vgpsfiles1/lvol3
+SRVR_VG Array element 4 is: vgpsfiles1/lvol2
+SRVR_VG Array element 3 is: vgpsfiles1/lvol1
+SRVR_VG Array element 2 is: vgapps16
+SRVR_VG Array element 1 is: vgfsprod2
+SRVR_VG Array element 0 is: vgfsprod1
+#
+Grabbing VGS for exact mode BCV Establish.
+VG_ARRAY_START_XACT (-1) has a negative value. No need to proceed. Skipping.
+#
+End Declare_VolumeGroup_Variables Function. Mon May 23 02:30:00 EDT 2005
+
+Start Declare_DeviceGroup_Variables Function. Mon May 23 02:30:00 EDT 2005
+#
+Grabbing DGs for normal BCV Establish.
+SRVR_DG Array element 4 is: psfssystem1
+SRVR_DG Array element 3 is: psfiles1
+SRVR_DG Array element 2 is: apps16
+SRVR_DG Array element 1 is: psfsprod2
+SRVR_DG Array element 0 is: psfsprod1
+#
+Grabbing DGs for exact mode BCV Establish.
+DG_ARRAY_START_XACT (-1) has a negative value. No data here. Skipping.
+#
+End Declare_DeviceGroup_Variables Function. Mon May 23 02:30:01 EDT 2005
+
+Start Declare_OmniBack_Variables Function. Mon May 23 02:30:01 EDT 2005.
+#
+Run Backup at end of script: YES
+grep: can't open /etc/opt/omni/datalists/BCVs-SERVER16
+OMNIBACK_OBJ is: SERVER16
+OMNI_LIST contains 0 objects
+OMNI_LIST contents:
+OMNI_DRV is:
+#
+Instance file exists
+Total Instances are: 3
+Current Instance is: 2
+#
+End Declare_OmniBack_Variables Function. Mon May 23 02:30:01 EDT 2005
+
+Start OOP Loading Function. Mon May 23 02:30:01 EDT 2005
+#
+#
+End OOP Loading Function. Mon May 23 02:30:01 EDT 2005
+
+Start Unmount Filesystem function. Mon May 23 02:30:01 EDT 2005
+FileSystems to UNmount: 7
+#
+
+	VOLGROUP is vgfsprod1
+	FSTAB_EXTRACT is /dev/vgfsprod1/lvol1:/BCV/srvr16/u01
+	VG is /dev/vgfsprod1
+	VGNAME is vgfsprod1
+	VG_LVOL is /dev/vgfsprod1/lvol1
+	VG_RLVOL is /dev/vgfsprod1/rlvol1
+	FILESYSTEM is /BCV/srvr16/u01
+	FILESYSTEM is 13 characters long
+	MAPDIR is /root/disks/vgfsprod1
+	MAPFILE is /root/disks/vgfsprod1/vgfsprod1.map
+	PVPATHFILE is /root/disks/vgfsprod1/vgfsprod1.pvpath
+	GROUPFILE is /dev/vgfsprod1/group
+
+VG /dev/vgfsprod1 is mounted on /BCV/srvr16/u01. I will unmount it for you.
+/BCV/srvr16/u01: 
+
+VG /dev/vgfsprod1 was successfully UNmounted from /BCV/srvr16/u01.
+#
+
+	VOLGROUP is vgfsprod2
+	FSTAB_EXTRACT is /dev/vgfsprod2/lvol1:/BCV/srvr16/u02
+	VG is /dev/vgfsprod2
+	VGNAME is vgfsprod2
+	VG_LVOL is /dev/vgfsprod2/lvol1
+	VG_RLVOL is /dev/vgfsprod2/rlvol1
+	FILESYSTEM is /BCV/srvr16/u02
+	FILESYSTEM is 13 characters long
+	MAPDIR is /root/disks/vgfsprod2
+	MAPFILE is /root/disks/vgfsprod2/vgfsprod2.map
+	PVPATHFILE is /root/disks/vgfsprod2/vgfsprod2.pvpath
+	GROUPFILE is /dev/vgfsprod2/group
+
+VG /dev/vgfsprod2 is mounted on /BCV/srvr16/u02. I will unmount it for you.
+/BCV/srvr16/u02: 
+
+VG /dev/vgfsprod2 was successfully UNmounted from /BCV/srvr16/u02.
+#
+
+	VOLGROUP is vgapps16
+	FSTAB_EXTRACT is /dev/vgapps16/lvol1:/BCV/srvr16/apps
+	VG is /dev/vgapps16
+	VGNAME is vgapps16
+	VG_LVOL is /dev/vgapps16/lvol1
+	VG_RLVOL is /dev/vgapps16/rlvol1
+	FILESYSTEM is /BCV/srvr16/apps
+	FILESYSTEM is 14 characters long
+	MAPDIR is /root/disks/vgapps16
+	MAPFILE is /root/disks/vgapps16/vgapps16.map
+	PVPATHFILE is /root/disks/vgapps16/vgapps16.pvpath
+	GROUPFILE is /dev/vgapps16/group
+
+VG /dev/vgapps16 is mounted on /BCV/srvr16/apps. I will unmount it for you.
+/BCV/srvr16/apps: 
+
+VG /dev/vgapps16 was successfully UNmounted from /BCV/srvr16/apps.
+#
+
+	VOLGROUP is vgpsfiles1/lvol1
+	FSTAB_EXTRACT is /dev/vgpsfiles1/lvol1:/BCV/srvr16/u05
+	VG is /dev/vgpsfiles1
+	VGNAME is vgpsfiles1
+	VG_LVOL is /dev/vgpsfiles1/lvol1
+	VG_RLVOL is /dev/vgpsfiles1/rlvol1
+	FILESYSTEM is /BCV/srvr16/u05
+	FILESYSTEM is 13 characters long
+	MAPDIR is /root/disks/vgpsfiles1
+	MAPFILE is /root/disks/vgpsfiles1/vgpsfiles1.map
+	PVPATHFILE is /root/disks/vgpsfiles1/vgpsfiles1.pvpath
+	GROUPFILE is /dev/vgpsfiles1/group
+
+VG /dev/vgpsfiles1 is mounted on /BCV/srvr16/u05. I will unmount it for you.
+/BCV/srvr16/u05: 
+
+VG /dev/vgpsfiles1 was successfully UNmounted from /BCV/srvr16/u05.
+#
+
+	VOLGROUP is vgpsfiles1/lvol2
+	FSTAB_EXTRACT is /dev/vgpsfiles1/lvol2:/BCV/srvr16/u20
+	VG is /dev/vgpsfiles1
+	VGNAME is vgpsfiles1
+	VG_LVOL is /dev/vgpsfiles1/lvol2
+	VG_RLVOL is /dev/vgpsfiles1/rlvol2
+	FILESYSTEM is /BCV/srvr16/u20
+	FILESYSTEM is 13 characters long
+	MAPDIR is /root/disks/vgpsfiles1
+	MAPFILE is /root/disks/vgpsfiles1/vgpsfiles1.map
+	PVPATHFILE is /root/disks/vgpsfiles1/vgpsfiles1.pvpath
+	GROUPFILE is /dev/vgpsfiles1/group
+
+VG /dev/vgpsfiles1 is mounted on /BCV/srvr16/u20. I will unmount it for you.
+/BCV/srvr16/u20: 
+
+VG /dev/vgpsfiles1 was successfully UNmounted from /BCV/srvr16/u20.
+#
+
+	VOLGROUP is vgpsfiles1/lvol3
+	FSTAB_EXTRACT is /dev/vgpsfiles1/lvol3:/BCV/srvr16/u21
+	VG is /dev/vgpsfiles1
+	VGNAME is vgpsfiles1
+	VG_LVOL is /dev/vgpsfiles1/lvol3
+	VG_RLVOL is /dev/vgpsfiles1/rlvol3
+	FILESYSTEM is /BCV/srvr16/u21
+	FILESYSTEM is 13 characters long
+	MAPDIR is /root/disks/vgpsfiles1
+	MAPFILE is /root/disks/vgpsfiles1/vgpsfiles1.map
+	PVPATHFILE is /root/disks/vgpsfiles1/vgpsfiles1.pvpath
+	GROUPFILE is /dev/vgpsfiles1/group
+
+VG /dev/vgpsfiles1 is mounted on /BCV/srvr16/u21. I will unmount it for you.
+/BCV/srvr16/u21: 
+
+VG /dev/vgpsfiles1 was successfully UNmounted from /BCV/srvr16/u21.
+#
+
+	VOLGROUP is vgfssystem1
+	FSTAB_EXTRACT is /dev/vgfssystem1/lvol1:/BCV/srvr16/u03
+	VG is /dev/vgfssystem1
+	VGNAME is vgfssystem1
+	VG_LVOL is /dev/vgfssystem1/lvol1
+	VG_RLVOL is /dev/vgfssystem1/rlvol1
+	FILESYSTEM is /BCV/srvr16/u03
+	FILESYSTEM is 13 characters long
+	MAPDIR is /root/disks/vgfssystem1
+	MAPFILE is /root/disks/vgfssystem1/vgfssystem1.map
+	PVPATHFILE is /root/disks/vgfssystem1/vgfssystem1.pvpath
+	GROUPFILE is /dev/vgfssystem1/group
+
+VG /dev/vgfssystem1 is mounted on /BCV/srvr16/u03. I will unmount it for you.
+/BCV/srvr16/u03: 
+
+VG /dev/vgfssystem1 was successfully UNmounted from /BCV/srvr16/u03.
+#
+/BCV/srvr16/u01:0
+/BCV/srvr16/u02:0
+/BCV/srvr16/apps:0
+/BCV/srvr16/u05:0
+/BCV/srvr16/u20:0
+/BCV/srvr16/u21:0
+/BCV/srvr16/u03:0
+U_STATUS equals 0
+U_STATUS equals 0
+U_STATUS equals 0
+U_STATUS equals 0
+U_STATUS equals 0
+U_STATUS equals 0
+U_STATUS equals 0
+U_STATUS_2 is 0
+Un-mounting successful for all filesystems.
+7 of 7 filesystems UNmounted.
+End Unmount Filesystem function. Mon May 23 02:30:07 EDT 2005
+
+Start Deactivate VolumeGroups function. Mon May 23 02:30:07 EDT 2005
+Volume Groups to be Deactivated: 7
+#
+
+	VOLGROUP is vgfsprod1
+	FSTAB_EXTRACT is /dev/vgfsprod1/lvol1:/BCV/srvr16/u01
+	VG is /dev/vgfsprod1
+	VGNAME is vgfsprod1
+	VG_LVOL is /dev/vgfsprod1/lvol1
+	VG_RLVOL is /dev/vgfsprod1/rlvol1
+	FILESYSTEM is /BCV/srvr16/u01
+	FILESYSTEM is 13 characters long
+	MAPDIR is /root/disks/vgfsprod1
+	MAPFILE is /root/disks/vgfsprod1/vgfsprod1.map
+	PVPATHFILE is /root/disks/vgfsprod1/vgfsprod1.pvpath
+	GROUPFILE is /dev/vgfsprod1/group
+
+The filesystem /BCV/srvr16/u01 is not mounted. VG /dev/vgfsprod1 will be deactivated.
+Volume group "/dev/vgfsprod1" has been successfully changed.
+VG /dev/vgfsprod1 was successfully deactivated.
+#
+
+	VOLGROUP is vgfsprod2
+	FSTAB_EXTRACT is /dev/vgfsprod2/lvol1:/BCV/srvr16/u02
+	VG is /dev/vgfsprod2
+	VGNAME is vgfsprod2
+	VG_LVOL is /dev/vgfsprod2/lvol1
+	VG_RLVOL is /dev/vgfsprod2/rlvol1
+	FILESYSTEM is /BCV/srvr16/u02
+	FILESYSTEM is 13 characters long
+	MAPDIR is /root/disks/vgfsprod2
+	MAPFILE is /root/disks/vgfsprod2/vgfsprod2.map
+	PVPATHFILE is /root/disks/vgfsprod2/vgfsprod2.pvpath
+	GROUPFILE is /dev/vgfsprod2/group
+
+The filesystem /BCV/srvr16/u02 is not mounted. VG /dev/vgfsprod2 will be deactivated.
+Volume group "/dev/vgfsprod2" has been successfully changed.
+VG /dev/vgfsprod2 was successfully deactivated.
+#
+
+	VOLGROUP is vgapps16
+	FSTAB_EXTRACT is /dev/vgapps16/lvol1:/BCV/srvr16/apps
+	VG is /dev/vgapps16
+	VGNAME is vgapps16
+	VG_LVOL is /dev/vgapps16/lvol1
+	VG_RLVOL is /dev/vgapps16/rlvol1
+	FILESYSTEM is /BCV/srvr16/apps
+	FILESYSTEM is 14 characters long
+	MAPDIR is /root/disks/vgapps16
+	MAPFILE is /root/disks/vgapps16/vgapps16.map
+	PVPATHFILE is /root/disks/vgapps16/vgapps16.pvpath
+	GROUPFILE is /dev/vgapps16/group
+
+The filesystem /BCV/srvr16/apps is not mounted. VG /dev/vgapps16 will be deactivated.
+Volume group "/dev/vgapps16" has been successfully changed.
+VG /dev/vgapps16 was successfully deactivated.
+#
+
+	VOLGROUP is vgpsfiles1/lvol1
+	FSTAB_EXTRACT is /dev/vgpsfiles1/lvol1:/BCV/srvr16/u05
+	VG is /dev/vgpsfiles1
+	VGNAME is vgpsfiles1
+	VG_LVOL is /dev/vgpsfiles1/lvol1
+	VG_RLVOL is /dev/vgpsfiles1/rlvol1
+	FILESYSTEM is /BCV/srvr16/u05
+	FILESYSTEM is 13 characters long
+	MAPDIR is /root/disks/vgpsfiles1
+	MAPFILE is /root/disks/vgpsfiles1/vgpsfiles1.map
+	PVPATHFILE is /root/disks/vgpsfiles1/vgpsfiles1.pvpath
+	GROUPFILE is /dev/vgpsfiles1/group
+
+The filesystem /BCV/srvr16/u05 is not mounted. VG /dev/vgpsfiles1 will be deactivated.
+Volume group "/dev/vgpsfiles1" has been successfully changed.
+VG /dev/vgpsfiles1 was successfully deactivated.
+#
+
+	VOLGROUP is vgpsfiles1/lvol2
+	FSTAB_EXTRACT is /dev/vgpsfiles1/lvol2:/BCV/srvr16/u20
+	VG is /dev/vgpsfiles1
+	VGNAME is vgpsfiles1
+	VG_LVOL is /dev/vgpsfiles1/lvol2
+	VG_RLVOL is /dev/vgpsfiles1/rlvol2
+	FILESYSTEM is /BCV/srvr16/u20
+	FILESYSTEM is 13 characters long
+	MAPDIR is /root/disks/vgpsfiles1
+	MAPFILE is /root/disks/vgpsfiles1/vgpsfiles1.map
+	PVPATHFILE is /root/disks/vgpsfiles1/vgpsfiles1.pvpath
+	GROUPFILE is /dev/vgpsfiles1/group
+
+The filesystem /BCV/srvr16/u20 is not mounted. VG /dev/vgpsfiles1 will be deactivated.
+VG /dev/vgpsfiles1 was ALREADY DEactivated. Continuing.
+#
+
+	VOLGROUP is vgpsfiles1/lvol3
+	FSTAB_EXTRACT is /dev/vgpsfiles1/lvol3:/BCV/srvr16/u21
+	VG is /dev/vgpsfiles1
+	VGNAME is vgpsfiles1
+	VG_LVOL is /dev/vgpsfiles1/lvol3
+	VG_RLVOL is /dev/vgpsfiles1/rlvol3
+	FILESYSTEM is /BCV/srvr16/u21
+	FILESYSTEM is 13 characters long
+	MAPDIR is /root/disks/vgpsfiles1
+	MAPFILE is /root/disks/vgpsfiles1/vgpsfiles1.map
+	PVPATHFILE is /root/disks/vgpsfiles1/vgpsfiles1.pvpath
+	GROUPFILE is /dev/vgpsfiles1/group
+
+The filesystem /BCV/srvr16/u21 is not mounted. VG /dev/vgpsfiles1 will be deactivated.
+VG /dev/vgpsfiles1 was ALREADY DEactivated. Continuing.
+#
+
+	VOLGROUP is vgfssystem1
+	FSTAB_EXTRACT is /dev/vgfssystem1/lvol1:/BCV/srvr16/u03
+	VG is /dev/vgfssystem1
+	VGNAME is vgfssystem1
+	VG_LVOL is /dev/vgfssystem1/lvol1
+	VG_RLVOL is /dev/vgfssystem1/rlvol1
+	FILESYSTEM is /BCV/srvr16/u03
+	FILESYSTEM is 13 characters long
+	MAPDIR is /root/disks/vgfssystem1
+	MAPFILE is /root/disks/vgfssystem1/vgfssystem1.map
+	PVPATHFILE is /root/disks/vgfssystem1/vgfssystem1.pvpath
+	GROUPFILE is /dev/vgfssystem1/group
+
+The filesystem /BCV/srvr16/u03 is not mounted. VG /dev/vgfssystem1 will be deactivated.
+Volume group "/dev/vgfssystem1" has been successfully changed.
+VG /dev/vgfssystem1 was successfully deactivated.
+#
+(0/7) of 7 Volume Groups DEActivated.
+#
+End Deactivate VolumeGroups function. Mon May 23 02:30:30 EDT 2005
+
+Start Export Volume Groups function. Mon May 23 02:30:30 EDT 2005
+Volume Groups to be Exported: 0
+#
+End Export Volume Groups function. Mon May 23 02:30:30 EDT 2005
+
+Start Establish BCVs function. Mon May 23 02:30:30 EDT 2005
+#
+Device Groups are: psfsprod1 psfsprod2 apps16 psfiles1 psfssystem1
+#
+psfsprod1 is a Normal DG.
+Running Command: /usr/symcli/bin/symir -g psfsprod1 -full -noprompt est
+
+'Full Establish' operation execution is in progress for
+device group 'psfsprod1'. Please wait...
+
+'Full Establish' operation successfully initiated for device group
+'psfsprod1'.
+
+BCV Est for psfsprod1 Initiated
+#
+psfsprod2 is a Normal DG.
+Running Command: /usr/symcli/bin/symir -g psfsprod2 -full -noprompt est
+
+'Full Establish' operation execution is in progress for
+device group 'psfsprod2'. Please wait...
+
+'Full Establish' operation successfully initiated for device group
+'psfsprod2'.
+
+BCV Est for psfsprod2 Initiated
+#
+apps16 is a Normal DG.
+Running Command: /usr/symcli/bin/symir -g apps16 -full -noprompt est
+
+'Full Establish' operation execution is in progress for
+device group 'apps16'. Please wait...
+
+'Full Establish' operation successfully initiated for device group
+'apps16'.
+
+BCV Est for apps16 Initiated
+#
+psfiles1 is a Normal DG.
+Running Command: /usr/symcli/bin/symir -g psfiles1 -full -noprompt est
+
+'Full Establish' operation execution is in progress for
+device group 'psfiles1'. Please wait...
+
+'Full Establish' operation successfully initiated for device group
+'psfiles1'.
+
+BCV Est for psfiles1 Initiated
+#
+psfssystem1 is a Normal DG.
+Running Command: /usr/symcli/bin/symir -g psfssystem1 -full -noprompt est
+
+'Full Establish' operation execution is in progress for
+device group 'psfssystem1'. Please wait...
+
+'Full Establish' operation successfully initiated for device group
+'psfssystem1'.
+
+BCV Est for psfssystem1 Initiated
+#
+End Establish BCVs function. Mon May 23 02:34:40 EDT 2005
+
+Start Verify BCV Sync Started function. Mon May 23 02:34:40 EDT 2005
+#
+DEVGRP is psfsprod1
+	Line is psfsprod1=0, Group is psfsprod1, Value is 0
+ALL_GROUPS_START Count is 1
+#
+DEVGRP is psfsprod2
+	Line is psfsprod2=0, Group is psfsprod2, Value is 0
+ALL_GROUPS_START Count is 2
+#
+DEVGRP is apps16
+	Line is apps16=0, Group is apps16, Value is 0
+ALL_GROUPS_START Count is 3
+#
+DEVGRP is psfiles1
+	Line is psfiles1=0, Group is psfiles1, Value is 0
+ALL_GROUPS_START Count is 4
+#
+DEVGRP is psfssystem1
+	Line is psfssystem1=0, Group is psfssystem1, Value is 0
+ALL_GROUPS_START Count is 5
+#
+5 of 5 Device Groups Sync Started.
+#
+End Verify BCV Sync Started function. Mon May 23 02:34:40 EDT 2005
+
+Start Monitor BCV Establish function. Mon May 23 02:34:40 EDT 2005
+#
+Device Groups are: psfsprod1 psfsprod2 apps16 psfiles1 psfssystem1.
+psfsprod1 status: Synch stat is 11. Syncinprog stat is 0. MEG left 149082.
+psfsprod2 status: Synch stat is 11. Syncinprog stat is 0. MEG left 50039.7.
+apps16 status: Synch stat is 11. Syncinprog stat is 0. MEG left 12776.2.
+psfiles1 status: Synch stat is 11. Syncinprog stat is 0. MEG left 30028.8.
+psfssystem1 status: Synch stat is 11. Syncinprog stat is 0. MEG left 120735.
+Group Count is: 0
+The Device Groups for server16 are NOT YET established.
+Resetting Group Count to 0.
+Time_Counter Starting at: Mon May 23 02:34:45 EDT 2005
+Sleeping 900 Seconds. Total: 0 hour(s) 15 minute(s) 0 second(s)
+#
+
+psfsprod1 status: Synch stat is 11. Syncinprog stat is 0. MEG left 109068.
+psfsprod2 status: Synch stat is 11. Syncinprog stat is 0. MEG left 37112.3.
+apps16 status: Synch stat is 11. Syncinprog stat is 0. MEG left 10055.1.
+psfiles1 status: Synch stat is 11. Syncinprog stat is 0. MEG left 26813.9.
+psfssystem1 status: Synch stat is 11. Syncinprog stat is 0. MEG left 111138.
+Group Count is: 0
+The Device Groups for server16 are NOT YET established.
+Resetting Group Count to 0.
+Time_Counter Starting at: Mon May 23 02:49:50 EDT 2005
+Sleeping 900 Seconds. Total: 0 hour(s) 15 minute(s) 0 second(s)
+#
+
+psfsprod1 status: Synch stat is 10. Syncinprog stat is 27. MEG left 83078.1.
+psfsprod2 status: Synch stat is 10. Syncinprog stat is 27. MEG left 28706.7.
+apps16 status: Synch stat is 11. Syncinprog stat is 0. MEG left 7929.8.
+psfiles1 status: Synch stat is 11. Syncinprog stat is 0. MEG left 23586.1.
+psfssystem1 status: Synch stat is 11. Syncinprog stat is 0. MEG left 103487.
+Group Count is: 0
+The Device Groups for server16 are NOT YET established.
+Resetting Group Count to 0.
+Time_Counter Starting at: Mon May 23 03:04:55 EDT 2005
+Sleeping 900 Seconds. Total: 0 hour(s) 15 minute(s) 0 second(s)
+#
+
+psfsprod1 status: Synch stat is 10. Syncinprog stat is 27. MEG left 70918.8.
+psfsprod2 status: Synch stat is 10. Syncinprog stat is 27. MEG left 25005.6.
+apps16 status: Synch stat is 11. Syncinprog stat is 0. MEG left 6636.2.
+psfiles1 status: Synch stat is 11. Syncinprog stat is 0. MEG left 20179.5.
+psfssystem1 status: Synch stat is 11. Syncinprog stat is 0. MEG left 93902.2.
+Group Count is: 0
+The Device Groups for server16 are NOT YET established.
+Resetting Group Count to 0.
+Time_Counter Starting at: Mon May 23 03:20:00 EDT 2005
+Sleeping 900 Seconds. Total: 0 hour(s) 15 minute(s) 0 second(s)
+#
+
+psfsprod1 status: Synch stat is 10. Syncinprog stat is 27. MEG left 61005.1.
+psfsprod2 status: Synch stat is 10. Syncinprog stat is 27. MEG left 20923.6.
+apps16 status: Synch stat is 11. Syncinprog stat is 0. MEG left 4867.6.
+psfiles1 status: Synch stat is 11. Syncinprog stat is 0. MEG left 16316.4.
+psfssystem1 status: Synch stat is 10. Syncinprog stat is 27. MEG left 82957.7.
+Group Count is: 0
+The Device Groups for server16 are NOT YET established.
+Resetting Group Count to 0.
+Time_Counter Starting at: Mon May 23 03:35:05 EDT 2005
+Sleeping 900 Seconds. Total: 0 hour(s) 15 minute(s) 0 second(s)
+#
+
+psfsprod1 status: Synch stat is 10. Syncinprog stat is 27. MEG left 52264.5.
+psfsprod2 status: Synch stat is 10. Syncinprog stat is 27. MEG left 17424.2.
+apps16 status: Synch stat is 10. Syncinprog stat is 27. MEG left 3126.6.
+psfiles1 status: Synch stat is 10. Syncinprog stat is 27. MEG left 12240.6.
+psfssystem1 status: Synch stat is 10. Syncinprog stat is 27. MEG left 71970.9.
+Group Count is: 0
+The Device Groups for server16 are NOT YET established.
+Resetting Group Count to 0.
+Time_Counter Starting at: Mon May 23 03:50:11 EDT 2005
+Sleeping 900 Seconds. Total: 0 hour(s) 15 minute(s) 0 second(s)
+#
+
+psfsprod1 status: Synch stat is 10. Syncinprog stat is 27. MEG left 42594.8.
+psfsprod2 status: Synch stat is 10. Syncinprog stat is 27. MEG left 14827.8.
+apps16 status: Synch stat is 10. Syncinprog stat is 27. MEG left 1490.9.
+psfiles1 status: Synch stat is 10. Syncinprog stat is 27. MEG left 9316.6.
+psfssystem1 status: Synch stat is 10. Syncinprog stat is 27. MEG left 61001.9.
+Group Count is: 0
+The Device Groups for server16 are NOT YET established.
+Resetting Group Count to 0.
+Time_Counter Starting at: Mon May 23 04:05:16 EDT 2005
+Sleeping 900 Seconds. Total: 0 hour(s) 15 minute(s) 0 second(s)
+#
+
+psfsprod1 status: Synch stat is 10. Syncinprog stat is 27. MEG left 33674.5.
+psfsprod2 status: Synch stat is 10. Syncinprog stat is 27. MEG left 12223.1.
+apps16 status: Synch stat is 0. Syncinprog stat is 28. MEG left 0.0.
+psfiles1 status: Synch stat is 10. Syncinprog stat is 27. MEG left 6926.2.
+psfssystem1 status: Synch stat is 10. Syncinprog stat is 27. MEG left 50823.9.
+Group Count is: 1
+The Device Groups for server16 are NOT YET established.
+Resetting Group Count to 0.
+Time_Counter Starting at: Mon May 23 04:20:22 EDT 2005
+Sleeping 900 Seconds. Total: 0 hour(s) 15 minute(s) 0 second(s)
+#
+
+psfsprod1 status: Synch stat is 10. Syncinprog stat is 27. MEG left 28087.8.
+psfsprod2 status: Synch stat is 10. Syncinprog stat is 27. MEG left 10002.1.
+apps16 status: Synch stat is 0. Syncinprog stat is 28. MEG left 0.0.
+psfiles1 status: Synch stat is 10. Syncinprog stat is 27. MEG left 5539.7.
+psfssystem1 status: Synch stat is 10. Syncinprog stat is 27. MEG left 42315.0.
+Group Count is: 1
+The Device Groups for server16 are NOT YET established.
+Resetting Group Count to 0.
+Time_Counter Starting at: Mon May 23 04:35:29 EDT 2005
+Sleeping 900 Seconds. Total: 0 hour(s) 15 minute(s) 0 second(s)
+#
+
+psfsprod1 status: Synch stat is 10. Syncinprog stat is 27. MEG left 21877.0.
+psfsprod2 status: Synch stat is 10. Syncinprog stat is 27. MEG left 7542.4.
+apps16 status: Synch stat is 0. Syncinprog stat is 28. MEG left 0.0.
+psfiles1 status: Synch stat is 10. Syncinprog stat is 27. MEG left 4356.8.
+psfssystem1 status: Synch stat is 10. Syncinprog stat is 27. MEG left 32646.4.
+Group Count is: 1
+The Device Groups for server16 are NOT YET established.
+Resetting Group Count to 0.
+Time_Counter Starting at: Mon May 23 04:50:35 EDT 2005
+Sleeping 900 Seconds. Total: 0 hour(s) 15 minute(s) 0 second(s)
+#
+
+psfsprod1 status: Synch stat is 10. Syncinprog stat is 27. MEG left 15067.6.
+psfsprod2 status: Synch stat is 10. Syncinprog stat is 27. MEG left 4870.1.
+apps16 status: Synch stat is 0. Syncinprog stat is 28. MEG left 0.0.
+psfiles1 status: Synch stat is 10. Syncinprog stat is 27. MEG left 2969.9.
+psfssystem1 status: Synch stat is 10. Syncinprog stat is 27. MEG left 21162.7.
+Group Count is: 1
+The Device Groups for server16 are NOT YET established.
+Resetting Group Count to 0.
+Time_Counter Starting at: Mon May 23 05:05:41 EDT 2005
+Sleeping 900 Seconds. Total: 0 hour(s) 15 minute(s) 0 second(s)
+#
+
+psfsprod1 status: Synch stat is 10. Syncinprog stat is 27. MEG left 8228.0.
+psfsprod2 status: Synch stat is 10. Syncinprog stat is 27. MEG left 2711.2.
+apps16 status: Synch stat is 0. Syncinprog stat is 28. MEG left 0.0.
+psfiles1 status: Synch stat is 10. Syncinprog stat is 27. MEG left 1738.1.
+psfssystem1 status: Synch stat is 10. Syncinprog stat is 27. MEG left 11186.8.
+Group Count is: 1
+The Device Groups for server16 are NOT YET established.
+Resetting Group Count to 0.
+Time_Counter Starting at: Mon May 23 05:20:51 EDT 2005
+Sleeping 900 Seconds. Total: 0 hour(s) 15 minute(s) 0 second(s)
+#
+
+psfsprod1 status: Synch stat is 10. Syncinprog stat is 27. MEG left 2836.0.
+psfsprod2 status: Synch stat is 10. Syncinprog stat is 27. MEG left 1154.2.
+apps16 status: Synch stat is 0. Syncinprog stat is 28. MEG left 0.0.
+psfiles1 status: Synch stat is 10. Syncinprog stat is 27. MEG left 716.0.
+psfssystem1 status: Synch stat is 10. Syncinprog stat is 27. MEG left 2561.1.
+Group Count is: 1
+The Device Groups for server16 are NOT YET established.
+Resetting Group Count to 0.
+Time_Counter Starting at: Mon May 23 05:35:58 EDT 2005
+Sleeping 900 Seconds. Total: 0 hour(s) 15 minute(s) 0 second(s)
+#
+
+psfsprod1 status: Synch stat is 10. Syncinprog stat is 27. MEG left 666.1.
+psfsprod2 status: Synch stat is 10. Syncinprog stat is 27. MEG left 567.3.
+apps16 status: Synch stat is 0. Syncinprog stat is 28. MEG left 0.0.
+psfiles1 status: Synch stat is 10. Syncinprog stat is 27. MEG left 345.5.
+psfssystem1 status: Synch stat is 10. Syncinprog stat is 27. MEG left 654.8.
+Group Count is: 1
+The Device Groups for server16 are NOT YET established.
+Resetting Group Count to 0.
+Time_Counter Starting at: Mon May 23 05:51:06 EDT 2005
+Sleeping 900 Seconds. Total: 0 hour(s) 15 minute(s) 0 second(s)
+#
+
+psfsprod1 status: Synch stat is 0. Syncinprog stat is 28. MEG left 0.0.
+psfsprod2 status: Synch stat is 10. Syncinprog stat is 27. MEG left 92.9.
+apps16 status: Synch stat is 0. Syncinprog stat is 28. MEG left 0.0.
+psfiles1 status: Synch stat is 0. Syncinprog stat is 28. MEG left 0.0.
+psfssystem1 status: Synch stat is 10. Syncinprog stat is 27. MEG left 109.6.
+Group Count is: 3
+The Device Groups for server16 are NOT YET established.
+Resetting Group Count to 0.
+Time_Counter Starting at: Mon May 23 06:06:11 EDT 2005
+Sleeping 900 Seconds. Total: 0 hour(s) 15 minute(s) 0 second(s)
+#
+
+psfsprod1 status: Synch stat is 0. Syncinprog stat is 28. MEG left 0.0.
+psfsprod2 status: Synch stat is 0. Syncinprog stat is 28. MEG left 0.0.
+apps16 status: Synch stat is 0. Syncinprog stat is 28. MEG left 0.0.
+psfiles1 status: Synch stat is 0. Syncinprog stat is 28. MEG left 0.0.
+psfssystem1 status: Synch stat is 0. Syncinprog stat is 28. MEG left 0.0.
+Group Count is: 5
+The Device Groups for server16 are fully established.
+#
+End Monitor BCV Establish function. Mon May 23 06:21:16 EDT 2005
+
+Start Verify BCV Sync Finished function. Mon May 23 06:21:16 EDT 2005
+#
+ALL_GROUPS_SYNCED Count is 0
+#
+Number of DG elements are: 5
+Device Groups are: psfsprod1 psfsprod2 apps16 psfiles1 psfssystem1
+psfsprod1_synched=0
+psfsprod2_synched=0
+apps16_synched=0
+psfiles1_synched=0
+psfssystem1_synched=0
+#
+DVGRP is psfsprod1
+	LINE is psfsprod1_synched=0, Group is psfsprod1_synched, Value is 0
+ALL_GROUPS_SYNCED Count is 1
+#
+DVGRP is psfsprod2
+	LINE is psfsprod2_synched=0, Group is psfsprod2_synched, Value is 0
+ALL_GROUPS_SYNCED Count is 2
+#
+DVGRP is apps16
+	LINE is apps16_synched=0, Group is apps16_synched, Value is 0
+ALL_GROUPS_SYNCED Count is 3
+#
+DVGRP is psfiles1
+	LINE is psfiles1_synched=0, Group is psfiles1_synched, Value is 0
+ALL_GROUPS_SYNCED Count is 4
+#
+DVGRP is psfssystem1
+	LINE is psfssystem1_synched=0, Group is psfssystem1_synched, Value is 0
+ALL_GROUPS_SYNCED Count is 5
+#
+5 of 5 Device Groups Synched.
+#
+End Verify BCV Sync Finished function. Mon May 23 06:21:16 EDT 2005
+
+Start Split BCVs function. Mon May 23 06:21:16 EDT 2005
+Split Mode is set to: WAIT
+I must wait until 06:00:00 to split the BCVs.
+#
+CURRENT_TIME is: 062116
+SPLIT_TIME is: 060000
+#
+It is now okay to Split the BCVs
+#
+Number of Device Groups is: 5
+Device Groups are: psfsprod1 psfsprod2 apps16 psfiles1 psfssystem1
+#
+Starting the Start Hot Backup Mode Function. Mon May 23 06:21:16 EDT 2005
+server16
+
+
+End Start Hot Backup Mode Function. Mon May 23 06:22:17 EDT 2005
+
+Time_Counter Starting at: Mon May 23 06:22:17 EDT 2005
+Sleeping 120 Seconds. Total: 0 hour(s) 2 minute(s) 0 second(s)
+#
+BCV Split started at Mon May 23 06:24:17 EDT 2005
+#
+Working on psfsprod1
+Running Command: /usr/symcli/bin/symir -g psfsprod1 -noprompt split
+
+'Split' operation execution is in progress for
+device group 'psfsprod1'. Please wait...
+
+'Split' operation successfully executed for device group
+'psfsprod1'.
+
+Device Group psfsprod1 was split successfully.
+#
+BCV Split started at Mon May 23 06:30:23 EDT 2005
+#
+Working on psfsprod2
+Running Command: /usr/symcli/bin/symir -g psfsprod2 -noprompt split
+
+'Split' operation execution is in progress for
+device group 'psfsprod2'. Please wait...
+
+'Split' operation successfully executed for device group
+'psfsprod2'.
+
+Device Group psfsprod2 was split successfully.
+#
+BCV Split started at Mon May 23 06:32:48 EDT 2005
+#
+Working on apps16
+Running Command: /usr/symcli/bin/symir -g apps16 -noprompt split
+
+'Split' operation execution is in progress for
+device group 'apps16'. Please wait...
+
+'Split' operation successfully executed for device group
+'apps16'.
+
+Device Group apps16 was split successfully.
+#
+BCV Split started at Mon May 23 06:34:04 EDT 2005
+#
+Working on psfiles1
+Running Command: /usr/symcli/bin/symir -g psfiles1 -noprompt split
+
+'Split' operation execution is in progress for
+device group 'psfiles1'. Please wait...
+
+'Split' operation successfully executed for device group
+'psfiles1'.
+
+Device Group psfiles1 was split successfully.
+#
+BCV Split started at Mon May 23 06:36:29 EDT 2005
+#
+Working on psfssystem1
+Running Command: /usr/symcli/bin/symir -g psfssystem1 -noprompt split
+
+'Split' operation execution is in progress for
+device group 'psfssystem1'. Please wait...
+
+'Split' operation successfully executed for device group
+'psfssystem1'.
+
+Device Group psfssystem1 was split successfully.
+#
+Starting the Stop Hot Backup Mode Function. Mon May 23 06:42:27 EDT 2005
+server16
+End Stop Hot Backup Mode Function. Mon May 23 06:42:36 EDT 2005
+
+Time_Counter Starting at: Mon May 23 06:42:36 EDT 2005
+Sleeping 120 Seconds. Total: 0 hour(s) 2 minute(s) 0 second(s)
+#
+#
+End Split BCVs function. Mon May 23 06:44:36 EDT 2005
+
+Start Verify BCV Split function. Mon May 23 06:44:36 EDT 2005
+Number of DG elements are: 5
+Device Groups are: psfsprod1 psfsprod2 apps16 psfiles1 psfssystem1
+psfsprod1=0
+psfsprod2=0
+apps16=0
+psfiles1=0
+psfssystem1=0
+#
+Checking psfsprod1
+	LINE is psfsprod1=0, Group is psfsprod1, Value is 0
+ALL_GROUPS_SPLIT is 1
+#
+Checking psfsprod2
+	LINE is psfsprod2=0, Group is psfsprod2, Value is 0
+ALL_GROUPS_SPLIT is 2
+#
+Checking apps16
+	LINE is apps16=0, Group is apps16, Value is 0
+ALL_GROUPS_SPLIT is 3
+#
+Checking psfiles1
+	LINE is psfiles1=0, Group is psfiles1, Value is 0
+ALL_GROUPS_SPLIT is 4
+#
+Checking psfssystem1
+	LINE is psfssystem1=0, Group is psfssystem1, Value is 0
+ALL_GROUPS_SPLIT is 5
+#
+5 of 5 Device Groups Split.
+End Verify BCV Split function. Mon May 23 06:44:36 EDT 2005
+
+Start Import Volume Groups function. Mon May 23 06:44:36 EDT 2005
+Volume Groups to be Imported: 0
+#
+End Export Import VG function. Mon May 23 06:44:36 EDT 2005
+
+Start Activate VolumeGroups function. Mon May 23 06:44:36 EDT 2005
+Volume Groups to ACTivate: 7
+#
+
+	VOLGROUP is vgfsprod1
+	FSTAB_EXTRACT is /dev/vgfsprod1/lvol1:/BCV/srvr16/u01
+	VG is /dev/vgfsprod1
+	VGNAME is vgfsprod1
+	VG_LVOL is /dev/vgfsprod1/lvol1
+	VG_RLVOL is /dev/vgfsprod1/rlvol1
+	FILESYSTEM is /BCV/srvr16/u01
+	FILESYSTEM is 13 characters long
+	MAPDIR is /root/disks/vgfsprod1
+	MAPFILE is /root/disks/vgfsprod1/vgfsprod1.map
+	PVPATHFILE is /root/disks/vgfsprod1/vgfsprod1.pvpath
+	GROUPFILE is /dev/vgfsprod1/group
+
+Working on VG: /dev/vgfsprod1
+Activating /dev/vgfsprod1.
+VG /dev/vgfsprod1 was successfully activated.
+#
+
+	VOLGROUP is vgfsprod2
+	FSTAB_EXTRACT is /dev/vgfsprod2/lvol1:/BCV/srvr16/u02
+	VG is /dev/vgfsprod2
+	VGNAME is vgfsprod2
+	VG_LVOL is /dev/vgfsprod2/lvol1
+	VG_RLVOL is /dev/vgfsprod2/rlvol1
+	FILESYSTEM is /BCV/srvr16/u02
+	FILESYSTEM is 13 characters long
+	MAPDIR is /root/disks/vgfsprod2
+	MAPFILE is /root/disks/vgfsprod2/vgfsprod2.map
+	PVPATHFILE is /root/disks/vgfsprod2/vgfsprod2.pvpath
+	GROUPFILE is /dev/vgfsprod2/group
+
+Working on VG: /dev/vgfsprod2
+Activating /dev/vgfsprod2.
+VG /dev/vgfsprod2 was successfully activated.
+#
+
+	VOLGROUP is vgapps16
+	FSTAB_EXTRACT is /dev/vgapps16/lvol1:/BCV/srvr16/apps
+	VG is /dev/vgapps16
+	VGNAME is vgapps16
+	VG_LVOL is /dev/vgapps16/lvol1
+	VG_RLVOL is /dev/vgapps16/rlvol1
+	FILESYSTEM is /BCV/srvr16/apps
+	FILESYSTEM is 14 characters long
+	MAPDIR is /root/disks/vgapps16
+	MAPFILE is /root/disks/vgapps16/vgapps16.map
+	PVPATHFILE is /root/disks/vgapps16/vgapps16.pvpath
+	GROUPFILE is /dev/vgapps16/group
+
+Working on VG: /dev/vgapps16
+Activating /dev/vgapps16.
+VG /dev/vgapps16 was successfully activated.
+#
+
+	VOLGROUP is vgpsfiles1/lvol1
+	FSTAB_EXTRACT is /dev/vgpsfiles1/lvol1:/BCV/srvr16/u05
+	VG is /dev/vgpsfiles1
+	VGNAME is vgpsfiles1
+	VG_LVOL is /dev/vgpsfiles1/lvol1
+	VG_RLVOL is /dev/vgpsfiles1/rlvol1
+	FILESYSTEM is /BCV/srvr16/u05
+	FILESYSTEM is 13 characters long
+	MAPDIR is /root/disks/vgpsfiles1
+	MAPFILE is /root/disks/vgpsfiles1/vgpsfiles1.map
+	PVPATHFILE is /root/disks/vgpsfiles1/vgpsfiles1.pvpath
+	GROUPFILE is /dev/vgpsfiles1/group
+
+Working on VG: /dev/vgpsfiles1
+Activating /dev/vgpsfiles1.
+VG /dev/vgpsfiles1 was successfully activated.
+#
+
+	VOLGROUP is vgpsfiles1/lvol2
+	FSTAB_EXTRACT is /dev/vgpsfiles1/lvol2:/BCV/srvr16/u20
+	VG is /dev/vgpsfiles1
+	VGNAME is vgpsfiles1
+	VG_LVOL is /dev/vgpsfiles1/lvol2
+	VG_RLVOL is /dev/vgpsfiles1/rlvol2
+	FILESYSTEM is /BCV/srvr16/u20
+	FILESYSTEM is 13 characters long
+	MAPDIR is /root/disks/vgpsfiles1
+	MAPFILE is /root/disks/vgpsfiles1/vgpsfiles1.map
+	PVPATHFILE is /root/disks/vgpsfiles1/vgpsfiles1.pvpath
+	GROUPFILE is /dev/vgpsfiles1/group
+
+Working on VG: /dev/vgpsfiles1
+Activating /dev/vgpsfiles1.
+VG /dev/vgpsfiles1 was successfully activated.
+#
+
+	VOLGROUP is vgpsfiles1/lvol3
+	FSTAB_EXTRACT is /dev/vgpsfiles1/lvol3:/BCV/srvr16/u21
+	VG is /dev/vgpsfiles1
+	VGNAME is vgpsfiles1
+	VG_LVOL is /dev/vgpsfiles1/lvol3
+	VG_RLVOL is /dev/vgpsfiles1/rlvol3
+	FILESYSTEM is /BCV/srvr16/u21
+	FILESYSTEM is 13 characters long
+	MAPDIR is /root/disks/vgpsfiles1
+	MAPFILE is /root/disks/vgpsfiles1/vgpsfiles1.map
+	PVPATHFILE is /root/disks/vgpsfiles1/vgpsfiles1.pvpath
+	GROUPFILE is /dev/vgpsfiles1/group
+
+Working on VG: /dev/vgpsfiles1
+Activating /dev/vgpsfiles1.
+VG /dev/vgpsfiles1 was successfully activated.
+#
+
+	VOLGROUP is vgfssystem1
+	FSTAB_EXTRACT is /dev/vgfssystem1/lvol1:/BCV/srvr16/u03
+	VG is /dev/vgfssystem1
+	VGNAME is vgfssystem1
+	VG_LVOL is /dev/vgfssystem1/lvol1
+	VG_RLVOL is /dev/vgfssystem1/rlvol1
+	FILESYSTEM is /BCV/srvr16/u03
+	FILESYSTEM is 13 characters long
+	MAPDIR is /root/disks/vgfssystem1
+	MAPFILE is /root/disks/vgfssystem1/vgfssystem1.map
+	PVPATHFILE is /root/disks/vgfssystem1/vgfssystem1.pvpath
+	GROUPFILE is /dev/vgfssystem1/group
+
+Working on VG: /dev/vgfssystem1
+Activating /dev/vgfssystem1.
+VG /dev/vgfssystem1 was successfully activated.
+#
+#
+7 of 7 VGs Activated.
+End Activate VolumeGroups function. Mon May 23 06:44:48 EDT 2005
+
+Start FSCK & Mount Filesystems function. Mon May 23 06:44:48 EDT 2005
+FileSystems to Check and Mount: 7
+#
+VG from OOP Function is: vgfsprod1
+VG from OOP Function is: vgfsprod2
+VG from OOP Function is: vgapps16
+VG from OOP Function is: vgpsfiles1/lvol1
+VG from OOP Function is: vgpsfiles1/lvol2
+VG from OOP Function is: vgpsfiles1/lvol3
+VG from OOP Function is: vgfssystem1
+#
+
+	VOLGROUP is vgfsprod1
+	FSTAB_EXTRACT is /dev/vgfsprod1/lvol1:/BCV/srvr16/u01
+	VG is /dev/vgfsprod1
+	VGNAME is vgfsprod1
+	VG_LVOL is /dev/vgfsprod1/lvol1
+	VG_RLVOL is /dev/vgfsprod1/rlvol1
+	FILESYSTEM is /BCV/srvr16/u01
+	FILESYSTEM is 13 characters long
+	MAPDIR is /root/disks/vgfsprod1
+	MAPFILE is /root/disks/vgfsprod1/vgfsprod1.map
+	PVPATHFILE is /root/disks/vgfsprod1/vgfsprod1.pvpath
+	GROUPFILE is /dev/vgfsprod1/group
+
+/dev/vgfsprod1 passed FSCK. Mount stat 0
+/dev/vgfsprod1 marking super-block as CLEAN
+/dev/vgfsprod1/lvol1 /BCV/srvr16/u01 vxfs delaylog 0 0
+#
+/BCV/srvr16/u01:0
+
+	VOLGROUP is vgfsprod2
+	FSTAB_EXTRACT is /dev/vgfsprod2/lvol1:/BCV/srvr16/u02
+	VG is /dev/vgfsprod2
+	VGNAME is vgfsprod2
+	VG_LVOL is /dev/vgfsprod2/lvol1
+	VG_RLVOL is /dev/vgfsprod2/rlvol1
+	FILESYSTEM is /BCV/srvr16/u02
+	FILESYSTEM is 13 characters long
+	MAPDIR is /root/disks/vgfsprod2
+	MAPFILE is /root/disks/vgfsprod2/vgfsprod2.map
+	PVPATHFILE is /root/disks/vgfsprod2/vgfsprod2.pvpath
+	GROUPFILE is /dev/vgfsprod2/group
+
+/dev/vgfsprod2 passed FSCK. Mount stat 0
+/dev/vgfsprod2 marking super-block as CLEAN
+/dev/vgfsprod2/lvol1 /BCV/srvr16/u02 vxfs delaylog,nodatainlog 0 0
+#
+/BCV/srvr16/u02:0
+
+	VOLGROUP is vgapps16
+	FSTAB_EXTRACT is /dev/vgapps16/lvol1:/BCV/srvr16/apps
+	VG is /dev/vgapps16
+	VGNAME is vgapps16
+	VG_LVOL is /dev/vgapps16/lvol1
+	VG_RLVOL is /dev/vgapps16/rlvol1
+	FILESYSTEM is /BCV/srvr16/apps
+	FILESYSTEM is 14 characters long
+	MAPDIR is /root/disks/vgapps16
+	MAPFILE is /root/disks/vgapps16/vgapps16.map
+	PVPATHFILE is /root/disks/vgapps16/vgapps16.pvpath
+	GROUPFILE is /dev/vgapps16/group
+
+/dev/vgapps16 passed FSCK. Mount stat 0
+/dev/vgapps16 marking super-block as CLEAN
+/dev/vgapps16/lvol1 /BCV/srvr16/apps vxfs delaylog,nodatainlog 0 0
+#
+/BCV/srvr16/apps:0
+
+	VOLGROUP is vgpsfiles1/lvol1
+	FSTAB_EXTRACT is /dev/vgpsfiles1/lvol1:/BCV/srvr16/u05
+	VG is /dev/vgpsfiles1
+	VGNAME is vgpsfiles1
+	VG_LVOL is /dev/vgpsfiles1/lvol1
+	VG_RLVOL is /dev/vgpsfiles1/rlvol1
+	FILESYSTEM is /BCV/srvr16/u05
+	FILESYSTEM is 13 characters long
+	MAPDIR is /root/disks/vgpsfiles1
+	MAPFILE is /root/disks/vgpsfiles1/vgpsfiles1.map
+	PVPATHFILE is /root/disks/vgpsfiles1/vgpsfiles1.pvpath
+	GROUPFILE is /dev/vgpsfiles1/group
+
+/dev/vgpsfiles1 passed FSCK. Mount stat 0
+/dev/vgpsfiles1 marking super-block as CLEAN
+/dev/vgpsfiles1/lvol1 /BCV/srvr16/u05 vxfs delaylog,nodatainlog 0 0
+#
+/BCV/srvr16/u05:0
+
+	VOLGROUP is vgpsfiles1/lvol2
+	FSTAB_EXTRACT is /dev/vgpsfiles1/lvol2:/BCV/srvr16/u20
+	VG is /dev/vgpsfiles1
+	VGNAME is vgpsfiles1
+	VG_LVOL is /dev/vgpsfiles1/lvol2
+	VG_RLVOL is /dev/vgpsfiles1/rlvol2
+	FILESYSTEM is /BCV/srvr16/u20
+	FILESYSTEM is 13 characters long
+	MAPDIR is /root/disks/vgpsfiles1
+	MAPFILE is /root/disks/vgpsfiles1/vgpsfiles1.map
+	PVPATHFILE is /root/disks/vgpsfiles1/vgpsfiles1.pvpath
+	GROUPFILE is /dev/vgpsfiles1/group
+
+/dev/vgpsfiles1 passed FSCK. Mount stat 0
+/dev/vgpsfiles1 marking super-block as CLEAN
+/dev/vgpsfiles1/lvol2 /BCV/srvr16/u20 vxfs delaylog,nodatainlog 0 0
+#
+/BCV/srvr16/u20:0
+
+	VOLGROUP is vgpsfiles1/lvol3
+	FSTAB_EXTRACT is /dev/vgpsfiles1/lvol3:/BCV/srvr16/u21
+	VG is /dev/vgpsfiles1
+	VGNAME is vgpsfiles1
+	VG_LVOL is /dev/vgpsfiles1/lvol3
+	VG_RLVOL is /dev/vgpsfiles1/rlvol3
+	FILESYSTEM is /BCV/srvr16/u21
+	FILESYSTEM is 13 characters long
+	MAPDIR is /root/disks/vgpsfiles1
+	MAPFILE is /root/disks/vgpsfiles1/vgpsfiles1.map
+	PVPATHFILE is /root/disks/vgpsfiles1/vgpsfiles1.pvpath
+	GROUPFILE is /dev/vgpsfiles1/group
+
+/dev/vgpsfiles1 passed FSCK. Mount stat 0
+/dev/vgpsfiles1 marking super-block as CLEAN
+/dev/vgpsfiles1/lvol3 /BCV/srvr16/u21 vxfs delaylog,nodatainlog 0 0
+#
+/BCV/srvr16/u21:0
+
+	VOLGROUP is vgfssystem1
+	FSTAB_EXTRACT is /dev/vgfssystem1/lvol1:/BCV/srvr16/u03
+	VG is /dev/vgfssystem1
+	VGNAME is vgfssystem1
+	VG_LVOL is /dev/vgfssystem1/lvol1
+	VG_RLVOL is /dev/vgfssystem1/rlvol1
+	FILESYSTEM is /BCV/srvr16/u03
+	FILESYSTEM is 13 characters long
+	MAPDIR is /root/disks/vgfssystem1
+	MAPFILE is /root/disks/vgfssystem1/vgfssystem1.map
+	PVPATHFILE is /root/disks/vgfssystem1/vgfssystem1.pvpath
+	GROUPFILE is /dev/vgfssystem1/group
+
+/dev/vgfssystem1 passed FSCK. Mount stat 0
+/dev/vgfssystem1 marking super-block as CLEAN
+/dev/vgfssystem1/lvol1 /BCV/srvr16/u03 vxfs delaylog 0 0
+#
+/BCV/srvr16/u03:0
+#
+7 of 7 passed FSCK and Mounted.
+BCV_RE_MOUNT file contains:
+/BCV/srvr16/u01:0
+/BCV/srvr16/u02:0
+/BCV/srvr16/apps:0
+/BCV/srvr16/u05:0
+/BCV/srvr16/u20:0
+/BCV/srvr16/u21:0
+/BCV/srvr16/u03:0
+#
+OMNI_FILESYSTEMS file contains:
+BCV/srvr16/u01:0
+BCV/srvr16/u02:0
+BCV/srvr16/apps:0
+BCV/srvr16/u05:0
+BCV/srvr16/u20:0
+BCV/srvr16/u21:0
+BCV/srvr16/u03:0
+#
+End FSCK & Mount Filesystems function. Mon May 23 06:44:55 EDT 2005
+
+Starting Oracle Logs Verify Function. Mon May 23 06:44:55 EDT 2005
+
+WEEKDAY is: Mon
+THIS_MONTH is: May
+TODAY_DATE is: 23
+
+Num of Log Files are: 4
+/home/oracle/logs/ora_start_backup_edcprod.log	was created on May 23 at 06:24.
+/home/oracle/logs/ora_start_backup_fsprod.log	was created on May 23 at 06:25.
+/home/oracle/logs/ora_stop_backup_edcprod.log	was created on May 23 at 06:45.
+/home/oracle/logs/ora_stop_backup_fsprod.log	was created on May 23 at 06:45.
+
+/usr/local/bin/bcvscripts/logs/server16_ora_start_backup_edcprod.log
+Hot backup BEGIN process for STARTED at Mon May 23 06:24:23 EDT 2005
+Hot backup BEGIN process for edcprod COMPLETED at Mon May 23 06:24:26 EDT 2005
+LOG_START_WKDAY is: Mon
+LOG_COMPLETED_WKDAY is: Mon
+LOG_START_MONTH is: May
+LOG_COMPLETED_MONTH is: May
+LOG_START_DATE is: 23
+LOG_COMPLETED_DATE is: 23
+
+/usr/local/bin/bcvscripts/logs/server16_ora_start_backup_fsprod.log
+Hot backup BEGIN process for STARTED at Mon May 23 06:24:27 EDT 2005
+Hot backup BEGIN process for fsprod COMPLETED at Mon May 23 06:25:22 EDT 2005
+LOG_START_WKDAY is: Mon
+LOG_COMPLETED_WKDAY is: Mon
+LOG_START_MONTH is: May
+LOG_COMPLETED_MONTH is: May
+LOG_START_DATE is: 23
+LOG_COMPLETED_DATE is: 23
+
+/usr/local/bin/bcvscripts/logs/server16_ora_stop_backup_edcprod.log
+Hot backup BEGIN process for STARTED at Mon May 23 06:45:34 EDT 2005
+Hot backup BEGIN process for edcprod COMPLETED at Mon May 23 06:45:35 EDT 2005
+LOG_START_WKDAY is: Mon
+LOG_COMPLETED_WKDAY is: Mon
+LOG_START_MONTH is: May
+LOG_COMPLETED_MONTH is: May
+LOG_START_DATE is: 23
+LOG_COMPLETED_DATE is: 23
+
+/usr/local/bin/bcvscripts/logs/server16_ora_stop_backup_fsprod.log
+Hot backup BEGIN process for STARTED at Mon May 23 06:45:35 EDT 2005
+Hot backup BEGIN process for fsprod COMPLETED at Mon May 23 06:45:41 EDT 2005
+LOG_START_WKDAY is: Mon
+LOG_COMPLETED_WKDAY is: Mon
+LOG_START_MONTH is: May
+LOG_COMPLETED_MONTH is: May
+LOG_START_DATE is: 23
+LOG_COMPLETED_DATE is: 23
+
+No errors found in the ORacle logs.
+End the Oracle Logs Verify Function. Mon May 23 06:44:59 EDT 2005
+
+Start CHECK LVM ERRORS function. Mon May 23 06:44:59 EDT 2005.
+#
+NO LVM Errors Recorded: (LVM-ERRORS 0)
+#
+End CHECK LVM ERRORS function. Mon May 23 06:44:59 EDT 2005.
+
+Begin Start OmniBack Job Function. Mon May 23 06:44:59 EDT 2005
+#
+Attempting to start OmniBackup Job.
+OMNIBACK_OBJ is SERVER16
+List of Filesystems to backup for SERVER16 is:
+OMNI_DRV is
+#
+Filesystems are ready to run the Omniback Job.
+#
+Starting Backup Job: remsh sta0lx07 BPbackup -i -p Qwest_UNIX_BCV_SERVER16 -s QBCV_SRVR16_Daily
+#
+End Start OmniBack Job Function. Mon May 23 06:44:59 EDT 2005
+
+Start Verify Variables Function. Mon May 23 06:44:59 EDT 2005
+#
+End Verify Variables Function. Mon May 23 06:45:00 EDT 2005
+
+Start Clean Up Function Mon May 23 06:45:00 EDT 2005
+#
+a ./server16-HBM.log 8 blocks
+a ./server16_BCV_LOG 79 blocks
+a ./server16_Email_Report 5 blocks
+a ./server16_Error_Report 0 blocks
+a ./server16_ORACLE_Log 0 blocks
+a ./server16_Pipe_Log 1 blocks
+a ./server16_QEmail_Report 2 blocks
+a ./server16_ora_start_backup_edcprod.log 3 blocks
+a ./server16_ora_start_backup_fsprod.log 12 blocks
+a ./server16_ora_stop_backup_edcprod.log 5 blocks
+a ./server16_ora_stop_backup_fsprod.log 13 blocks
+a ./server16_set.out 21 blocks
+a ./server16_DG_ELEM.vars 1 blocks
+a ./server16_DG_ELEM_XACT.vars 0 blocks
+a ./server16_EST_MONITOR 11 blocks
+a ./server16_EST_STATUS 1 blocks
+a ./server16_EXPORT_STATUS 0 blocks
+a ./server16_FSCK_OUTPUT 1 blocks
+a ./server16_IMPORT_STATUS 0 blocks
+a ./server16_RE_MOUNT 1 blocks
+a ./server16_SPLIT_STATUS 1 blocks
+a ./server16_SYNC_STATUS 1 blocks
+a ./server16_UMOUNT_STATUS 1 blocks
+a ./server16_VGCHANGE_STATUS 1 blocks
+a ./server16_VG_ELEM.vars 1 blocks
+a ./server16_VG_ELEM_XACT.vars 0 blocks
+a ./server16_VG_MINNUM 0 blocks
+a ./server16_Verify_Variables 16 blocks
+a ./2005143_FS.OB 1 blocks
+a ./bcv_scripts.conf 9 blocks
+tar: cannot stat ./ChangeLog.  Not dumped.
+#
+End Clean Up Function Mon May 23 06:45:00 EDT 2005
+
+END BCV Establish and Split Script for server16 on Mon May 23 06:45:00 EDT 2005
+
+Executing Final Notification.
+Final notification list is to: dholton jstenglein calley mbmcclos
+#
+Checking System Load. If too high, Notify will wait 30 minutes.
+Uptime output:   6:45am  up 20 days, 14:22,  0 users,  load average: 1.07, 0.94, 1.08
+System Load is:  107
+Reference Load is: 70
+#
+System Load is too high to send email.  Sleeping 30 minutes.
+Time_Counter Starting at: Mon May 23 06:45:00 EDT 2005
+Sleeping 1800 Seconds. Total: 0 hour(s) 30 minute(s) 0 second(s)
+#
+#
+Checking System Load. If too high, Notify will wait 30 minutes.
+Uptime output:   7:15am  up 20 days, 14:52,  0 users,  load average: 98.19, 90.04, 68.72
+System Load is:  9819
+Reference Load is: 70
+#
+System Load is too high to send email.  Sleeping 30 minutes.
+Time_Counter Starting at: Mon May 23 07:15:00 EDT 2005
+Sleeping 1800 Seconds. Total: 0 hour(s) 30 minute(s) 0 second(s)
+#
+#
+Checking System Load. If too high, Notify will wait 30 minutes.
+Uptime output:   7:45am  up 20 days, 15:22,  0 users,  load average: 114.06, 107.55, 98.03
+System Load is:  11406
+Reference Load is: 70
+#
+System Load is too high to send email.  Sleeping 30 minutes.
+Time_Counter Starting at: Mon May 23 07:45:00 EDT 2005
+Sleeping 1800 Seconds. Total: 0 hour(s) 30 minute(s) 0 second(s)
+#
+#
+Checking System Load. If too high, Notify will wait 30 minutes.
+Uptime output:   8:15am  up 20 days, 15:52,  1 user,  load average: 117.95, 118.67, 115.39
+System Load is:  11795
+Reference Load is: 70
+#
+System Load is too high to send email.  Sleeping 30 minutes.
+Time_Counter Starting at: Mon May 23 08:15:01 EDT 2005
+Sleeping 1800 Seconds. Total: 0 hour(s) 30 minute(s) 0 second(s)

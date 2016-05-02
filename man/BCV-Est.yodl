@@ -1,0 +1,30 @@
+manpage(BCV-Est)(8)(April 26, 2002)(BCV_Est)(BCV-Est.sh)
+
+manpagename(BCV-Est)(The BCV-Est script is designed to fully automate all the needed steps to Establish and Split EMC Symmetrix BCVs using one configuration file and several command line options.)
+
+manpagesynopsis(BCV-Est.sh -[F] -[B] -[M] -[W] bf(-S servername) [-C newconfig-file])
+
+manpagedescription(The BCV-Est script is designed to fully automate all the
+ needed steps to Establish and Split EMC Symmetrix BCVs using one configurati
+on file and several command line options.)
+
+manpageoptions(BCV-Est.sh -[F] -[B] -[M] -[W] bf(-S servername) [-C newconfi
+g-file]
+
+	-F Causes the script to run a bf(FULL) Establish.
+)
+
+manpagefiles(/usr/local/bin/bcvscripts/etc/bcv_scripts.conf)
+
+manpageseealso()
+
+manpagediagnostics(A bf(VERY) detailed log of the script is kept in the logs directory.)
+
+manpagebugs(None that I am aware of.)
+
+manpageauthor(David A Holton. Kforce Professional Staffing. dholton@kforce.com)
+
+manpagesection(EXAMPLES:
+
+	BCV-Est.sh -FM -S server09 -C Config_File-123.Dave
+)

@@ -1,0 +1,21 @@
+#!/usr/bin/ksh
+
+while getopts ":ab:c" opt
+do
+	case $opt in
+		a )	AOPT=${opt}
+			print AOPT equals ${AOPT} ;;
+		#	AOPTARG=${OPTARG}
+		#	print AOPTARG equals ${AOPTARG} ;;
+		b )	BOPT=${opt}
+			print BOPT equals ${BOPT} 
+			BOPTARG=${OPTARG}
+			print BOPTARG equals ${BOPTARG} ;;
+		c )	COPT=${opt}
+			print COPT equals ${COPT} ;;
+		#	COPTARG=${OPTARG}
+		#	print COPTARG equals ${COPTARG} ;;
+		\? )	print 'usage: bob3 [-a] [-b barg] [-c] args ...'
+			return 1
+	esac
+done

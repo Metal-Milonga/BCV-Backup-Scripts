@@ -1,0 +1,26 @@
+#!/usr/bin/ksh
+
+while :
+do
+	/usr/symcli/bin/symmir -g ${1} query
+	#print Running Symmir command here.
+
+	ROUNDS=2
+	CLICKS=30
+	print; print Waiting ${ROUNDS} x ${CLICKS} seconds
+
+	until [[ ${ROUNDS} -eq 0 ]]
+	do
+		TICKS="${CLICKS}"
+		until [[ ${TICKS} -eq 0 ]]
+		do
+			#print -n "${TICKS} "
+			print -n "."
+			sleep 1
+			TICKS=$(( ${TICKS} - 1 ))
+		done
+		print
+	ROUNDS=$(( ${ROUNDS} - 1 ))
+	done
+
+done

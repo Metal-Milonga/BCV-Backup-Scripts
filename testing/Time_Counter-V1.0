@@ -1,0 +1,17 @@
+#!/usr/bin/ksh
+Time_Counter() {
+
+typeset GOAL=${1}
+typeset COUNT=0
+
+print Counting to ${GOAL}
+
+until [[ ${COUNT} -eq $((GOAL+1)) ]]
+do
+	echo "\t${COUNT}\b\b\b\b\b\b\b\b\b\c"
+	((COUNT+=1))
+	sleep 1
+done
+}
+
+Time_Counter $1

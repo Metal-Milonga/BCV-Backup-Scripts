@@ -1,0 +1,19 @@
+#!/usr/bin/ksh
+
+FPATH=/usr/local/bin/bcvscripts/lib
+autoload Time_Counter
+MANUAL_MONITOR=YES
+
+SYS_LOAD=$(uptime | sed "s/  *//g" | cut -d":" -f4 | cut -d"," -f1 | sed "s/\.//")
+#SYS_LOAD=185
+
+print Load is: ${SYS_LOAD}
+print
+
+until (( ${SYS_LOAD} < 090 ))
+do
+	print "System Load is too high."
+	Time_Counter 300
+	SYS_LOAD=$(uptime | sed "s/  *//g" | cut -d":" -f4 | cut -d"," -f1 | sed "s/\.//")
+done
+print

@@ -1,0 +1,24 @@
+#!/usr/bin/ksh
+#Sleeper() {
+# A more simple sleep function than the Time_Line Function.
+# Sleeper prints out a simple output.
+
+typeset nSECONDS=$1	# This variable is local to this function
+typeset COUNT=1
+
+print -n "Sleeping ${nSECONDS} seconds: "
+MANUAL_MONITOR=YES
+if [[ ${MANUAL_MONITOR} = 'YES' ]]
+then
+
+	until [[ "${nSECONDS}" -eq "0" ]]
+	do
+		print -n "Z"
+		sleep 1
+		((nSECONDS-=1))
+	done
+	print
+else
+	sleep ${nSECONDS}
+fi
+#}

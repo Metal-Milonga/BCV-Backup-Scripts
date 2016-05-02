@@ -1,0 +1,238 @@
+Declare_FSPL8_Backup_Variables(){
+#
+# Function - Declare_FSPL8_Backup_Variables
+# Version - v 1.03
+# Author - David Holton
+# Date - Oct 31, 2003
+#
+# Description - This function prepares variables needed to start the OmniBack
+#		backup jobs once the establish and split are complete.  Also,
+#		sets up variables and control files to coordinate how many
+#		instances of the script are running and which filesystems
+#		are ready for backup.
+#
+#		Currently, the Humansoft BCVs are split across two different
+#		servers. The Humansoft HR BCVs live on the same systems as the
+#		Foobar BCVs.  However, the backups for Humansoft do both the
+#		Finacial and HR BCVs.  So, this function has to wait until all
+#		the Humansoft filesystems are mounted before it can start
+#		the Humansoft backup.
+#
+###############################################################################
+# Modification history
+# Date     Who          What was modified.
+# -------- ------------ ------------------
+# 07/09/02 Dave Holton	Commented out all the messages in this function that
+#			go to the email report.
+# 07/26/02 Dave Holton	Changed the grep for OMNIBACK_OBJ to ^OMNIBACK_OBJ. I
+#			had added a comment to the config file that included
+#			the word Foobar.  The script grepped out both instances
+#			of Foobar, and the backups never started as a result.	
+#			Also, changed the value of the variable to be all
+#			caps insetead of mixed case.  Changed the config file
+#			as well.
+#			Tested and confirmed it worked.
+# 07/28/02 Dave Holton	Changed the case of FOOBAR back to mixed case. It caused
+#			problems since the OmniBack scheme was in mixed case. I
+#			need to change the OmniBack scheme's name before
+#			changing the script.
+# 11/25/02 Dave Holton	Production is now running on the new server19 at Qwest.
+#			Added server20 to the mix, and up dated the OmniBack
+#			object for Humansoft from PS to HumanSoft.
+# 09/30/03 Dave Holton	Converted to use Netbackup.
+#			Added OMNIBACK_SCHED variable
+#
+###############################################################################
+# To Do:
+#
+# 1. Determine the OMNIBACK_OBJ variable from the config file. Remove the
+#	assignment of the variable from this function.  There are two many
+#	places to change the and make sure they are sync'ed. Include the full
+#	name of the backup specification in the config file: maybe named in
+#	f3
+# 2. Set up logic to change the name of the Omni Filesystem verify file
+#	That way it does not overwrite one that may be running from cron.
+#
+###############################################################################
+#set -n
+
+print Start Declare_OmniBack_Variables Function. $(date).
+print "#"
+#print >> ${EMAIL_RPT}
+
+print Run Backup at end of script: ${RUN_BACKUP}
+
+#
+## We only execute the contents of the function if the RUN_BACKUP variable
+## is set to YES.
+#
+if [[ ${RUN_BACKUP} = 'YES' ]]
+then
+
+	# OmniBack Directory Variables
+	OMNIETCDIR="/etc/opt/omni"
+	OMNIBINDIR="/opt/omni/bin"
+
+	#
+	## Based on the server name, we assign a value to the OMNIBACK_OBJ variable.
+	## THe variable is used to find the drive to run the backup on, and to 
+	## find the filesystems associated with that backup object.
+	#
+	case ${SERVER} in
+
+		server16 )
+				OMNIBACK_OBJ=Qwest_UNIX_BCV_FSPL8
+				OMNIBACK_SCHED=QBCV_FSPL8
+				;;
+		server09 )
+				OMNIBACK_OBJ=SERVER09
+				OMNIBACK_SCHED=QBCV_SRVR09
+				;;
+		server20 )
+				OMNIBACK_OBJ=SERVER20
+				OMNIBACK_SCHED=QBCV_SRVR20
+				;;
+	esac
+
+	#
+	## Find the drive used for the specific OMNIBACK_OBJ.
+	## This allows us to check to see if the drive is in use,
+	## and if so, then we wait until it is free.
+	#
+	OMNI_DRV=$(grep DEVICE ${OMNIETCDIR}/datalists/BCVs-${OMNIBACK_OBJ} | sed "s/  */:/g" | cut -d":" -f2 | sed "s/\"//g")
+	#
+	## Get the list of filesystems associated with the backup object from the config file.
+	#
+	set -A OMNI_LIST $( grep ^${OMNIBACK_OBJ} ${BCVCFGFILE} | cut -d":" -f2 | sed "s/,/ /g")
+
+	print OMNIBACK_OBJ is: ${OMNIBACK_OBJ}
+	print OMNIBACK_OBJ is: ${OMNIBACK_OBJ} >> ${EMAIL_RPT}
+
+	print OMNI_LIST contains ${#OMNI_LIST[*]} objects
+#	print OMNI_LIST contains ${#OMNI_LIST[*]} objects >> ${EMAIL_RPT}
+
+	print OMNI_LIST contents: ${OMNI_LIST[*]}
+#	print OMNI_LIST contents: ${OMNI_LIST[*]} >> ${EMAIL_RPT}
+
+	print OMNI_DRV is: ${OMNI_DRV}
+#	print OMNI_DRV is: ${OMNI_DRV} >> ${EMAIL_RPT}
+	print "#"
+#	print >> ${EMAIL_RPT}
+
+	#
+	## These variables help us keep track of how many instances of the script are
+	## running, and tracking which filesystems have been mounted.  This information
+	## is shared between the instances of the script that may be running or may
+	## run after each other.  This is only used if we use the -B option on the script
+	## to run backups. Normally, we only use this when running from cron.
+	#
+	INSTANCE_FILE=${BCVTMPDIR}/INSTANCES
+	JDATE=$(date +%Y%j)
+	OMNI_FILESYSTEMS="${BCVTMPDIR}/${JDATE}_FS.OB"
+
+	FS_TRACKING_FILES() {
+		#
+		## This internal function just initiates a new (empty)
+		## OMNI_FILESYSTEMS file.  It keeps track of what filesystems
+		## are mounted.
+		#
+		cat /dev/null > ${OMNI_FILESYSTEMS}
+	}
+
+	RPT_INSTANCES() {
+		#
+		## The next line reports the total instances set in our config file.  This
+		## number equals the total number of times this script is run from cron 
+		## each night.
+		#
+		print Total Instances are: ${TOTAL_INSTANCES}
+
+		#
+		## Report the current instance being run. This is set below.
+		#
+		print Current Instance is: ${INSTANCE}
+
+		#
+		## Output the current instance in the INSTANCE_FILE file. This file
+		## is shared be any instance of the script being run with the -B option.
+		## the format is INSTANCE:X
+		## where X is a number which is the value of the variable INSTANCE
+		#
+		print INSTANCE:${INSTANCE} > ${INSTANCE_FILE}
+	}
+
+	#
+	## Check to see if an INSTANCE_FILE exists...
+	#
+	if [[ -f  ${INSTANCE_FILE} ]]
+	then
+		#
+		## If so....
+		#
+		print Instance file exists
+
+		#
+		## Pull the last running instance from the INSTANCE_FILE.
+		#
+		INSTANCE=$(( $(grep INSTANCE ${INSTANCE_FILE} | cut -d":" -f2) + 1 ))
+
+		#
+		## The INSTANCE was just assigned in the line above.
+		## The TOTAL_INSTANCES was assigned above and the value was pulled from the
+		## script's config file.
+		#
+		## Evaluate INSTANCE against TOTAL_INSTANCES.
+		#
+		if (( ${INSTANCE} > ${TOTAL_INSTANCES} ))
+		then
+			#
+			## If INSTANCE is greater value, then set INSTANCE to 1
+			#
+			INSTANCE=1
+
+			#
+			## Remove the OMNI_FILESYSTEMS file. It ends with .OB
+			#
+			rm ${BCVTMPDIR}/*.OB
+
+			#
+			## Run the internal FS_TRACKING_FILES function.
+			#
+			FS_TRACKING_FILES
+		fi
+
+		#
+		## Run the internal RPT_INSTANCES function.
+		#
+		RPT_INSTANCES
+	else
+		#
+		## If NO INSTANCE_FILE was found....
+		#
+		print Instance file does NOT exist
+
+		#
+		## Set INSTANCE to 1.
+		#
+		INSTANCE=${INSTANCE:-1}
+
+		#
+		## Run the internal FS_TRACKING_FILES function.
+		#
+		FS_TRACKING_FILES
+
+		#
+		## Run the internal RPT_INSTANCES function.
+		#
+		RPT_INSTANCES
+	fi
+else
+	#
+	## This section would be executed if we did not use the -B option.
+	#
+	print Not Running Backup.  Variables build skipped.
+fi
+
+print "#"
+print End Declare_OmniBack_Variables Function. $(date); print
+}

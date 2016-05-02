@@ -1,0 +1,286 @@
+
+VERIFY COMMAND OPTIONS
+#
+SERVER is set to: server16
+VALID_SERVERS are: server09 server16 server20
+Establish Type is set to: FULL
+RUN_BACKUP is set to: YES
+Manual Monitoring is set to: NO
+Wait to Split the BCVs is set to:
+Split Mode is set to: WAIT
+CONFIG_FILE: Default config file will be used.
+
+
+VERIFY GEN VARIABLES
+COUNT_TIME_S30 is 30
+COUNT_TIME_S60 is 60
+COUNT_TIME_3 is 300
+COUNT_TIME_6 is 600
+COUNT_TIME_9 is 900
+SPLIT_TIME is 06:00:00
+SPLIT_TIME_2 is 060000
+SPLIT_HR is 06
+SPLIT_MIN is 00
+SPLIT_SEC is 00
+SPLIT_TOT_SEC is 21600
+SYMCLIDIR is /usr/symcli/bin
+BINDIR is /usr/bin
+SBINDIR is /usr/sbin
+BCVBINDIR is /usr/local/bin/bcvscripts/bin
+BCVLOGDIR is /usr/local/bin/bcvscripts/logs
+BCVETCDIR is /usr/local/bin/bcvscripts/etc
+BCVLIBDIR is /usr/local/bin/bcvscripts/lib
+BCVTMPDIR is /usr/local/bin/bcvscripts/tmp
+BCVCFGFILE is /usr/local/bin/bcvscripts/etc/bcv_scripts.conf
+BCV_VG_ELEMENTS is /usr/local/bin/bcvscripts/tmp/server16_VG_ELEM.vars
+BCV_VG_XACT_ELEMENTS is /usr/local/bin/bcvscripts/tmp/server16_VG_ELEM_XACT.vars
+BCV_DG_ELEMENTS is /usr/local/bin/bcvscripts/tmp/server16_DG_ELEM.vars
+BCV_UMOUNT_STATUS is /usr/local/bin/bcvscripts/tmp/server16_UMOUNT_STATUS
+BCV_VGCHANGE_STATUS is /usr/local/bin/bcvscripts/tmp/server16_VGCHANGE_STATUS
+BCV_EST_STATUS is /usr/local/bin/bcvscripts/tmp/server16_EST_STATUS
+BCV_SYNC_STATUS is /usr/local/bin/bcvscripts/tmp/server16_SYNC_STATUS
+BCV_SPLIT_STATUS is /usr/local/bin/bcvscripts/tmp/server16_SPLIT_STATUS
+BCV_MONITOR_STATUS is /usr/local/bin/bcvscripts/tmp/server16_EST_MONITOR
+BCV_EXPORT_STATUS is /usr/local/bin/bcvscripts/tmp/server16_EXPORT_STATUS
+BCV_IMPORT_STATUS is /usr/local/bin/bcvscripts/tmp/server16_IMPORT_STATUS
+FSCK_OUTPUT is /usr/local/bin/bcvscripts/tmp/server16_FSCK_OUTPUT
+ROOTDSKDIR is /root/disks
+BCVLOGFILE is /usr/local/bin/bcvscripts/logs/server16_BCV_LOG
+EMAIL_RPT is /usr/local/bin/bcvscripts/logs/server16_Email_Report
+ERROR_RPT is /usr/local/bin/bcvscripts/logs/server16_Error_Report
+FINAL is dholton jstenglein calley mbmcclos
+ERROR is dholton jstenglein calley mbmcclos
+
+
+VERIFY VG VARIABLES - Old Style
+#
+## VG Variables
+Total VG array elements is 7.
+VG array elemenst will start at 6.
+#
+	VG_ELEM is 6
+	VOLGROUP is vgfssystem1
+	FSTAB_EXTRACT is /dev/vgfssystem1/lvol1:/BCV/srvr16/u03
+	VG is vgfssystem1
+	VG_LVOL is /dev/vgfssystem1/lvol1
+	VG_RLVOL is /dev/vgfssystem1/rlvol1
+	FILESYSTEM is /BCV/srvr16/u03
+	#
+	VG_ELEM is 5
+	VOLGROUP is vgpsfiles1/lvol3
+	FSTAB_EXTRACT is /dev/vgpsfiles1/lvol3:/BCV/srvr16/u21
+	VG is vgpsfiles1/lvol3
+	VG_LVOL is /dev/vgpsfiles1/lvol3
+	VG_RLVOL is /dev/vgpsfiles1/lvol3:/BCV/srvr16/u21rlvol1
+	FILESYSTEM is /BCV/srvr16/u21
+	#
+	VG_ELEM is 4
+	VOLGROUP is vgpsfiles1/lvol2
+	FSTAB_EXTRACT is /dev/vgpsfiles1/lvol2:/BCV/srvr16/u20
+	VG is vgpsfiles1/lvol2
+	VG_LVOL is /dev/vgpsfiles1/lvol2
+	VG_RLVOL is /dev/vgpsfiles1/lvol2:/BCV/srvr16/u20rlvol1
+	FILESYSTEM is /BCV/srvr16/u20
+	#
+	VG_ELEM is 3
+	VOLGROUP is vgpsfiles1/lvol1
+	FSTAB_EXTRACT is /dev/vgpsfiles1/lvol1:/BCV/srvr16/u05
+	VG is vgpsfiles1/lvol1
+	VG_LVOL is /dev/vgpsfiles1/lvol1
+	VG_RLVOL is /dev/vgpsfiles1/rlvol1
+	FILESYSTEM is /BCV/srvr16/u05
+	#
+	VG_ELEM is 2
+	VOLGROUP is vgapps16
+	FSTAB_EXTRACT is /dev/vgapps16/lvol1:/BCV/srvr16/apps
+	VG is vgapps16
+	VG_LVOL is /dev/vgapps16/lvol1
+	VG_RLVOL is /dev/vgapps16/rlvol1
+	FILESYSTEM is /BCV/srvr16/apps
+	#
+	VG_ELEM is 1
+	VOLGROUP is vgfsprod2
+	FSTAB_EXTRACT is /dev/vgfsprod2/lvol1:/BCV/srvr16/u02
+	VG is vgfsprod2
+	VG_LVOL is /dev/vgfsprod2/lvol1
+	VG_RLVOL is /dev/vgfsprod2/rlvol1
+	FILESYSTEM is /BCV/srvr16/u02
+	#
+	VG_ELEM is 0
+	VOLGROUP is vgfsprod1
+	FSTAB_EXTRACT is /dev/vgfsprod1/lvol1:/BCV/srvr16/u01
+	VG is vgfsprod1
+	VG_LVOL is /dev/vgfsprod1/lvol1
+	VG_RLVOL is /dev/vgfsprod1/rlvol1
+	FILESYSTEM is /BCV/srvr16/u01
+	#
+
+
+VERIFY XACT VG VARIABLES - Old Style
+#
+## VG Variables for Xact Establish
+Total VG array elements is 0.
+VG array elemenst will start at -1.
+VG_ARRAY_START_XACT (-1) in a negative state.
+There is obviously nothing to process here. Skipping.
+
+VERIFY DG VARIABLES
+#
+## Verifying DG Variables
+Total DG array elements is 5.
+DG array elemenst will start at 6.
+#
+DG_ELEM_4 is psfssystem1
+DG_ELEM_3 is psfiles1
+DG_ELEM_2 is apps16
+DG_ELEM_1 is psfsprod2
+DG_ELEM_0 is psfsprod1
+
+
+VERIFY XACT DG VARIABLES
+#
+## Verifying XACT DG Variables
+Total DG array elements is 0.
+DG array elemenst will start at -1.
+DG_ARRAY_START_XACT (-1) in a negative state.
+There is obviously nothing to process here. Skipping.
+
+VERIFY OMNIBACK VARIABLES
+OMNIETCDIR is /etc/opt/omni
+OMNIBINDIR is /opt/omni/bin
+INSTANCE_FILE is /usr/local/bin/bcvscripts/tmp/INSTANCES
+TOTAL_INSTANCES are 3
+INSTANCE is 2
+OMNIBACK_OBJ is SERVER16
+OMNIBACK_SCHED is QBCV_SRVR16
+OMNI_DRV is
+OMNI_LIST is
+JDATE is 2005143
+OMNI_FILESYSTEMS is /usr/local/bin/bcvscripts/tmp/2005143_FS.OB
+
+ORA_START_HBM is: /usr/local/bin/HBM/srvr16-StartHotBackup.sh
+ORA_STOP_HBM is: /usr/local/bin/HBM/srvr16-StopHotBackup.sh
+HBMLOGFILE is: /usr/local/bin/bcvscripts/logs/server16-HBM.log
+
+Verify_Full_VGs
+The number of Normal elements is 7
+The number of XACT elements is 0
+Total VGS from Normal and Xact settings is: 7
+server16_ALL_VGS is vgfsprod1 vgfsprod2 vgapps16 vgpsfiles1/lvol1 vgpsfiles1/lvol2 vgpsfiles1/lvol3 vgfssystem1
+server16_ALL_VGS_XACT is
+ALL VGs from each group are: vgfsprod1 vgfsprod2 vgapps16 vgpsfiles1/lvol1 vgpsfiles1/lvol2 vgpsfiles1/lvol3 vgfssystem1
+
+vgfsprod1
+/dev/vgfsprod1/lvol1 /BCV/srvr16/u01 vxfs rw,suid,largefiles,delaylog,datainlog 0 2
+
+	FSTAB_XTRACT is /dev/vgfsprod1/lvol1:/BCV/srvr16/u01
+	VG is /dev/vgfsprod1
+	VG_LVOL is /dev/vgfsprod1/lvol1
+	VG_RLVOL is /dev/vgfsprod1/rlvol1
+	FILESYSTEM is /BCV/srvr16/u01
+
+
+vgfsprod2
+/dev/vgfsprod2/lvol1 /BCV/srvr16/u02 vxfs rw,suid,largefiles,delaylog,nodatainlog 0 2
+
+	FSTAB_XTRACT is /dev/vgfsprod2/lvol1:/BCV/srvr16/u02
+	VG is /dev/vgfsprod2
+	VG_LVOL is /dev/vgfsprod2/lvol1
+	VG_RLVOL is /dev/vgfsprod2/rlvol1
+	FILESYSTEM is /BCV/srvr16/u02
+
+
+vgapps16
+/dev/vgapps16/lvol1 /BCV/srvr16/apps vxfs rw,suid,largefiles,delaylog,nodatainlog 0 2
+
+	FSTAB_XTRACT is /dev/vgapps16/lvol1:/BCV/srvr16/apps
+	VG is /dev/vgapps16
+	VG_LVOL is /dev/vgapps16/lvol1
+	VG_RLVOL is /dev/vgapps16/rlvol1
+	FILESYSTEM is /BCV/srvr16/apps
+
+
+vgpsfiles1/lvol1
+/dev/vgpsfiles1/lvol1 /BCV/srvr16/u05 vxfs rw,suid,delaylog,nodatainlog 0 2
+
+	FSTAB_XTRACT is /dev/vgpsfiles1/lvol1:/BCV/srvr16/u05
+	VG is /dev/vgpsfiles1
+	VG_LVOL is /dev/vgpsfiles1/lvol1
+	VG_RLVOL is /dev/vgpsfiles1/rlvol1
+	FILESYSTEM is /BCV/srvr16/u05
+
+
+vgpsfiles1/lvol2
+/dev/vgpsfiles1/lvol2 /BCV/srvr16/u20 vxfs rw,suid,delaylog,nodatainlog 0 2
+
+	FSTAB_XTRACT is /dev/vgpsfiles1/lvol2:/BCV/srvr16/u20
+	VG is /dev/vgpsfiles1/lvol2:/BCV/srvr16/u20
+	VG_LVOL is /dev/vgpsfiles1/lvol2
+	VG_RLVOL is /dev/vgpsfiles1/lvol2:/BCV/srvr16/u20rlvol1
+	FILESYSTEM is /BCV/srvr16/u20
+
+
+vgpsfiles1/lvol3
+/dev/vgpsfiles1/lvol3 /BCV/srvr16/u21 vxfs rw,suid,delaylog,nodatainlog 0 2
+
+	FSTAB_XTRACT is /dev/vgpsfiles1/lvol3:/BCV/srvr16/u21
+	VG is /dev/vgpsfiles1/lvol3:/BCV/srvr16/u21
+	VG_LVOL is /dev/vgpsfiles1/lvol3
+	VG_RLVOL is /dev/vgpsfiles1/lvol3:/BCV/srvr16/u21rlvol1
+	FILESYSTEM is /BCV/srvr16/u21
+
+
+vgfssystem1
+/dev/vgfssystem1/lvol1 /BCV/srvr16/u03 vxfs rw,suid,largefiles,delaylog,datainlog 0 2
+
+	FSTAB_XTRACT is /dev/vgfssystem1/lvol1:/BCV/srvr16/u03
+	VG is /dev/vgfssystem1
+	VG_LVOL is /dev/vgfssystem1/lvol1
+	VG_RLVOL is /dev/vgfssystem1/rlvol1
+	FILESYSTEM is /BCV/srvr16/u03
+
+
+
+GET ALL VGS
+vgfsprod1 vgfsprod2 vgapps16 vgpsfiles1/lvol1 vgpsfiles1/lvol2 vgpsfiles1/lvol3 vgfssystem1
+
+Total VGs
+7
+
+Xact VGS
+
+
+Total Xact VGS
+0
+
+Full Verify DGs
+
+The number of Normal DG elements is 5
+The number of XACT DG elements is 0
+Total DGs from Normal and Xact settings is: 5
+server16_ALL_DGS is psfsprod1 psfsprod2 apps16 psfiles1 psfssystem1
+server16_ALL_DGS_XACT is
+ALL DGs from each group are: psfsprod1 psfsprod2 apps16 psfiles1 psfssystem1
+DG is set to psfsprod1
+DG is set to psfsprod2
+DG is set to apps16
+DG is set to psfiles1
+DG is set to psfssystem1
+
+GET ALL DGS
+psfsprod1 psfsprod2 apps16 psfiles1 psfssystem1
+
+Total DGs
+5
+
+Norm DGS
+psfsprod1 psfsprod2 apps16 psfiles1 psfssystem1
+
+Total Norm DGS
+5
+
+Xact DGS
+
+
+Total Xact DGS
+0
