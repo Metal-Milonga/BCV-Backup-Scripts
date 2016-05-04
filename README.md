@@ -13,7 +13,9 @@ IT management, and I wanted the whole thing automated, but I would not let them 
 
 There 3 databases that made use of the BCVs, and each on ran on a different HP-UX server.  The filesystems for the databases and for the BCVs were LVM based.  Backups were controlled by another HP-UX server also connected directly with the Symmetrix.  At night the BCVs would be mounted on the database servers while they were being sync'ed with the databases, then unmounted, and mounted on the backup server. This was done so that the backup process, which ran during the morning hours, and its agents did not impact the load on the database servers.  Mounting and unmounting the BCV Volume Groups needed to be done correctly according with LVM best practices, or eventually the LVM structure would get corrupted.
 
-Along with the LVM control, proper control of the Oracle hot backup process, and the Symmetrix process of attaching, syncing, and detaching BCVs had to be performed according to the official procedures as published by the vendor.
+One of the more critical parts of controlling the LVM filesystems came when new disk devices were added to a database filesystem.  This required that the LVM Volume Group structure of the BCVs had to be dismantled and reassembled before they could by synced with the standard devices.  A special part of the script was used if this was the case, and it was controlled by the configuration file. 
+
+Along with the LVM control, proper control of the Oracle hot backup process, and the Symmetrix process of attaching, syncing, and detaching BCVs, everything had to be performed according to the official procedures as published by the vendor.
 
 I had several criteria for the script.
 
