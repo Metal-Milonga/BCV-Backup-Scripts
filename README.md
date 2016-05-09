@@ -48,3 +48,5 @@ It was the most intense script learning experience.  I have no idea how my scrip
 The main script is bin/BCV_Est.sh.  It is named in this mixed case to try to prevent accidental execution.  There are several commandline options built in including help to print a usage message.  In fact entering just the script with no options would execute a usage message and exit.
 
 The main, and required, configuration file is etc/bcv_scripts.conf, and each section is, hopefully, clearly explained.
+
+Document $Id$
