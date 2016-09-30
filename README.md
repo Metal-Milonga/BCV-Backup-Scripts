@@ -62,6 +62,6 @@ I started the scripting in 2001 or 2002.  It went live in 2002.  I was in the pr
 
 It was the most intense script learning experience.  I have no idea how my script code compares to other's style or if my scripting is a mess or not.
 
-
+Dave
 
 Document $Id$
