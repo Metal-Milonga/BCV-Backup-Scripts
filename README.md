@@ -17,13 +17,13 @@ Being the lead SysAdmin as well as the BURA and Storage admin, I had several cri
 
 1. One script to rule them all. I wanted to be able to backup any BCV group with the same script.  I did not want to have a separate script to run for each BCV group.
 
-2. I wanted only one configuration script to control any and all BCV backup.
+2. I wanted only one configuration file to control any and all BCV backup.
 
 3. There were 3 BCV groups at the time: I wanted to be able to run 3 instances of the script at the same time without them stepping on each other.
 
-4. I wanted to be able to run the script automatically or interactively.
+4. I wanted to run the script automatically or interactively.
 
-5. Everything was to be handled by functions. This allowed me to work on the various parts of the script at a time and test them without impacting other functions.  It also allowed code reuse throughout, and, I think, made it more understandable to my co-workers.
+5. Everything was to be handled by functions. This allowed me to work on the various parts of the script one at a time and test them without impacting other functions.  It also allowed code reuse throughout, and, I think, made it more understandable to my co-workers.
 
 6. I wanted all of the functions to be in external files from the main script, so it would not be unbearably long.  All the main script would do is call functions.
 
@@ -31,7 +31,7 @@ Being the lead SysAdmin as well as the BURA and Storage admin, I had several cri
 
 8. I wanted detailed logs of every phase.
 
-9. I wanted role-based notification, so I could get a full report, send just the necessary info to the DBAs, and error notifications to the operations guys and gals.
+9. I wanted role-based notification, so I could get a full report, send just the necessary info to the DBAs, and error notifications to operations.
 
 10. I wanted error checking on every step the script took.  Automation is great, but only after it has been tested to make sure it does not break other things while it does its assigned task.
 
