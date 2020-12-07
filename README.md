@@ -3,7 +3,7 @@
 
 ### Why is it here:
 
-This script is here for preservation mostly.  It is not intended to be used by anyone, because the technology it was used on is 10+ years old.  I doubt you would find these systems in a production environment anymore.  I started the scripting in 2001 or 2002.  It went live in 2002.  I understand it ran for quite a while after I left.
+This script is here for preservation mostly.  It is not intended to be used by anyone, because the technology it was used on was popular in the late 1990 and early 2000s.  I doubt you would find these systems in a production environment anymore.  I started the scripting in 2001 or 2002.  It went live in 2002.  I understand it ran for quite a while after I left.
 
 ### How it was used:
 
